@@ -19,10 +19,13 @@
             @row-del="rowDel"
           ></avue-crud>
         </el-tab-pane>
-        <el-tab-pane label="客户" name="second">我是客户</el-tab-pane>
-        <el-tab-pane label="托运人" name="third">我是托运人</el-tab-pane>
-        <el-tab-pane label="收货人" name="fourth">我是收货人</el-tab-pane>
-        <el-tab-pane label="运营商" name="Fifth">我是运营商</el-tab-pane>
+        <el-tab-pane label="客户" name="second"></el-tab-pane>
+        <el-tab-pane label="已订购" name="third"></el-tab-pane>
+        <el-tab-pane label="预定取件" name="fourth"></el-tab-pane>
+        <el-tab-pane label="已收到" name="fifth"></el-tab-pane>
+        <el-tab-pane label="计费" name="sixth"></el-tab-pane>
+        <el-tab-pane label="运费" name="seventh"></el-tab-pane>
+        <el-tab-pane label="已完成" name="eighth"></el-tab-pane>
       </el-tabs>
     </main>
   </div>
@@ -30,7 +33,7 @@
 
 <script>
 export default {
-  name: "SystemCrm",
+  name: "ShippingOrder",
 
   data() {
     return {
@@ -38,8 +41,8 @@ export default {
       data: [
         {
           id: 1,
-          name: "李四",
-          sex: "女",
+          name: "张三",
+          sex: "男",
           address: "长沙雨花区万家丽商业广场",
           phone: "13667349408",
           reprentative: "王五",
@@ -49,72 +52,6 @@ export default {
         },
         {
           id: 2,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-        {
-          id: 3,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-        {
-          id: 4,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-        {
-          id: 5,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-        {
-          id: 6,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-        {
-          id: 7,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-        {
-          id: 8,
           name: "李四",
           sex: "女",
           address: "长沙雨花区万家丽商业广场",

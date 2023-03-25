@@ -4,7 +4,6 @@
     top: 4em;
     bottom: 0;
     width: 15em;
-    height: 100%;
   }
 
   .topmenu {
@@ -22,8 +21,15 @@
     width: 75% !important;
   }
 
-/* main {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 16em;
-} */
+  main {
+    width: 80%;
+    margin-left: 15em;
+  }
+  
+  .tabs {
+    margin-left: 1em;
+  }
+
+  .NavMenu-icon {
+    margin-right: 0.3em;
+  }

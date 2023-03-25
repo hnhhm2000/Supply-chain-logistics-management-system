@@ -3,7 +3,7 @@ import App from './App.vue'
 import ElementUI from 'element-ui';
 import router from './router'
 import NavMenu from "./components/NavMenu.vue"
-import TopMenu from "./components/test"
+import TopMenu from "./components/top.vue"
 import Avue from '@smallwei/avue'
 import './assets/css/main.css'
 import '@smallwei/avue/lib/index.css';
@@ -13,8 +13,9 @@ Vue.config.productionTip = false
 
 Vue.use(ElementUI);
 Vue.use(Avue);
-Vue.component('NavMenu', NavMenu)
-Vue.component('TopMenu', TopMenu)
+
+Vue.component('NavMenu', NavMenu) // 导入侧边栏
+Vue.component('TopMenu', TopMenu) // 导入头部栏
 
 new Vue({
   router,
