@@ -57,46 +57,133 @@ export default {
       option: {
         column: [
           {
-            label: "地位",
-            prop: "date",
+            label: "状态",
+            prop: "Status",
           },
           {
             label: "会计",
-            prop: "reference",
+            prop: "Accounting",
           },
           {
-            label: "数字",
-            prop: "subject",
+            label: "号码",
+            prop: "Number",
           },
           {
             label: "集装箱",
-            prop: "owner",
+            prop: "Containers",
           },
           {
             label: "项目",
-            prop: "states",
+            prop: "Project",
           },
           {
-            label: "追踪 ",
-            prop: "priority",
+            label: "货物追踪 ",
+            prop: "tracking",
           },
             {
             label: "提单",
-            prop: "module",
+            prop: "lading",
           },
           {
-            label: "提货单",
-            prop: "Account",
+            label: "装载日期",
+            prop: "PickUpDate",
           },
           {
             label: "交货日期",
-            prop: "module",
+            prop: "DeliveryDate",
           },
            {
             label: "托运人",
-            prop: "module",
+            prop: "shipper",
           },
-         
+            {
+            label: "收货人",
+            prop: "shipper",
+          },
+           {
+            label: "发货地",
+            prop: "PickupFrom",
+          },
+           {
+            label: "收货地",
+            prop: "DeliverTo",
+          },
+           {
+            label: "承运商",
+            prop: "shipper",
+          },
+           {
+            label: "货运代理人",
+            prop: "shipper",
+          },
+           {
+            label: "客户",
+            prop: "Customer",
+          },
+           {
+            label: "PCS",
+            prop: "PCS",
+          },
+           {
+            label: "重量(斤)",
+            prop: "Weight",
+          },
+           {
+            label: "体积(立方英尺)",
+            prop: "VOL(FT3)",
+          },
+           {
+            label: "体积重量(斤)",
+            prop: "VOLWeight",
+          },
+           {
+            label: "体积重量(斤)",
+            prop: "VOLWeight",
+          },
+           {
+            label: "收入",
+            prop: "VOLWeight",
+          },
+           {
+            label: "费用",
+            prop: "VOLWeight",
+          },
+           {
+            label: "利润",
+            prop: "VOLWeight",
+          },
+           {
+            label: "货币",
+            prop: "VOLWeight",
+          },
+           {
+            label: "客户资料",
+            prop: "VOLWeight",
+          },
+           {
+            label: "更新者",
+            prop: "CreatedBy",
+          },
+           {
+            label: "创造者",
+            prop: "CreatedOn",
+          },
+          {
+            label: "预计发货时间",
+            prop: "ETA",
+          },
+          {
+            label: "预计到达时间",
+            prop: "ETD",
+          },
+          {
+            label: "货物签收时间",
+            prop: "PODDate",
+          },
+          {
+            label: "注释",
+            prop: "Notes",
+          },
         ],
       },
     };

@@ -61,37 +61,93 @@ export default {
       ],
       option: {
         column: [
-          {
-            label: "状态",
-            prop: "status",
+            {
+            label: "姓名",
+            prop: "name",
           },
           {
-            label: "参考",
-            prop: "reference",
+            label: "会计",
+            prop: "Accounting",
           },
           {
-            label: "主题",
-            prop: "subject",
+            label: "装运",
+            prop: "ShipMent",
+          },
+           {
+            label: "创造者",
+            prop: "CreatedBy",
           },
           {
-            label: "任务负责人",
-            prop: "owner",
+            label: "创造于",
+            prop: "CreatedOn",
           },
           {
-            label: "状态",
-            prop: "states",
+            label: "预订",
+            prop: "Booking",
           },
           {
-            label: "优先事项",
-            prop: "priority",
+            label: "顾客参考",
+            prop: "CustomerRef",
           },
           {
-            label: "账户相关",
-            prop: "Account",
+            label: "类型",
+            prop: "Type",
           },
           {
-            label: "模块",
-            prop: "module",
+            label: "出发地",
+            prop: "Departure",
+          },
+          {
+            label: "目的地",
+            prop: "reprentative",
+          },
+           {
+            label: "托运人",
+            prop: "Shipper",
+          },
+           {
+            label: "收货人",
+            prop: "Consignee",
+          },
+           {
+            label: "PCS",
+            prop: "PCS",
+          },
+           {
+            label: "重量",
+            prop: "Weight",
+          },
+           {
+            label: "VOL(FT3)",
+            prop: "VOL(FT3)",
+          },
+           {
+            label: "VOL重量",
+            prop: "VOLWeight",
+          },
+           {
+            label: "收入",
+            prop: "Income",
+          },
+           {
+            label: "费用",
+            prop: "Expense",
+          },
+           {
+            label: "利润",
+            prop: "Profit",
+          },
+          {
+            label: "货币",
+            prop: "Currency",
+          },
+          {
+            label: "最新消息",
+            prop: "UpdateOn",
+          },
+          {
+            label: "注释",
+            prop: "Notes",
           },
         ],
       },

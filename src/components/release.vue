@@ -66,26 +66,73 @@ export default {
             prop: "createby",
           },
           {
-            label: "追踪 ",
-            prop: "priority",
-          },
-            {
-            label: "创造时间",
-            prop: "createtime",
+            label: "创造于 ",
+            prop: "CreateOn",
           },
           {
-            label: "放货时间",
-            prop: "outtime",
+            label: "放货日期",
+            prop: "dateout",
           },
           {
             label: "到货时间",
             prop: "timeout",
           },
            {
-            label: "货运点",
+            label: "目的地",
             prop: "releaseto",
           },
-         
+           {
+            label: "客户参考",
+            prop: "CustomerRef",
+          },
+           {
+            label: "项目",
+            prop: "Project",
+          },
+           {
+            label: "PCS",
+            prop: "PCS",
+          },
+           {
+            label: "重量(斤)",
+            prop: "Weight",
+          },
+           {
+            label: "体积(立方英尺)",
+            prop: "VOL(FT3)",
+          },
+           {
+            label: "体积重量",
+            prop: "VOLWeight",
+          },
+           {
+            label: "收入",
+            prop: "releaseto",
+          },
+           {
+            label: "费用",
+            prop: "releaseto",
+          },
+           {
+            label: "利润",
+            prop: "releaseto",
+          },
+           {
+            label: "货币",
+            prop: "releaseto",
+          },
+           {
+            label: "更新人",
+            prop: "releaseto",
+          },
+           {
+            label: "更新时间",
+            prop: "releaseto",
+          },
+          {
+            label: "注释",
+            prop: "Notes",
+          },
         ],
       },
     };

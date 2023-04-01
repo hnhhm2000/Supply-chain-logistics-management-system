@@ -51,48 +51,108 @@ export default {
       option: {
         column: [
           {
-            label: "地位",
-            prop: "date",
+            label: "状态",
+            prop: "Status",
           },
           {
             label: "活动",
-            prop: "reference",
+            prop: "Activity",
           },
           {
             label: "数字",
-            prop: "subject",
+            prop: "Number",
           },
           {
-            label: "由....制作",
-            prop: "owner",
+            label: "制造者",
+            prop: "CreatedBy",
           },
            {
             label: "创建于",
-            prop: "states",
+            prop: "CreatedOn",
           },
           {
             label: "项目",
-            prop: "priority",
+            prop: "Project",
           },
           {
             label: "客户参考",
-            prop: "Account",
+            prop: "CustomerRef",
           },
           {
             label: "模式",
-            prop: "module",
+            prop: "mode",
           },
           {
             label: "有效期至...",
-            prop: "module",
+            prop: "valid until",
           },
           {
             label: "顾客",
-            prop: "module",
+            prop: "Customer",
           },
           {
             label: "收货港",
-            prop: "module",
+            prop: "portofreceipt",
+          },
+           {
+            label: "起源",
+            prop: "Origin",
+          },
+           {
+            label: "目的地",
+            prop: "Destination",
+          },
+           {
+            label: "过境日",
+            prop: "TransitDays",
+          },
+           {
+            label: "承运人",
+            prop: "CarrierBroken",
+          },
+           {
+            label: "PCS",
+            prop: "PCS",
+          },
+           {
+            label: "体重(镑)",
+            prop: "Weight",
+          },
+           {
+            label: "VOL(FT3)",
+            prop: "VOL(FT3)",
+          },
+           {
+            label: "VOL WEIGHT(LB)",
+            prop: "VOL WEIGHT(LB)",
+          },
+           {
+            label: "收入",
+            prop: "Income",
+          },
+           {
+            label: "费用",
+            prop: "Expense",
+          },
+          {
+            label: "利润",
+            prop: "Profit",
+          },
+          {
+            label: "货币",
+            prop: "Currency",
+          },
+           {
+            label: "更新人",
+            prop: "UpdatedBy",
+          },
+           {
+            label: "更新时间",
+            prop: "UpdateOn",
+          },
+           {
+            label: "注释",
+            prop: "Notes",
           },
         ],
       },

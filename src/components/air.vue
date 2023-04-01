@@ -63,36 +63,132 @@ export default {
       option: {
         column: [
           {
-            label: "到期日",
+            label: "状态",
             prop: "date",
           },
           {
-            label: "参考",
+            label: "会计",
             prop: "reference",
           },
           {
-            label: "主题",
+            label: "装运",
             prop: "subject",
           },
           {
-            label: "任务负责人",
+            label: "主运单",
             prop: "owner",
           },
           {
-            label: "状态",
+            label: "空运提单",
             prop: "states",
           },
           {
-            label: "优先事项",
+            label: "顾客参考",
             prop: "priority",
           },
           {
-            label: "账户相关",
+            label: "出发地",
             prop: "Account",
           },
           {
-            label: "模块",
+            label: "目的地",
             prop: "module",
+          },
+            {
+            label: "始发地",
+            prop: "module",
+          },
+            {
+            label: "顾客",
+            prop: "module",
+          },
+            {
+            label: "托运人",
+            prop: "module",
+          },
+            {
+            label: "收货人",
+            prop: "module",
+          },
+            {
+            label: "PCS",
+            prop: "PCS",
+          },
+           {
+            label: "重量(斤)",
+            prop: "PCS",
+          },
+           {
+            label: "体积重量(斤)",
+            prop: "PCS",
+          },
+           {
+            label: "收入",
+            prop: "PCS",
+          },
+           {
+            label: "费用",
+            prop: "PCS",
+          },
+           {
+            label: "利润",
+            prop: "PCS",
+          },
+           {
+            label: "货币",
+            prop: "PCS",
+          },
+           {
+            label: "交货日期",
+            prop: "PCS",
+          },
+           {
+            label: "交货地点",
+            prop: "PCS",
+          },
+           {
+            label: "抵达日期",
+            prop: "PCS",
+          },
+           {
+            label: "最终目的地",
+            prop: "PCS",
+          },
+          {
+            label: "截止日期",
+            prop: "PCS",
+          },
+          {
+            label: "装载日期",
+            prop: "PCS",
+          },
+          {
+            label: "更新者",
+            prop: "PCS",
+          },
+            {
+            label: "更新时间",
+            prop: "PCS",
+          },
+            {
+            label: "注释",
+            prop: "PCS",
+          },
+            {
+            label: "项目",
+            prop: "PCS",
+          },
+           {
+            label: "创造者",
+            prop: "PCS",
+          },
+           {
+            label: "创造于",
+            prop: "PCS",
+          },
+           {
+            label: "部门",
+            prop: "PCS",
           },
         ],
       },

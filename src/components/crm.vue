@@ -136,8 +136,12 @@ export default {
             prop: "sex",
           },
           {
-            label: "账户id",
-            prop: "id",
+            label: "账户编码",
+            prop: "code",
+          },
+           {
+            label: "电话",
+            prop: "phone",
           },
           {
             label: "地址",
@@ -148,6 +152,10 @@ export default {
             prop: "city",
           },
           {
+            label: "省",
+            prop: "province",
+          },
+          {
             label: "状态",
             prop: "state",
           },
@@ -156,12 +164,56 @@ export default {
             prop: "ZIP",
           },
           {
-            label: "电话",
-            prop: "phone",
-          },
-          {
             label: "销售代表",
             prop: "reprentative",
+          },
+           {
+            label: "代理",
+            prop: "Agent",
+          },
+           {
+            label: "电子邮件",
+            prop: "Email",
+          },
+           {
+            label: "传真",
+            prop: "Fax",
+          },
+           {
+            label: "联系方式",
+            prop: "Contact",
+          },
+           {
+            label: "客户ID",
+            prop: "CustomerID",
+          },
+           {
+            label: "供应商ID",
+            prop: "VendorID",
+          },
+           {
+            label: "传真",
+            prop: "Roles",
+          },
+           {
+            label: "注释",
+            prop: "Notes",
+          },
+           {
+            label: "创造者",
+            prop: "CreatedBy",
+          },
+           {
+            label: "创造于",
+            prop: "CreatedOn",
+          },
+          {
+            label: "更新者",
+            prop: "UpdatedBy",
+          },
+          {
+            label: "更新于",
+            prop: "UpdateOn",
           },
         ],
       },

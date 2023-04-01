@@ -133,17 +133,56 @@ const routes = [
       showtopMenu: true
     },
   },
+  // {
+  //   path: "/shippment",
+  //   name: "Shippment",
+  //   component: () => import("../components/shippment"),
+  //   meta: {
+  //     title: "海运",
+  //     showNavMenu: true,
+  //     showtopMenu: true
+  //   },
+  // },
   {
-    path: "/shippment",
-    name: "Shippment",
-    component: () => import("../components/shippment"),
+    path: "/oceanimport",
+    name: "OceanImport",
+    component: () => import("../components/Import"),
     meta: {
       title: "海运",
       showNavMenu: true,
       showtopMenu: true
     },
   },
-  
+  {
+    path: "/oceanexport",
+    name: "OceanExport",
+    component: () => import("../components/Export"),
+    meta: {
+      title: "海运",
+      showNavMenu: true,
+      showtopMenu: true
+    },
+  },
+  {
+    path: "/invoices",
+    name: "Invoices",
+    component: () => import("../components/Invoices"),
+    meta: {
+      title: "发票",
+      showNavMenu: true,
+      showtopMenu: true
+    },
+  },
+  {
+    path: "/bills",
+    name: "Bills",
+    component: () => import("../components/Bills"),
+    meta: {
+      title: "账单",
+      showNavMenu: true,
+      showtopMenu: true
+    },
+  },
 ];
 
 const router = new VueRouter({

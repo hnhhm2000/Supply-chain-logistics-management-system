@@ -1,4 +1,4 @@
-<template>
+    <template>
   <div>
     <NavMenu class="sidebar"></NavMenu>
     <TopMenu class="topmenu"></TopMenu>
@@ -19,11 +19,18 @@
             @row-del="rowDel"
           ></avue-crud>
         </el-tab-pane>
-        <el-tab-pane label="今天" name="second"></el-tab-pane>
-        <el-tab-pane label="待处理" name="third"></el-tab-pane>
-        <el-tab-pane label="新任务" name="fourth"></el-tab-pane>
-        <el-tab-pane label="晚点" name="fifth"></el-tab-pane>
-        <el-tab-pane label="完成" name="sixth"></el-tab-pane>
+        <el-tab-pane label="档案" name="second"></el-tab-pane>
+        <el-tab-pane label="加载" name="third"></el-tab-pane>
+        <el-tab-pane label="过境" name="fourth"></el-tab-pane>
+        <el-tab-pane label="目的地" name="fifth"></el-tab-pane>
+        <el-tab-pane label="海关释放" name="sixth"></el-tab-pane>
+         <el-tab-pane label="货物放行" name="sixth"></el-tab-pane>
+          <el-tab-pane label="海关释放" name="sixth"></el-tab-pane>
+           <el-tab-pane label="货物放行" name="sixth"></el-tab-pane>
+           <el-tab-pane label="集装箱卸货船" name="sixth"></el-tab-pane>
+           <el-tab-pane label="外送" name="sixth"></el-tab-pane>
+           <el-tab-pane label="交付" name="sixth"></el-tab-pane>
+           <el-tab-pane label="完成" name="sixth"></el-tab-pane>
       </el-tabs>
     </main>
   </div>
@@ -31,7 +38,7 @@
 
 <script>
 export default {
-  name: "MyGround",
+  name: "OceanImport",
 
   data() {
     return {
@@ -68,53 +75,49 @@ export default {
           },
           {
             label: "会计",
-            prop: "reference",
+            prop: "Accounting",
           },
           {
             label: "装运",
-            prop: "subject",
-          },
-          {
-            label: "主货",
-            prop: "owner",
+            prop: "Shipment",
           },
           {
             label: "预订",
-            prop: "states",
+            prop: "Booking",
           },
           {
-            label: "集装箱",
-            prop: "priority",
+            label: "船长提单",
+            prop: "MasterBL",
           },
           {
-            label: "项目",
-            prop: "Account",
+            label: "货代提单",
+            prop: "ImportHBL",
           },
           {
             label: "顾客参考",
-            prop: "module",
+            prop: "CustomerRef",
           },
-           {
-            label: "顾客参考",
-            prop: "module",
+          {
+            label: "出发地",
+            prop: "Departure",
           },
-           {
-            label: "离开",
-            prop: "module",
+            {
+            label: "目的地",
+            prop: "Arrival",
           },
-           {
-            label: "抵达",
-            prop: "module",
+            {
+            label: "收货港",
+            prop: "receipt",
           },
-           {
+            {
             label: "原产地港口",
-            prop: "module",
+            prop: "Origin",
           },
-           {
+            {
             label: "卸货港",
             prop: "Unloading",
           },
-           {
+            {
             label: "顾客",
             prop: "Customer",
           },
@@ -123,72 +126,96 @@ export default {
             prop: "Shipper",
           },
            {
-            label: "体重(斤)",
+            label: "收货人",
+            prop: "consignee",
+          },
+           {
+            label: "PCS",
+            prop: "PCS",
+          },
+           {
+            label: "重量(斤)",
             prop: "Weight",
           },
-          {
-            label: "体重(斤)",
-            prop: "Weight",
+           {
+            label: "体积重量",
+            prop: "VOLWeight",
           },
-          {
-            label: "VOL(立方体积)",
-            prop: "VOL(FT3)",
+           {
+            label: "集装箱编号",
+            prop: "ContainersNumbers",
           },
-          {
+           {
             label: "收入",
             prop: "Income",
           },
-          {
+           {
             label: "费用",
             prop: "Expense",
           },
-          {
-            label: "利润",
-            prop: "Profit",
+           {
+            label: "货币",
+            prop: "Currency",
+          },
+           {
+            label: "交货日期",
+            prop: "Deliverytime",
           },
           {
-            label: "截止日期",
-            prop: "CutOffTime",
+            label: "交货地点",
+            prop: "place",
           },
           {
+            label: "最终目的地",
+            prop: "FinalDestination",
+          },
+          {
+            label: "结算时间",
+            prop: "Cutoffdate",
+          },
+            {
+            label: "载单时间",
+            prop: "Cutofftime",
+          },
+            {
+            label: "装载日期",
+            prop: "LoadingFromTime",
+          },
+            {
+            label: "卸货日期",
+            prop: "LoadingToDate",
+          },
+            {
             label: "注释",
             prop: "Notes",
           },
-          {
-            label: "交货时间",
-            prop: "Delivery",
-          },
-          {
-            label: "签收时间",
-            prop: "Receive",
-          },
-          {
-            label: "货物签收注释",
-            prop: "Notes",
-          },
-          {
+           {
             label: "项目",
             prop: "Project",
           },
-          {
+           {
             label: "创造者",
             prop: "CreatedBy",
           },
-          {
-            label: "更新人",
-            prop: "UpdatedBy",
-          },
-          {
+           {
             label: "创造于",
             prop: "CreatedOn",
           },
-          {
-            label: "更新时间",
-            prop: "UpdatedOn",
+           {
+            label: "更新人",
+            prop: "UpadatedBy",
           },
-          {
+           {
+            label: "更新时间",
+            prop: "UpdateOn",
+          },
+           {
             label: "组织",
             prop: "Division",
+          },
+           {
+            label: "创造于",
+            prop: "CreatedOn",
           },
         ],
       },
