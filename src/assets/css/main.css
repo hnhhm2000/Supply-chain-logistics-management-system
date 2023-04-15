@@ -33,3 +33,15 @@
   .NavMenu-icon {
     margin-right: 0.3em;
   }
+
+  .m1l {
+    margin-left: 1em;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .right {
+    float: right !important;
+  }
