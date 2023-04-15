@@ -60,6 +60,9 @@ export default {
           ZIP: "410007",
         },
       ],
+      searchShow: false,
+        excelBtn: true,
+        addBtn: false,
       option: {
         column: [
           {

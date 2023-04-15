@@ -49,6 +49,9 @@ export default {
         },
       ],
       option: {
+        searchShow: false,
+        excelBtn: true,
+        addBtn: false,
         column: [
           {
             label: "状态",

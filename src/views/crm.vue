@@ -19,7 +19,6 @@
             @row-del="rowDel"
             @search-change="searchChange"
             @search-reset="resetChange"
-           
             :cell-class-name="addClass"
             @cell-click="pageto"
           >

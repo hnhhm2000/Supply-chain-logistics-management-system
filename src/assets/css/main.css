@@ -46,10 +46,10 @@
     float: right !important;
   }
 
-  /*修改右侧操作栏的高度 */
+  /* 修改右侧操作栏的高度
   ::v-deep .el-table__fixed-right {
-    height: 143px !important;
- }
+    height: 100px !important;
+ } */
  
    /* 修改滚动条的轨道样式 */
    ::-webkit-scrollbar {
