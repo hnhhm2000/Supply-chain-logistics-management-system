@@ -9,7 +9,7 @@
         @tab-click="handleClick"
         style="width: 80em"
       >
-        <el-tab-pane label="查看全部" name="first" style="margin-left: 1em">
+        <el-tab-pane label="全部" name="first" style="margin-left: 1em">
           <avue-crud
             :data="data"
             :option="option"
@@ -19,13 +19,11 @@
             @row-del="rowDel"
           ></avue-crud>
         </el-tab-pane>
-        <el-tab-pane label="客户" name="second"></el-tab-pane>
-        <el-tab-pane label="已订购" name="third"></el-tab-pane>
-        <el-tab-pane label="预定取件" name="fourth"></el-tab-pane>
-        <el-tab-pane label="已收到" name="fifth"></el-tab-pane>
-        <el-tab-pane label="计费" name="sixth"></el-tab-pane>
-        <el-tab-pane label="运费" name="seventh"></el-tab-pane>
-        <el-tab-pane label="已完成" name="eighth"></el-tab-pane>
+        <el-tab-pane label="今天" name="second"></el-tab-pane>
+        <el-tab-pane label="待处理" name="third"></el-tab-pane>
+        <el-tab-pane label="新任务" name="fourth"></el-tab-pane>
+        <el-tab-pane label="晚点" name="fifth"></el-tab-pane>
+        <el-tab-pane label="完成" name="sixth"></el-tab-pane>
       </el-tabs>
     </main>
   </div>
@@ -33,11 +31,11 @@
 
 <script>
 export default {
-  name: "ShippingOrder",
+  name: "MyGround",
 
   data() {
     return {
-      activeName: "second",
+      activeName: "first",
       data: [
         {
           id: 1,
@@ -64,93 +62,133 @@ export default {
       ],
       option: {
         column: [
-            {
-            label: "姓名",
-            prop: "name",
+          {
+            label: "状态",
+            prop: "Status",
           },
           {
             label: "会计",
-            prop: "Accounting",
+            prop: "reference",
           },
           {
             label: "装运",
-            prop: "ShipMent",
-          },
-           {
-            label: "创造者",
-            prop: "CreatedBy",
+            prop: "subject",
           },
           {
-            label: "创造于",
-            prop: "CreatedOn",
+            label: "主货",
+            prop: "owner",
           },
           {
             label: "预订",
-            prop: "Booking",
+            prop: "states",
+          },
+          {
+            label: "集装箱",
+            prop: "priority",
+          },
+          {
+            label: "项目",
+            prop: "Account",
           },
           {
             label: "顾客参考",
-            prop: "CustomerRef",
+            prop: "module",
           },
-          {
-            label: "类型",
-            prop: "Type",
+           {
+            label: "顾客参考",
+            prop: "module",
           },
-          {
-            label: "出发地",
-            prop: "Departure",
+           {
+            label: "离开",
+            prop: "module",
           },
-          {
-            label: "目的地",
-            prop: "reprentative",
+           {
+            label: "抵达",
+            prop: "module",
+          },
+           {
+            label: "原产地港口",
+            prop: "module",
+          },
+           {
+            label: "卸货港",
+            prop: "Unloading",
+          },
+           {
+            label: "顾客",
+            prop: "Customer",
           },
            {
             label: "托运人",
             prop: "Shipper",
           },
            {
-            label: "收货人",
-            prop: "Consignee",
-          },
-           {
-            label: "PCS",
-            prop: "PCS",
-          },
-           {
-            label: "重量",
+            label: "体重(斤)",
             prop: "Weight",
           },
-           {
-            label: "VOL(FT3)",
+          {
+            label: "体重(斤)",
+            prop: "Weight",
+          },
+          {
+            label: "VOL(立方体积)",
             prop: "VOL(FT3)",
           },
-           {
-            label: "VOL重量",
-            prop: "VOLWeight",
-          },
-           {
+          {
             label: "收入",
             prop: "Income",
           },
-           {
+          {
             label: "费用",
             prop: "Expense",
           },
-           {
+          {
             label: "利润",
             prop: "Profit",
           },
           {
-            label: "货币",
-            prop: "Currency",
-          },
-          {
-            label: "更新时间",
-            prop: "UpdateOn",
+            label: "截止日期",
+            prop: "CutOffTime",
           },
           {
             label: "注释",
             prop: "Notes",
+          },
+          {
+            label: "交货时间",
+            prop: "Delivery",
+          },
+          {
+            label: "签收时间",
+            prop: "Receive",
+          },
+          {
+            label: "货物签收注释",
+            prop: "Notes",
+          },
+          {
+            label: "项目",
+            prop: "Project",
+          },
+          {
+            label: "创造者",
+            prop: "CreatedBy",
+          },
+          {
+            label: "更新人",
+            prop: "UpdatedBy",
+          },
+          {
+            label: "创造于",
+            prop: "CreatedOn",
+          },
+          {
+            label: "更新时间",
+            prop: "UpdatedOn",
+          },
+          {
+            label: "组织",
+            prop: "Division",
           },
         ],
       },
@@ -166,9 +204,7 @@ export default {
     },
     rowSave(form, done, loading) {
       form.id = new Date().getTime();
-      this.$message.success("模拟网络请求");
       setTimeout(() => {
-        this.$message.success("关闭按钮等待");
         loading();
       }, 1000);
       setTimeout(() => {
@@ -192,9 +228,7 @@ export default {
         .catch(() => {});
     },
     rowUpdate(form, index, done, loading) {
-      this.$message.success("模拟网络请求");
       setTimeout(() => {
-        this.$message.success("关闭按钮等待");
         loading();
       }, 1000);
       setTimeout(() => {

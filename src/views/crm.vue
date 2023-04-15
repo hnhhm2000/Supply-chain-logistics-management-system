@@ -13,11 +13,26 @@
           <avue-crud
             :data="data"
             :option="option"
+            :search-show="false"
             @refresh-change="refreshChange"
-            @row-save="rowSave"
             @row-update="rowUpdate"
             @row-del="rowDel"
-          ></avue-crud>
+            @search-change="searchChange"
+            @search-reset="resetChange"
+           
+            :cell-class-name="addClass"
+            @cell-click="pageto"
+          >
+            
+              <el-button slot="menuLeft"
+                type="primary"
+                icon="el-icon-plus"
+                size="small"
+                @click="rowadd"
+                >新增</el-button
+              >
+           
+          </avue-crud>
         </el-tab-pane>
         <el-tab-pane label="客户" name="second">我是客户</el-tab-pane>
         <el-tab-pane label="托运人" name="third">我是托运人</el-tab-pane>
@@ -29,107 +44,24 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "SystemCrm",
 
   data() {
     return {
-      activeName: "second",
-      data: [
-        {
-          id: 1,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-        {
-          id: 2,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-        {
-          id: 3,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-        {
-          id: 4,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-        {
-          id: 5,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-        {
-          id: 6,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-        {
-          id: 7,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-        {
-          id: 8,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-      ],
+      activeName: "first",
+      data: [],
       option: {
+        searchShow: false,
+        excelBtn: true,
+        addBtn: false,
         column: [
           {
             label: "姓名",
             prop: "name",
+            search: true,
           },
           {
             label: "性别",
@@ -138,8 +70,9 @@ export default {
           {
             label: "账户编码",
             prop: "code",
+            search: true,
           },
-           {
+          {
             label: "电话",
             prop: "phone",
           },
@@ -150,6 +83,7 @@ export default {
           {
             label: "城市",
             prop: "city",
+            search: true,
           },
           {
             label: "省",
@@ -158,6 +92,7 @@ export default {
           {
             label: "状态",
             prop: "state",
+            search: true,
           },
           {
             label: "邮编",
@@ -167,43 +102,43 @@ export default {
             label: "销售代表",
             prop: "reprentative",
           },
-           {
+          {
             label: "代理",
             prop: "Agent",
           },
-           {
+          {
             label: "电子邮件",
-            prop: "Email",
+            prop: "email",
           },
-           {
+          {
             label: "传真",
             prop: "Fax",
           },
-           {
+          {
             label: "联系方式",
             prop: "Contact",
           },
-           {
+          {
             label: "客户ID",
             prop: "CustomerID",
           },
-           {
+          {
             label: "供应商ID",
             prop: "VendorID",
           },
-           {
+          {
             label: "传真",
             prop: "Roles",
           },
-           {
+          {
             label: "注释",
             prop: "Notes",
           },
-           {
+          {
             label: "创造者",
             prop: "CreatedBy",
           },
-           {
+          {
             label: "创造于",
             prop: "CreatedOn",
           },
@@ -221,23 +156,28 @@ export default {
   },
 
   methods: {
+    addClass({ columnIndex }) {
+      console.log(columnIndex);
+      if (columnIndex === 0) {
+        return "cell-color"; // cell-blue就是添加的类名，添加完之后记得设置样式
+      }
+    },
+    /**
+     * @description: 点击名字进行跳转
+     */
+    pageto(row, column) {
+      if (column.label == "姓名") {
+        this.$router.push("/");
+      }
+    },
+      rowadd() {
+        this.$router.push("./crm/add");
+      },
     handleClick(tab, event) {
       console.log(tab, event);
     },
     refreshChange() {
       this.$message.success("刷新回调");
-    },
-    rowSave(form, done, loading) {
-      form.id = new Date().getTime();
-      this.$message.success("模拟网络请求");
-      setTimeout(() => {
-        this.$message.success("关闭按钮等待");
-        loading();
-      }, 1000);
-      setTimeout(() => {
-        this.$message.success("新增数据" + JSON.stringify(form));
-        done(form);
-      }, 2000);
     },
     rowDel(form, index, done) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
@@ -267,8 +207,31 @@ export default {
         done(form);
       }, 2000);
     },
+    resetChange() {
+      this.$message.success("清空回调");
+    },
+    searchChange(params, done) {
+      this.$message.success("2s后关闭锁定");
+      setTimeout(() => {
+        done();
+        this.$message.success(JSON.stringify(params));
+      }, 2000);
+    },
+  },
+
+  created() {
+    axios.get("/customer/selectAllCustomer").then((res) => {
+      this.data = res.data.data.customerList;
+      // console.log(res);
+      // console.log(res.data);
+    });
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+::v-deep .cell-color {
+  color: #409eff !important;
+  cursor: pointer;
+}
+</style>

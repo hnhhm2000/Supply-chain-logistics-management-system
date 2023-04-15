@@ -45,3 +45,40 @@
   .right {
     float: right !important;
   }
+
+  /*修改右侧操作栏的高度 */
+  ::v-deep .el-table__fixed-right {
+    height: 143px !important;
+ }
+ 
+   /* 修改滚动条的轨道样式 */
+   ::-webkit-scrollbar {
+     width: 6px;
+     height: 0.5em;
+     background-color: transparent;
+   }
+ 
+   /* 修改滚动条的滑块样式 */
+   ::-webkit-scrollbar-thumb {
+     border-radius: 10px;
+     background-color: rgba(225, 225, 233, 0.5);
+   }
+ 
+   /* 修改滚动条的滑块悬停样式 */
+   ::-webkit-scrollbar-thumb:hover {
+     background-color: rgba(225, 225, 233);
+   }
+ 
+   /* 修改滚动条的按钮样式（上/下箭头等） */
+   ::-webkit-scrollbar-button {
+     display: none;
+   }
+ 
+   /* 隐藏滚动条，但在鼠标滚动或触摸时显示 */
+   /* // body::-webkit-scrollbar {
+   //   width: 0.1em;
+   // }
+   // body:hover::-webkit-scrollbar,
+   // body:active::-webkit-scrollbar {
+   //   width: 6px;
+   // } */

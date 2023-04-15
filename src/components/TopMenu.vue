@@ -8,7 +8,7 @@
       @select="handleSelect"
     >
       <el-menu-item route index="/" class="logo">
-        <img src="../assets/img/logistics.png" alt="供应链物流管理系统" />
+        <img src="../assets/img/logo.png" alt="供应链物流管理系统" />
         <span class="title">供应链物流管理系统</span>
       </el-menu-item>
 
@@ -17,12 +17,20 @@
         <template slot="title">我的账户</template>
         <el-menu-item index="2-1">查看个人资料</el-menu-item>
         <el-menu-item index="2-2">修改密码</el-menu-item>
-        <el-menu-item @click="reset" route index="./login">退出登录</el-menu-item>
-      </el-submenu>
-      <el-menu-item index="4"
+        <el-menu-item @click="reset" route index="./login"
+          >退出登录</el-menu-item
         >
+      </el-submenu>
+      <el-menu-item index="4">
         <a href="mailto:986667872@qq.com" target="_blank">联系开发者</a>
-          </el-menu-item>
+      </el-menu-item>
+
+        <el-menu-item route @click="reset" index="./login" style="float: right">退出登录</el-menu-item>
+        
+      <el-menu-item  route index="/" style="float: right"
+        >系统设置</el-menu-item
+      >
+    
     </el-menu>
   </div>
 </template>
@@ -43,9 +51,9 @@ export default {
     },
     reset() {
       localStorage.removeItem("token");
-    }
+    },
   },
-    computed: {
+  computed: {
     showNavMenu() {
       return this.$route.meta.showNavMenu !== false;
     },

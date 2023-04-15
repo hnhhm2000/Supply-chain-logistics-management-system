@@ -1,4 +1,4 @@
-<template>
+    <template>
   <div>
     <NavMenu class="sidebar"></NavMenu>
     <TopMenu class="topmenu"></TopMenu>
@@ -19,11 +19,18 @@
             @row-del="rowDel"
           ></avue-crud>
         </el-tab-pane>
-        <el-tab-pane label="今天" name="second"></el-tab-pane>
-        <el-tab-pane label="待处理" name="third"></el-tab-pane>
-        <el-tab-pane label="新任务" name="fourth"></el-tab-pane>
-        <el-tab-pane label="晚点" name="fifth"></el-tab-pane>
-        <el-tab-pane label="完成" name="sixth"></el-tab-pane>
+        <el-tab-pane label="档案" name="second"></el-tab-pane>
+        <el-tab-pane label="加载" name="third"></el-tab-pane>
+        <el-tab-pane label="过境" name="fourth"></el-tab-pane>
+        <el-tab-pane label="目的地" name="fifth"></el-tab-pane>
+        <el-tab-pane label="海关释放" name="sixth"></el-tab-pane>
+         <el-tab-pane label="货物放行" name="sixth"></el-tab-pane>
+          <el-tab-pane label="海关释放" name="sixth"></el-tab-pane>
+           <el-tab-pane label="货物放行" name="sixth"></el-tab-pane>
+           <el-tab-pane label="集装箱卸货船" name="sixth"></el-tab-pane>
+           <el-tab-pane label="外送" name="sixth"></el-tab-pane>
+           <el-tab-pane label="交付" name="sixth"></el-tab-pane>
+           <el-tab-pane label="完成" name="sixth"></el-tab-pane>
       </el-tabs>
     </main>
   </div>
@@ -31,11 +38,11 @@
 
 <script>
 export default {
-  name: "MyAir",
+  name: "OceanImport",
 
   data() {
     return {
-      activeName: "second",
+      activeName: "first",
       data: [
         {
           id: 1,
@@ -64,131 +71,151 @@ export default {
         column: [
           {
             label: "状态",
-            prop: "date",
+            prop: "Status",
           },
           {
             label: "会计",
-            prop: "reference",
+            prop: "Accounting",
           },
           {
             label: "装运",
-            prop: "subject",
+            prop: "Shipment",
           },
           {
-            label: "主运单",
-            prop: "owner",
+            label: "预订",
+            prop: "Booking",
           },
           {
-            label: "空运提单",
-            prop: "states",
+            label: "船长提单",
+            prop: "MasterBL",
+          },
+          {
+            label: "货代提单",
+            prop: "ImportHBL",
           },
           {
             label: "顾客参考",
-            prop: "priority",
+            prop: "CustomerRef",
           },
           {
             label: "出发地",
-            prop: "Account",
-          },
-          {
-            label: "目的地",
-            prop: "module",
+            prop: "Departure",
           },
             {
-            label: "始发地",
-            prop: "module",
+            label: "目的地",
+            prop: "Arrival",
+          },
+            {
+            label: "收货港",
+            prop: "receipt",
+          },
+            {
+            label: "原产地港口",
+            prop: "Origin",
+          },
+            {
+            label: "卸货港",
+            prop: "Unloading",
           },
             {
             label: "顾客",
-            prop: "module",
+            prop: "Customer",
           },
-            {
+           {
             label: "托运人",
-            prop: "module",
+            prop: "Shipper",
           },
-            {
+           {
             label: "收货人",
-            prop: "module",
+            prop: "consignee",
           },
-            {
+           {
             label: "PCS",
             prop: "PCS",
           },
            {
             label: "重量(斤)",
-            prop: "PCS",
+            prop: "Weight",
           },
            {
-            label: "体积重量(斤)",
-            prop: "PCS",
+            label: "体积重量",
+            prop: "VOLWeight",
+          },
+           {
+            label: "集装箱编号",
+            prop: "ContainersNumbers",
           },
            {
             label: "收入",
-            prop: "PCS",
+            prop: "Income",
           },
            {
             label: "费用",
-            prop: "PCS",
-          },
-           {
-            label: "利润",
-            prop: "PCS",
+            prop: "Expense",
           },
            {
             label: "货币",
-            prop: "PCS",
+            prop: "Currency",
           },
            {
             label: "交货日期",
-            prop: "PCS",
+            prop: "Deliverytime",
           },
-           {
+          {
             label: "交货地点",
-            prop: "PCS",
+            prop: "place",
           },
-           {
-            label: "抵达日期",
-            prop: "PCS",
-          },
-           {
+          {
             label: "最终目的地",
-            prop: "PCS",
+            prop: "FinalDestination",
           },
           {
-            label: "截止日期",
-            prop: "PCS",
-          },
-          {
-            label: "装载日期",
-            prop: "PCS",
-          },
-          {
-            label: "更新者",
-            prop: "PCS",
+            label: "结算时间",
+            prop: "Cutoffdate",
           },
             {
-            label: "更新时间",
-            prop: "PCS",
+            label: "载单时间",
+            prop: "Cutofftime",
+          },
+            {
+            label: "装载日期",
+            prop: "LoadingFromTime",
+          },
+            {
+            label: "卸货日期",
+            prop: "LoadingToDate",
           },
             {
             label: "注释",
-            prop: "PCS",
+            prop: "Notes",
           },
-            {
+           {
             label: "项目",
-            prop: "PCS",
+            prop: "Project",
           },
            {
             label: "创造者",
-            prop: "PCS",
+            prop: "CreatedBy",
           },
            {
             label: "创造于",
-            prop: "PCS",
+            prop: "CreatedOn",
           },
            {
-            label: "部门",
-            prop: "PCS",
+            label: "更新人",
+            prop: "UpadatedBy",
+          },
+           {
+            label: "更新时间",
+            prop: "UpdateOn",
+          },
+           {
+            label: "组织",
+            prop: "Division",
+          },
+           {
+            label: "创造于",
+            prop: "CreatedOn",
           },
         ],
       },

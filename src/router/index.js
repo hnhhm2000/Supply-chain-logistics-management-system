@@ -8,7 +8,7 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    component: () => import("../components/Login"),
+    component: () => import("../pages/Login"),
     meta: {
       title: "登录",
     },
@@ -16,7 +16,7 @@ const routes = [
   {
     path: "/",
     name: "Index",
-    component: () => import("../components/home"),
+    component: () => import("../views/home"),
     meta: {
       title: "首页",
       showNavMenu: true,
@@ -26,7 +26,7 @@ const routes = [
   {
     path: "/pickupdelivery",
     name: "PickupDelivery",
-    component: () => import("../components/PickupDelivery"),
+    component: () => import("../views/PickupDelivery"),
     meta: {
       title: "订单管理",
       showNavMenu: true,
@@ -36,7 +36,7 @@ const routes = [
   {
     path: "/test",
     name: "Mytest",
-    component: () => import("../components/test"),
+    component: () => import("../views/test"),
     meta: {
       title: "测试用页面",
       showNavMenu: true,
@@ -46,7 +46,7 @@ const routes = [
   {
     path: "/crm",
     name: "CustomManage",
-    component: () => import("../components/crm"),
+    component: () => import("../views/crm"),
     meta: {
       title: "客户管理",
       showNavMenu: true,
@@ -56,7 +56,7 @@ const routes = [
   {
     path: "/shippingorder",
     name: "ShippingOrder",
-    component: () => import("../components/shippingOrder"),
+    component: () => import("../views/shippingOrder"),
     meta: {
       title: "发货单",
       showNavMenu: true,
@@ -66,7 +66,7 @@ const routes = [
   {
     path: "/task",
     name: "Task",
-    component: () => import("../components/task"),
+    component: () => import("../views/task"),
     meta: {
       title: "任务管理",
       showNavMenu: true,
@@ -76,7 +76,7 @@ const routes = [
   {
     path: "/quote",
     name: "Quote",
-    component: () => import("../components/Quote"),
+    component: () => import("../views/Quote"),
     meta: {
       title: "报价管理",
       showNavMenu: true,
@@ -86,7 +86,7 @@ const routes = [
   {
     path: "/receipts",
     name: "Receipts",
-    component: () => import("../components/Receipts"),
+    component: () => import("../views/Receipts"),
     meta: {
       title: "收据",
       showNavMenu: true,
@@ -96,7 +96,7 @@ const routes = [
   {
     path: "/release",
     name: "Release",
-    component: () => import("../components/release"),
+    component: () => import("../views/release"),
     meta: {
       title: "放货",
       showNavMenu: true,
@@ -106,7 +106,7 @@ const routes = [
   {
     path: "/inventory",
     name: "Inventory",
-    component: () => import("../components/Inventory"),
+    component: () => import("../views/Inventory"),
     meta: {
       title: "库存",
       showNavMenu: true,
@@ -116,7 +116,7 @@ const routes = [
   {
     path: "/air",
     name: "Air",
-    component: () => import("../components/air"),
+    component: () => import("../views/air"),
     meta: {
       title: "空运",
       showNavMenu: true,
@@ -126,7 +126,7 @@ const routes = [
   {
     path: "/ground",
     name: "Ground",
-    component: () => import("../components/ground"),
+    component: () => import("../views/ground"),
     meta: {
       title: "货运",
       showNavMenu: true,
@@ -136,7 +136,7 @@ const routes = [
   // {
   //   path: "/shippment",
   //   name: "Shippment",
-  //   component: () => import("../components/shippment"),
+  //   component: () => import("../views/shippment"),
   //   meta: {
   //     title: "海运",
   //     showNavMenu: true,
@@ -146,7 +146,7 @@ const routes = [
   {
     path: "/oceanimport",
     name: "OceanImport",
-    component: () => import("../components/Import"),
+    component: () => import("../views/Import"),
     meta: {
       title: "海运",
       showNavMenu: true,
@@ -156,7 +156,7 @@ const routes = [
   {
     path: "/oceanexport",
     name: "OceanExport",
-    component: () => import("../components/Export"),
+    component: () => import("../views/Export"),
     meta: {
       title: "海运",
       showNavMenu: true,
@@ -166,7 +166,7 @@ const routes = [
   {
     path: "/invoices",
     name: "Invoices",
-    component: () => import("../components/Invoices"),
+    component: () => import("../views/Invoices"),
     meta: {
       title: "发票",
       showNavMenu: true,
@@ -176,7 +176,7 @@ const routes = [
   {
     path: "/bills",
     name: "Bills",
-    component: () => import("../components/Bills"),
+    component: () => import("../views/Bills"),
     meta: {
       title: "账单",
       showNavMenu: true,

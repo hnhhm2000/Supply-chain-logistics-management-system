@@ -3,7 +3,7 @@ import App from './App.vue'
 import ElementUI from 'element-ui';
 import router from './router'
 import NavMenu from "./components/NavMenu.vue"
-import TopMenu from "./components/top.vue"
+import TopMenu from "./components/TopMenu.vue"
 import Avue from '@smallwei/avue'
 import './assets/css/main.css'
 import '@smallwei/avue/lib/index.css';

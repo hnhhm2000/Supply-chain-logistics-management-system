@@ -1,4 +1,4 @@
-    <template>
+<template>
   <div>
     <NavMenu class="sidebar"></NavMenu>
     <TopMenu class="topmenu"></TopMenu>
@@ -9,7 +9,7 @@
         @tab-click="handleClick"
         style="width: 80em"
       >
-       
+        <el-tab-pane label="全部" name="first" style="margin-left: 1em">
           <avue-crud
             :data="data"
             :option="option"
@@ -18,8 +18,12 @@
             @row-update="rowUpdate"
             @row-del="rowDel"
           ></avue-crud>
-
-       
+        </el-tab-pane>
+        <el-tab-pane label="今天" name="second"></el-tab-pane>
+        <el-tab-pane label="待处理" name="third"></el-tab-pane>
+        <el-tab-pane label="新任务" name="fourth"></el-tab-pane>
+        <el-tab-pane label="晚点" name="fifth"></el-tab-pane>
+        <el-tab-pane label="完成" name="sixth"></el-tab-pane>
       </el-tabs>
     </main>
   </div>
@@ -27,11 +31,11 @@
 
 <script>
 export default {
-  name: "MyBills",
+  name: "MyAir",
 
   data() {
     return {
-      activeName: "second",
+      activeName: "first",
       data: [
         {
           id: 1,
@@ -59,62 +63,133 @@ export default {
       option: {
         column: [
           {
-            label: "发票号",
-            prop: "Number",
-          },
-          {
             label: "状态",
-            prop: "Status",
+            prop: "date",
           },
           {
-            label: "创造者",
-            prop: "CreatedBy",
+            label: "会计",
+            prop: "reference",
           },
           {
-            label: "创造于",
-            prop: "CreatedOn",
+            label: "装运",
+            prop: "subject",
           },
           {
-            label: "类型",
-            prop: "Type",
+            label: "主运单",
+            prop: "owner",
           },
           {
-            label: "模块",
-            prop: "Module",
+            label: "空运提单",
+            prop: "states",
           },
           {
-            label: "项目",
-            prop: "Project",
+            label: "顾客参考",
+            prop: "priority",
+          },
+          {
+            label: "出发地",
+            prop: "Account",
+          },
+          {
+            label: "目的地",
+            prop: "module",
           },
             {
-            label: "日期",
-            prop: "Date",
+            label: "始发地",
+            prop: "module",
           },
             {
-            label: "供应商",
-            prop: "Vendor",
+            label: "顾客",
+            prop: "module",
           },
             {
-            label: "有效期",
-            prop: "Duedate",
+            label: "托运人",
+            prop: "module",
           },
             {
+            label: "收货人",
+            prop: "module",
+          },
+            {
+            label: "PCS",
+            prop: "PCS",
+          },
+           {
+            label: "重量(斤)",
+            prop: "PCS",
+          },
+           {
+            label: "体积重量(斤)",
+            prop: "PCS",
+          },
+           {
+            label: "收入",
+            prop: "PCS",
+          },
+           {
+            label: "费用",
+            prop: "PCS",
+          },
+           {
+            label: "利润",
+            prop: "PCS",
+          },
+           {
             label: "货币",
-            prop: "Currency",
+            prop: "PCS",
           },
            {
-            label: "总额",
-            prop: "Total",
+            label: "交货日期",
+            prop: "PCS",
           },
            {
-            label: "备忘录",
-            prop: "Memo",
+            label: "交货地点",
+            prop: "PCS",
           },
            {
+            label: "抵达日期",
+            prop: "PCS",
+          },
+           {
+            label: "最终目的地",
+            prop: "PCS",
+          },
+          {
+            label: "截止日期",
+            prop: "PCS",
+          },
+          {
+            label: "装载日期",
+            prop: "PCS",
+          },
+          {
+            label: "更新者",
+            prop: "PCS",
+          },
+            {
+            label: "更新时间",
+            prop: "PCS",
+          },
+            {
             label: "注释",
-            prop: "Notes",
+            prop: "PCS",
           },
-         
+            {
+            label: "项目",
+            prop: "PCS",
+          },
+           {
+            label: "创造者",
+            prop: "PCS",
+          },
+           {
+            label: "创造于",
+            prop: "PCS",
+          },
+           {
+            label: "部门",
+            prop: "PCS",
+          },
         ],
       },
     };

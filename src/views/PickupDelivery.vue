@@ -19,7 +19,16 @@
             @row-del="rowDel"
           ></avue-crud>
         </el-tab-pane>
-        <el-tab-pane label="已收到" name="second"></el-tab-pane>
+        <el-tab-pane label="已申请" name="second"></el-tab-pane>
+        <el-tab-pane label="派遣" name="third"></el-tab-pane>
+        <el-tab-pane label="等待中" name="fourth"></el-tab-pane>
+        <el-tab-pane label="取货" name="fifth"></el-tab-pane>
+        <el-tab-pane label="在途" name="sixth"></el-tab-pane>
+        <el-tab-pane label="晚点" name="Seventh"></el-tab-pane>
+        <el-tab-pane label="外送" name="Eighth"></el-tab-pane>
+        <el-tab-pane label="已交付" name="Ninth"></el-tab-pane>
+        <el-tab-pane label="已收到" name="Tenth"></el-tab-pane>
+        <el-tab-pane label="已完成" name="Eleventh"></el-tab-pane>
       </el-tabs>
     </main>
   </div>
@@ -31,7 +40,7 @@ export default {
 
   data() {
     return {
-      activeName: "second",
+      activeName: "first",
       data: [
         {
           id: 1,
@@ -56,104 +65,124 @@ export default {
             prop: "Accounting",
           },
           {
-            label: "收据",
-            prop: "Receipt",
+            label: "号码",
+            prop: "Number",
           },
           {
-            label: "创造者",
-            prop: "CreatedBy",
-          },
-          {
-            label: "创造于",
-            prop: "CreatedOn",
-          },
-            {
-            label: "起止时间",
-            prop: "DateIn",
-          },
-          {
-            label: "结束时间",
-            prop: "TimeIn",
-          },
-          {
-            label: "顾客参考",
-            prop: "CustomerRef",
-          },
-           {
-            label: "托运人",
-            prop: "Shipper",
-          },
-         {
-            label: "收货人",
-            prop: "Consignee",
+            label: "集装箱",
+            prop: "Containers",
           },
           {
             label: "项目",
             prop: "Project",
           },
           {
+            label: "货物追踪 ",
+            prop: "tracking",
+          },
+            {
+            label: "提单",
+            prop: "lading",
+          },
+          {
+            label: "装载日期",
+            prop: "PickUpDate",
+          },
+          {
+            label: "交货日期",
+            prop: "DeliveryDate",
+          },
+           {
+            label: "托运人",
+            prop: "shipper",
+          },
+            {
+            label: "收货人",
+            prop: "shipper",
+          },
+           {
+            label: "发货地",
+            prop: "PickupFrom",
+          },
+           {
+            label: "收货地",
+            prop: "DeliverTo",
+          },
+           {
+            label: "承运商",
+            prop: "shipper",
+          },
+           {
+            label: "货运代理人",
+            prop: "shipper",
+          },
+           {
+            label: "客户",
+            prop: "Customer",
+          },
+           {
             label: "PCS",
             prop: "PCS",
           },
-          {
+           {
             label: "重量(斤)",
             prop: "Weight",
           },
-          {
-            label: "VOL(立方体积)",
+           {
+            label: "体积(立方英尺)",
             prop: "VOL(FT3)",
           },
-          {
+           {
             label: "体积重量(斤)",
             prop: "VOLWeight",
           },
-          {
-            label: "供应商",
-            prop: "Supplier",
+           {
+            label: "体积重量(斤)",
+            prop: "VOLWeight",
           },
-          {
-            label: "追踪号",
-            prop: "TrackingNumber",
-          },
-          {
-            label: "订单号",
-            prop: "PoNumber",
-          },
-          {
-            label: "发票号",
-            prop: "InvoiceNumber",
-          },
-          {
-            label: "经办人",
-            prop: "Handling",
-          },
-          {
+           {
             label: "收入",
-            prop: "Income",
+            prop: "VOLWeight",
           },
-          {
+           {
             label: "费用",
-            prop: "Expense",
+            prop: "VOLWeight",
           },
-          {
+           {
             label: "利润",
-            prop: "Profit",
+            prop: "VOLWeight",
           },
-          {
+           {
             label: "货币",
-            prop: "Currency",
+            prop: "VOLWeight",
+          },
+           {
+            label: "客户资料",
+            prop: "VOLWeight",
+          },
+           {
+            label: "更新者",
+            prop: "CreatedBy",
+          },
+           {
+            label: "创造者",
+            prop: "CreatedOn",
           },
           {
-            label: "更新者",
-            prop: "UpdatedBy",
+            label: "预计发货时间",
+            prop: "ETA",
           },
-           {
-            label: "更新时间",
-            prop: "UpdatedOn",
+          {
+            label: "预计到达时间",
+            prop: "ETD",
           },
-           {
-            label: "服务类别",
-            prop: "ServiceType",
+          {
+            label: "货物签收时间",
+            prop: "PODDate",
+          },
+          {
+            label: "注释",
+            prop: "Notes",
           },
         ],
       },

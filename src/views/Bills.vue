@@ -1,15 +1,15 @@
-<template>
-    <div>
-         <NavMenu class="sidebar"></NavMenu>
+    <template>
+  <div>
+    <NavMenu class="sidebar"></NavMenu>
     <TopMenu class="topmenu"></TopMenu>
 
-     <main>
+    <main>
       <el-tabs
         v-model="activeName"
         @tab-click="handleClick"
         style="width: 80em"
       >
-        <el-tab-pane label="全部" name="first" style="margin-left: 1em">
+       
           <avue-crud
             :data="data"
             :option="option"
@@ -18,23 +18,20 @@
             @row-update="rowUpdate"
             @row-del="rowDel"
           ></avue-crud>
-        </el-tab-pane>
-        <el-tab-pane label="请求" name="second"></el-tab-pane>
-        <el-tab-pane label="已批准" name="third"></el-tab-pane>
-        <el-tab-pane label="完成" name="fourth"></el-tab-pane>
+
+       
       </el-tabs>
     </main>
-
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'QuoteManage',
+  name: "MyBills",
 
-     data() {
+  data() {
     return {
-      activeName: "second",
+      activeName: "first",
       data: [
         {
           id: 1,
@@ -47,113 +44,77 @@ export default {
           state: "在线",
           ZIP: "410007",
         },
+        {
+          id: 2,
+          name: "李四",
+          sex: "女",
+          address: "长沙雨花区万家丽商业广场",
+          phone: "13667349408",
+          reprentative: "王五",
+          city: "长沙",
+          state: "在线",
+          ZIP: "410007",
+        },
       ],
       option: {
         column: [
+          {
+            label: "发票号",
+            prop: "Number",
+          },
           {
             label: "状态",
             prop: "Status",
           },
           {
-            label: "活动",
-            prop: "Activity",
-          },
-          {
-            label: "数字",
-            prop: "Number",
-          },
-          {
-            label: "制造者",
+            label: "创造者",
             prop: "CreatedBy",
           },
-           {
-            label: "创建于",
+          {
+            label: "创造于",
             prop: "CreatedOn",
+          },
+          {
+            label: "类型",
+            prop: "Type",
+          },
+          {
+            label: "模块",
+            prop: "Module",
           },
           {
             label: "项目",
             prop: "Project",
           },
-          {
-            label: "客户参考",
-            prop: "CustomerRef",
+            {
+            label: "日期",
+            prop: "Date",
           },
-          {
-            label: "模式",
-            prop: "mode",
+            {
+            label: "供应商",
+            prop: "Vendor",
           },
-          {
-            label: "有效期至...",
-            prop: "valid until",
+            {
+            label: "有效期",
+            prop: "Duedate",
           },
-          {
-            label: "顾客",
-            prop: "Customer",
-          },
-          {
-            label: "收货港",
-            prop: "portofreceipt",
-          },
-           {
-            label: "起源",
-            prop: "Origin",
-          },
-           {
-            label: "目的地",
-            prop: "Destination",
-          },
-           {
-            label: "过境日",
-            prop: "TransitDays",
-          },
-           {
-            label: "承运人",
-            prop: "CarrierBroken",
-          },
-           {
-            label: "PCS",
-            prop: "PCS",
-          },
-           {
-            label: "体重(镑)",
-            prop: "Weight",
-          },
-           {
-            label: "VOL(FT3)",
-            prop: "VOL(FT3)",
-          },
-           {
-            label: "VOL WEIGHT(LB)",
-            prop: "VOL WEIGHT(LB)",
-          },
-           {
-            label: "收入",
-            prop: "Income",
-          },
-           {
-            label: "费用",
-            prop: "Expense",
-          },
-          {
-            label: "利润",
-            prop: "Profit",
-          },
-          {
+            {
             label: "货币",
             prop: "Currency",
           },
            {
-            label: "更新人",
-            prop: "UpdatedBy",
+            label: "总额",
+            prop: "Total",
           },
            {
-            label: "更新时间",
-            prop: "UpdateOn",
+            label: "备忘录",
+            prop: "Memo",
           },
            {
             label: "注释",
             prop: "Notes",
           },
+         
         ],
       },
     };
@@ -206,6 +167,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

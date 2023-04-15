@@ -1,4 +1,4 @@
-    <template>
+<template>
   <div>
     <NavMenu class="sidebar"></NavMenu>
     <TopMenu class="topmenu"></TopMenu>
@@ -9,7 +9,6 @@
         @tab-click="handleClick"
         style="width: 80em"
       >
-       
           <avue-crud
             :data="data"
             :option="option"
@@ -19,7 +18,6 @@
             @row-del="rowDel"
           ></avue-crud>
 
-       
       </el-tabs>
     </main>
   </div>
@@ -27,11 +25,11 @@
 
 <script>
 export default {
-  name: "MyInvoices",
+  name: "MyRelease",
 
   data() {
     return {
-      activeName: "second",
+      activeName: "first",
       data: [
         {
           id: 1,
@@ -43,98 +41,98 @@ export default {
           city: "长沙",
           state: "在线",
           ZIP: "410007",
-        },
-        {
-          id: 2,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
+        }, 
       ],
       option: {
         column: [
           {
-            label: "发票号",
-            prop: "Number",
-          },
-          {
             label: "状态",
-            prop: "Status",
+            prop: "status",
           },
           {
-            label: "付款",
-            prop: "Payment",
+            label: "会计",
+            prop: "reference",
+          },
+          {
+            label: "号码",
+            prop: "number",
+          },
+          {
+            label: "集装箱",
+            prop: "containers",
           },
           {
             label: "创造者",
-            prop: "CreatedBy",
+            prop: "createby",
           },
           {
-            label: "创造于",
-            prop: "CreatedOn",
+            label: "创造于 ",
+            prop: "CreateOn",
           },
           {
-            label: "类型",
-            prop: "Type",
+            label: "放货日期",
+            prop: "dateout",
           },
           {
-            label: "模块",
-            prop: "Module",
+            label: "到货时间",
+            prop: "timeout",
           },
-          {
+           {
+            label: "目的地",
+            prop: "releaseto",
+          },
+           {
+            label: "客户参考",
+            prop: "CustomerRef",
+          },
+           {
             label: "项目",
             prop: "Project",
           },
-            {
-            label: "日期",
-            prop: "Date",
-          },
-            {
-            label: "发送到",
-            prop: "BillTo",
-          },
-            {
-            label: "顾客",
-            prop: "Customer",
-          },
-            {
-            label: "有效期",
-            prop: "Duedate",
-          },
-            {
-            label: "货币",
-            prop: "Currency",
+           {
+            label: "PCS",
+            prop: "PCS",
           },
            {
-            label: "金额",
-            prop: "Amount",
+            label: "重量(斤)",
+            prop: "Weight",
           },
            {
-            label: "税额",
-            prop: "Tax",
+            label: "体积(立方英尺)",
+            prop: "VOL(FT3)",
           },
            {
-            label: "总额",
-            prop: "Total",
-          },
-           {
-            label: "项次号和项目号",
-            prop: "ItNumber",
-          },
-           {
-            label: "顾客参考",
+            label: "体积重量",
             prop: "VOLWeight",
           },
            {
+            label: "收入",
+            prop: "releaseto",
+          },
+           {
+            label: "费用",
+            prop: "releaseto",
+          },
+           {
+            label: "利润",
+            prop: "releaseto",
+          },
+           {
+            label: "货币",
+            prop: "releaseto",
+          },
+           {
+            label: "更新人",
+            prop: "releaseto",
+          },
+           {
+            label: "更新时间",
+            prop: "releaseto",
+          },
+          {
             label: "注释",
             prop: "Notes",
           },
-         
         ],
       },
     };

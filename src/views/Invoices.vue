@@ -1,4 +1,4 @@
-<template>
+    <template>
   <div>
     <NavMenu class="sidebar"></NavMenu>
     <TopMenu class="topmenu"></TopMenu>
@@ -9,7 +9,7 @@
         @tab-click="handleClick"
         style="width: 80em"
       >
-        <el-tab-pane label="全部" name="first" style="margin-left: 1em">
+       
           <avue-crud
             :data="data"
             :option="option"
@@ -18,12 +18,8 @@
             @row-update="rowUpdate"
             @row-del="rowDel"
           ></avue-crud>
-        </el-tab-pane>
-        <el-tab-pane label="今天" name="second"></el-tab-pane>
-        <el-tab-pane label="待处理" name="third"></el-tab-pane>
-        <el-tab-pane label="新任务" name="fourth"></el-tab-pane>
-        <el-tab-pane label="晚点" name="fifth"></el-tab-pane>
-        <el-tab-pane label="完成" name="sixth"></el-tab-pane>
+
+       
       </el-tabs>
     </main>
   </div>
@@ -31,11 +27,11 @@
 
 <script>
 export default {
-  name: "MyTask",
+  name: "MyInvoices",
 
   data() {
     return {
-      activeName: "second",
+      activeName: "first",
       data: [
         {
           id: 1,
@@ -63,37 +59,82 @@ export default {
       option: {
         column: [
           {
-            label: "到期日",
-            prop: "date",
-          },
-          {
-            label: "参考",
-            prop: "reference",
-          },
-          {
-            label: "主题",
-            prop: "subject",
-          },
-          {
-            label: "任务负责人",
-            prop: "owner",
+            label: "发票号",
+            prop: "Number",
           },
           {
             label: "状态",
-            prop: "states",
+            prop: "Status",
           },
           {
-            label: "优先事项",
-            prop: "priority",
+            label: "付款",
+            prop: "Payment",
           },
           {
-            label: "账户相关",
-            prop: "Account",
+            label: "创造者",
+            prop: "CreatedBy",
+          },
+          {
+            label: "创造于",
+            prop: "CreatedOn",
+          },
+          {
+            label: "类型",
+            prop: "Type",
           },
           {
             label: "模块",
-            prop: "module",
+            prop: "Module",
           },
+          {
+            label: "项目",
+            prop: "Project",
+          },
+            {
+            label: "日期",
+            prop: "Date",
+          },
+            {
+            label: "发送到",
+            prop: "BillTo",
+          },
+            {
+            label: "顾客",
+            prop: "Customer",
+          },
+            {
+            label: "有效期",
+            prop: "Duedate",
+          },
+            {
+            label: "货币",
+            prop: "Currency",
+          },
+           {
+            label: "金额",
+            prop: "Amount",
+          },
+           {
+            label: "税额",
+            prop: "Tax",
+          },
+           {
+            label: "总额",
+            prop: "Total",
+          },
+           {
+            label: "项次号和项目号",
+            prop: "ItNumber",
+          },
+           {
+            label: "顾客参考",
+            prop: "VOLWeight",
+          },
+           {
+            label: "注释",
+            prop: "Notes",
+          },
+         
         ],
       },
     };

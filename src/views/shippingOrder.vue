@@ -9,6 +9,7 @@
         @tab-click="handleClick"
         style="width: 80em"
       >
+        <el-tab-pane label="查看全部" name="first" style="margin-left: 1em">
           <avue-crud
             :data="data"
             :option="option"
@@ -17,7 +18,14 @@
             @row-update="rowUpdate"
             @row-del="rowDel"
           ></avue-crud>
-
+        </el-tab-pane>
+        <el-tab-pane label="客户" name="second"></el-tab-pane>
+        <el-tab-pane label="已订购" name="third"></el-tab-pane>
+        <el-tab-pane label="预定取件" name="fourth"></el-tab-pane>
+        <el-tab-pane label="已收到" name="fifth"></el-tab-pane>
+        <el-tab-pane label="计费" name="sixth"></el-tab-pane>
+        <el-tab-pane label="运费" name="seventh"></el-tab-pane>
+        <el-tab-pane label="已完成" name="eighth"></el-tab-pane>
       </el-tabs>
     </main>
   </div>
@@ -25,11 +33,11 @@
 
 <script>
 export default {
-  name: "MyRelease",
+  name: "ShippingOrder",
 
   data() {
     return {
-      activeName: "second",
+      activeName: "first",
       data: [
         {
           id: 1,
@@ -41,93 +49,104 @@ export default {
           city: "长沙",
           state: "在线",
           ZIP: "410007",
-        }, 
+        },
+        {
+          id: 2,
+          name: "李四",
+          sex: "女",
+          address: "长沙雨花区万家丽商业广场",
+          phone: "13667349408",
+          reprentative: "王五",
+          city: "长沙",
+          state: "在线",
+          ZIP: "410007",
+        },
       ],
       option: {
         column: [
-          {
-            label: "状态",
-            prop: "status",
+            {
+            label: "姓名",
+            prop: "name",
           },
           {
             label: "会计",
-            prop: "reference",
+            prop: "Accounting",
           },
           {
-            label: "号码",
-            prop: "number",
+            label: "装运",
+            prop: "ShipMent",
           },
-          {
-            label: "集装箱",
-            prop: "containers",
-          },
-          {
+           {
             label: "创造者",
-            prop: "createby",
+            prop: "CreatedBy",
           },
           {
-            label: "创造于 ",
-            prop: "CreateOn",
+            label: "创造于",
+            prop: "CreatedOn",
           },
           {
-            label: "放货日期",
-            prop: "dateout",
+            label: "预订",
+            prop: "Booking",
           },
           {
-            label: "到货时间",
-            prop: "timeout",
-          },
-           {
-            label: "目的地",
-            prop: "releaseto",
-          },
-           {
-            label: "客户参考",
+            label: "顾客参考",
             prop: "CustomerRef",
           },
+          {
+            label: "类型",
+            prop: "Type",
+          },
+          {
+            label: "出发地",
+            prop: "Departure",
+          },
+          {
+            label: "目的地",
+            prop: "reprentative",
+          },
            {
-            label: "项目",
-            prop: "Project",
+            label: "托运人",
+            prop: "Shipper",
+          },
+           {
+            label: "收货人",
+            prop: "Consignee",
           },
            {
             label: "PCS",
             prop: "PCS",
           },
            {
-            label: "重量(斤)",
+            label: "重量",
             prop: "Weight",
           },
            {
-            label: "体积(立方英尺)",
+            label: "VOL(FT3)",
             prop: "VOL(FT3)",
           },
            {
-            label: "体积重量",
+            label: "VOL重量",
             prop: "VOLWeight",
           },
            {
             label: "收入",
-            prop: "releaseto",
+            prop: "Income",
           },
            {
             label: "费用",
-            prop: "releaseto",
+            prop: "Expense",
           },
            {
             label: "利润",
-            prop: "releaseto",
+            prop: "Profit",
           },
-           {
+          {
             label: "货币",
-            prop: "releaseto",
+            prop: "Currency",
           },
-           {
-            label: "更新人",
-            prop: "releaseto",
-          },
-           {
+          {
             label: "更新时间",
-            prop: "releaseto",
+            prop: "UpdateOn",
           },
           {
             label: "注释",
@@ -147,7 +166,9 @@ export default {
     },
     rowSave(form, done, loading) {
       form.id = new Date().getTime();
+      this.$message.success("模拟网络请求");
       setTimeout(() => {
+        this.$message.success("关闭按钮等待");
         loading();
       }, 1000);
       setTimeout(() => {
@@ -171,7 +192,9 @@ export default {
         .catch(() => {});
     },
     rowUpdate(form, index, done, loading) {
+      this.$message.success("模拟网络请求");
       setTimeout(() => {
+        this.$message.success("关闭按钮等待");
         loading();
       }, 1000);
       setTimeout(() => {
