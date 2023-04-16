@@ -4,12 +4,29 @@
     <TopMenu class="topmenu"></TopMenu>
 
     <main>
-      <el-tabs
-        v-model="activeName"
-        @tab-click="handleClick"
-        style="width: 80em"
-      >
-      </el-tabs>
+            <avue-crud
+            :data="data"
+            :option="option"
+            :search-show="false"
+            @refresh-change="refreshChange"
+            @row-update="rowUpdate"
+            @row-del="rowDel"
+            @search-change="searchChange"
+            @search-reset="resetChange"
+            :cell-class-name="addClass"
+            @cell-click="pageto"
+            class="Mycrud"
+          >
+            
+              <el-button slot="menuLeft"
+                type="primary"
+                icon="el-icon-plus"
+                size="small"
+                @click="rowadd"
+                >新增</el-button
+              >
+           
+          </avue-crud>
 
       <avue-crud
         :data="data"
@@ -192,4 +209,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+::v-deep .cell-color {
+  color: #409eff !important;
+  cursor: pointer;
+}
+</style>

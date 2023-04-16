@@ -183,6 +183,17 @@ const routes = [
       showtopMenu: true
     },
   },
+  // 添加
+  {
+    path: "/crm/add",
+    name: "crmAdd",
+    component: () => import("../pages/add/crmadd"),
+    meta: {
+      title: "添加客户",
+    },
+  },
+
+  // 详情
 ];
 
 const router = new VueRouter({

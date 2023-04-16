@@ -4,13 +4,7 @@
     <TopMenu class="topmenu"></TopMenu>
 
     <main>
-      <el-tabs
-        v-model="activeName"
-        @tab-click="handleClick"
-        style="width: 80em"
-      >
-        <el-tab-pane label="查看全部" name="first" style="margin-left: 1em">
-          <avue-crud
+      <avue-crud
             :data="data"
             :option="option"
             :search-show="false"
@@ -21,6 +15,7 @@
             @search-reset="resetChange"
             :cell-class-name="addClass"
             @cell-click="pageto"
+            class="Mycrud"
           >
             
               <el-button slot="menuLeft"
@@ -32,12 +27,6 @@
               >
            
           </avue-crud>
-        </el-tab-pane>
-        <el-tab-pane label="客户" name="second">我是客户</el-tab-pane>
-        <el-tab-pane label="托运人" name="third">我是托运人</el-tab-pane>
-        <el-tab-pane label="收货人" name="fourth">我是收货人</el-tab-pane>
-        <el-tab-pane label="运营商" name="Fifth">我是运营商</el-tab-pane>
-      </el-tabs>
     </main>
   </div>
 </template>
@@ -50,7 +39,6 @@ export default {
 
   data() {
     return {
-      activeName: "first",
       data: [],
       option: {
         searchShow: false,
@@ -126,7 +114,7 @@ export default {
             prop: "VendorID",
           },
           {
-            label: "传真",
+            label: "角色",
             prop: "Roles",
           },
           {
@@ -156,7 +144,7 @@ export default {
 
   methods: {
     addClass({ columnIndex }) {
-      console.log(columnIndex);
+      // console.log(columnIndex);
       if (columnIndex === 0) {
         return "cell-color"; // cell-blue就是添加的类名，添加完之后记得设置样式
       }
@@ -172,6 +160,7 @@ export default {
       rowadd() {
         this.$router.push("./crm/add");
       },
+      
     handleClick(tab, event) {
       console.log(tab, event);
     },
@@ -222,7 +211,7 @@ export default {
     axios.get("/customer/selectAllCustomer").then((res) => {
       this.data = res.data.data.customerList;
       // console.log(res);
-      // console.log(res.data);
+      console.log(res.data.data.customerList);
     });
   },
 };

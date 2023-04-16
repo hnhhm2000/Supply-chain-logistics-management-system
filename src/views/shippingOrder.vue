@@ -4,29 +4,29 @@
     <TopMenu class="topmenu"></TopMenu>
 
     <main>
-      <el-tabs
-        v-model="activeName"
-        @tab-click="handleClick"
-        style="width: 80em"
-      >
-        <el-tab-pane label="查看全部" name="first" style="margin-left: 1em">
-          <avue-crud
+            <avue-crud
             :data="data"
             :option="option"
+            :search-show="false"
             @refresh-change="refreshChange"
-            @row-save="rowSave"
             @row-update="rowUpdate"
             @row-del="rowDel"
-          ></avue-crud>
-        </el-tab-pane>
-        <el-tab-pane label="客户" name="second"></el-tab-pane>
-        <el-tab-pane label="已订购" name="third"></el-tab-pane>
-        <el-tab-pane label="预定取件" name="fourth"></el-tab-pane>
-        <el-tab-pane label="已收到" name="fifth"></el-tab-pane>
-        <el-tab-pane label="计费" name="sixth"></el-tab-pane>
-        <el-tab-pane label="运费" name="seventh"></el-tab-pane>
-        <el-tab-pane label="已完成" name="eighth"></el-tab-pane>
-      </el-tabs>
+            @search-change="searchChange"
+            @search-reset="resetChange"
+            :cell-class-name="addClass"
+            @cell-click="pageto"
+            class="Mycrud"
+          >
+            
+              <el-button slot="menuLeft"
+                type="primary"
+                icon="el-icon-plus"
+                size="small"
+                @click="rowadd"
+                >新增</el-button
+              >
+           
+          </avue-crud>
     </main>
   </div>
 </template>
@@ -211,4 +211,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+::v-deep .cell-color {
+  color: #409eff !important;
+  cursor: pointer;
+}
+</style>
