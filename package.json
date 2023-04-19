@@ -15,8 +15,7 @@
     "element-ui": "^2.15.13",
     "vue": "^2.6.14",
     "vue-router": "^3.6.5",
-    "vuex": "^3.6.2",
-    "xlsx-style": "^0.8.13"
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

@@ -13,6 +13,10 @@
   width: 80%;
 }
 
+.flex {
+  display: flex;
+}
+
 .btns {
   margin-left: 1em;
 }
@@ -20,5 +24,9 @@
 .add-main {
   width: 80%;
   margin-left: 10em;
+}
+
+.select {
+  width: 18.6em;
 }
 
