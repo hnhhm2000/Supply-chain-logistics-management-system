@@ -194,6 +194,25 @@ const routes = [
   },
 
   // 详情
+    {
+    path: "/crm/detail/:id",
+    name: "crmDetail",
+    component: () => import("../pages/detail/crmdetail"),
+    meta: {
+      title: "客户详情",
+    },
+  },
+
+  // 编辑
+  {
+    path: "/crm/edit/:id",
+    name: "crmEdit",
+    component: () => import("../pages/edit/crmedit"),
+    meta: {
+      title: "客户编辑",
+    },
+  },
+
 ];
 
 const router = new VueRouter({

@@ -5,28 +5,42 @@
 
     <main>
       <avue-crud
-            :data="data"
-            :option="option"
-            :search-show="false"
-            @refresh-change="refreshChange"
-            @row-update="rowUpdate"
-            @row-del="rowDel"
-            @search-change="searchChange"
-            @search-reset="resetChange"
-            :cell-class-name="addClass"
-            @cell-click="pageto"
-            class="Mycrud"
+        :data="data"
+        :option="option"
+        :search-show="false"
+        @refresh-change="refreshChange"
+        @row-del="rowDel"
+        @search-change="searchChange"
+        @search-reset="resetChange"
+        :cell-class-name="addClass"
+        @cell-click="pageto"
+        class="Mycrud"
+      >
+        <el-button
+          slot="menuLeft"
+          type="primary"
+          icon="el-icon-plus"
+          size="small"
+          @click="rowadd"
+          >新增</el-button
+        >
+ <!-- params: { id: $route.params.id }, -->
+        <template slot-scope="{ type, size, row }" slot="menu">
+          <el-button
+            icon="el-icon-edit"
+            class="editbtn"
+            :size="size"
+            :type="type"
+            @click="
+              $router.push({
+                name: 'crmEdit',
+                params: { id: row.id },
+              })
+            "
+            >编辑</el-button
           >
-            
-              <el-button slot="menuLeft"
-                type="primary"
-                icon="el-icon-plus"
-                size="small"
-                @click="rowadd"
-                >新增</el-button
-              >
-           
-          </avue-crud>
+        </template>
+      </avue-crud>
     </main>
   </div>
 </template>
@@ -41,6 +55,7 @@ export default {
     return {
       data: [],
       option: {
+        editBtn: false,
         searchShow: false,
         excelBtn: true,
         addBtn: false,
@@ -154,13 +169,13 @@ export default {
      */
     pageto(row, column) {
       if (column.label == "姓名") {
-        this.$router.push("/");
+        this.$router.push(`/crm/detail/${row.id}`);
       }
     },
-      rowadd() {
-        this.$router.push("./crm/add");
-      },
-      
+    rowadd() {
+      this.$router.push("./crm/add");
+    },
+
     handleClick(tab, event) {
       console.log(tab, event);
     },
@@ -181,19 +196,6 @@ export default {
           });
         })
         .catch(() => {});
-    },
-    rowUpdate(form, index, done, loading) {
-      this.$message.success("模拟网络请求");
-      setTimeout(() => {
-        this.$message.success("关闭按钮等待");
-        loading();
-      }, 1000);
-      setTimeout(() => {
-        this.$message.success(
-          "编辑数据" + JSON.stringify(form) + "数据序号" + index
-        );
-        done(form);
-      }, 2000);
     },
     resetChange() {
       this.$message.success("清空回调");
