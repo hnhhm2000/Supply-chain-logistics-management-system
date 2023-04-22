@@ -1,58 +1,35 @@
 <template>
-  <div>
-    <NavMenu class="sidebar"></NavMenu>
-    <TopMenu class="topmenu"></TopMenu>
-
-    <main>
-      <avue-crud
-        :data="data"
-        :option="option"
-        :search-show="false"
-        @refresh-change="refreshChange"
-        @row-update="rowUpdate"
-        @row-del="rowDel"
-        @search-change="searchChange"
-        @search-reset="resetChange"
-        :cell-class-name="addClass"
-        @cell-click="pageto"
-        class="Mycrud"
-      >
-        <el-button
-          slot="menuLeft"
-          type="primary"
-          icon="el-icon-plus"
-          size="small"
-          @click="rowadd"
-          >新增</el-button
-        >
-      </avue-crud>
-    </main>
-  </div>
+    <avue-crud
+            :data="data"
+            :option="option"
+            :search-show="false"
+            :cell-class-name="addClass"
+            class="Mycrud"
+          >
+            <el-button
+              slot="menuLeft"
+              type="primary"
+              icon="el-icon-plus"
+              size="small"
+              @click="rowadd"
+              >新增</el-button
+            >
+          </avue-crud>
 </template>
 
 <script>
 export default {
-  name: "QuoteManage",
+  name: 'SimQuote',
 
   data() {
     return {
-      data: [
-        {
-          id: 1,
-          name: "张三",
-          sex: "男",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
-        },
-      ],
       option: {
         searchShow: false,
-        excelBtn: true,
+        searchBtn:false,
+        excelBtn:false,
         addBtn: false,
+        refreshBtn:false,
+        columnBtn:false,
         column: [
           {
             label: "状态",
@@ -163,49 +140,12 @@ export default {
     };
   },
 
+  mounted() {
+    
+  },
+
   methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
-    },
-    refreshChange() {
-      this.$message.success("刷新回调");
-    },
-    rowSave(form, done, loading) {
-      form.id = new Date().getTime();
-      setTimeout(() => {
-        loading();
-      }, 1000);
-      setTimeout(() => {
-        this.$message.success("新增数据" + JSON.stringify(form));
-        done(form);
-      }, 2000);
-    },
-    rowDel(form, index, done) {
-      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
-        .then(() => {
-          done(form);
-          this.$message({
-            type: "success",
-            message: "删除成功!",
-          });
-        })
-        .catch(() => {});
-    },
-    rowUpdate(form, index, done, loading) {
-      setTimeout(() => {
-        loading();
-      }, 1000);
-      setTimeout(() => {
-        this.$message.success(
-          "编辑数据" + JSON.stringify(form) + "数据序号" + index
-        );
-        done(form);
-      }, 2000);
-    },
+    
   },
 };
 </script>

@@ -70,5 +70,6 @@ export default {
 .title {
   position: relative;
   left: 2em;
+  margin-right: 2em;
 }
 </style>
