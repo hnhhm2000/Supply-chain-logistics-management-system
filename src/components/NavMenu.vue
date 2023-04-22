@@ -17,14 +17,14 @@
     </el-menu-item>
     <el-menu-item route index="./crm">
       <i class="el-icon-document"></i>
-      <span slot="title">客户管理</span>
+      <span slot="title">账户管理</span>
     </el-menu-item>
     
      <el-submenu index="1">
        
        <template slot="title">
         <img src="../assets/img/warehouse.png" class="NavMenu-icon">
-        <span>库存管理</span>
+        <span>仓库管理</span>
         </template>
 
         <el-menu-item-group>
@@ -49,7 +49,7 @@
     </el-menu-item>
      <el-menu-item route index="./shippingorder">
       <img class="NavMenu-icon" src="../assets/img/shippingorder.png">
-      <span slot="title">发货单</span>
+      <span slot="title">装运单</span>
     </el-menu-item>
      <el-menu-item route index="./quote">
       <img class="NavMenu-icon" src="../assets/img/release.png">

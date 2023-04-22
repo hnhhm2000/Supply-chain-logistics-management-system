@@ -48,7 +48,7 @@ const routes = [
     name: "CustomManage",
     component: () => import("../views/crm"),
     meta: {
-      title: "客户管理",
+      title: "账户管理",
       showNavMenu: true,
       showtopMenu: true
     },
@@ -58,7 +58,7 @@ const routes = [
     name: "ShippingOrder",
     component: () => import("../views/shippingOrder"),
     meta: {
-      title: "发货单",
+      title: "装运单",
       showNavMenu: true,
       showtopMenu: true
     },
@@ -189,7 +189,7 @@ const routes = [
     name: "crmAdd",
     component: () => import("../pages/add/crmadd"),
     meta: {
-      title: "添加客户",
+      title: "添加账户",
     },
   },
 
@@ -199,7 +199,7 @@ const routes = [
     name: "crmDetail",
     component: () => import("../pages/detail/crmdetail"),
     meta: {
-      title: "客户详情",
+      title: "账户详情",
     },
   },
 
@@ -209,7 +209,7 @@ const routes = [
     name: "crmEdit",
     component: () => import("../pages/edit/crmedit"),
     meta: {
-      title: "客户编辑",
+      title: "账户编辑",
     },
   },
 

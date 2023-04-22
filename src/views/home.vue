@@ -1,6 +1,7 @@
 <template>
   <div>
     <NavMenu class="sidebar"></NavMenu>
+    <TopMenu class="topmenu"></TopMenu>
 
     <div class="main">
       <div ref="store" style="width: 40%; height: 20em"></div>
@@ -127,6 +128,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   margin-left: 16em;
+  margin-top: 5em;
 }
 
 .card-header {
@@ -148,12 +150,12 @@ export default {
   width: 33.5em;
 }
 
-.sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-}
+// .sidebar {
+//   position: fixed;
+//   left: 0;
+//   top: 0;
+//   bottom: 0;
+// }
 
 ul {
   list-style-type: none;

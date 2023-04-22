@@ -121,7 +121,7 @@ export default {
             prop: "Contact",
           },
           {
-            label: "客户ID",
+            label: "账户ID",
             prop: "CustomerID",
           },
           {

@@ -7,7 +7,7 @@
           <!-- 卡片一  -->
           <el-card class="whiteCard">
             <div slot="header" class="clearfix">
-              <span class="CardTitle">客户信息</span>
+              <span class="CardTitle">账户信息</span>
             </div>
 
             <div>
@@ -16,7 +16,7 @@
               >
                 <el-row>
                   <el-col :span="8">
-                    <el-form-item label="客户名称" prop="name">
+                    <el-form-item label="账户名称" prop="name">
                       <el-input
                         v-model="name"
                         size="small"
@@ -320,7 +320,7 @@ export default {
       activeName: "first",
       textarea: "",
 
-      // 客户信息
+      // 账户信息
       name: "",
       password: "",
       role: "",
@@ -348,7 +348,7 @@ export default {
       options: [
         {
           value: "选项1",
-          label: "客户",
+          label: "账户",
         },
         {
           value: "选项2",

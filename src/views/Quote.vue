@@ -79,7 +79,7 @@ export default {
             prop: "Project",
           },
           {
-            label: "客户参考",
+            label: "账户参考",
             prop: "CustomerRef",
           },
           {
@@ -107,7 +107,7 @@ export default {
             prop: "Destination",
           },
           {
-            label: "过境日",
+            label: "运输天数",
             prop: "TransitDays",
           },
           {

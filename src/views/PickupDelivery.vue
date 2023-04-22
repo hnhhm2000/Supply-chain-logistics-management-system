@@ -117,7 +117,7 @@ export default {
             prop: "shipper",
           },
            {
-            label: "客户",
+            label: "账户",
             prop: "Customer",
           },
            {
@@ -157,7 +157,7 @@ export default {
             prop: "VOLWeight",
           },
            {
-            label: "客户资料",
+            label: "账户资料",
             prop: "VOLWeight",
           },
            {

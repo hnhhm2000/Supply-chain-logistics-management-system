@@ -93,7 +93,7 @@ export default {
             prop: "releaseto",
           },
            {
-            label: "客户参考",
+            label: "账户参考",
             prop: "CustomerRef",
           },
            {
