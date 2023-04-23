@@ -15,7 +15,7 @@
       <el-menu-item route index="/">首页</el-menu-item>
       <el-submenu index="2">
         <template slot="title">我的账户</template>
-        <el-menu-item index="2-1">查看个人资料</el-menu-item>
+        <el-menu-item index="./userinfo">查看个人资料</el-menu-item>
         <el-menu-item index="2-2">修改密码</el-menu-item>
         <el-menu-item @click="reset" route index="./login"
           >退出登录</el-menu-item
@@ -27,7 +27,7 @@
 
         <el-menu-item route @click="reset" index="./login" style="float: right">退出登录</el-menu-item>
         
-      <el-menu-item  route index="/" style="float: right"
+      <el-menu-item  route index="./setting" style="float: right"
         >系统设置</el-menu-item
       >
     

@@ -4,29 +4,28 @@
     <TopMenu class="topmenu"></TopMenu>
 
     <main>
-            <avue-crud
-            :data="data"
-            :option="option"
-            :search-show="false"
-            @refresh-change="refreshChange"
-            @row-update="rowUpdate"
-            @row-del="rowDel"
-            @search-change="searchChange"
-            @search-reset="resetChange"
-            :cell-class-name="addClass"
-            @cell-click="pageto"
-            class="Mycrud"
-          >
-            
-              <el-button slot="menuLeft"
-                type="primary"
-                icon="el-icon-plus"
-                size="small"
-                @click="rowadd"
-                >新增</el-button
-              >
-           
-          </avue-crud>
+      <avue-crud
+        :data="data"
+        :option="option"
+        :search-show="false"
+        @refresh-change="refreshChange"
+        @row-update="rowUpdate"
+        @row-del="rowDel"
+        @search-change="searchChange"
+        @search-reset="resetChange"
+        :cell-class-name="addClass"
+        @cell-click="pageto"
+        class="Mycrud"
+      >
+        <el-button
+          slot="menuLeft"
+          type="primary"
+          icon="el-icon-plus"
+          size="small"
+          @click="rowadd"
+          >新增</el-button
+        >
+      </avue-crud>
     </main>
   </div>
 </template>
@@ -62,10 +61,11 @@ export default {
           ZIP: "410007",
         },
       ],
-      searchShow: false,
+
+      option: {
+        searchShow: false,
         excelBtn: true,
         addBtn: false,
-      option: {
         column: [
           {
             label: "状态",
@@ -99,35 +99,35 @@ export default {
             label: "顾客参考",
             prop: "module",
           },
-           {
+          {
             label: "顾客参考",
             prop: "module",
           },
-           {
+          {
             label: "离开",
             prop: "module",
           },
-           {
+          {
             label: "抵达",
             prop: "module",
           },
-           {
+          {
             label: "原产地港口",
             prop: "module",
           },
-           {
+          {
             label: "卸货港",
             prop: "Unloading",
           },
-           {
+          {
             label: "顾客",
             prop: "Customer",
           },
-           {
+          {
             label: "托运人",
             prop: "Shipper",
           },
-           {
+          {
             label: "体重(斤)",
             prop: "Weight",
           },

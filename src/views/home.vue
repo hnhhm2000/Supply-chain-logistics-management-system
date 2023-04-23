@@ -4,8 +4,8 @@
     <TopMenu class="topmenu"></TopMenu>
 
     <div class="main">
-      <div ref="store" style="width: 40%; height: 20em"></div>
-      <div ref="performance" style="width: 55%; height: 20em"></div>
+      <div ref="store" class="store"></div>
+      <div ref="performance" class="performance"></div>
 
       <el-card class="port-card">
         <div slot="header" class="card-header">
@@ -124,10 +124,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+body {
+    overflow: hidden;
+}
+
 .main {
   display: flex;
   flex-wrap: wrap;
   margin-left: 16em;
+}
+
+.store {
+  width: 40%;
+  height: 20em;
+  margin-top: 5em;
+}
+
+.performance {
+  width: 55%;
+  height: 20em;
   margin-top: 5em;
 }
 

@@ -11,10 +11,7 @@
       <i class="el-icon-menu"></i>
       <span slot="title">首页</span>
     </el-menu-item>
-    <el-menu-item route index="./PickupDelivery">
-      <i class="el-icon-menu"></i>
-      <span slot="title">提货送货</span>
-    </el-menu-item>
+
     <el-menu-item route index="./crm">
       <i class="el-icon-document"></i>
       <span slot="title">账户管理</span>
@@ -37,7 +34,7 @@
     </el-submenu>
       <el-menu-item route index="./PickupDelivery">
       <img src="../assets/img/Delivery.png" class="NavMenu-icon">
-      <span slot="title">运输管理</span>
+      <span slot="title">提货送货</span>
     </el-menu-item>
      <el-menu-item route index="./quote">
       <img src="../assets/img/Quotes.png" class="NavMenu-icon">

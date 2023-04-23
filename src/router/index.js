@@ -183,6 +183,27 @@ const routes = [
       showtopMenu: true
     },
   },
+  {
+    path: "/userinfo",
+    name: "UserInfo",
+    component: () => import("../pages/UserInfo"),
+    meta: {
+      title: "个人信息",
+      showNavMenu: true,
+      showtopMenu: true
+    },
+  },
+
+  {
+    path: "/setting",
+    name: "Setting",
+    component: () => import("../pages/Setting"),
+    meta: {
+      title: "系统设置",
+      showNavMenu: true,
+      showtopMenu: true
+    },
+  },
   // 添加
   {
     path: "/crm/add",
