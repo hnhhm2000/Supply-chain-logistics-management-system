@@ -2,7 +2,7 @@
   <div>
     <NavMenu class="sidebar"></NavMenu>
     <TopMenu class="topmenu"></TopMenu>
-
+    
     <main>
       <avue-crud
         :data="data"

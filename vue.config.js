@@ -8,7 +8,7 @@ module.exports = {
 
     proxy: {
       '/customer': {
-        target: 'http://150.158.19.230:8849',
+        target: 'http://150.158.19.230:8849/swagger-ui.html',
         changeOrigin: true,
       }
     }

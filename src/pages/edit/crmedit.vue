@@ -11,9 +11,7 @@
             </div>
 
             <div>
-              <el-form
-                label-width="10em"
-              >
+              <el-form label-width="10em">
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="账户名称" prop="name">
@@ -34,14 +32,14 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
-                    <el-form-item label="角色" prop="role">
+                    <el-form-item label="性别" prop="role">
                       <el-select
                         v-model="role"
                         placeholder="请选择"
                         class="select"
                       >
                         <el-option
-                          v-for="item in options"
+                          v-for="item in Sexs"
                           :key="item.value"
                           :label="item.label"
                           :value="item.value"
@@ -71,13 +69,20 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
-                    <el-form-item label="联系人及电话" prop="phone">
-                      <el-input
-                        v-model="phone"
-                        size="small"
-                        class="input"
-                        :maxlength="11"
-                      ></el-input>
+                    <el-form-item label="角色" prop="role">
+                      <el-select
+                        v-model="role"
+                        placeholder="请选择"
+                        class="select"
+                      >
+                        <el-option
+                          v-for="item in Roles"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value"
+                        >
+                        </el-option>
+                      </el-select>
                     </el-form-item>
                   </el-col>
                 </el-row>
@@ -92,9 +97,7 @@
             </div>
 
             <div>
-              <el-form
-                label-width="10em"
-              >
+              <el-form label-width="10em">
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="主要地址" prop="address">
@@ -106,16 +109,7 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
-                    <el-form-item label="账单地址" prop="address">
-                      <el-input
-                        v-model="address"
-                        size="small"
-                        class="input"
-                      ></el-input>
-                    </el-form-item>
-                  </el-col>
-                  <el-col :span="8">
-                    <el-form-item label="注册电话" prop="phone">
+                    <el-form-item label="电话号码" prop="phone">
                       <el-input
                         v-model="phone"
                         size="small"
@@ -124,46 +118,8 @@
                       ></el-input>
                     </el-form-item>
                   </el-col>
-                </el-row>
-                <el-row>
                   <el-col :span="8">
-                    <el-form-item label="省/市" prop="province">
-                      <div class="flex">
-                        <el-select
-                          v-model="province"
-                          multiple
-                          placeholder="请选择"
-                          style="width: 10em"
-                        >
-                          <el-option
-                            v-for="item in provinces"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"
-                          >
-                          </el-option>
-                        </el-select>
-
-                        <el-select
-                          v-model="city"
-                          multiple
-                          collapse-tags
-                          style="margin-left: 20px; width: 10em"
-                          placeholder="请选择"
-                        >
-                          <el-option
-                            v-for="item in cities"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"
-                          >
-                          </el-option>
-                        </el-select>
-                      </div>
-                    </el-form-item>
-                  </el-col>
-                  <el-col :span="8">
-                    <el-form-item label="开户银行" prop="salesAgency">
+                    <el-form-item label="城市" prop="salesAgency">
                       <el-input
                         v-model="salesAgency"
                         size="small"
@@ -171,10 +127,21 @@
                       ></el-input>
                     </el-form-item>
                   </el-col>
+                </el-row>
+                <el-row>
                   <el-col :span="8">
-                    <el-form-item label="银行账号" prop="id">
+                    <el-form-item label="国家" prop="id">
                       <el-input
-                        v-model="id"
+                        v-model="country"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="省份" prop="province">
+                      <el-input
+                        v-model="province"
                         size="small"
                         class="input"
                       ></el-input>
@@ -213,12 +180,10 @@
             </div>
 
             <div>
-              <el-form
-                label-width="10em"
-              >
+              <el-form label-width="10em">
                 <el-row>
                   <el-col :span="8">
-                    <el-form-item label="操作人" prop="createBy">
+                    <el-form-item label="创建人" prop="createBy">
                       <el-input
                         v-model="createBy"
                         size="small"
@@ -227,7 +192,7 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
-                    <el-form-item label="付款方式" prop="createBy">
+                    <el-form-item label="创建时间" prop="createBy">
                       <el-input
                         v-model="createBy"
                         size="small"
@@ -237,7 +202,7 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
-                    <el-form-item label="销售代表" prop="salesAgency">
+                    <el-form-item label="更新人" prop="salesAgency">
                       <el-input
                         v-model="salesAgency"
                         size="small"
@@ -267,7 +232,7 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
-                    <el-form-item label="身份证号码" prop="id">
+                    <el-form-item label="客户ID" prop="id">
                       <el-input
                         v-model="id"
                         size="small"
@@ -280,15 +245,19 @@
             </div>
           </el-card>
         </el-tab-pane>
+        <!-- 报价 -->
         <el-tab-pane label="报价" name="second">
           <SimQuote></SimQuote>
         </el-tab-pane>
+        <!-- 库存 -->
         <el-tab-pane label="库存" name="third">
-        <SimInventory></SimInventory>
+          <SimInventory></SimInventory>
         </el-tab-pane>
+        <!-- 运输 -->
         <el-tab-pane label="运输" name="fourth">
           <SimShippment></SimShippment>
         </el-tab-pane>
+        <!-- 财务相关 -->
         <el-tab-pane label="财务相关" name="fifth">
           <SimAccounting></SimAccounting>
         </el-tab-pane>
@@ -326,7 +295,6 @@ export default {
       role: "",
       email: "",
       isDisabled: "",
-      // phone: "",
 
       // 纳税人信息
       address: "",
@@ -340,12 +308,11 @@ export default {
       isDeleted: "",
       createBy: "",
       createTime: "",
-      // city: "",
       zip: "",
-      // email: "",
-      updatetime:"",
+      updatetime: "",
 
-      options: [
+      // 角色的选项
+      Roles: [
         {
           value: "选项1",
           label: "账户",
@@ -362,6 +329,22 @@ export default {
           value: "选项4",
           label: "承运人",
         },
+        {
+          value: "选项5",
+          label: "供应商",
+        },
+      ],
+
+      // 性别的选项
+      Sexs: [
+        {
+          value: "选项1",
+          label: "男",
+        },
+        {
+          value: "选项1",
+          label: "女",
+        },
       ],
     };
   },
@@ -374,7 +357,7 @@ export default {
 @import "../../assets/css/addCommon.css";
 
 .input {
-  width: 20em;
+  width: 19em;
 }
 
 .btns {
@@ -386,8 +369,8 @@ export default {
   justify-content: space-evenly;
 }
 
-::v-deep .el-form {
+.el-form-item {
   position: relative;
-  right: 2.5em;
+  right: 2em;
 }
 </style>

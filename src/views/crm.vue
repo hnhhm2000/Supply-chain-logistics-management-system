@@ -32,10 +32,7 @@
             :size="size"
             :type="type"
             @click="
-              $router.push({
-                name: 'crmEdit',
-                params: { id: row.id },
-              })
+            $router.push(`/crm/edit/${row.id}`)
             "
             >编辑</el-button
           >
@@ -53,7 +50,25 @@ export default {
 
   data() {
     return {
-      data: [],
+      data: [
+        {
+          name:'黄皓铭',
+          Sex:'男',
+          PhoneNumber:'13467678074',
+          Address:'湖南省长沙市',
+          city:'长沙',
+          Province:'湖南',
+          State:'中国',
+          ZIP:'410000',
+          Email:'986667872@qq.com',
+          Roles:'托运人',
+          Remarks:'来点备注',
+          CreatedBy:'黄皓铭',
+          CreatedOn:'2023-05-08',
+          UpdatedBy:'黄皓铭',
+          UpdatedOn:'2023-05-08'
+        }
+      ],
       option: {
         editBtn: false,
         searchShow: false,
@@ -67,20 +82,16 @@ export default {
           },
           {
             label: "性别",
-            prop: "sex",
-          },
-          {
-            label: "账户编码",
-            prop: "code",
-            search: true,
+            prop: "Sex",
           },
           {
             label: "电话",
-            prop: "phone",
+            prop: "PhoneNumber",
+            width: 100
           },
           {
             label: "地址",
-            prop: "address",
+            prop: "Address",
           },
           {
             label: "城市",
@@ -89,11 +100,12 @@ export default {
           },
           {
             label: "省",
-            prop: "province",
+            prop: "Province",
+            search: true,
           },
           {
-            label: "状态",
-            prop: "state",
+            label: "国家",
+            prop: "State",
             search: true,
           },
           {
@@ -101,56 +113,36 @@ export default {
             prop: "ZIP",
           },
           {
-            label: "销售代表",
-            prop: "reprentative",
-          },
-          {
-            label: "代理",
-            prop: "Agent",
-          },
-          {
             label: "电子邮件",
-            prop: "email",
-          },
-          {
-            label: "传真",
-            prop: "Fax",
-          },
-          {
-            label: "联系方式",
-            prop: "Contact",
-          },
-          {
-            label: "账户ID",
-            prop: "CustomerID",
-          },
-          {
-            label: "供应商ID",
-            prop: "VendorID",
+            prop: "Email",
+            width: 140
           },
           {
             label: "角色",
             prop: "Roles",
           },
           {
-            label: "注释",
-            prop: "Notes",
-          },
-          {
-            label: "创造者",
+            label: "创造人",
             prop: "CreatedBy",
           },
           {
-            label: "创造于",
+            label: "创造时间",
             prop: "CreatedOn",
+            width: 100
           },
           {
-            label: "更新者",
+            label: "更新人",
             prop: "UpdatedBy",
           },
           {
-            label: "更新于",
-            prop: "UpdateOn",
+            label: "最近更新",
+            prop: "UpdatedOn",
+            width: 100
+          },
+           {
+            label: "备注",
+            prop: "Remarks",
+            width: 150
           },
         ],
       },
@@ -210,6 +202,7 @@ export default {
   },
 
   created() {
+    // 获取接口数据并渲染列表
     axios.get("/customer/selectAllCustomer").then((res) => {
       this.data = res.data.data.customerList;
       // console.log(res);
