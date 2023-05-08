@@ -27,7 +27,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="角色:" prop="role">
+                <el-form-item label="性别:" prop="role">
                 
                 </el-form-item>
               </el-col>
@@ -44,7 +44,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="联系人及电话:" prop="phone">
+                <el-form-item label="角色:" prop="phone">
                  
                 </el-form-item>
               </el-col>
@@ -73,29 +73,29 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="账单地址:" prop="address">
+                <el-form-item label="电话号码:" prop="address">
                  
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="注册电话:" prop="phone">
+                <el-form-item label="城市:" prop="phone">
                  
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row>
               <el-col :span="8">
-                <el-form-item label="省/市:" prop="province">
+                <el-form-item label="国家:" prop="province">
                   
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="开户银行:"  prop="salesAgency">
+                <el-form-item label="省份:"  prop="salesAgency">
                  
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="银行账号:" prop="id">
+                <el-form-item label="邮编:" prop="id">
                  
                 </el-form-item>
               </el-col>
@@ -130,17 +130,17 @@
           >
             <el-row>
               <el-col :span="8">
-                <el-form-item label="操作人:" prop="createBy">
+                <el-form-item label="创建人:" prop="createBy">
                 
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="付款方式:" prop="createBy">
+                <el-form-item label="创建时间:" prop="createBy">
                
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="销售代表:" prop="salesAgency">
+                <el-form-item label="更新人:" prop="salesAgency">
                  
                 </el-form-item>
               </el-col>
@@ -152,12 +152,7 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="邮编:" prop="zip">
-                 
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="身份证号码:" prop="id">
+                <el-form-item label="客户ID:" prop="zip">
                  
                 </el-form-item>
               </el-col>

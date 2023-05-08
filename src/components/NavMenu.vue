@@ -14,7 +14,7 @@
 
     <el-menu-item route index="./crm">
       <i class="el-icon-document"></i>
-      <span slot="title">账户管理</span>
+      <span slot="title">客户管理</span>
     </el-menu-item>
     
      <el-submenu index="1">

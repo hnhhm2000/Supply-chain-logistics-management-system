@@ -24,12 +24,12 @@ export default {
   data() {
     return {
       option: {
-         searchShow: false,
-        searchBtn:false,
-        excelBtn:false,
+        searchShow: false,
+        searchBtn: false,
+        excelBtn: false,
         addBtn: false,
-        refreshBtn:false,
-        columnBtn:false,
+        refreshBtn: false,
+        columnBtn: false,
         column: [
           {
             label: "状态",
@@ -48,8 +48,8 @@ export default {
             prop: "Date",
           },
           {
-            label: "发票人或卖方",
-            prop: "BillorVendor",
+            label: "收票人或供应商",
+            prop: "BillToOrVendor",
           },
           {
             label: "到期时间",
@@ -61,12 +61,19 @@ export default {
           },
         ],
       },
+      data: [
+        {
+          Status: "已开票",
+          Number: "INV0000003",
+          Type: "发票",
+          Date: "2023-05-02",
+          BillToOrVendor: "黄皓铭",
+          DueDate: "2023-05-17",
+          Amount: "100",
+        },
+      ],
     };
   },
-
-  mounted() {},
-
-  methods: {},
 };
 </script>
 

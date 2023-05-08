@@ -2,9 +2,7 @@
     <avue-crud
             :data="data"
             :option="option"
-            :search-show="false"
             :cell-class-name="addClass"
-            class="Mycrud"
           >
             <el-button
               slot="menuLeft"
@@ -12,8 +10,7 @@
               icon="el-icon-plus"
               size="small"
               @click="rowadd"
-              >新增</el-button
-            >
+              >新增</el-button>
           </avue-crud>
 </template>
 
@@ -36,47 +33,19 @@ export default {
             prop: "Status",
           },
           {
-            label: "活动",
-            prop: "Activity",
-          },
-          {
-            label: "数字",
+            label: "报价编号",
             prop: "Number",
           },
           {
-            label: "制造者",
-            prop: "CreatedBy",
+            label: "托运人",
+            prop: "Shipper",
           },
           {
-            label: "创建于",
-            prop: "CreatedOn",
+            label: "收货人",
+            prop: "Consignee",
           },
           {
-            label: "项目",
-            prop: "Project",
-          },
-          {
-            label: "账户参考",
-            prop: "CustomerRef",
-          },
-          {
-            label: "模式",
-            prop: "mode",
-          },
-          {
-            label: "有效期至...",
-            prop: "valid until",
-          },
-          {
-            label: "顾客",
-            prop: "Customer",
-          },
-          {
-            label: "收货港",
-            prop: "portofreceipt",
-          },
-          {
-            label: "起源",
+            label: "始发地",
             prop: "Origin",
           },
           {
@@ -84,68 +53,29 @@ export default {
             prop: "Destination",
           },
           {
-            label: "运输天数",
-            prop: "TransitDays",
-          },
-          {
-            label: "承运人",
-            prop: "CarrierBroken",
-          },
-          {
-            label: "PCS",
-            prop: "PCS",
-          },
-          {
-            label: "体重(镑)",
-            prop: "Weight",
-          },
-          {
-            label: "VOL(FT3)",
-            prop: "VOL(FT3)",
-          },
-          {
-            label: "VOL WEIGHT(LB)",
-            prop: "VOL WEIGHT(LB)",
-          },
-          {
-            label: "收入",
+            label: "目的",
             prop: "Income",
           },
           {
-            label: "费用",
+            label: "支出",
             prop: "Expense",
-          },
-          {
-            label: "利润",
-            prop: "Profit",
-          },
-          {
-            label: "货币",
-            prop: "Currency",
-          },
-          {
-            label: "更新人",
-            prop: "UpdatedBy",
-          },
-          {
-            label: "更新时间",
-            prop: "UpdateOn",
-          },
-          {
-            label: "注释",
-            prop: "Notes",
           },
         ],
       },
+       data: [
+        {
+          id: 1,
+          Status: "已完成",
+          Number: "QUO00000001",
+          Shipper: "黄皓铭",
+          Consignee: "收货人",
+          Origin: "上海",
+          Destination: "长沙",
+          Income: "100",
+          Expense: "100",
+        },
+      ],
     };
-  },
-
-  mounted() {
-    
-  },
-
-  methods: {
-    
   },
 };
 </script>

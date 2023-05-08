@@ -48,7 +48,7 @@ const routes = [
     name: "CustomManage",
     component: () => import("../views/crm"),
     meta: {
-      title: "账户管理",
+      title: "客户管理",
       showNavMenu: true,
       showtopMenu: true
     },
