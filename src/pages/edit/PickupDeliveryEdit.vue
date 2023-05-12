@@ -30,9 +30,9 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="货物编号:">
+                <el-form-item label="订单编号:">
                   <el-input
-                    v-model="Number"
+                    v-model="OrderNumber"
                     size="small"
                     class="input"
                   ></el-input>
@@ -384,6 +384,7 @@
                     v-model="name"
                     size="small"
                     class="input"
+                    disabled
                   ></el-input>
                 </el-form-item>
               </el-col>
@@ -399,7 +400,7 @@
         <el-button type="primary" @click="submitForm('form')"
           >保存提交</el-button
         >
-        <el-button type="primary" plain @click="$router.push({ path: '/crm' })"
+        <el-button type="primary" plain @click="$router.push({ path: '/pickupdelivery' })"
           >返回</el-button
         >
       </div>
@@ -415,7 +416,7 @@ export default {
       activeName: "first",
       Status: "",
       Accouting: "",
-      Number: "",
+      OrderNumber: "",
       BillOfLading: "",
       PickupDate: "",
       DeliveryDate: "",

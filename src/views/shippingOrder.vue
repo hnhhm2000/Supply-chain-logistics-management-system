@@ -114,11 +114,12 @@ export default {
         excelBtn: true,
         addBtn: false,
         editBtn: false,
+        
         column: [
           {
             label: "状态",
             prop: "Status",
-            Search: true,
+            search: true,
           },
           {
             label: "财务",
@@ -127,17 +128,19 @@ export default {
           {
             label: "装运单编号",
             prop: "ShipmentOrders",
-            Search: true,
+            search:true,
+            width:100
           },
           {
             label: "创建人",
             prop: "CreatedBy",
-            Search: true,
+            search:true
           },
           {
             label: "创建时间",
             prop: "CreatedOn",
-            Search: true,
+            search:true,
+            width:90
           },
           {
             label: "运输类型",
@@ -146,6 +149,7 @@ export default {
           {
             label: "发货日",
             prop: "Departure",
+            search:true
           },
           {
             label: "收货日",
@@ -154,11 +158,12 @@ export default {
           {
             label: "托运人",
             prop: "Shipper",
-            Search: true,
+            search:true
           },
           {
             label: "收货人",
             prop: "Consignee",
+            search:true
           },
           {
             label: "件数",
@@ -237,19 +242,6 @@ export default {
           });
         })
         .catch(() => {});
-    },
-    rowUpdate(form, index, done, loading) {
-      this.$message.success("模拟网络请求");
-      setTimeout(() => {
-        this.$message.success("关闭按钮等待");
-        loading();
-      }, 1000);
-      setTimeout(() => {
-        this.$message.success(
-          "编辑数据" + JSON.stringify(form) + "数据序号" + index
-        );
-        done(form);
-      }, 2000);
     },
   },
 };

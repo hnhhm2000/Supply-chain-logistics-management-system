@@ -4,29 +4,20 @@
     <TopMenu class="topmenu"></TopMenu>
 
     <main>
-            <avue-crud
-            :data="data"
-            :option="option"
-            :search-show="false"
-            @refresh-change="refreshChange"
-            @row-update="rowUpdate"
-            @row-del="rowDel"
-            @search-change="searchChange"
-            @search-reset="resetChange"
-            :cell-class-name="addClass"
-            @cell-click="pageto"
-            class="Mycrud"
-          >
-            
-              <el-button slot="menuLeft"
-                type="primary"
-                icon="el-icon-plus"
-                size="small"
-                @click="rowadd"
-                >新增</el-button
-              >
-           
-          </avue-crud>
+      <avue-crud
+        :data="data"
+        :option="option"
+        :search-show="false"
+        @refresh-change="refreshChange"
+        @row-update="rowUpdate"
+        @row-del="rowDel"
+        @search-change="searchChange"
+        @search-reset="resetChange"
+        :cell-class-name="addClass"
+        @cell-click="pageto"
+        class="Mycrud"
+      >
+      </avue-crud>
     </main>
   </div>
 </template>
@@ -40,29 +31,58 @@ export default {
       activeName: "first",
       data: [
         {
-          id: 1,
-          name: "张三",
-          sex: "男",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
+          Status: "运输中",
+          Receipt: "WRI0000001",
+          Destination: "目的地A",
+          Shipper: "托运人A",
+          Comsignee: "收货人A",
+          PCS: 50,
+          Description: "描述1",
+          DIM: "10 x 5 x 3",
+          Weight: "1000 kg",
+          VOL: "10 m³",
+          ReceivedDate: "2023-05-01",
+        },
+        {
+          Status: "已订购",
+          Receipt: "WRI0000002",
+          Destination: "目的地B",
+          Shipper: "托运人B",
+          Comsignee: "收货人B",
+          PCS: 20,
+          Description: "描述2",
+          DIM: "5 x 3 x 2",
+          Weight: "500 kg",
+          VOL: "5 m³",
+          ReceivedDate: "2023-04-15",
+        },
+        {
+          Status: "报价中",
+          Receipt: "WRI0000003",
+          Destination: "目的地C",
+          Shipper: "托运人C",
+          Comsignee: "收货人C",
+          PCS: 10,
+          Description: "描述3",
+          DIM: "3 x 2 x 1",
+          Weight: "200 kg",
+          VOL: "2 m³",
+          ReceivedDate: "2023-05-05",
         },
       ],
       option: {
         searchShow: false,
         excelBtn: true,
-        addBtn: false,
         column: [
           {
             label: "状态",
             prop: "Status",
+            search:true
           },
           {
             label: "收据",
             prop: "Receipt",
+            search:true
           },
           {
             label: "目的地",
@@ -71,16 +91,18 @@ export default {
           {
             label: "托运人",
             prop: "Shipper",
+            search:true
           },
           {
             label: "收货人",
             prop: "Comsignee",
+            search:true
           },
           {
             label: "件数",
             prop: "PCS",
           },
-            {
+          {
             label: "描述",
             prop: "Description",
           },
@@ -92,11 +114,11 @@ export default {
             label: "重量",
             prop: "Weight",
           },
-           {
+          {
             label: "体积",
             prop: "VOL",
           },
-           {
+          {
             label: "入库日期",
             prop: "ReceivedDate",
           },
@@ -106,9 +128,6 @@ export default {
   },
 
   methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
-    },
     refreshChange() {
       this.$message.success("刷新回调");
     },

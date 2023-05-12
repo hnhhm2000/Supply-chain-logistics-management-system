@@ -9,7 +9,6 @@
         :option="option"
         :search-show="false"
         @refresh-change="refreshChange"
-        @row-update="rowUpdate"
         @row-del="rowDel"
         @search-change="searchChange"
         @search-reset="resetChange"
@@ -25,6 +24,17 @@
           @click="rowadd"
           >新增</el-button
         >
+
+        <template slot-scope="{ type, size, row }" slot="menu">
+          <el-button
+            icon="el-icon-edit"
+            class="editbtn"
+            :size="size"
+            :type="type"
+            @click="$router.push(`/pickupdelivery/edit/${row.id}`)"
+            >编辑</el-button
+          >
+        </template>
       </avue-crud>
     </main>
   </div>
@@ -39,33 +49,83 @@ export default {
       activeName: "first",
       data: [
         {
-          id: 1,
-          name: "张三",
-          sex: "男",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
+          Status: "请求中",
+          Accounting: "空",
+          Number: "PKD0000001",
+          BillOfLading: "BOL1234",
+          PickupDate: "2023-05-01",
+          DeliveryDate: "2023-05-15",
+          Shipper: "托运人A",
+          Consignee: "收货人A",
+          PickupFrom: "提货人A",
+          DeliveryTo: "送货人A",
+          Carrier: "承运人A",
+          Customer: "客户A",
+          PCS: 50,
+          Value: 5000,
+          Weight: 1000,
+          VOL: 10,
+          Income: 5000,
+          Expense: 3000,
+          Profit: 2000,
+          CreatedBy: "创建人A",
+          CreatedOn: "2023-05-01",
+          UpdatedOn: "更新人A",
+          UpdateOn: "2023-05-10",
+          ETA: "2023-05-18",
+          ETD: "2023-05-02",
+          PodDate: "2023-05-16",
+          Remarks: "备注1",
+        },
+        {
+          Status: "正在调度",
+          Accounting: "空",
+          Number: "PKD0000004",
+          BillOfLading: "BOL5678",
+          PickupDate: "2023-04-15",
+          DeliveryDate: "2023-04-30",
+          Shipper: "托运人B",
+          Consignee: "收货人B",
+          PickupFrom: "提货人B",
+          DeliveryTo: "送货人B",
+          Carrier: "承运人B",
+          Customer: "客户B",
+          PCS: 20,
+          Value: 8000,
+          Weight: 500,
+          VOL: 5,
+          Income: 8000,
+          Expense: 4000,
+          Profit: 4000,
+          CreatedBy: "创建人B",
+          CreatedOn: "2023-04-15",
+          UpdatedOn: "更新人B",
+          UpdateOn: "2023-05-05",
+          ETA: "2023-05-03",
+          ETD: "2023-04-20",
+          PodDate: "2023-05-01",
+          Remarks: "备注2",
         },
       ],
       option: {
         searchShow: false,
         excelBtn: true,
         addBtn: false,
+        editBtn: false,
         column: [
           {
             label: "状态",
             prop: "Status",
+            search:true
           },
           {
             label: "财务",
             prop: "Accounting",
           },
           {
-            label: "货物编号",
-            prop: "Number",
+            label: "订单编号",
+            prop: "OrderNumber",
+            search:true
           },
           {
             label: "提单",
@@ -74,6 +134,7 @@ export default {
           {
             label: "提货日期",
             prop: "PickupDate",
+            search:true
           },
           {
             label: "发货日期",
@@ -86,10 +147,6 @@ export default {
           {
             label: "收货人",
             prop: "Consignee",
-          },
-          {
-            label: "托运人",
-            prop: "shipper",
           },
           {
             label: "提货人",
@@ -106,10 +163,7 @@ export default {
           {
             label: "客户",
             prop: "Customer",
-          },
-          {
-            label: "货运代理人",
-            prop: "shipper",
+            search:true
           },
           {
             label: "件数",
@@ -142,10 +196,12 @@ export default {
           {
             label: "创造人",
             prop: "CreatedBy",
+            search:true
           },
           {
             label: "创造时间",
             prop: "CreatedOn",
+            search:true
           },
           {
             label: "更新人",
@@ -177,21 +233,30 @@ export default {
   },
 
   methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
+    
+    // 点击姓名进入详情
+    addClass({ columnIndex }) {
+      if (columnIndex === 2) {
+        return "cell-color"; // cell-blue就是添加的类名，添加完之后记得设置样式
+      }
     },
+
+    /**
+     * @description: 点击名字进行跳转
+     */
+    pageto(row, column) {
+      if (column.label == "订单编号") {
+        this.$router.push(`/pickupdelivery/detail/${row.id}`);
+      }
+    },
+
+    // 增加数据
+    rowadd() {
+      this.$router.push("./pickupdelivery/add");
+    },
+
     refreshChange() {
       this.$message.success("刷新回调");
-    },
-    rowSave(form, done, loading) {
-      form.id = new Date().getTime();
-      setTimeout(() => {
-        loading();
-      }, 1000);
-      setTimeout(() => {
-        this.$message.success("新增数据" + JSON.stringify(form));
-        done(form);
-      }, 2000);
     },
     rowDel(form, index, done) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
@@ -207,17 +272,6 @@ export default {
           });
         })
         .catch(() => {});
-    },
-    rowUpdate(form, index, done, loading) {
-      setTimeout(() => {
-        loading();
-      }, 1000);
-      setTimeout(() => {
-        this.$message.success(
-          "编辑数据" + JSON.stringify(form) + "数据序号" + index
-        );
-        done(form);
-      }, 2000);
     },
   },
 };

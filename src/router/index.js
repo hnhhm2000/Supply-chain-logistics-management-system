@@ -128,7 +128,7 @@ const routes = [
     name: "Ground",
     component: () => import("../views/Ground"),
     meta: {
-      title: "货运",
+      title: "陆运",
       showNavMenu: true,
       showtopMenu: true
     },
@@ -403,6 +403,15 @@ const routes = [
     component: () => import("../pages/edit/PickupDeliveryEdit"),
     meta: {
       title: "提货送货编辑",
+    },
+  },
+
+  {
+    path: "/receipt/edit/:id",
+    name: "ReceiptEdit",
+    component: () => import("../pages/edit/ReceiptEdit"),
+    meta: {
+      title: "收据编辑",
     },
   },
 

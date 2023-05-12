@@ -237,9 +237,9 @@
               </el-col>
 
               <el-col :span="8">
-                <el-form-item label="空运ID:">
+                <el-form-item label="陆运ID:">
                   <el-input
-                    v-model="AirID"
+                    v-model="GroundID"
                     disabled
                     size="small"
                     class="input"

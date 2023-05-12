@@ -213,7 +213,7 @@
         <el-button type="primary" @click="submitForm('form')"
           >保存提交</el-button
         >
-        <el-button type="primary" plain @click="$router.push({ path: '/crm' })"
+        <el-button type="primary" plain @click="$router.push({ path: '/inventory' })"
           >返回</el-button
         >
       </div>

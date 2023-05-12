@@ -25,6 +25,17 @@
           @click="rowadd"
           >新增</el-button
         >
+
+        <template slot-scope="{ type, size, row }" slot="menu">
+          <el-button
+            icon="el-icon-edit"
+            class="editbtn"
+            :size="size"
+            :type="type"
+            @click="$router.push(`/ground/edit/${row.id}`)"
+            >编辑</el-button
+          >
+        </template>
       </avue-crud>
     </main>
   </div>
@@ -39,26 +50,58 @@ export default {
       activeName: "first",
       data: [
         {
-          id: 1,
-          name: "张三",
-          sex: "男",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
+          Status: "预约中",
+          Accounting: "财务部A",
+          ShipmentNumber: "GOC0000001",
+          Departure: "2023-05-01",
+          Arrival: "2023-05-05",
+          PortOfOrigin: "发货港A",
+          PlaceOfDate: "2023-05-10",
+          PlaceOfDelivery: "收货地点A",
+          Shipper: "托运人A",
+          Consignee: "收货人A",
+          PCS: 50,
+          Weight: "1000 斤",
+          Income: 5000,
+          Expense: 3000,
+          Profit: 2000,
+          Remarks: "备注1",
         },
         {
-          id: 2,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
+          Status: "准备装载",
+          Accounting: "财务部B",
+          ShipmentNumber: "GOC0000002",
+          Departure: "2023-04-15",
+          Arrival: "2023-04-20",
+          PortOfOrigin: "发货港B",
+          PlaceOfDate: "2023-04-25",
+          PlaceOfDelivery: "收货地点B",
+          Shipper: "托运人B",
+          Consignee: "收货人B",
+          PCS: 20,
+          Weight: "500 斤",
+          Income: 8000,
+          Expense: 4000,
+          Profit: 4000,
+          Remarks: "备注2",
+        },
+        {
+          Status: "装载中",
+          Accounting: "财务部C",
+          ShipmentNumber: "GOC0000003",
+          Departure: "2023-05-05",
+          Arrival: "2023-05-10",
+          PortOfOrigin: "发货港C",
+          PlaceOfDate: "2023-05-15",
+          PlaceOfDelivery: "收货地点C",
+          Shipper: "托运人C",
+          Consignee: "收货人C",
+          PCS: 10,
+          Weight: "200 斤",
+          Income: 2000,
+          Expense: 1500,
+          Profit: 500,
+          Remarks: "备注3",
         },
       ],
 
@@ -66,10 +109,12 @@ export default {
         searchShow: false,
         excelBtn: true,
         addBtn: false,
+        editBtn: false,
         column: [
           {
             label: "状态",
             prop: "Status",
+            search:true
           },
           {
             label: "财务",
@@ -78,18 +123,23 @@ export default {
           {
             label: "陆运编号",
             prop: "ShipmentNumber",
+            width:100,
+            search:true
           },
           {
             label: "启航日",
             prop: "Departure",
+            width:90
           },
           {
             label: "抵达日",
             prop: "Arrival",
+            width:90
           },
           {
             label: "发货港",
             prop: "PortOfOrigin",
+            search:true
           },
           {
             label: "收货日",
@@ -98,6 +148,7 @@ export default {
           {
             label: "收货地点",
             prop: "PlaceOfDelivery",
+            search:true
           },
           {
             label: "托运人",
@@ -137,9 +188,27 @@ export default {
   },
 
   methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
+    // 点击姓名进入详情
+    addClass({ columnIndex }) {
+      if (columnIndex === 2) {
+        return "cell-color"; // cell-blue就是添加的类名，添加完之后记得设置样式
+      }
     },
+
+    /**
+     * @description: 点击名字进行跳转
+     */
+    pageto(row, column) {
+      if (column.label == "陆运编号") {
+        this.$router.push(`/ground/detail/${row.id}`);
+      }
+    },
+
+    // 增加数据
+    rowadd() {
+      this.$router.push("./ground/add");
+    },
+
     refreshChange() {
       this.$message.success("刷新回调");
     },

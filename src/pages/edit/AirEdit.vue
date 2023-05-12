@@ -3,7 +3,7 @@
     <!-- 主要内容 -->
     <main class="add-main">
       <el-tabs v-model="activeName" type="card">
-        <el-tab-pane label="用户资料" name="first">
+        <el-tab-pane label="主要信息" name="first">
       <!-- 卡片一  -->
       <el-card class="whiteCard">
         <div slot="header" class="clearfix">
@@ -278,7 +278,7 @@
         <el-button type="primary" @click="submitForm('form')"
           >保存提交</el-button
         >
-        <el-button type="primary" plain @click="$router.push({ path: '/crm' })"
+        <el-button type="primary" plain @click="$router.push({ path: '/air' })"
           >返回</el-button
         >
       </div>
@@ -291,6 +291,7 @@ export default {
 
  data() {
     return {
+      activeName:"first",
       AirFreightID: "",
       Status: "",
       Accounting: "",

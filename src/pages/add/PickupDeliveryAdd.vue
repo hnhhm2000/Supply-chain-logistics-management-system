@@ -409,6 +409,7 @@
                     v-model="name"
                     size="small"
                     class="input"
+                    disabled
                   ></el-input>
                 </el-form-item>
               </el-col>
