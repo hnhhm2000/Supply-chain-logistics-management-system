@@ -1,0 +1,48 @@
+.whiteCard {
+  margin: 1em;
+  border-radius: 0.2em;
+}
+
+.CardTitle {
+  font-size: 15px;
+  color: #181818;
+  font-weight: bold;
+}
+
+.textarea {
+  width: 80%;
+}
+
+.flex {
+  display: flex;
+}
+
+.add-main {
+  width: 80%;
+  margin-left: 10em;
+}
+
+.select {
+  width: 18.6em;
+}
+
+/* 主要信息页面按钮栏 */
+.btns {
+  display: flex;
+  min-height: 100px;
+  margin: 2em 1em 0 1em;
+  background: white;
+  position: relative;
+  justify-content: space-evenly;
+}
+
+::v-deep .el-form {
+  position: relative;
+  right: 2.5em;
+}
+
+.el-form-item {
+  position: relative;
+  right: 2em;
+}
+

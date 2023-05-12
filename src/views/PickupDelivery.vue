@@ -4,29 +4,28 @@
     <TopMenu class="topmenu"></TopMenu>
 
     <main>
-           <avue-crud
-            :data="data"
-            :option="option"
-            :search-show="false"
-            @refresh-change="refreshChange"
-            @row-update="rowUpdate"
-            @row-del="rowDel"
-            @search-change="searchChange"
-            @search-reset="resetChange"
-            :cell-class-name="addClass"
-            @cell-click="pageto"
-            class="Mycrud"
-          >
-            
-              <el-button slot="menuLeft"
-                type="primary"
-                icon="el-icon-plus"
-                size="small"
-                @click="rowadd"
-                >新增</el-button
-              >
-           
-          </avue-crud>
+      <avue-crud
+        :data="data"
+        :option="option"
+        :search-show="false"
+        @refresh-change="refreshChange"
+        @row-update="rowUpdate"
+        @row-del="rowDel"
+        @search-change="searchChange"
+        @search-reset="resetChange"
+        :cell-class-name="addClass"
+        @cell-click="pageto"
+        class="Mycrud"
+      >
+        <el-button
+          slot="menuLeft"
+          type="primary"
+          icon="el-icon-plus"
+          size="small"
+          @click="rowadd"
+          >新增</el-button
+        >
+      </avue-crud>
     </main>
   </div>
 </template>
@@ -49,7 +48,7 @@ export default {
           city: "长沙",
           state: "在线",
           ZIP: "410007",
-        }, 
+        },
       ],
       option: {
         searchShow: false,
@@ -61,128 +60,116 @@ export default {
             prop: "Status",
           },
           {
-            label: "会计",
+            label: "财务",
             prop: "Accounting",
           },
           {
-            label: "号码",
+            label: "货物编号",
             prop: "Number",
           },
           {
-            label: "集装箱",
-            prop: "Containers",
-          },
-          {
-            label: "项目",
-            prop: "Project",
-          },
-          {
-            label: "货物追踪 ",
-            prop: "tracking",
-          },
-            {
             label: "提单",
-            prop: "lading",
+            prop: "BillOfLading",
           },
           {
-            label: "装载日期",
-            prop: "PickUpDate",
+            label: "提货日期",
+            prop: "PickupDate",
           },
           {
-            label: "交货日期",
+            label: "发货日期",
             prop: "DeliveryDate",
           },
-           {
+          {
+            label: "托运人",
+            prop: "Shipper",
+          },
+          {
+            label: "收货人",
+            prop: "Consignee",
+          },
+          {
             label: "托运人",
             prop: "shipper",
           },
-            {
-            label: "收货人",
-            prop: "shipper",
-          },
-           {
-            label: "发货地",
+          {
+            label: "提货人",
             prop: "PickupFrom",
           },
-           {
-            label: "收货地",
-            prop: "DeliverTo",
+          {
+            label: "送货人",
+            prop: "DeliveryTo",
           },
-           {
-            label: "承运商",
-            prop: "shipper",
+          {
+            label: "承运人",
+            prop: "Carrier",
           },
-           {
+          {
+            label: "客户",
+            prop: "Customer",
+          },
+          {
             label: "货运代理人",
             prop: "shipper",
           },
-           {
-            label: "账户",
-            prop: "Customer",
-          },
-           {
-            label: "PCS",
+          {
+            label: "件数",
             prop: "PCS",
           },
-           {
+          {
+            label: "价格",
+            prop: "Value",
+          },
+          {
             label: "重量(斤)",
             prop: "Weight",
           },
-           {
-            label: "体积(立方英尺)",
-            prop: "VOL(FT3)",
+          {
+            label: "体积(立方米)",
+            prop: "VOL",
           },
-           {
-            label: "体积重量(斤)",
-            prop: "VOLWeight",
-          },
-           {
-            label: "体积重量(斤)",
-            prop: "VOLWeight",
-          },
-           {
+          {
             label: "收入",
-            prop: "VOLWeight",
+            prop: "Income",
           },
-           {
-            label: "费用",
-            prop: "VOLWeight",
+          {
+            label: "支出",
+            prop: "Expense",
           },
-           {
+          {
             label: "利润",
-            prop: "VOLWeight",
+            prop: "Profit",
           },
-           {
-            label: "货币",
-            prop: "VOLWeight",
-          },
-           {
-            label: "账户资料",
-            prop: "VOLWeight",
-          },
-           {
-            label: "更新者",
+          {
+            label: "创造人",
             prop: "CreatedBy",
           },
-           {
-            label: "创造者",
+          {
+            label: "创造时间",
             prop: "CreatedOn",
           },
           {
-            label: "预计发货时间",
-            prop: "ETA",
+            label: "更新人",
+            prop: "UpdatedOn",
+          },
+          {
+            label: "最近更新",
+            prop: "UpdateOn",
           },
           {
             label: "预计到达时间",
+            prop: "ETA",
+          },
+          {
+            label: "预计发货时间",
             prop: "ETD",
           },
           {
             label: "货物签收时间",
-            prop: "PODDate",
+            prop: "PodDate",
           },
           {
-            label: "注释",
-            prop: "Notes",
+            label: "预计到达时间",
+            prop: "Remarks",
           },
         ],
       },

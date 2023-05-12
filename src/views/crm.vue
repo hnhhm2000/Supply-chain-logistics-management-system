@@ -150,6 +150,7 @@ export default {
   },
 
   methods: {
+    // 点击姓名进入详情
     addClass({ columnIndex }) {
       // console.log(columnIndex);
       if (columnIndex === 0) {
@@ -164,6 +165,8 @@ export default {
         this.$router.push(`/crm/detail/${row.id}`);
       }
     },
+
+    // 增加数据
     rowadd() {
       this.$router.push("./crm/add");
     },

@@ -5,7 +5,7 @@
       <!-- 卡片一  -->
       <el-card class="whiteCard">
         <div slot="header" class="clearfix">
-          <span class="CardTitle">账户信息</span>
+          <span class="CardTitle">主要信息</span>
         </div>
 
         <div>
@@ -17,36 +17,55 @@
           >
             <el-row>
               <el-col :span="8">
-                <el-form-item label="账户名称:" prop="name">
-                 
-                </el-form-item>
+                <el-form-item label="状态:"> </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="密码:" prop="password">
-                  
-                </el-form-item>
+                <el-form-item label="活动:"> </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="性别:" prop="role">
-                
-                </el-form-item>
+                <el-form-item label="报价编号:"> </el-form-item>
               </el-col>
             </el-row>
             <el-row>
               <el-col :span="8">
-                <el-form-item label="电子邮箱:" prop="email">
-                
+                <el-form-item label="项目:"> </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="运输方式:" prop="isDisabled">
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="状态:" prop="isDisabled">
-                 
-                </el-form-item>
+                <el-form-item label="创建日期:" prop="phone"> </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="截止日期:"> </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="角色:" prop="phone">
-                 
-                </el-form-item>
+                <el-form-item label="客户:"> </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="托运人:"> </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="始发地:"> </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="目的地:"> </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="承运人:"> </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="报价者:"> </el-form-item>
               </el-col>
             </el-row>
           </el-form>
@@ -56,7 +75,7 @@
       <!-- 卡片二  -->
       <el-card class="whiteCard">
         <div slot="header" class="clearfix">
-          <span class="CardTitle">地址信息</span>
+          <span class="CardTitle">货物相关</span>
         </div>
 
         <div>
@@ -68,36 +87,56 @@
           >
             <el-row>
               <el-col :span="8">
-                <el-form-item label="主要地址:" prop="address">
-                 
-                </el-form-item>
+                <el-form-item label="客户地址:"> </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="电话号码:" prop="address">
-                 
-                </el-form-item>
+                <el-form-item label="货物描述:"> </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="城市:" prop="phone">
-                 
-                </el-form-item>
+                <el-form-item label="始发地:"> </el-form-item>
               </el-col>
             </el-row>
+
             <el-row>
               <el-col :span="8">
-                <el-form-item label="国家:" prop="province">
-                  
-                </el-form-item>
+                <el-form-item label="目的地:"> </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="省份:"  prop="salesAgency">
-                 
-                </el-form-item>
+                <el-form-item label="运输方式:"> </el-form-item>
+              </el-col>
+
+              <el-col :span="8">
+                <el-form-item label="付款方式:"> </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="运输天数:"> </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="邮编:" prop="id">
-                 
-                </el-form-item>
+                <el-form-item label="个数/件数:"> </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="重量:"> </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="体积:"> </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="收入:"> </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="支出:"> </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="利润:"> </el-form-item>
               </el-col>
             </el-row>
           </el-form>
@@ -110,9 +149,7 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-        <div class="remark">
-        
-        </div>
+        <div class="remark"></div>
       </el-card>
 
       <!-- 卡片四  -->
@@ -130,31 +167,23 @@
           >
             <el-row>
               <el-col :span="8">
-                <el-form-item label="创建人:" prop="createBy">
-                
-                </el-form-item>
+                <el-form-item label="创建人:" prop="createBy"> </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="创建时间:" prop="createBy">
-               
-                </el-form-item>
+                <el-form-item label="创建时间:" prop="createBy"> </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="更新人:" prop="salesAgency">
-                 
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row>
               <el-col :span="8">
                 <el-form-item label="更新时间:" prop="updateTime">
-                 
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="客户ID:" prop="zip">
-                 
-                </el-form-item>
+                <el-form-item label="报价ID:" prop="zip"> </el-form-item>
               </el-col>
             </el-row>
           </el-form>
@@ -166,15 +195,15 @@
     <footer class="btns">
       <div style="margin-top: 2em">
         <el-button
-            type="primary"
-            @click="
-              $router.push({
-                name: 'CrmEdit',
-                params: { id: $route.params.id },
-              })
-            "
-            >编辑内容</el-button
-          >
+          type="primary"
+          @click="
+            $router.push({
+              name: 'CrmEdit',
+              params: { id: $route.params.id },
+            })
+          "
+          >编辑内容</el-button
+        >
         <el-button type="primary" plain @click="$router.back()">返回</el-button>
       </div>
     </footer>
@@ -184,7 +213,7 @@
 // import axios from "axios";
 
 export default {
-  name: 'CrmDetail',
+  name: "CrmDetail",
 
   data() {
     return {
@@ -212,7 +241,6 @@ export default {
       // city: "",
       zip: "",
       // email: "",
-
     };
   },
 

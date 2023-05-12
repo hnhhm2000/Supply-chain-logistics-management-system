@@ -68,12 +68,12 @@ export default {
         addBtn: false,
         column: [
           {
-            label: "到期日",
-            prop: "date",
+            label: "截止日期",
+            prop: "DueDate",
           },
           {
-            label: "参考",
-            prop: "reference",
+            label: "引用",
+            prop: "Reference",
           },
           {
             label: "主题",
@@ -81,23 +81,23 @@ export default {
           },
           {
             label: "任务负责人",
-            prop: "owner",
+            prop: "TaskOwner",
           },
           {
             label: "状态",
-            prop: "states",
+            prop: "Status",
           },
           {
             label: "优先事项",
             prop: "priority",
           },
           {
-            label: "账户相关",
-            prop: "Account",
+            label: "相关账户",
+            prop: "AccountReleted",
           },
           {
-            label: "模块",
-            prop: "module",
+            label: "类型",
+            prop: "Type",
           },
         ],
       },

@@ -61,87 +61,59 @@ export default {
             prop: "Status",
           },
           {
-            label: "会计",
+            label: "财务",
             prop: "Accounting",
           },
           {
-            label: "收据",
+            label: "收据编号",
             prop: "Receipt",
           },
           {
-            label: "创造者",
+            label: "创造人",
             prop: "CreatedBy",
           },
           {
-            label: "创造于",
+            label: "创造时间",
             prop: "CreatedOn",
           },
             {
-            label: "起止时间",
-            prop: "DateIn",
+            label: "开具时间",
+            prop: "ReceiptTime",
           },
           {
-            label: "结束时间",
-            prop: "TimeIn",
-          },
-          {
-            label: "顾客参考",
-            prop: "CustomerRef",
-          },
-           {
             label: "托运人",
             prop: "Shipper",
           },
-         {
+          {
             label: "收货人",
             prop: "Consignee",
           },
-          {
+           {
             label: "项目",
             prop: "Project",
           },
-          {
-            label: "PCS",
+         {
+            label: "件数",
             prop: "PCS",
           },
           {
-            label: "重量(斤)",
+            label: "重量",
             prop: "Weight",
           },
           {
-            label: "VOL(立方体积)",
-            prop: "VOL(FT3)",
+            label: "体积",
+            prop: "VOL",
           },
           {
-            label: "体积重量(斤)",
-            prop: "VOLWeight",
-          },
-          {
-            label: "供应商",
-            prop: "Supplier",
-          },
-          {
-            label: "追踪号",
-            prop: "TrackingNumber",
-          },
-          {
-            label: "订单号",
-            prop: "PoNumber",
-          },
-          {
-            label: "发票号",
-            prop: "InvoiceNumber",
-          },
-          {
-            label: "经办人",
-            prop: "Handling",
+            label: "注意事项",
+            prop: "Handing",
           },
           {
             label: "收入",
             prop: "Income",
           },
           {
-            label: "费用",
+            label: "支出",
             prop: "Expense",
           },
           {
@@ -149,18 +121,10 @@ export default {
             prop: "Profit",
           },
           {
-            label: "货币",
-            prop: "Currency",
-          },
-          {
-            label: "更新者",
-            prop: "UpdatedBy",
-          },
-           {
-            label: "更新时间",
+            label: "最近更新",
             prop: "UpdatedOn",
           },
-           {
+          {
             label: "服务类别",
             prop: "ServiceType",
           },

@@ -68,19 +68,15 @@ export default {
         addBtn: false,
         column: [
           {
-            label: "发票号",
+            label: "账单号",
             prop: "Number",
           },
           {
-            label: "状态",
-            prop: "Status",
-          },
-          {
-            label: "创造者",
+            label: "创建人",
             prop: "CreatedBy",
           },
           {
-            label: "创造于",
+            label: "创建时间",
             prop: "CreatedOn",
           },
           {
@@ -88,8 +84,8 @@ export default {
             prop: "Type",
           },
           {
-            label: "模块",
-            prop: "Module",
+            label: "引用",
+            prop: "Reference",
           },
           {
             label: "项目",
@@ -104,26 +100,17 @@ export default {
             prop: "Vendor",
           },
             {
-            label: "有效期",
+            label: "截止日期",
             prop: "Duedate",
           },
             {
-            label: "货币",
-            prop: "Currency",
-          },
-           {
             label: "总额",
-            prop: "Total",
+            prop: "TotalAmount",
           },
            {
-            label: "备忘录",
-            prop: "Memo",
-          },
-           {
-            label: "注释",
-            prop: "Notes",
-          },
-         
+            label: "备注",
+            prop: "Remark",
+          },         
         ],
       },
     };

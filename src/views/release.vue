@@ -58,91 +58,63 @@ export default {
         column: [
           {
             label: "状态",
-            prop: "status",
+            prop: "Status",
           },
           {
-            label: "会计",
-            prop: "reference",
+            label: "财务",
+            prop: "Accounting",
           },
           {
-            label: "号码",
+            label: "编号",
             prop: "number",
           },
           {
-            label: "集装箱",
-            prop: "containers",
+            label: "创建人",
+            prop: "CreatedBy",
           },
           {
-            label: "创造者",
-            prop: "createby",
-          },
-          {
-            label: "创造于 ",
+            label: "创造时间",
             prop: "CreateOn",
           },
           {
-            label: "放货日期",
-            prop: "dateout",
+            label: "出库日期",
+            prop: "DateTimeOut",
           },
           {
-            label: "到货时间",
-            prop: "timeout",
+            label: "发往",
+            prop: "ReleaseTo",
           },
            {
-            label: "目的地",
-            prop: "releaseto",
-          },
-           {
-            label: "账户参考",
-            prop: "CustomerRef",
-          },
-           {
-            label: "项目",
-            prop: "Project",
-          },
-           {
-            label: "PCS",
+            label: "件数",
             prop: "PCS",
           },
            {
-            label: "重量(斤)",
+            label: "重量",
             prop: "Weight",
           },
            {
-            label: "体积(立方英尺)",
-            prop: "VOL(FT3)",
-          },
-           {
-            label: "体积重量",
-            prop: "VOLWeight",
+            label: "体积",
+            prop: "VOL",
           },
            {
             label: "收入",
-            prop: "releaseto",
+            prop: "Income",
           },
            {
-            label: "费用",
-            prop: "releaseto",
+            label: "支出",
+            prop: "Expense",
           },
            {
             label: "利润",
-            prop: "releaseto",
-          },
-           {
-            label: "货币",
-            prop: "releaseto",
+            prop: "Profit",
           },
            {
             label: "更新人",
-            prop: "releaseto",
+            prop: "UpdatedBy",
           },
            {
             label: "更新时间",
-            prop: "releaseto",
-          },
-          {
-            label: "注释",
-            prop: "Notes",
+            prop: "UpdatedOn",
           },
         ],
       },

@@ -69,130 +69,62 @@ export default {
         column: [
           {
             label: "状态",
-            prop: "date",
+            prop: "Status",
           },
           {
-            label: "会计",
-            prop: "reference",
+            label: "财务",
+            prop: "Accouting",
           },
           {
-            label: "装运",
-            prop: "subject",
+            label: "空运编号",
+            prop: "Shipment",
           },
           {
-            label: "主运单",
-            prop: "owner",
+            label: "起飞日",
+            prop: "Departure",
           },
           {
-            label: "空运提单",
-            prop: "states",
+            label: "抵达日",
+            prop: "Arrival",
           },
           {
-            label: "顾客参考",
-            prop: "priority",
-          },
-          {
-            label: "出发地",
-            prop: "Account",
+            label: "始发地",
+            prop: "Origin",
           },
           {
             label: "目的地",
-            prop: "module",
+            prop: "Destination",
           },
             {
-            label: "始发地",
-            prop: "module",
-          },
-            {
-            label: "顾客",
-            prop: "module",
+            label: "客户",
+            prop: "Customer",
           },
             {
             label: "托运人",
-            prop: "module",
+            prop: "Shipper",
           },
             {
             label: "收货人",
-            prop: "module",
+            prop: "Consignee",
           },
             {
-            label: "PCS",
+            label: "件数",
             prop: "PCS",
           },
            {
             label: "重量(斤)",
-            prop: "PCS",
-          },
-           {
-            label: "体积重量(斤)",
-            prop: "PCS",
+            prop: "Weight",
           },
            {
             label: "收入",
-            prop: "PCS",
+            prop: "Income",
           },
            {
-            label: "费用",
-            prop: "PCS",
+            label: "支出",
+            prop: "Expense",
           },
            {
             label: "利润",
-            prop: "PCS",
-          },
-           {
-            label: "货币",
-            prop: "PCS",
-          },
-           {
-            label: "交货日期",
-            prop: "PCS",
-          },
-           {
-            label: "交货地点",
-            prop: "PCS",
-          },
-           {
-            label: "抵达日期",
-            prop: "PCS",
-          },
-           {
-            label: "最终目的地",
-            prop: "PCS",
-          },
-          {
-            label: "截止日期",
-            prop: "PCS",
-          },
-          {
-            label: "装载日期",
-            prop: "PCS",
-          },
-          {
-            label: "更新者",
-            prop: "PCS",
-          },
-            {
-            label: "更新时间",
-            prop: "PCS",
-          },
-            {
-            label: "注释",
-            prop: "PCS",
-          },
-            {
-            label: "项目",
-            prop: "PCS",
-          },
-           {
-            label: "创造者",
-            prop: "PCS",
-          },
-           {
-            label: "创造于",
-            prop: "PCS",
-          },
-           {
-            label: "部门",
             prop: "PCS",
           },
         ],

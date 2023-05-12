@@ -72,79 +72,55 @@ export default {
             prop: "Status",
           },
           {
-            label: "会计",
-            prop: "reference",
+            label: "财务",
+            prop: "Accounting",
           },
           {
-            label: "装运",
-            prop: "subject",
+            label: "陆运编号",
+            prop: "ShipmentNumber",
           },
           {
-            label: "主货",
-            prop: "owner",
+            label: "启航日",
+            prop: "Departure",
           },
           {
-            label: "预订",
-            prop: "states",
+            label: "抵达日",
+            prop: "Arrival",
           },
           {
-            label: "集装箱",
-            prop: "priority",
+            label: "发货港",
+            prop: "PortOfOrigin",
           },
           {
-            label: "项目",
-            prop: "Account",
+            label: "收货日",
+            prop: "PlaceOfDate",
           },
           {
-            label: "顾客参考",
-            prop: "module",
-          },
-          {
-            label: "顾客参考",
-            prop: "module",
-          },
-          {
-            label: "离开",
-            prop: "module",
-          },
-          {
-            label: "抵达",
-            prop: "module",
-          },
-          {
-            label: "原产地港口",
-            prop: "module",
-          },
-          {
-            label: "卸货港",
-            prop: "Unloading",
-          },
-          {
-            label: "顾客",
-            prop: "Customer",
+            label: "收货地点",
+            prop: "PlaceOfDelivery",
           },
           {
             label: "托运人",
             prop: "Shipper",
           },
           {
-            label: "体重(斤)",
-            prop: "Weight",
+            label: "收货人",
+            prop: "Consignee",
           },
           {
-            label: "体重(斤)",
-            prop: "Weight",
+            label: "件数",
+            prop: "PCS",
           },
           {
-            label: "VOL(立方体积)",
-            prop: "VOL(FT3)",
+            label: "重量（斤）",
+            prop: "Weight",
           },
           {
             label: "收入",
             prop: "Income",
           },
           {
-            label: "费用",
+            label: "支出",
             prop: "Expense",
           },
           {
@@ -152,48 +128,8 @@ export default {
             prop: "Profit",
           },
           {
-            label: "截止日期",
-            prop: "CutOffTime",
-          },
-          {
-            label: "注释",
-            prop: "Notes",
-          },
-          {
-            label: "交货时间",
-            prop: "Delivery",
-          },
-          {
-            label: "签收时间",
-            prop: "Receive",
-          },
-          {
-            label: "货物签收注释",
-            prop: "Notes",
-          },
-          {
-            label: "项目",
-            prop: "Project",
-          },
-          {
-            label: "创造者",
-            prop: "CreatedBy",
-          },
-          {
-            label: "更新人",
-            prop: "UpdatedBy",
-          },
-          {
-            label: "创造于",
-            prop: "CreatedOn",
-          },
-          {
-            label: "更新时间",
-            prop: "UpdatedOn",
-          },
-          {
-            label: "组织",
-            prop: "Division",
+            label: "备注",
+            prop: "Remarks",
           },
         ],
       },

@@ -16,7 +16,7 @@ const routes = [
   {
     path: "/",
     name: "Index",
-    component: () => import("../views/home"),
+    component: () => import("../views/Home"),
     meta: {
       title: "首页",
       showNavMenu: true,
@@ -46,7 +46,7 @@ const routes = [
   {
     path: "/crm",
     name: "CustomManage",
-    component: () => import("../views/crm"),
+    component: () => import("../views/Crm"),
     meta: {
       title: "客户管理",
       showNavMenu: true,
@@ -56,7 +56,7 @@ const routes = [
   {
     path: "/shippingorder",
     name: "ShippingOrder",
-    component: () => import("../views/shippingOrder"),
+    component: () => import("../views/ShippingOrder"),
     meta: {
       title: "装运单",
       showNavMenu: true,
@@ -66,7 +66,7 @@ const routes = [
   {
     path: "/task",
     name: "Task",
-    component: () => import("../views/task"),
+    component: () => import("../views/Task"),
     meta: {
       title: "任务管理",
       showNavMenu: true,
@@ -96,7 +96,7 @@ const routes = [
   {
     path: "/release",
     name: "Release",
-    component: () => import("../views/release"),
+    component: () => import("../views/Release"),
     meta: {
       title: "放货",
       showNavMenu: true,
@@ -116,7 +116,7 @@ const routes = [
   {
     path: "/air",
     name: "Air",
-    component: () => import("../views/air"),
+    component: () => import("../views/Air"),
     meta: {
       title: "空运",
       showNavMenu: true,
@@ -126,43 +126,43 @@ const routes = [
   {
     path: "/ground",
     name: "Ground",
-    component: () => import("../views/ground"),
+    component: () => import("../views/Ground"),
     meta: {
       title: "货运",
       showNavMenu: true,
       showtopMenu: true
     },
   },
+  {
+    path: "/ocean",
+    name: "Ocean",
+    component: () => import("../views/Ocean"),
+    meta: {
+      title: "海运",
+      showNavMenu: true,
+      showtopMenu: true
+    },
+  },
   // {
-  //   path: "/shippment",
-  //   name: "Shippment",
-  //   component: () => import("../views/shippment"),
+  //   path: "/oceanimport",
+  //   name: "OceanImport",
+  //   component: () => import("../views/Import"),
   //   meta: {
   //     title: "海运",
   //     showNavMenu: true,
   //     showtopMenu: true
   //   },
   // },
-  {
-    path: "/oceanimport",
-    name: "OceanImport",
-    component: () => import("../views/Import"),
-    meta: {
-      title: "海运",
-      showNavMenu: true,
-      showtopMenu: true
-    },
-  },
-  {
-    path: "/oceanexport",
-    name: "OceanExport",
-    component: () => import("../views/Export"),
-    meta: {
-      title: "海运",
-      showNavMenu: true,
-      showtopMenu: true
-    },
-  },
+  // {
+  //   path: "/oceanexport",
+  //   name: "OceanExport",
+  //   component: () => import("../views/Export"),
+  //   meta: {
+  //     title: "海运",
+  //     showNavMenu: true,
+  //     showtopMenu: true
+  //   },
+  // },
   {
     path: "/invoices",
     name: "Invoices",
@@ -204,33 +204,268 @@ const routes = [
       showtopMenu: true
     },
   },
+
   // 添加
   {
     path: "/crm/add",
-    name: "crmAdd",
-    component: () => import("../pages/add/crmadd"),
+    name: "CrmAdd",
+    component: () => import("../pages/add/CrmAdd"),
     meta: {
       title: "添加账户",
+    },
+  },
+
+  {
+    path: "/quote/add",
+    name: "QuoteAdd",
+    component: () => import("../pages/add/QuoteAdd"),
+    meta: {
+      title: "添加报价",
+    },
+  },
+
+  {
+    path: "/shippingorder/add",
+    name: "ShippingOrderAdd",
+    component: () => import("../pages/add/ShippingOrderAdd"),
+    meta: {
+      title: "添加装运单",
+    },
+  },
+
+  {
+    path: "/pickupdelivery/add",
+    name: "PickupDeliveryAdd",
+    component: () => import("../pages/add/PickupDeliveryAdd"),
+    meta: {
+      title: "添加提货送货",
+    },
+  },
+
+  {
+    path: "/receipt/add",
+    name: "ReceiptAdd",
+    component: () => import("../pages/add/ReceiptAdd"),
+    meta: {
+      title: "添加收据",
+    },
+  },
+
+  {
+    path: "/inventory/add",
+    name: "InventoryAdd",
+    component: () => import("../pages/add/InventoryAdd"),
+    meta: {
+      title: "添加提货送货",
+    },
+  },
+
+  {
+    path: "/release/add",
+    name: "ReleaseAdd",
+    component: () => import("../pages/add/ReleaseAdd"),
+    meta: {
+      title: "添加出库",
+    },
+  },
+
+  {
+    path: "/air/add",
+    name: "AirAdd",
+    component: () => import("../pages/add/AirAdd"),
+    meta: {
+      title: "添加空运",
+    },
+  },
+
+  {
+    path: "/ocean/add",
+    name: "OceanAdd",
+    component: () => import("../pages/add/OceanAdd"),
+    meta: {
+      title: "添加海运",
+    },
+  },
+
+  {
+    path: "/ground/add",
+    name: "GroundAdd",
+    component: () => import("../pages/add/GroundAdd"),
+    meta: {
+      title: "添加陆运",
+    },
+  },
+
+  {
+    path: "/invoice/add",
+    name: "InvoiceAdd",
+    component: () => import("../pages/add/InvoiceAdd"),
+    meta: {
+      title: "添加发票",
     },
   },
 
   // 详情
     {
     path: "/crm/detail/:id",
-    name: "crmDetail",
-    component: () => import("../pages/detail/crmdetail"),
+    name: "CrmDetail",
+    component: () => import("../pages/detail/CrmDetail"),
     meta: {
       title: "账户详情",
+    },
+  },
+
+  {
+    path: "/quote/detail/:id",
+    name: "QuoteDetail",
+    component: () => import("../pages/detail/QuoteDetail"),
+    meta: {
+      title: "报价详情",
+    },
+  },
+
+  {
+    path: "/shippingorder/detail/:id",
+    name: "ShippingOrderDetail",
+    component: () => import("../pages/detail/ShippingOrderDetail"),
+    meta: {
+      title: "装货单详情",
+    },
+  },
+
+  {
+    path: "/pickupdelivery/detail/:id",
+    name: "PickupDelieryDetail",
+    component: () => import("../pages/detail/PickupDeliveryDetail"),
+    meta: {
+      title: "提货送货详情",
+    },
+  },
+
+  {
+    path: "/receipt/detail/:id",
+    name: "ReceiptDetail",
+    component: () => import("../pages/detail/ReceiptDetail"),
+    meta: {
+      title: "收据详情",
+    },
+  },
+
+  {
+    path: "/Inventory/detail/:id",
+    name: "InventoryDetail",
+    component: () => import("../pages/detail/InventoryDetail"),
+    meta: {
+      title: "库存详情",
+    },
+  },
+
+  {
+    path: "/release/detail/:id",
+    name: "ReleaseDetail",
+    component: () => import("../pages/detail/ReleaseDetail"),
+    meta: {
+      title: "出库详情",
     },
   },
 
   // 编辑
   {
     path: "/crm/edit/:id",
-    name: "crmEdit",
-    component: () => import("../pages/edit/crmedit"),
+    name: "CrmEdit",
+    component: () => import("../pages/edit/CrmEdit"),
     meta: {
       title: "账户编辑",
+    },
+  },
+
+  {
+    path: "/quote/edit/:id",
+    name: "QuoteEdit",
+    component: () => import("../pages/edit/QuoteEdit"),
+    meta: {
+      title: "报价编辑",
+    },
+  },
+
+  {
+    path: "/ShippingOrder/edit/:id",
+    name: "ShipperEdit",
+    component: () => import("../pages/edit/ShippingOrderEdit"),
+    meta: {
+      title: "装运单编辑",
+    },
+  },
+
+  {
+    path: "/pickupdelivery/edit/:id",
+    name: "PickupDeliveryEdit",
+    component: () => import("../pages/edit/PickupDeliveryEdit"),
+    meta: {
+      title: "提货送货编辑",
+    },
+  },
+
+  {
+    path: "/inventory/edit/:id",
+    name: "InventoryEdit",
+    component: () => import("../pages/edit/InventoryEdit"),
+    meta: {
+      title: "库存编辑",
+    },
+  },
+
+  {
+    path: "/release/edit/:id",
+    name: "ReleaseEdit",
+    component: () => import("../pages/edit/ReleaseEdit"),
+    meta: {
+      title: "出库编辑",
+    },
+  },
+
+  {
+    path: "/air/edit/:id",
+    name: "AirEdit",
+    component: () => import("../pages/edit/AirEdit"),
+    meta: {
+      title: "空运编辑",
+    },
+  },
+
+  {
+    path: "/ocean/edit/:id",
+    name: "OceanEdit",
+    component: () => import("../pages/edit/OceanEdit"),
+    meta: {
+      title: "海运编辑",
+    },
+  },
+
+  {
+    path: "/ground/edit/:id",
+    name: "GroundEdit",
+    component: () => import("../pages/edit/GroundEdit"),
+    meta: {
+      title: "陆运编辑",
+    },
+  },
+
+  {
+    path: "/invoice/edit/:id",
+    name: "InvoiceEdit",
+    component: () => import("../pages/edit/InvoiceEdit"),
+    meta: {
+      title: "发票编辑",
+    },
+  },
+
+  {
+    path: "/bill/edit/:id",
+    name: "BillEdit",
+    component: () => import("../pages/edit/BillEdit"),
+    meta: {
+      title: "账单编辑",
     },
   },
 

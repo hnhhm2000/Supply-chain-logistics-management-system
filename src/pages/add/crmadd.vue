@@ -342,23 +342,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/css/addCommon.css";
+@import "../../assets/css/MainInformation.css";
 
 .input {
   width: 20em;
 }
 
-.btns {
-  display: flex;
-  min-height: 100px;
-  margin: 2em 1em 0 1em;
-  background: white;
-  position: relative;
-  justify-content: space-evenly;
-}
 
-::v-deep .el-form {
-  position: relative;
-  right: 2.5em;
-}
 </style>

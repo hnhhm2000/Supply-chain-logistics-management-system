@@ -72,19 +72,15 @@ export default {
             prop: "Number",
           },
           {
-            label: "状态",
-            prop: "Status",
-          },
-          {
-            label: "付款",
+            label: "是否付款",
             prop: "Payment",
           },
           {
-            label: "创造者",
+            label: "创造人",
             prop: "CreatedBy",
           },
           {
-            label: "创造于",
+            label: "创造时间",
             prop: "CreatedOn",
           },
           {
@@ -92,7 +88,7 @@ export default {
             prop: "Type",
           },
           {
-            label: "模块",
+            label: "关联模块",
             prop: "Module",
           },
           {
@@ -100,24 +96,12 @@ export default {
             prop: "Project",
           },
             {
-            label: "日期",
+            label: "开具日期",
             prop: "Date",
           },
             {
-            label: "发送到",
-            prop: "BillTo",
-          },
-            {
-            label: "顾客",
-            prop: "Customer",
-          },
-            {
-            label: "有效期",
+            label: "截止日期",
             prop: "Duedate",
-          },
-            {
-            label: "货币",
-            prop: "Currency",
           },
            {
             label: "金额",
@@ -125,23 +109,15 @@ export default {
           },
            {
             label: "税额",
-            prop: "Tax",
+            prop: "TaxAmount",
           },
            {
             label: "总额",
-            prop: "Total",
-          },
-           {
-            label: "项次号和项目号",
-            prop: "ItNumber",
-          },
-           {
-            label: "顾客参考",
-            prop: "VOLWeight",
+            prop: "TotalAmount",
           },
            {
             label: "注释",
-            prop: "Notes",
+            prop: "Remarks",
           },
          
         ],
