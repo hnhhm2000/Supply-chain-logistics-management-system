@@ -1,33 +1,25 @@
 <template>
-  <div>
-    <NavMenu class="sidebar"></NavMenu>
-    <TopMenu class="topmenu"></TopMenu>
-
-    <main>
-      <avue-crud
-        :data="data"
-        :option="option"
-        :search-show="false"
-        @refresh-change="refreshChange"
-        @row-update="rowUpdate"
-        @row-del="rowDel"
-        @search-change="searchChange"
-        @search-reset="resetChange"
-        :cell-class-name="addClass"
-        @cell-click="pageto"
-      >
-      </avue-crud>
-    </main>
-  </div>
+    <avue-crud
+            :data="data"
+            :option="option"
+            :cell-class-name="addClass"
+          >
+            <el-button
+              slot="menuLeft"
+              type="primary"
+              icon="el-icon-plus"
+              size="small"
+              @click="rowadd"
+              >新增</el-button>
+          </avue-crud>
 </template>
 
 <script>
 export default {
-  name: "MyTask",
+  name: "SimTask",
 
   data() {
     return {
-      activeName: "first",
       data: [
         {
           DueDate: "2023-05-15",
@@ -63,15 +55,19 @@ export default {
       option: {
         searchShow: false,
         excelBtn: true,
-        addBtn: true,
+        addBtn: false,
         column: [
-          {
-            label: "主题",
-            prop: "subject",
-          },
           {
             label: "截止日期",
             prop: "DueDate",
+          },
+          {
+            label: "引用",
+            prop: "Reference",
+          },
+          {
+            label: "主题",
+            prop: "subject",
           },
           {
             label: "任务负责人",
@@ -84,7 +80,15 @@ export default {
           {
             label: "优先事项",
             prop: "priority",
-          }
+          },
+          {
+            label: "相关账户",
+            prop: "AccountReleted",
+          },
+          {
+            label: "模块",
+            prop: "Module",
+          },
         ],
       },
     };

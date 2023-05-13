@@ -183,21 +183,17 @@
         </div>
       </el-card>
         </el-tab-pane>
-        <!-- 报价 -->
-        <el-tab-pane label="报价" name="second">
-          <SimQuote></SimQuote>
+       <!-- 商品库存 -->
+        <el-tab-pane label="商品" name="second">
+          <sim-quote></sim-quote>
         </el-tab-pane>
-        <!-- 库存 -->
-        <el-tab-pane label="库存" name="third">
-          <SimInventory></SimInventory>
+        <!-- 费用明细 -->
+        <el-tab-pane label="费用明细" name="third">
+          <sim-charges></sim-charges>
         </el-tab-pane>
-        <!-- 运输 -->
-        <el-tab-pane label="运输" name="fourth">
-          <SimShippment></SimShippment>
-        </el-tab-pane>
-        <!-- 财务相关 -->
-        <el-tab-pane label="财务相关" name="fifth">
-          <SimAccounting></SimAccounting>
+        <!-- 任务 -->
+        <el-tab-pane label="任务" name="fourth">
+          <sim-task></sim-task>
         </el-tab-pane>
       </el-tabs>
     </main>

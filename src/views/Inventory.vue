@@ -4,6 +4,7 @@
     <TopMenu class="topmenu"></TopMenu>
 
     <main>
+      <avue-data-display :option="displayoption"></avue-data-display>
       <avue-crud
         :data="data"
         :option="option"
@@ -77,12 +78,13 @@ export default {
           {
             label: "状态",
             prop: "Status",
-            search:true
+            search: true,
           },
           {
             label: "收据",
             prop: "Receipt",
-            search:true
+            search: true,
+            width: 100,
           },
           {
             label: "目的地",
@@ -91,12 +93,12 @@ export default {
           {
             label: "托运人",
             prop: "Shipper",
-            search:true
+            search: true,
           },
           {
             label: "收货人",
             prop: "Comsignee",
-            search:true
+            search: true,
           },
           {
             label: "件数",
@@ -121,6 +123,49 @@ export default {
           {
             label: "入库日期",
             prop: "ReceivedDate",
+          },
+        ],
+      },
+
+      displayoption: {
+        span: 6,
+        data: [
+          {
+            click: function (item) {
+              alert(JSON.stringify(item));
+            },
+            count: 100,
+            decimals: 2,
+            title: "日活跃数",
+            href: "https://avuejs.com",
+            target: "_blank",
+          },
+          {
+            click: function (item) {
+              alert(JSON.stringify(item));
+            },
+            count: "3,000",
+            title: "月活跃数",
+            href: "https://avuejs.com",
+            target: "_blank",
+          },
+          {
+            click: function (item) {
+              alert(JSON.stringify(item));
+            },
+            count: "20,000",
+            title: "年活跃数",
+            href: "https://avuejs.com",
+            target: "_blank",
+          },
+          {
+            click: function (item) {
+              alert(JSON.stringify(item));
+            },
+            count: "40,000",
+            title: "周活跃数",
+            href: "https://avuejs.com",
+            target: "_blank",
           },
         ],
       },
@@ -172,6 +217,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.MyCard {
+  margin-top: 1em !important;
+}
+
+.avue-data-display {
+  margin-top: 4em;
+}
+
 ::v-deep .cell-color {
   color: #409eff !important;
   cursor: pointer;

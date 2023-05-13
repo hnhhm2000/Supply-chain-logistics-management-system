@@ -10,6 +10,9 @@ import SimQuote from "./components/SimQuote.vue"
 import SimAccounting from "./components/SimAccounting.vue"
 import SimInventory from "./components/SimInventory.vue"
 import SimShippment from "./components/SimShippment.vue"
+import SimTask from "./components/SimTask.vue"
+import SimCharges from "./components/SimCharges.vue"
+import SimCommodity from "./components/Commodity.vue"
 import './assets/css/main.css'
 import '@smallwei/avue/lib/index.css';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -27,6 +30,9 @@ Vue.component('SimQuote', SimQuote)
 Vue.component('SimAccounting', SimAccounting) 
 Vue.component('SimInventory', SimInventory) 
 Vue.component('SimShippment', SimShippment) 
+Vue.component('SimTask', SimTask) 
+Vue.component('SimCharges', SimCharges) 
+Vue.component('SimCommodity', SimCommodity) 
 
 
 new Vue({

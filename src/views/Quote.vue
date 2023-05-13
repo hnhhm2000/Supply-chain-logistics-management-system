@@ -213,10 +213,12 @@ export default {
           {
             label: "创建人",
             prop: "CreatedOn",
+            width:90
           },
           {
             label: "创建时间",
             prop: "CreatedOn",
+            width:90
           },
           {
             label: "更新人",
@@ -226,6 +228,7 @@ export default {
           {
             label: "最近更新",
             prop: "UpdateOn",
+            width:90
           },
           {
             label: "备注",
