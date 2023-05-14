@@ -289,6 +289,7 @@
                     class="input"
                     placeholder="请输入内容"
                   ></el-input>
+                  
                 </el-form-item>
               </el-col>
               <el-col :span="8">
@@ -305,12 +306,14 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="更新时间:">
-                  <el-input
-                    v-model="UpdatedOn"
-                    size="small"
-                    class="input"
-                    placeholder="请输入内容"
-                  ></el-input>
+                   <el-date-picker
+                        v-model="UpdatedOn"
+                        type="date"
+                        placeholder="选择日期"
+                        size="small"
+                        class="input"
+                      >
+                      </el-date-picker>
                 </el-form-item>
               </el-col>
 
