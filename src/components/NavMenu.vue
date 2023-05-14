@@ -50,10 +50,7 @@
       </el-menu-item-group>
     </el-submenu>
 
-    <el-menu-item route index="./quote">
-      <img class="NavMenu-icon" src="../assets/img/release.png" />
-      <span slot="title">报价</span>
-    </el-menu-item>
+
     <el-menu-item route index="./air">
       <img class="NavMenu-icon" src="../assets/img/Air.png" />
       <span slot="title">空运</span>

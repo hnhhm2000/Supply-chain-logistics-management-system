@@ -37,6 +37,7 @@
                         v-model="role"
                         placeholder="请选择"
                         class="select"
+                        size="small"
                       >
                         <el-option
                           v-for="item in Sexs"
@@ -60,12 +61,21 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
-                    <el-form-item label="状态" prop="isDisabled">
-                      <el-input
-                        v-model="isDisabled"
+                    <el-form-item label="状态">
+                      <el-select
+                        v-model="status"
+                        placeholder="请选择"
+                        class="select"
                         size="small"
-                        class="input"
-                      ></el-input>
+                      >
+                        <el-option
+                          v-for="item in StatusOp"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value"
+                        >
+                        </el-option>
+                      </el-select>
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
@@ -74,6 +84,7 @@
                         v-model="role"
                         placeholder="请选择"
                         class="select"
+                        size="small"
                       >
                         <el-option
                           v-for="item in Roles"
@@ -147,7 +158,7 @@
                       ></el-input>
                     </el-form-item>
                   </el-col>
-                     <el-col :span="8">
+                  <el-col :span="8">
                     <el-form-item label="邮编">
                       <el-input
                         v-model="updateTime"
@@ -179,7 +190,18 @@
               >
               </el-input>
             </div>
-          </el-card>
+          </el-card>  <!-- 商品库存 -->
+        <el-tab-pane label="商品" name="second">
+          <sim-quote></sim-quote>
+        </el-tab-pane>
+        <!-- 费用明细 -->
+        <el-tab-pane label="费用明细" name="third">
+          <sim-charges></sim-charges>
+        </el-tab-pane>
+        <!-- 任务 -->
+        <el-tab-pane label="任务" name="fourth">
+          <sim-task></sim-task>
+        </el-tab-pane>
 
           <!-- 卡片四  -->
           <el-card class="whiteCard">
@@ -201,12 +223,14 @@
                   </el-col>
                   <el-col :span="8">
                     <el-form-item label="创建时间" prop="createBy">
-                      <el-input
-                        v-model="createBy"
+                      <el-date-picker
+                        v-model="createdOn"
+                        type="date"
+                        placeholder="选择日期"
                         size="small"
                         class="input"
-                        :maxlength="11"
-                      ></el-input>
+                      >
+                      </el-date-picker>
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
@@ -222,12 +246,14 @@
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="更新时间">
-                      <el-input
-                        v-model="updateTime"
+                      <el-date-picker
+                        v-model="updateOn"
+                        type="date"
+                        placeholder="选择日期"
                         size="small"
                         class="input"
-                        :maxlength="11"
-                      ></el-input>
+                      >
+                      </el-date-picker>
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
@@ -294,7 +320,7 @@ export default {
       password: "",
       role: "",
       email: "",
-      isDisabled: "",
+      status: "",
 
       // 纳税人信息
       address: "",
@@ -307,9 +333,9 @@ export default {
       // 操作人信息
       isDeleted: "",
       createBy: "",
-      createTime: "",
+      createOn: "",
       zip: "",
-      updatetime: "",
+      updateOn: "",
 
       // 角色的选项
       Roles: [
@@ -346,6 +372,22 @@ export default {
           label: "女",
         },
       ],
+
+      // 性别的选项
+      StatusOp: [
+        {
+          value: "选项1",
+          label: "活跃",
+        },
+        {
+          value: "选项1",
+          label: "不活跃",
+        },
+        {
+          value: "选项1",
+          label: "挂起",
+        },
+      ],
     };
   },
 
@@ -359,6 +401,4 @@ export default {
 .input {
   width: 19em;
 }
-
-
 </style>

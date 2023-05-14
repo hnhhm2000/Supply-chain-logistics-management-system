@@ -2,274 +2,261 @@
   <div class="bg">
     <!-- 主要内容 -->
     <main class="add-main">
-      <!-- 卡片一  -->
-      <el-card class="whiteCard">
-        <div slot="header" class="clearfix">
-          <span class="CardTitle">账户信息</span>
-        </div>
+         <!-- 卡片一  -->
+          <el-card class="whiteCard">
+            <div slot="header" class="clearfix">
+              <span class="CardTitle">账户信息</span>
+            </div>
 
-        <div>
-          <el-form
-            ref="formCustomers"
-            :model="Customers"
-            :rules="rules"
-            label-width="10em"
-          >
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="账户名称" prop="name">
-                  <el-input
-                    v-model="name"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="密码" prop="password">
-                  <el-input
-                    v-model="password"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="角色" prop="role">
-                  <el-select v-model="role" placeholder="请选择" class="select">
-                    <el-option
-                      v-for="item in options"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value"
-                    >
-                    </el-option>
-                  </el-select>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="电子邮箱" prop="email">
-                  <el-input
-                    v-model="email"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="状态" prop="isDisabled">
-                  <el-input
-                    v-model="isDisabled"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="联系人及电话" prop="phone">
-                  <el-input
-                    v-model="phone"
-                    size="small"
-                    class="input"
-                    :maxlength="11"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-          </el-form>
-        </div>
-      </el-card>
-
-      <!-- 卡片二  -->
-      <el-card class="whiteCard">
-        <div slot="header" class="clearfix">
-          <span class="CardTitle">地址信息</span>
-        </div>
-
-        <div>
-          <el-form
-            ref="formTaxpayers"
-            :model="Taxpayers"
-            :rules="rules"
-            label-width="10em"
-          >
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="主要地址" prop="address">
-                  <el-input
-                    v-model="address"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="账单地址" prop="address">
-                  <el-input
-                    v-model="address"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="注册电话" prop="phone">
-                  <el-input
-                    v-model="phone"
-                    size="small"
-                    class="input"
-                    :maxlength="11"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="省/市" prop="province">
-                  <div class="flex">
-                    <el-select
-                      v-model="province"
-                      multiple
-                      placeholder="请选择"
-                      style="width: 10em"
-                    >
-                      <el-option
-                        v-for="item in provinces"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
+            <div>
+              <el-form label-width="10em">
+                <el-row>
+                  <el-col :span="8">
+                    <el-form-item label="账户名称" prop="name">
+                      <el-input
+                        v-model="name"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">  
+                    <el-form-item label="密码" prop="password">
+                      <el-input
+                        v-model="password"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="性别" prop="role">
+                      <el-select
+                        v-model="role"
+                        placeholder="请选择"
+                        class="select"
+                        size="small"
                       >
-                      </el-option>
-                    </el-select>
-                     
-                    <el-select
-                      v-model="city"
-                      multiple
-                      collapse-tags
-                      style="margin-left: 20px; width: 10em"
-                      placeholder="请选择"
-                    >
-                      <el-option
-                        v-for="item in cities"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
+                        <el-option
+                          v-for="item in Sexs"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value"
+                        >
+                        </el-option>
+                      </el-select>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-col :span="8">
+                    <el-form-item label="电子邮箱" prop="email">
+                      <el-input
+                        v-model="email"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="状态">
+                      <el-select
+                        v-model="status"
+                        placeholder="请选择"
+                        class="select"
+                        size="small"
                       >
-                      </el-option>
-                    </el-select>
-                  </div>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="开户银行" prop="salesAgency">
-                  <el-input
-                    v-model="salesAgency"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="银行账号" prop="id">
-                  <el-input v-model="id" size="small" class="input"></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-          </el-form>
-        </div>
-      </el-card>
+                        <el-option
+                          v-for="item in StatusOp"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value"
+                        >
+                        </el-option>
+                      </el-select>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="角色" prop="role">
+                      <el-select
+                        v-model="role"
+                        placeholder="请选择"
+                        class="select"
+                        size="small"
+                      >
+                        <el-option
+                          v-for="item in Roles"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value"
+                        >
+                        </el-option>
+                      </el-select>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+              </el-form>
+            </div>
+          </el-card>
 
-      <!-- 卡片三  -->
-      <el-card class="whiteCard">
-        <div slot="header" class="clearfix">
-          <span class="CardTitle">备注说明</span>
-        </div>
+          <!-- 卡片二  -->
+          <el-card class="whiteCard">
+            <div slot="header" class="clearfix">
+              <span class="CardTitle">地址信息</span>
+            </div>
 
-        <div>
-          <el-input
-            type="textarea"
-            :rows="4"
-            placeholder="请输入内容"
-            v-model="remark"
-            size="medium"
-            class="textarea"
-            maxlength="1024"
-            show-word-limit
-          >
-          </el-input>
-        </div>
-      </el-card>
+            <div>
+              <el-form label-width="10em">
+                <el-row>
+                  <el-col :span="8">
+                    <el-form-item label="主要地址" prop="address">
+                      <el-input
+                        v-model="address"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="电话号码" prop="phone">
+                      <el-input
+                        v-model="phone"
+                        size="small"
+                        class="input"
+                        :maxlength="11"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="城市" prop="salesAgency">
+                      <el-input
+                        v-model="salesAgency"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-col :span="8">
+                    <el-form-item label="国家" prop="id">
+                      <el-input
+                        v-model="country"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="省份" prop="province">
+                      <el-input
+                        v-model="province"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="邮编">
+                      <el-input
+                        v-model="updateTime"
+                        size="small"
+                        class="input"
+                        :maxlength="11"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+              </el-form>
+            </div>
+          </el-card>
 
-      <!-- 卡片四  -->
-      <el-card class="whiteCard">
-        <div slot="header" class="clearfix">
-          <span class="CardTitle">其他</span>
-        </div>
+          <!-- 卡片三  -->
+          <el-card class="whiteCard">
+            <div slot="header" class="clearfix">
+              <span class="CardTitle">备注说明</span>
+            </div>
 
-        <div>
-          <el-form
-            ref="formOperator"
-            :model="Operator"
-            :rules="rules"
-            label-width="10em"
-          >
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="操作人" prop="createBy">
-                  <el-input
-                    v-model="createBy"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="付款方式" prop="createBy">
-                  <el-input
-                    v-model="createBy"
-                    size="small"
-                    class="input"
-                    :maxlength="11"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="销售代表" prop="salesAgency">
-                  <el-input
-                    v-model="salesAgency"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="更新时间" prop="updateTime">
-                  <el-input
-                    v-model="updateTime"
-                    size="small"
-                    class="input"
-                    :maxlength="11"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="邮编" prop="zip">
-                  <el-input v-model="zip" size="small" class="input"></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="身份证号码" prop="id">
-                  <el-input v-model="id" size="small" class="input"></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-          </el-form>
-        </div>
-      </el-card>
+            <div>
+              <el-input
+                type="textarea"
+                :rows="4"
+                placeholder="请输入内容"
+                v-model="textarea"
+                maxlength="600"
+                show-word-limit
+              >
+              </el-input>
+            </div>
+          </el-card>
+
+          <!-- 卡片四  -->
+          <el-card class="whiteCard">
+            <div slot="header" class="clearfix">
+              <span class="CardTitle">其他</span>
+            </div>
+
+            <div>
+              <el-form label-width="10em">
+                <el-row>
+                  <el-col :span="8">
+                    <el-form-item label="创建人" prop="createBy">
+                      <el-input
+                        v-model="createBy"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="创建时间" prop="createBy">
+                      <el-date-picker
+                        v-model="createdOn"
+                        type="date"
+                        placeholder="选择日期"
+                        size="small"
+                        class="input"
+                      >
+                      </el-date-picker>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="更新人" prop="salesAgency">
+                      <el-input
+                        v-model="salesAgency"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-col :span="8">
+                    <el-form-item label="更新时间">
+                      <el-date-picker
+                        v-model="updateOn"
+                        type="date"
+                        placeholder="选择日期"
+                        size="small"
+                        class="input"
+                      >
+                      </el-date-picker>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="客户ID" prop="id">
+                      <el-input
+                        v-model="id"
+                        size="small"
+                        class="input"
+                        disabled
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+              </el-form>
+            </div>
+          </el-card>
     </main>
 
     <!-- 底部栏 -->
