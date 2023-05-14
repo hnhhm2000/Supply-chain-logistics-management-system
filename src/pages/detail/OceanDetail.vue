@@ -18,55 +18,67 @@
                 <el-form-item label="财务:"> </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="编号:"> </el-form-item>
+                <el-form-item label="海运编号:"> </el-form-item>
               </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="起飞日:"> </el-form-item>
+                <el-form-item label="启航日:"> </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="始发地:"> </el-form-item>
+                <el-form-item label="抵达日:"> </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="目的地:"> </el-form-item>
+                <el-form-item label="收货港:"> </el-form-item>
               </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="客户:"> </el-form-item>
+                <el-form-item label="发货港:"> </el-form-item>
               </el-col>
+              <el-col :span="8">
+                <el-form-item label="收货日:"> </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="收货地点:"> </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
               <el-col :span="8">
                 <el-form-item label="托运人:"> </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="收货人:"> </el-form-item>
               </el-col>
-            </el-row>
-
-            <el-row>
               <el-col :span="8">
                 <el-form-item label="件数:"> </el-form-item>
               </el-col>
+            </el-row>
+
+            <el-row>
               <el-col :span="8">
                 <el-form-item label="重量:"> </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="收入:"> </el-form-item>
               </el-col>
+              <el-col :span="8">
+                <el-form-item label="支出:"> </el-form-item>
+              </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="支出:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
                 <el-form-item label="利润:"> </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="承运人:"> </el-form-item>
+                <el-form-item label="装载日期:"> </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="备注:"> </el-form-item>
               </el-col>
             </el-row>
 
@@ -75,7 +87,19 @@
                 <el-form-item label="项目:"> </el-form-item>
               </el-col>
               <el-col :span="8">
+                <el-form-item label="承运人:"> </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="商品名:"> </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
                 <el-form-item label="最大容量:"> </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="客户:"> </el-form-item>
               </el-col>
             </el-row>
           </el-form>
@@ -88,9 +112,7 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-        <div class="remark">
-        
-        </div>
+        <div></div>
       </el-card>
 
       <!-- 卡片三  -->
@@ -119,7 +141,7 @@
               </el-col>
 
               <el-col :span="8">
-                <el-form-item label="空运ID:"> </el-form-item>
+                <el-form-item label="海运ID:"> </el-form-item>
               </el-col>
             </el-row>
           </el-form>
@@ -130,15 +152,8 @@
     <!-- 底部栏 -->
     <footer class="btns">
       <div style="margin-top: 2em">
-        <el-button
-          type="primary"
-          @click="
-            $router.push({
-              name: 'InventoryEdit',
-              params: { id: $route.params.id },
-            })
-          "
-          >编辑内容</el-button
+        <el-button type="primary" @click="submitForm('form')"
+          >保存提交</el-button
         >
         <el-button type="primary" plain @click="$router.back()">返回</el-button>
       </div>
@@ -149,33 +164,24 @@
 // import axios from "axios";
 
 export default {
-  name: "AirDetail",
+  name: "BillAdd",
 
   data() {
     return {
-      AirFreightID: "",
-      Status: "",
-      Accounting: "",
-      // 空运编号
-      Shipment: "",
-      // 起飞日
-      Departure: "",
-      // 抵达日
-      Arrival: "",
-      Origin: "",
-      Destination: "",
-      Customer: "",
-      Shipper: "",
-      Consignee: "",
-      PCS: "",
-      Weight: "",
-      Income: "",
-      Expense: "",
-      Profit: "",
-      Carrier: "",
+      InvoiceID: "",
+      Number: "",
+      CreatedBy: "",
+      CreatedOn: "",
+      Type: "",
+      // 管理模块
+      Module: "",
       Project: "",
-      MaxPieces: "",
-      remarks: "",
+      Date: "",
+      // 供应商
+      Vendor: "",
+      DueDate: "",
+      TotalAmount: "",
+      Remarks: "",
     };
   },
 
@@ -185,8 +191,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/css/MainInformation.css";
-
-.input {
-  width: 20em;
-}
 </style>

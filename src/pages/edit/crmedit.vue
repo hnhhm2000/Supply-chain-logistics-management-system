@@ -174,9 +174,7 @@
                 :rows="4"
                 placeholder="请输入内容"
                 v-model="textarea"
-                size="medium"
-                class="textarea"
-                maxlength="1024"
+                maxlength="600"
                 show-word-limit
               >
               </el-input>

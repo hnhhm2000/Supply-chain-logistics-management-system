@@ -22,14 +22,15 @@
               </el-col>
             </el-row>
             <el-row>
-              <el-col :span="8">
-                <el-form-item label="提单:"> </el-form-item>
-              </el-col>
+        
               <el-col :span="8">
                 <el-form-item label="提货日期:"> </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="发货日期:"> </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="创造者:"> </el-form-item>
               </el-col>
             </el-row>
 
@@ -85,9 +86,7 @@
               <el-col :span="8">
                 <el-form-item label="利润:"> </el-form-item>
               </el-col>
-              <el-col :span="8">
-                <el-form-item label="创造者:"> </el-form-item>
-              </el-col>
+              
               <el-col :span="8">
                 <el-form-item label="创造时间:"> </el-form-item>
               </el-col>
@@ -132,15 +131,9 @@
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="运输方式:" prop="province"> </el-form-item>
+                <el-form-item label="货物概述:" prop="province"> </el-form-item>
               </el-col>
-              <el-col :span="8">
-                <el-form-item label="商品名称:" prop="salesAgency">
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="注意事项:" prop="id"> </el-form-item>
-              </el-col>
+             
             </el-row>
           </el-form>
         </div>
@@ -152,7 +145,9 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-        <div class="remark"></div>
+         <div class="remark">
+           
+            </div>
       </el-card>
 
       <!-- 卡片四  -->

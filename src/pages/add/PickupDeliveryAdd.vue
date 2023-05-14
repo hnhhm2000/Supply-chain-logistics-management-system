@@ -41,13 +41,7 @@
             </el-row>
             <el-row>
               <el-col :span="8">
-                <el-form-item label="提单:">
-                  <el-input
-                    v-model="BillOfLading"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
+               
               </el-col>
               <el-col :span="8">
                 <el-form-item label="提货日期:">
@@ -319,7 +313,17 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-        <div class="remark"></div>
+         <div>
+              <el-input
+                type="textarea"
+                :rows="4"
+                placeholder="请输入内容"
+                v-model="textarea"
+                maxlength="600"
+                show-word-limit
+              >
+              </el-input>
+            </div>
       </el-card>
 
       <!-- 卡片四  -->

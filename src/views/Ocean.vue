@@ -128,6 +128,7 @@ export default {
           {
             label: "编号",
             prop: "ShipmentNumber",
+            width:100
           },
           {
             label: "启航日",

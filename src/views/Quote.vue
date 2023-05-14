@@ -138,11 +138,13 @@ export default {
           {
             label: "业务",
             prop: "Activity",
+            width:100
           },
           {
             label: "报价编号",
             prop: "QuoteNumber",
             search: true,
+            width:100
           },
           {
             label: "项目",
@@ -161,6 +163,7 @@ export default {
           {
             label: "截止日期",
             prop: "UntilDate",
+            width:90
           },
           {
             label: "客户",

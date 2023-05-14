@@ -369,6 +369,33 @@ const routes = [
     },
   },
 
+  {
+    path: "/air/detail/:id",
+    name: "ReleaseDetail",
+    component: () => import("../pages/detail/AirDetail"),
+    meta: {
+      title: "空运详情",
+    },
+  },
+
+  {
+    path: "/ocean/detail/:id",
+    name: "ReleaseDetail",
+    component: () => import("../pages/detail/OceanDetail"),
+    meta: {
+      title: "海运详情",
+    },
+  },
+
+  {
+    path: "/ground/detail/:id",
+    name: "ReleaseDetail",
+    component: () => import("../pages/detail/GroundDetail"),
+    meta: {
+      title: "陆运详情",
+    },
+  },
+
   // 编辑
   {
     path: "/crm/edit/:id",

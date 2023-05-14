@@ -128,6 +128,7 @@ export default {
             label: "收据编号",
             prop: "Receipt",
             search: true,
+            width:100
           },
           {
             label: "创造人",
@@ -211,7 +212,7 @@ export default {
      * @description: 点击名字进行跳转
      */
     pageto(row, column) {
-      if (column.label == "订单编号") {
+      if (column.label == "收据编号") {
         this.$router.push(`/receipt/detail/${row.id}`);
       }
     },

@@ -3,8 +3,6 @@
             :data="data"
             :option="option"
             :cell-class-name="addClass"
-            @cell-click="pageto"
-            class="Mycrud"
           >
             <el-button
               slot="menuLeft"

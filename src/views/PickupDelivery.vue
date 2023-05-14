@@ -51,7 +51,7 @@ export default {
         {
           Status: "请求中",
           Accounting: "空",
-          Number: "PKD0000001",
+          OrderNumber: "PKD0000001",
           BillOfLading: "BOL1234",
           PickupDate: "2023-05-01",
           DeliveryDate: "2023-05-15",
@@ -80,7 +80,7 @@ export default {
         {
           Status: "正在调度",
           Accounting: "空",
-          Number: "PKD0000004",
+          OrderNumber: "PKD0000004",
           BillOfLading: "BOL5678",
           PickupDate: "2023-04-15",
           DeliveryDate: "2023-04-30",
@@ -125,20 +125,19 @@ export default {
           {
             label: "订单编号",
             prop: "OrderNumber",
-            search:true
-          },
-          {
-            label: "提单",
-            prop: "BillOfLading",
+            search:true,
+            width:100
           },
           {
             label: "提货日期",
             prop: "PickupDate",
-            search:true
+            search:true,
+            width:90
           },
           {
             label: "发货日期",
             prop: "DeliveryDate",
+            width:90
           },
           {
             label: "托运人",
@@ -210,21 +209,25 @@ export default {
           {
             label: "最近更新",
             prop: "UpdateOn",
+            width:90
           },
           {
             label: "预计到达时间",
             prop: "ETA",
+            width:90
           },
           {
             label: "预计发货时间",
             prop: "ETD",
+            width:90
           },
           {
             label: "货物签收时间",
             prop: "PodDate",
+            width:90
           },
           {
-            label: "预计到达时间",
+            label: "备注",
             prop: "Remarks",
           },
         ],

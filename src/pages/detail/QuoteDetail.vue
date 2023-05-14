@@ -149,7 +149,9 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-        <div class="remark"></div>
+        <div class="remark">
+        
+        </div>
       </el-card>
 
       <!-- 卡片四  -->

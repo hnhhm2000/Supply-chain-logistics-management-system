@@ -33,7 +33,7 @@
               <el-col :span="8">
                 <el-form-item label="编号:">
                   <el-input
-                    v-model="Number"
+                    v-model="ReleaseNumber"
                     size="small"
                     class="input"
                   ></el-input>
@@ -124,7 +124,17 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-        <div class="remark"></div>
+         <div>
+              <el-input
+                type="textarea"
+                :rows="4"
+                placeholder="请输入内容"
+                v-model="textarea"
+                maxlength="600"
+                show-word-limit
+              >
+              </el-input>
+            </div>
       </el-card>
 
       <!-- 卡片三  -->
@@ -214,7 +224,7 @@ export default {
       OutboundID: "",
       Status: "",
       Accounting: "",
-      Number: "",
+      ReleaseNumber: "",
       CreatedBy: "",
       CreatedOn: "",
       DateTimeOut: "",
