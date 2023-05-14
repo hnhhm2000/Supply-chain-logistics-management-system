@@ -1,3 +1,4 @@
+@@ -1,458 +1,458 @@
 <template>
   <div class="bg">
     <!-- 主要内容 -->
@@ -72,12 +73,14 @@
                   </el-col>
                   <el-col :span="8">
                     <el-form-item label="创建日期:" prop="phone">
-                      <el-input
+                      <el-date-picker
                         v-model="CreatedDate"
+                        type="date"
+                        placeholder="选择日期"
                         size="small"
                         class="input"
-                        placeholder="请输入内容"
-                      ></el-input>
+                      >
+                      </el-date-picker>
                     </el-form-item>
                   </el-col>
                 </el-row>
@@ -85,12 +88,14 @@
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="截止日期:">
-                      <el-input
+                      <el-date-picker
                         v-model="UntilDate"
+                        type="date"
+                        placeholder="选择日期"
                         size="small"
                         class="input"
-                        placeholder="请输入内容"
-                      ></el-input>
+                      >
+                      </el-date-picker>
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
@@ -236,6 +241,8 @@
                     <el-form-item label="收入:">
                       <el-input
                         v-model="Income"
+                        size="small"
+                        class="input"
                         placeholder="请输入内容"
                       ></el-input>
                     </el-form-item>
@@ -296,17 +303,7 @@
               <span class="CardTitle">备注说明</span>
             </div>
 
-             <div>
-              <el-input
-                type="textarea"
-                :rows="4"
-                placeholder="请输入内容"
-                v-model="textarea"
-                maxlength="600"
-                show-word-limit
-              >
-              </el-input>
-            </div>
+            <div class="remark"></div>
           </el-card>
 
           <!-- 卡片四  -->
@@ -335,12 +332,14 @@
                   </el-col>
                   <el-col :span="8">
                     <el-form-item label="创建时间:">
-                      <el-input
+                      <el-date-picker
                         v-model="CreatedOn"
+                        type="date"
+                        placeholder="选择日期"
                         size="small"
                         class="input"
-                        placeholder="请输入内容"
-                      ></el-input>
+                      >
+                      </el-date-picker>
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
@@ -357,12 +356,14 @@
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="更新时间:">
-                      <el-input
+                      <el-date-picker
                         v-model="UpdatedOn"
+                        type="date"
+                        placeholder="选择日期"
                         size="small"
                         class="input"
-                        placeholder="请输入内容"
-                      ></el-input>
+                      >
+                      </el-date-picker>
                     </el-form-item>
                   </el-col>
 
@@ -393,7 +394,6 @@
         <el-tab-pane label="任务" name="fourth">
           <sim-task></sim-task>
         </el-tab-pane>
-
       </el-tabs>
     </main>
 
@@ -403,7 +403,10 @@
         <el-button type="primary" @click="submitForm('form')"
           >保存提交</el-button
         >
-        <el-button type="primary" plain @click="$router.push({ path: '/quote' })"
+        <el-button
+          type="primary"
+          plain
+          @click="$router.push({ path: '/quote' })"
           >返回</el-button
         >
       </div>
@@ -411,7 +414,6 @@
   </div>
 </template>
 <script>
-
 export default {
   name: "QuoteEdit",
 

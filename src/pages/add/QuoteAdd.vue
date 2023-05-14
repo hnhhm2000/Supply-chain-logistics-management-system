@@ -15,7 +15,7 @@
                 <el-form-item label="状态:">
                   <el-input
                     v-model="Status"
-                     size="small"
+                    size="small"
                     class="input"
                     placeholder="请输入内容"
                   ></el-input>
@@ -25,7 +25,7 @@
                 <el-form-item label="活动:">
                   <el-input
                     v-model="Activity"
-                     size="small"
+                    size="small"
                     class="input"
                     placeholder="请输入内容"
                   ></el-input>
@@ -35,7 +35,7 @@
                 <el-form-item label="报价编号:">
                   <el-input
                     v-model="QuoteNumber"
-                     size="small"
+                    size="small"
                     class="input"
                     placeholder="请输入内容"
                   ></el-input>
@@ -47,7 +47,7 @@
                 <el-form-item label="商业项目:">
                   <el-input
                     v-model="Project"
-                     size="small"
+                    size="small"
                     class="input"
                     placeholder="请输入内容"
                   ></el-input>
@@ -57,7 +57,7 @@
                 <el-form-item label="报价者:">
                   <el-input
                     v-model="IssuingCompanyName"
-                     size="small"
+                    size="small"
                     class="input"
                     placeholder="请输入内容"
                   ></el-input>
@@ -65,12 +65,14 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="创建日期:" prop="phone">
-                  <el-input
+                  <el-date-picker
                     v-model="CreatedDate"
-                     size="small"
+                    type="date"
+                    placeholder="选择日期"
+                    size="small"
                     class="input"
-                    placeholder="请输入内容"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -78,19 +80,21 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="截止日期:">
-                  <el-input
+                  <el-date-picker
                     v-model="UntilDate"
-                     size="small"
+                    type="date"
+                    placeholder="选择日期"
+                    size="small"
                     class="input"
-                    placeholder="请输入内容"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="客户:">
                   <el-input
                     v-model="Customer"
-                     size="small"
+                    size="small"
                     class="input"
                     placeholder="请输入内容"
                   ></el-input>
@@ -286,17 +290,17 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-         <div>
-              <el-input
-                type="textarea"
-                :rows="4"
-                placeholder="请输入内容"
-                v-model="textarea"
-                maxlength="600"
-                show-word-limit
-              >
-              </el-input>
-            </div>
+        <div>
+          <el-input
+            type="textarea"
+            :rows="4"
+            placeholder="请输入内容"
+            v-model="textarea"
+            maxlength="600"
+            show-word-limit
+          >
+          </el-input>
+        </div>
       </el-card>
 
       <!-- 卡片四  -->
@@ -320,12 +324,14 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="创建时间:">
-                  <el-input
+                  <el-date-picker
                     v-model="CreatedOn"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                    placeholder="请输入内容"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
@@ -342,12 +348,14 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="更新时间:">
-                  <el-input
+                  <el-date-picker
                     v-model="UpdatedOn"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                    placeholder="请输入内容"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
