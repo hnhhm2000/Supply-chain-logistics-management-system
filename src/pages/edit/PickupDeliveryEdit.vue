@@ -2,7 +2,7 @@
   <div class="bg">
     <!-- 主要内容 -->
     <main class="add-main">
-      <!-- 卡片一  -->
+         <!-- 卡片一  -->
       <el-card class="whiteCard">
         <div slot="header" class="clearfix">
           <span class="CardTitle">主要信息</span>
@@ -13,11 +13,20 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="状态:">
-                  <el-input
-                    v-model="Status"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                    <el-select
+                        v-model="status"
+                        placeholder="请选择"
+                        style="width: 17.6em"
+                        size="small"
+                      >
+                        <el-option
+                          v-for="item in StatusOp"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value"
+                        >
+                        </el-option>
+                    </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
@@ -26,6 +35,7 @@
                     v-model="Accouting"
                     size="small"
                     class="input"
+                    disabled
                   ></el-input>
                 </el-form-item>
               </el-col>
@@ -40,29 +50,35 @@
               </el-col>
             </el-row>
             <el-row>
-              
               <el-col :span="8">
                 <el-form-item label="提货日期:">
-                  <el-input
+                  <el-date-picker
                     v-model="PickupFrom"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="发货日期:">
-                  <el-input
+                  <el-date-picker
                     v-model="DeliveryDate"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
-                 <el-col :span="8">
-                <el-form-item label="创造者:">
+
+              <el-col :span="8">
+                <el-form-item label="利润:">
                   <el-input
-                    v-model="CreatedBy"
+                    v-model="Profit"
                     size="small"
                     class="input"
                   ></el-input>
@@ -181,28 +197,6 @@
                 </el-form-item>
               </el-col>
             </el-row>
-
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="利润:">
-                  <el-input
-                    v-model="Profit"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-           
-              <el-col :span="8">
-                <el-form-item label="创造时间:">
-                  <el-input
-                    v-model="CreatedOn"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
           </el-form>
         </div>
       </el-card>
@@ -295,17 +289,17 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-         <div>
-              <el-input
-                type="textarea"
-                :rows="4"
-                placeholder="请输入内容"
-                v-model="textarea"
-                maxlength="600"
-                show-word-limit
-              >
-              </el-input>
-            </div>
+        <div>
+          <el-input
+            type="textarea"
+            :rows="4"
+            placeholder="请输入内容"
+            v-model="textarea"
+            maxlength="600"
+            show-word-limit
+          >
+          </el-input>
+        </div>
       </el-card>
 
       <!-- 卡片四  -->
@@ -320,7 +314,7 @@
               <el-col :span="8">
                 <el-form-item label="创建人:">
                   <el-input
-                    v-model="name"
+                    v-model="CreatedBy"
                     size="small"
                     class="input"
                   ></el-input>
@@ -328,17 +322,20 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="创建时间:">
-                  <el-input
-                    v-model="name"
+                  <el-date-picker
+                    v-model="createdOn"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="更新人:">
                   <el-input
-                    v-model="name"
+                    v-model="UpdatedBy"
                     size="small"
                     class="input"
                   ></el-input>
@@ -349,23 +346,40 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="更新时间:">
-                  <el-input
-                    v-model="name"
+                  <el-date-picker
+                    v-model="updateOn"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
 
               <el-col :span="8">
                 <el-form-item label="预计到达时间:">
-                  <el-input v-model="ETA" size="small" class="input"></el-input>
+                  <el-date-picker
+                    v-model="ETA"
+                    type="date"
+                    placeholder="选择日期"
+                    size="small"
+                    class="input"
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
 
               <el-col :span="8">
                 <el-form-item label="预计发货时间:">
-                  <el-input v-model="ETD" size="small" class="input"></el-input>
+                  <el-date-picker
+                    v-model="ETD"
+                    type="date"
+                    placeholder="选择日期"
+                    size="small"
+                    class="input"
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -373,11 +387,14 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="货物签收时间:">
-                  <el-input
+                  <el-date-picker
                     v-model="PodDate"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
 
@@ -403,7 +420,10 @@
         <el-button type="primary" @click="submitForm('form')"
           >保存提交</el-button
         >
-        <el-button type="primary" plain @click="$router.push({ path: '/pickupdelivery' })"
+        <el-button
+          type="primary"
+          plain
+          @click="$router.push({ path: '/pickupdelivery' })"
           >返回</el-button
         >
       </div>
@@ -417,7 +437,7 @@ export default {
   data() {
     return {
       activeName: "first",
-      Status: "",
+      status: "",
       Accouting: "",
       OrderNumber: "",
       BillOfLading: "",
@@ -453,6 +473,41 @@ export default {
       // 注意事项
       Notes: "",
       Description: "",
+
+       StatusOp: [
+        {
+          value: "选项1",
+          label: "请求中",
+        },
+        {
+          value: "选项2",
+          label: "正在调度",
+        },
+        {
+          value: "选项3",
+          label: "暂停中",
+        },
+        {
+          value: "选项3",
+          label: "已提货",
+        },
+        {
+          value: "选项3",
+          label: "运输中",
+        },
+        {
+          value: "选项3",
+          label: "晚点",
+        },
+        {
+          value: "选项3",
+          label: "已收货",
+        },
+        {
+          value: "选项3",
+          label: "完成",
+        },
+      ],
     };
   },
 

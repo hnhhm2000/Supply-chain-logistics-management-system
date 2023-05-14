@@ -20,11 +20,20 @@
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="状态:">
-                      <el-input
-                        v-model="Status"
+                      <el-select
+                        v-model="status"
+                        placeholder="请选择"
+                        style="width:17.6em"
                         size="small"
-                        class="input"
-                      ></el-input>
+                      >
+                        <el-option
+                          v-for="item in StatusOp"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value"
+                        >
+                        </el-option>
+                      </el-select>
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
@@ -33,6 +42,7 @@
                         v-model="Accouting"
                         size="small"
                         class="input"
+                        disabled
                       ></el-input>
                     </el-form-item>
                   </el-col>
@@ -49,11 +59,14 @@
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="开具时间:">
-                      <el-input
+                      <el-date-picker
                         v-model="ReceiptTime"
+                        type="date"
+                        placeholder="选择日期"
                         size="small"
                         class="input"
-                      ></el-input>
+                      >
+                      </el-date-picker>
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
@@ -166,7 +179,7 @@
               <span class="CardTitle">备注说明</span>
             </div>
 
-             <div>
+            <div>
               <el-input
                 type="textarea"
                 :rows="4"
@@ -204,11 +217,14 @@
                   </el-col>
                   <el-col :span="8">
                     <el-form-item label="创建时间:">
-                      <el-input
+                      <el-date-picker
                         v-model="CreatedOn"
+                        type="date"
+                        placeholder="选择日期"
                         size="small"
                         class="input"
-                      ></el-input>
+                      >
+                      </el-date-picker>
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
@@ -225,11 +241,14 @@
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="更新时间:">
-                      <el-input
+                      <el-date-picker
                         v-model="UpdateOn"
+                        type="date"
+                        placeholder="选择日期"
                         size="small"
                         class="input"
-                      ></el-input>
+                      >
+                      </el-date-picker>
                     </el-form-item>
                   </el-col>
 
@@ -248,7 +267,7 @@
             </div>
           </el-card>
         </el-tab-pane>
-         <!-- 商品库存 -->
+        <!-- 商品库存 -->
         <el-tab-pane label="商品" name="second">
           <sim-quote></sim-quote>
         </el-tab-pane>
@@ -269,7 +288,10 @@
         <el-button type="primary" @click="submitForm('form')"
           >保存提交</el-button
         >
-        <el-button type="primary" plain @click="$router.push({ path: '/receipt' })"
+        <el-button
+          type="primary"
+          plain
+          @click="$router.push({ path: '/receipts' })"
           >返回</el-button
         >
       </div>
@@ -282,7 +304,7 @@ export default {
 
   data() {
     return {
-      activeName:"first",
+      activeName: "first",
       ReceiptID: "",
       Status: "",
       Accounting: "",
@@ -307,6 +329,29 @@ export default {
       ShipperAddress: "",
       ConsigneeAddress: "",
       Remarks: "",
+
+      StatusOp: [
+        {
+          value: "选项1",
+          label: "测量中",
+        },
+        {
+          value: "选项2",
+          label: "文件处理中",
+        },
+        {
+          value: "选项2",
+          label: "拍照扫描中",
+        },
+        {
+          value: "选项2",
+          label: "已抵达",
+        },
+        {
+          value: "选项2",
+          label: "分配中",
+        },
+      ],
     };
   },
 

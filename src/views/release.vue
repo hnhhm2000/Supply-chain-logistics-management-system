@@ -119,7 +119,8 @@ export default {
           {
             label: "编号",
             prop: "number",
-            search:true
+            search:true,
+            width:100
           },
           {
             label: "创建人",
@@ -129,11 +130,13 @@ export default {
           {
             label: "创造时间",
             prop: "CreateOn",
-            search:true
+            search:true,
+            width:90
           },
           {
             label: "出库日期",
             prop: "DateTimeOut",
+            width:90
           },
           {
             label: "发往",
@@ -170,6 +173,7 @@ export default {
           {
             label: "更新时间",
             prop: "UpdatedOn",
+            width:90
           },
         ],
       },

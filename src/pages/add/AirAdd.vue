@@ -13,11 +13,20 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="状态:">
-                  <el-input
-                    v-model="Status"
+                  <el-select
+                    v-model="status"
+                    placeholder="请选择"
+                    style="width: 18.6em"
                     size="small"
-                    class="input"
-                  ></el-input>
+                  >
+                    <el-option
+                      v-for="item in StatusOp"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
@@ -26,6 +35,7 @@
                     v-model="Accounting"
                     size="small"
                     class="input"
+                    disabled
                   ></el-input>
                 </el-form-item>
               </el-col>
@@ -43,22 +53,32 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="起飞日:">
-                  <el-input
-                    v-model="Arrival"
+                  <el-date-picker
+                    v-model="Departure"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="抵达日:">
+                  <el-date-picker
+                    v-model="Arrival"
+                    type="date"
+                    placeholder="选择日期"
+                    size="small"
+                    class="input"
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="始发地:">
-                  <el-input v-model="Origin" size="small" class="input"></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="目的地:">
                   <el-input
-                    v-model="Destination"
+                    v-model="Origin"
                     size="small"
                     class="input"
                   ></el-input>
@@ -68,8 +88,21 @@
 
             <el-row>
               <el-col :span="8">
+                <el-form-item label="目的地:">
+                  <el-input
+                    v-model="Destination"
+                    size="small"
+                    class="input"
+                  ></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
                 <el-form-item label="客户:">
-                  <el-input v-model="Customer" size="small" class="input"></el-input>
+                  <el-input
+                    v-model="Customer"
+                    size="small"
+                    class="input"
+                  ></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
@@ -81,6 +114,9 @@
                   ></el-input>
                 </el-form-item>
               </el-col>
+            </el-row>
+
+            <el-row>
               <el-col :span="8">
                 <el-form-item label="收货人:">
                   <el-input
@@ -90,16 +126,9 @@
                   ></el-input>
                 </el-form-item>
               </el-col>
-            </el-row>
-
-            <el-row>
               <el-col :span="8">
                 <el-form-item label="件数:">
-                  <el-input
-                    v-model="PCS"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <el-input v-model="PCS" size="small" class="input"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
@@ -111,7 +140,9 @@
                   ></el-input>
                 </el-form-item>
               </el-col>
-                 <el-col :span="8">
+            </el-row>
+            <el-row>
+              <el-col :span="8">
                 <el-form-item label="收入:">
                   <el-input
                     v-model="Income"
@@ -120,9 +151,6 @@
                   ></el-input>
                 </el-form-item>
               </el-col>
-            </el-row>
-
-              <el-row>
               <el-col :span="8">
                 <el-form-item label="支出:">
                   <el-input
@@ -141,7 +169,10 @@
                   ></el-input>
                 </el-form-item>
               </el-col>
-                 <el-col :span="8">
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
                 <el-form-item label="承运人:">
                   <el-input
                     v-model="Carrier"
@@ -150,9 +181,6 @@
                   ></el-input>
                 </el-form-item>
               </el-col>
-            </el-row>
-
-             <el-row>
               <el-col :span="8">
                 <el-form-item label="项目:">
                   <el-input
@@ -171,9 +199,7 @@
                   ></el-input>
                 </el-form-item>
               </el-col>
-            
             </el-row>
-
           </el-form>
         </div>
       </el-card>
@@ -184,17 +210,17 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-         <div>
-              <el-input
-                type="textarea"
-                :rows="4"
-                placeholder="请输入内容"
-                v-model="textarea"
-                maxlength="600"
-                show-word-limit
-              >
-              </el-input>
-            </div>
+        <div>
+          <el-input
+            type="textarea"
+            :rows="4"
+            placeholder="请输入内容"
+            v-model="textarea"
+            maxlength="600"
+            show-word-limit
+          >
+          </el-input>
+        </div>
       </el-card>
 
       <!-- 卡片三  -->
@@ -282,7 +308,7 @@ export default {
   data() {
     return {
       AirFreightID: "",
-      Status: "",
+      status: "",
       Accounting: "",
       // 空运编号
       Shipment: "",
@@ -304,6 +330,25 @@ export default {
       Project: "",
       MaxPieces: "",
       remarks: "",
+
+      StatusOp: [
+        {
+          value: "选项1",
+          label: "装载中",
+        },
+        {
+          value: "选项2",
+          label: "运输中",
+        },
+        {
+          value: "选项3",
+          label: "已抵达海关",
+        },
+        {
+          value: "选项3",
+          label: "已完成",
+        },
+      ],
     };
   },
 

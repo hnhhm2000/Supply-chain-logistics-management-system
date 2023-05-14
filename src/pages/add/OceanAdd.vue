@@ -13,26 +13,36 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="状态:">
-                  <el-input
-                    v-model="Status"
+                  <el-select
+                    v-model="status"
+                    placeholder="请选择"
+                    style="width: 18.6em"
                     size="small"
-                    class="input"
-                  ></el-input>
+                  >
+                    <el-option
+                      v-for="item in StatusOp"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="财务:">
                   <el-input
-                    v-model="Accounting"
+                    v-model="accounting"
                     size="small"
                     class="input"
+                    disabled
                   ></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="海运编号:">
                   <el-input
-                    v-model="ShipmentNumber"
+                    v-model="oceanNumber"
                     size="small"
                     class="input"
                   ></el-input>
@@ -43,26 +53,32 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="启航日:">
-                  <el-input
-                    v-model="Departure"
+                  <el-date-picker
+                    v-model="departure"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="抵达日:">
-                  <el-input
-                    v-model="Arrival"
+                  <el-date-picker
+                    v-model="arrival"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="收货港:">
                   <el-input
-                    v-model="PortOfReceipt"
+                    v-model="portOfReceipt"
                     size="small"
                     class="input"
                   ></el-input>
@@ -74,25 +90,29 @@
               <el-col :span="8">
                 <el-form-item label="发货港:">
                   <el-input
-                    v-model="PortOfOrigin"
+                    v-model="portOfOrigin"
                     size="small"
                     class="input"
                   ></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="收货日:">
-                  <el-input
-                    v-model="PlaceOfDate"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                <el-form-item label="收货日:"> 
+                  <el-date-picker
+                  v-model="placeOfDate"
+                  type="date"
+                  placeholder="选择日期"
+                  size="small"
+                  class="input"
+                >
+                </el-date-picker>
                 </el-form-item>
+                
               </el-col>
               <el-col :span="8">
-                <el-form-item label="收货地点:">
+                <el-form-item label="客户:">
                   <el-input
-                    v-model="PlaceOfDelivery"
+                    v-model="customer"
                     size="small"
                     class="input"
                   ></el-input>
@@ -104,7 +124,7 @@
               <el-col :span="8">
                 <el-form-item label="托运人:">
                   <el-input
-                    v-model="Shipper"
+                    v-model="shipper"
                     size="small"
                     class="input"
                   ></el-input>
@@ -113,7 +133,7 @@
               <el-col :span="8">
                 <el-form-item label="收货人:">
                   <el-input
-                    v-model="Consignee"
+                    v-model="consignee"
                     size="small"
                     class="input"
                   ></el-input>
@@ -130,7 +150,7 @@
               <el-col :span="8">
                 <el-form-item label="重量:">
                   <el-input
-                    v-model="Weight"
+                    v-model="weight"
                     size="small"
                     class="input"
                   ></el-input>
@@ -139,7 +159,7 @@
               <el-col :span="8">
                 <el-form-item label="收入:">
                   <el-input
-                    v-model="Income"
+                    v-model="income"
                     size="small"
                     class="input"
                   ></el-input>
@@ -148,7 +168,7 @@
               <el-col :span="8">
                 <el-form-item label="支出:">
                   <el-input
-                    v-model="Expense"
+                    v-model="expense"
                     size="small"
                     class="input"
                   ></el-input>
@@ -160,7 +180,7 @@
               <el-col :span="8">
                 <el-form-item label="利润:">
                   <el-input
-                    v-model="Profit"
+                    v-model="profit"
                     size="small"
                     class="input"
                   ></el-input>
@@ -168,17 +188,20 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="装载日期:">
-                  <el-input
-                    v-model="LoadingDate"
+                  <el-date-picker
+                    v-model="loadingDate"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="备注:">
+                <el-form-item label="最大容量:">
                   <el-input
-                    v-model="Remark"
+                    v-model="maxPieces"
                     size="small"
                     class="input"
                   ></el-input>
@@ -190,7 +213,7 @@
               <el-col :span="8">
                 <el-form-item label="项目:">
                   <el-input
-                    v-model="Project"
+                    v-model="project"
                     size="small"
                     class="input"
                   ></el-input>
@@ -199,7 +222,7 @@
               <el-col :span="8">
                 <el-form-item label="承运人:">
                   <el-input
-                    v-model="Carrier"
+                    v-model="carrier"
                     size="small"
                     class="input"
                   ></el-input>
@@ -208,36 +231,13 @@
               <el-col :span="8">
                 <el-form-item label="商品名:">
                   <el-input
-                    v-model="Commodity"
+                    v-model="commodity"
                     size="small"
                     class="input"
                   ></el-input>
                 </el-form-item>
               </el-col>
             </el-row>
-
-             <el-row>
-              <el-col :span="8">
-                <el-form-item label="最大容量:">
-                  <el-input
-                    v-model="MaxPieces"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="客户:">
-                  <el-input
-                    v-model="Customer"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-           
-            </el-row>
-
           </el-form>
         </div>
       </el-card>
@@ -248,17 +248,17 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-         <div>
-              <el-input
-                type="textarea"
-                :rows="4"
-                placeholder="请输入内容"
-                v-model="textarea"
-                maxlength="600"
-                show-word-limit
-              >
-              </el-input>
-            </div>
+        <div>
+          <el-input
+            type="textarea"
+            :rows="4"
+            placeholder="请输入内容"
+            v-model="textarea"
+            maxlength="600"
+            show-word-limit
+          >
+          </el-input>
+        </div>
       </el-card>
 
       <!-- 卡片三  -->
@@ -281,11 +281,14 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="创建时间:">
-                  <el-input
-                    v-model="CreatedOn"
+                  <el-date-picker
+                    v-model="PickupFrom"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
@@ -302,11 +305,14 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="更新时间:">
-                  <el-input
-                    v-model="UpdateOn"
+                  <el-date-picker
+                    v-model="PickupFrom"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
 
@@ -341,24 +347,70 @@
 // import axios from "axios";
 
 export default {
-  name: "BillAdd",
+  name: "OceanAdd",
 
-   data() {
+  data() {
     return {
-      InvoiceID: "",
-      Number: "",
+      status: "",
+      accouting: "",
+      oceanNumber: "",
+      departure: "",
+      arrival: "",
+      portOfReceipt: "",
+      portOfOrigin: "",
+      placeOfDate: "",
+      shipper: "",
+      Consignee: "",
+      PCS: "",
+      weight: "",
+      income: "",
+      expense: "",
+      profit: "",
+      loadingDate: "",
+      project: "",
+      carrier: "",
+      commodity: "",
+      MaxPieces: "",
+      Remarks: "",
       CreatedBy: "",
       CreatedOn: "",
-      Type: "",
-      // 管理模块
-      Module: "",
-      Project: "",
-      Date: "",
-      // 供应商
-      Vendor: "",
-      DueDate: "",
-      TotalAmount: "",
-      Remarks: "",
+      UpdatedBy: "",
+      UpdatedOn: "",
+
+      StatusOp: [
+        {
+          value: "选项1",
+          label: "预约中",
+        },
+        {
+          value: "选项2",
+          label: "准备装载",
+        },
+        {
+          value: "选项2",
+          label: "文件处理中",
+        },
+        {
+          value: "选项2",
+          label: "装载中",
+        },
+        {
+          value: "选项2",
+          label: "发送账单中",
+        },
+        {
+          value: "选项2",
+          label: "运输途中",
+        },
+        {
+          value: "选项2",
+          label: "已抵达目的地",
+        },
+        {
+          value: "选项2",
+          label: "已完成",
+        },
+      ],
     };
   },
 

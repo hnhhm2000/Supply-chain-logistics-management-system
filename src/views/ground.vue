@@ -51,56 +51,68 @@ export default {
       data: [
         {
           Status: "预约中",
-          Accounting: "财务部A",
+          Accounting: "已开票",
           ShipmentNumber: "GOC0000001",
           Departure: "2023-05-01",
           Arrival: "2023-05-05",
-          PortOfOrigin: "发货港A",
+          PortOfOrigin: "发货地点A",
           PlaceOfDate: "2023-05-10",
           PlaceOfDelivery: "收货地点A",
+          customer: "客户A",
           Shipper: "托运人A",
           Consignee: "收货人A",
           PCS: 50,
           Weight: "1000 斤",
+          VOL: "10 m³",
           Income: 5000,
           Expense: 3000,
           Profit: 2000,
+          PODDelivery: "2023-05-06",
+          PODReceive: "2023-05-07",
           Remarks: "备注1",
         },
         {
           Status: "准备装载",
-          Accounting: "财务部B",
+          Accounting: "待定",
           ShipmentNumber: "GOC0000002",
           Departure: "2023-04-15",
           Arrival: "2023-04-20",
-          PortOfOrigin: "发货港B",
+          PortOfOrigin: "发货地点B",
           PlaceOfDate: "2023-04-25",
           PlaceOfDelivery: "收货地点B",
+          customer: "客户B",
           Shipper: "托运人B",
           Consignee: "收货人B",
           PCS: 20,
           Weight: "500 斤",
+          VOL: "10 m³",
           Income: 8000,
           Expense: 4000,
           Profit: 4000,
+          PODDelivery: "2023-05-06",
+          PODReceive: "2023-05-07",
           Remarks: "备注2",
         },
         {
           Status: "装载中",
-          Accounting: "财务部C",
+          Accounting: "空",
           ShipmentNumber: "GOC0000003",
           Departure: "2023-05-05",
           Arrival: "2023-05-10",
-          PortOfOrigin: "发货港C",
+          PortOfOrigin: "发货地点C",
           PlaceOfDate: "2023-05-15",
           PlaceOfDelivery: "收货地点C",
+          customer: "客户C",
           Shipper: "托运人C",
           Consignee: "收货人C",
           PCS: 10,
           Weight: "200 斤",
+          VOL: "10 m³",
           Income: 2000,
           Expense: 1500,
           Profit: 500,
+          PODDelivery: "2023-05-06",
+          PODReceive: "2023-05-07",
           Remarks: "备注3",
         },
       ],
@@ -114,7 +126,7 @@ export default {
           {
             label: "状态",
             prop: "Status",
-            search:true
+            search: true,
           },
           {
             label: "财务",
@@ -123,32 +135,32 @@ export default {
           {
             label: "陆运编号",
             prop: "ShipmentNumber",
-            width:100,
-            search:true
+            width: 100,
+            search: true,
           },
           {
-            label: "启航日",
+            label: "发货日",
             prop: "Departure",
-            width:90
+            width: 90,
           },
           {
             label: "抵达日",
             prop: "Arrival",
-            width:90
+            width: 90,
           },
           {
-            label: "发货港",
+            label: "发货地点",
             prop: "PortOfOrigin",
-            search:true
-          },
-          {
-            label: "收货日",
-            prop: "PlaceOfDate",
+            search: true,
           },
           {
             label: "收货地点",
             prop: "PlaceOfDelivery",
-            search:true
+            search: true,
+          },
+          {
+            label: "客户",
+            prop: "customer",
           },
           {
             label: "托运人",
@@ -163,8 +175,12 @@ export default {
             prop: "PCS",
           },
           {
-            label: "重量（斤）",
+            label: "重量",
             prop: "Weight",
+          },
+          {
+            label: "体积",
+            prop: "VOL",
           },
           {
             label: "收入",
@@ -178,6 +194,17 @@ export default {
             label: "利润",
             prop: "Profit",
           },
+          {
+            label: "货物交付时间",
+            prop: "PODDelivery",
+            width:90
+          },
+          {
+            label: "货物签收时间",
+            prop: "PODReceive",
+            width:90
+          },
+
           {
             label: "备注",
             prop: "Remarks",
@@ -212,16 +239,7 @@ export default {
     refreshChange() {
       this.$message.success("刷新回调");
     },
-    rowSave(form, done, loading) {
-      form.id = new Date().getTime();
-      setTimeout(() => {
-        loading();
-      }, 1000);
-      setTimeout(() => {
-        this.$message.success("新增数据" + JSON.stringify(form));
-        done(form);
-      }, 2000);
-    },
+
     rowDel(form, index, done) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
         confirmButtonText: "确定",

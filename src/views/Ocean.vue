@@ -58,7 +58,7 @@ export default {
           PortOfReceipt: "收货港A",
           PortOfOrigin: "发货港A",
           PlaceOfDate: "2023-05-10",
-          PlaceOfDelivery: "收货地点A",
+        
           Shipper: "托运人A",
           Customer: "顾客A",
           Consignee: "收货人A",
@@ -88,7 +88,7 @@ export default {
           PortOfReceipt: "收货港B",
           PortOfOrigin: "发货港B",
           PlaceOfDate: "2023-04-25",
-          PlaceOfDelivery: "收货地点B",
+    
           Shipper: "托运人B",
           Customer: "顾客B",
           Consignee: "收货人B",
@@ -149,10 +149,6 @@ export default {
           {
             label: "收货日",
             prop: "PlaceOfDate",
-          },
-          {
-            label: "收货地点",
-            prop: "PlaceOfDelivery",
           },
           {
             label: "托运人",

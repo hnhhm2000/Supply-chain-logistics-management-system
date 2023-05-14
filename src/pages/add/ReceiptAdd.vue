@@ -2,156 +2,182 @@
   <div class="bg">
     <!-- 主要内容 -->
     <main class="add-main">
-      <!-- 卡片一  -->
-      <el-card class="whiteCard">
-        <div slot="header" class="clearfix">
-          <span class="CardTitle">主要信息</span>
-        </div>
+       <!-- 卡片一  -->
+          <el-card class="whiteCard">
+            <div slot="header" class="clearfix">
+              <span class="CardTitle">主要信息</span>
+            </div>
 
-        <div>
-          <el-form ref="form" :model="form" :rules="rules" label-width="10em">
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="状态:">
-                  <el-input
-                    v-model="Status"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="财务:">
-                  <el-input
-                    v-model="Accouting"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="收据编号:">
-                  <el-input
-                    v-model="Receipt"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="开具时间:">
-                  <el-input
-                    v-model="ReceiptTime"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="托运人:">
-                  <el-input
-                    v-model="Shipper"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="收货人:">
-                  <el-input
-                    v-model="Consignee"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
+            <div>
+              <el-form
+                ref="form"
+                :model="form"
+                :rules="rules"
+                label-width="10em"
+              >
+                <el-row>
+                  <el-col :span="8">
+                    <el-form-item label="状态:">
+                      <el-select
+                        v-model="status"
+                        placeholder="请选择"
+                        style="width:18.6em"
+                        size="small"
+                      >
+                        <el-option
+                          v-for="item in StatusOp"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value"
+                        >
+                        </el-option>
+                      </el-select>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="财务:">
+                      <el-input
+                        v-model="Accouting"
+                        size="small"
+                        class="input"
+                        disabled
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="收据编号:">
+                      <el-input
+                        v-model="Receipt"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-col :span="8">
+                    <el-form-item label="开具时间:">
+                      <el-date-picker
+                        v-model="ReceiptTime"
+                        type="date"
+                        placeholder="选择日期"
+                        size="small"
+                        class="input"
+                      >
+                      </el-date-picker>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="托运人:">
+                      <el-input
+                        v-model="Shipper"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="收货人:">
+                      <el-input
+                        v-model="Consignee"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
 
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="项目:">
-                  <el-input
-                    v-model="Project"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="件数:">
-                  <el-input v-model="PCS" size="small" class="input"></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="重量:">
-                  <el-input
-                    v-model="Weight"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
+                <el-row>
+                  <el-col :span="8">
+                    <el-form-item label="项目:">
+                      <el-input
+                        v-model="Project"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="件数:">
+                      <el-input
+                        v-model="PCS"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="重量:">
+                      <el-input
+                        v-model="Weight"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
 
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="体积:">
-                  <el-input v-model="VOL" size="small" class="input"></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="注意事项:">
-                  <el-input
-                    v-model="Handing"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="收入:">
-                  <el-input
-                    v-model="Income"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
+                <el-row>
+                  <el-col :span="8">
+                    <el-form-item label="体积:">
+                      <el-input
+                        v-model="VOL"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="注意事项:">
+                      <el-input
+                        v-model="Handing"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="收入:">
+                      <el-input
+                        v-model="Income"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
 
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="支出:">
-                  <el-input
-                    v-model="Expense"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="利润:">
-                  <el-input
-                    v-model="Profit"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-          </el-form>
-        </div>
-      </el-card>
+                <el-row>
+                  <el-col :span="8">
+                    <el-form-item label="支出:">
+                      <el-input
+                        v-model="Expense"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="利润:">
+                      <el-input
+                        v-model="Profit"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+              </el-form>
+            </div>
+          </el-card>
 
-      <!-- 卡片二  -->
-      <el-card class="whiteCard">
-        <div slot="header" class="clearfix">
-          <span class="CardTitle">备注说明</span>
-        </div>
+          <!-- 卡片二  -->
+          <el-card class="whiteCard">
+            <div slot="header" class="clearfix">
+              <span class="CardTitle">备注说明</span>
+            </div>
 
-         <div>
+            <div>
               <el-input
                 type="textarea"
                 :rows="4"
@@ -162,71 +188,82 @@
               >
               </el-input>
             </div>
-      </el-card>
+          </el-card>
 
-      <!-- 卡片三  -->
-      <el-card class="whiteCard">
-        <div slot="header" class="clearfix">
-          <span class="CardTitle">其他</span>
-        </div>
+          <!-- 卡片三  -->
+          <el-card class="whiteCard">
+            <div slot="header" class="clearfix">
+              <span class="CardTitle">其他</span>
+            </div>
 
-        <div>
-          <el-form ref="form" :model="form" :rules="rules" label-width="10em">
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="创建人:">
-                  <el-input
-                    v-model="CreatedBy"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="创建时间:">
-                  <el-input
-                    v-model="CreatedOn"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="更新人:">
-                  <el-input
-                    v-model="UpdateBy"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
+            <div>
+              <el-form
+                ref="form"
+                :model="form"
+                :rules="rules"
+                label-width="10em"
+              >
+                <el-row>
+                  <el-col :span="8">
+                    <el-form-item label="创建人:">
+                      <el-input
+                        v-model="CreatedBy"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="创建时间:">
+                      <el-date-picker
+                        v-model="CreatedOn"
+                        type="date"
+                        placeholder="选择日期"
+                        size="small"
+                        class="input"
+                      >
+                      </el-date-picker>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="更新人:">
+                      <el-input
+                        v-model="UpdateBy"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
 
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="更新时间:">
-                  <el-input
-                    v-model="UpdateOn"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
+                <el-row>
+                  <el-col :span="8">
+                    <el-form-item label="更新时间:">
+                      <el-date-picker
+                        v-model="UpdateOn"
+                        type="date"
+                        placeholder="选择日期"
+                        size="small"
+                        class="input"
+                      >
+                      </el-date-picker>
+                    </el-form-item>
+                  </el-col>
 
-              <el-col :span="8">
-                <el-form-item label="收据ID:">
-                  <el-input
-                    v-model="ReceiptID"
-                    disabled
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-          </el-form>
-        </div>
-      </el-card>
+                  <el-col :span="8">
+                    <el-form-item label="收据ID:">
+                      <el-input
+                        v-model="ReceiptID"
+                        disabled
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+              </el-form>
+            </div>
+          </el-card>
     </main>
 
     <!-- 底部栏 -->
@@ -272,6 +309,29 @@ export default {
       ShipperAddress: "",
       ConsigneeAddress: "",
       Remarks: "",
+
+      StatusOp: [
+        {
+          value: "选项1",
+          label: "测量中",
+        },
+        {
+          value: "选项2",
+          label: "文件处理中",
+        },
+        {
+          value: "选项2",
+          label: "拍照扫描中",
+        },
+        {
+          value: "选项2",
+          label: "已抵达",
+        },
+        {
+          value: "选项2",
+          label: "分配中",
+        },
+      ],
     };
   },
 

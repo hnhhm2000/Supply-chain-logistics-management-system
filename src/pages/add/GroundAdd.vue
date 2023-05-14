@@ -13,11 +13,21 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="状态:">
-                  <el-input
-                    v-model="Status"
+
+                   <el-select
+                    v-model="status"
+                    placeholder="请选择"
+                    style="width: 18.6em"
                     size="small"
-                    class="input"
-                  ></el-input>
+                  >
+                    <el-option
+                      v-for="item in StatusOp"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    >
+                    </el-option>
+                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
@@ -26,6 +36,7 @@
                     v-model="Accounting"
                     size="small"
                     class="input"
+                    disabled
                   ></el-input>
                 </el-form-item>
               </el-col>
@@ -33,32 +44,6 @@
                 <el-form-item label="编号:">
                   <el-input
                     v-model="Shipment"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="起飞日:">
-                  <el-input
-                    v-model="Arrival"
-                    size="small"
-                    class="input"
-                  ></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="始发地:">
-                  <el-input v-model="Origin" size="small" class="input"></el-input>
-                </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="目的地:">
-                  <el-input
-                    v-model="Destination"
                     size="small"
                     class="input"
                   ></el-input>
@@ -171,7 +156,88 @@
                   ></el-input>
                 </el-form-item>
               </el-col>
+
+               <el-col :span="8">
+                <el-form-item label="发货日:">
+                    <el-date-picker
+                    v-model="Departure"
+                    type="date"
+                    placeholder="选择日期"
+                    size="small"
+                    class="input"
+                  >
+                  </el-date-picker>
+                </el-form-item>
+              </el-col>
             
+            </el-row>
+
+            
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="抵达日:">
+                    <el-date-picker
+                    v-model="Arrival"
+                    type="date"
+                    placeholder="选择日期"
+                    size="small"
+                    class="input"
+                  >
+                  </el-date-picker>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="始发地:">
+                  <el-input v-model="Origin" size="small" class="input"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="目的地:">
+                  <el-input
+                    v-model="Destination"
+                    size="small"
+                    class="input"
+                  ></el-input>
+                </el-form-item>
+              </el-col>
+            </el-row>
+
+               <el-row>
+              <el-col :span="8">
+                <el-form-item label="商品名:">
+                  <el-input
+                    v-model="commodity"
+                    size="small"
+                    class="input"
+                  ></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="货物交付时间:">
+         
+                    <el-date-picker
+                    v-model="PODDelivery"
+                    type="date"
+                    placeholder="选择日期"
+                    size="small"
+                    class="input"
+                  >
+                  </el-date-picker>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="货物签收时间:">
+
+                    <el-date-picker
+                    v-model="PODReceive"
+                    type="date"
+                    placeholder="选择日期"
+                    size="small"
+                    class="input"
+                  >
+                  </el-date-picker>
+                </el-form-item>
+              </el-col>
             </el-row>
 
           </el-form>
@@ -217,11 +283,15 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="创建时间:">
-                  <el-input
+             
+                    <el-date-picker
                     v-model="CreatedOn"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
@@ -238,11 +308,15 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="更新时间:">
-                  <el-input
+                
+                    <el-date-picker
                     v-model="UpdateOn"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
 
@@ -277,21 +351,21 @@
 // import axios from "axios";
 
 export default {
-  name: "AirAdd",
+  name: "GroundAdd",
 
   data() {
     return {
      GroundFreightID:"",
-     Status:"",
+     status:"",
      Accounting:"",
-     ShipmentNumber:"",
+     groundNumber:"",
      Departure:"",
      Arrival:"",
-     // 发货港
+     // 发货地点
      PortOfOrigin:"",
-     // 收货日
-     PlaceOfDate:"",
+     // 收货地点
      PlaceOfDelivery:"",
+     Customer:"",
      Shipper:"",
      Consignee:"",
      PCS:"",
@@ -299,14 +373,50 @@ export default {
      Income:"",
      Expense:"",
      Profit:"",
-     // 装载日期
+     PODDelivery:"",
+     PODReceive:"",
+      // 装载日期
      LoadingDate:"",
      Remark:"",
      Project:"",
      Carrier:"",
      Commodity:"",
      MaxPieces:"",
-     Customer:"",
+
+     StatusOp: [
+        {
+          value: "选项1",
+          label: "预约中",
+        },
+        {
+          value: "选项2",
+          label: "准备装载",
+        },
+        {
+          value: "选项2",
+          label: "文件处理中",
+        },
+        {
+          value: "选项2",
+          label: "装载中",
+        },
+        {
+          value: "选项2",
+          label: "发送账单中",
+        },
+        {
+          value: "选项2",
+          label: "运输途中",
+        },
+        {
+          value: "选项2",
+          label: "已抵达目的地",
+        },
+        {
+          value: "选项2",
+          label: "已完成",
+        },
+      ],
     };
   },
 

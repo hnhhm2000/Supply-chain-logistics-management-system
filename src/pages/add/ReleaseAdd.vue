@@ -2,7 +2,6 @@
   <div class="bg">
     <!-- 主要内容 -->
     <main class="add-main">
-      
       <!-- 卡片一  -->
       <el-card class="whiteCard">
         <div slot="header" class="clearfix">
@@ -14,11 +13,20 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="状态:">
-                  <el-input
-                    v-model="Status"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                    <el-select
+                        v-model="Status"
+                        placeholder="请选择"
+                        style="width:18.6em"
+                        size="small"
+                      >
+                        <el-option
+                          v-for="item in StatusOp"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value"
+                        >
+                        </el-option>
+                      </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
@@ -27,6 +35,7 @@
                     v-model="Accounting"
                     size="small"
                     class="input"
+                       disabled
                   ></el-input>
                 </el-form-item>
               </el-col>
@@ -94,7 +103,7 @@
             </el-row>
 
             <el-row>
-               <el-col :span="8">
+              <el-col :span="8">
                 <el-form-item label="利润:">
                   <el-input
                     v-model="Profit"
@@ -105,15 +114,17 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="出库时间:">
-                  <el-input
+                  <el-date-picker
                     v-model="DateTimeOut"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
             </el-row>
-
           </el-form>
         </div>
       </el-card>
@@ -124,17 +135,17 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-         <div>
-              <el-input
-                type="textarea"
-                :rows="4"
-                placeholder="请输入内容"
-                v-model="textarea"
-                maxlength="600"
-                show-word-limit
-              >
-              </el-input>
-            </div>
+        <div>
+          <el-input
+            type="textarea"
+            :rows="4"
+            placeholder="请输入内容"
+            v-model="textarea"
+            maxlength="600"
+            show-word-limit
+          >
+          </el-input>
+        </div>
       </el-card>
 
       <!-- 卡片三  -->
@@ -157,11 +168,14 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="创建时间:">
-                  <el-input
+                  <el-date-picker
                     v-model="CreatedOn"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
@@ -178,18 +192,21 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="更新时间:">
-                  <el-input
+                  <el-date-picker
                     v-model="UpdateOn"
+                    type="date"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
 
               <el-col :span="8">
-                <el-form-item label="库存ID:">
+                <el-form-item label="出库ID:">
                   <el-input
-                    v-model="InventoryID"
+                    v-model="releaseID"
                     disabled
                     size="small"
                     class="input"
@@ -241,8 +258,24 @@ export default {
       Address: "",
       Carrier: "",
       Remarks: "",
+      releaseID: "",
       // 取件地址
       PickupFrom: "",
+
+       StatusOp: [
+        {
+          value: "选项1",
+          label: "预发货",
+        },
+        {
+          value: "选项2",
+          label: "发货",
+        },
+        {
+          value: "选项2",
+          label: "完成",
+        },
+      ],
     };
   },
 
