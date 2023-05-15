@@ -323,7 +323,7 @@
               <el-col :span="8">
                 <el-form-item label="创建时间:">
                   <el-date-picker
-                    v-model="createdOn"
+                    v-model="createTime"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -335,7 +335,7 @@
               <el-col :span="8">
                 <el-form-item label="更新人:">
                   <el-input
-                    v-model="UpdatedBy"
+                    v-model="updateBy"
                     size="small"
                     class="input"
                   ></el-input>
@@ -347,7 +347,7 @@
               <el-col :span="8">
                 <el-form-item label="更新时间:">
                   <el-date-picker
-                    v-model="updateOn"
+                    v-model="updateTime"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -450,8 +450,8 @@ export default {
       Expense: "",
       Profit: "",
       CreatedBy: "",
-      CreatedOn: "",
-      UpdatedBy: "",
+      createTime: "",
+      updateBy: "",
       UpdatedOn: "",
       // 预计到达时间
       ETA: "",

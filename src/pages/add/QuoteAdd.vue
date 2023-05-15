@@ -323,7 +323,7 @@
               <el-col :span="8">
                 <el-form-item label="创建时间:">
                   <el-date-picker
-                    v-model="CreatedOn"
+                    v-model="createTime"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -335,7 +335,7 @@
               <el-col :span="8">
                 <el-form-item label="更新人:">
                   <el-input
-                    v-model="UpdatedBy"
+                    v-model="updateBy"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -379,7 +379,7 @@
         <el-button type="primary" @click="submitForm('form')"
           >保存提交</el-button
         >
-        <el-button type="primary" plain @click="$router.back()">返回</el-button>
+        <el-button type="primary" plain @click="$router.push({path: './quote'})">返回</el-button>
       </div>
     </footer>
   </div>
@@ -416,8 +416,8 @@ export default {
       Profit: "",
       Remarks: "",
       CreatedBy: "",
-      CreatedOn: "",
-      UpdatedBy: "",
+      createTime: "",
+      updateBy: "",
       UpdatedOn: "",
       PaymentTerm: "",
       TransitDays: "",

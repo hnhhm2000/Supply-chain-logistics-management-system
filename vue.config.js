@@ -7,10 +7,13 @@ module.exports = {
     port: 8080,
 
     proxy: {
-      '/customer': {
-        target: 'http://150.158.19.230:8849/swagger-ui.html',
+      "/api": {
+        target: "http://150.158.19.230:8849",
+        pathRewrite: {
+          "^/api": "",
+        },
         changeOrigin: true,
-      }
-    }
-  }
-}
+      },
+    },
+  },
+};

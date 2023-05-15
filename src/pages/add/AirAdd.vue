@@ -244,7 +244,7 @@
               <el-col :span="8">
                 <el-form-item label="创建时间:">
                   <el-input
-                    v-model="CreatedOn"
+                    v-model="createTime"
                     size="small"
                     class="input"
                   ></el-input>
@@ -265,7 +265,7 @@
               <el-col :span="8">
                 <el-form-item label="更新时间:">
                   <el-input
-                    v-model="UpdateOn"
+                    v-model="updateTime"
                     size="small"
                     class="input"
                   ></el-input>

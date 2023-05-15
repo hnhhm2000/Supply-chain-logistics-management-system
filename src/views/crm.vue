@@ -8,10 +8,11 @@
         :data="data"
         :option="option"
         :search-show="false"
+        :page.sync="page"
         @refresh-change="refreshChange"
         @row-del="rowDel"
+        @on-load="onLoad"
         @search-change="searchChange"
-        @search-reset="resetChange"
         :cell-class-name="addClass"
         @cell-click="pageto"
         class="Mycrud"
@@ -24,16 +25,14 @@
           @click="rowadd"
           >新增</el-button
         >
- <!-- params: { id: $route.params.id }, -->
+        <!-- params: { id: $route.params.id }, -->
         <template slot-scope="{ type, size, row }" slot="menu">
           <el-button
             icon="el-icon-edit"
             class="editbtn"
             :size="size"
             :type="type"
-            @click="
-            $router.push(`/crm/edit/${row.id}`)
-            "
+            @click="$router.push(`/crm/edit/${row.id}`)"
             >编辑</el-button
           >
         </template>
@@ -43,293 +42,44 @@
 </template>
 
 <script>
-import axios from "axios";
+import { getUserData, deleteUserData } from "../api/Crm";
 
 export default {
   name: "SystemCrm",
 
   data() {
     return {
-      data: [
-        {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-         {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-         {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-         {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-         {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-         {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-         {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-         {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-         {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-         {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-         {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-         {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-         {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-         {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-         {
-          name:'黄皓铭',
-          Sex:'男',
-          PhoneNumber:'13467678074',
-          Address:'湖南省长沙市',
-          city:'长沙',
-          Province:'湖南',
-          State:'中国',
-          ZIP:'410000',
-          Email:'986667872@qq.com',
-          Roles:'托运人',
-          Remarks:'来点备注',
-          CreatedBy:'黄皓铭',
-          CreatedOn:'2023-05-08',
-          UpdatedBy:'黄皓铭',
-          UpdatedOn:'2023-05-08'
-        },
-      ],
+      query: {},
+      data: [],
+      page: {
+        pageSize: 10,
+        currentPage: 1,
+      },
       option: {
         editBtn: false,
         searchShow: false,
         excelBtn: true,
         addBtn: false,
+
         column: [
           {
             label: "姓名",
-            prop: "name",
+            prop: "accountName",
             search: true,
           },
           {
             label: "性别",
-            prop: "Sex",
+            prop: "sex",
           },
           {
             label: "电话",
-            prop: "PhoneNumber",
-            width: 100
+            prop: "phoneNumber",
+            width: 100,
           },
           {
             label: "地址",
-            prop: "Address",
+            prop: "address",
+            width: 160,
           },
           {
             label: "城市",
@@ -338,49 +88,49 @@ export default {
           },
           {
             label: "省",
-            prop: "Province",
+            prop: "province",
             search: true,
           },
           {
             label: "国家",
-            prop: "State",
+            prop: "country",
             search: true,
           },
           {
             label: "邮编",
-            prop: "ZIP",
+            prop: "zip",
           },
           {
             label: "电子邮件",
-            prop: "Email",
-            width: 140
+            prop: "email",
+            width: 140,
           },
           {
             label: "角色",
-            prop: "Roles",
+            prop: "roles",
           },
           {
             label: "创造人",
-            prop: "CreatedBy",
+            prop: "createBy",
           },
           {
             label: "创造时间",
-            prop: "CreatedOn",
-            width: 100
+            prop: "createTime",
+            width: 100,
           },
           {
             label: "更新人",
-            prop: "UpdatedBy",
+            prop: "updateBy",
           },
           {
             label: "最近更新",
-            prop: "UpdatedOn",
-            width: 100
+            prop: "updateTime",
+            width: 100,
           },
-           {
+          {
             label: "备注",
-            prop: "Remarks",
-            width: 150
+            prop: "remarks",
+            width: 150,
           },
         ],
       },
@@ -389,9 +139,9 @@ export default {
 
   methods: {
     // 点击姓名进入详情
-    addClass({ columnIndex }) {
+    addClass({ column }) {
       // console.log(columnIndex);
-      if (columnIndex === 0) {
+      if (column.label === "姓名") {
         return "cell-color"; // cell-blue就是添加的类名，添加完之后记得设置样式
       }
     },
@@ -399,7 +149,7 @@ export default {
      * @description: 点击名字进行跳转
      */
     pageto(row, column) {
-      if (column.label == "姓名") {
+      if (column.label === "姓名") {
         this.$router.push(`/crm/detail/${row.id}`);
       }
     },
@@ -409,46 +159,75 @@ export default {
       this.$router.push("./crm/add");
     },
 
-    handleClick(tab, event) {
-      console.log(tab, event);
+    // 获取数据并渲染
+    getList(page, params) {
+      params.currPage = page.currentPage;
+      params.pageSize = page.pageSize;
+      console.log(page.pageSize);
+
+      getUserData(params).then((res) => {
+        console.log(res);
+        this.data = res.data.data.userList;
+        this.page.total = res.data.data.total;
+      });
     },
+
     refreshChange() {
       this.$message.success("刷新回调");
     },
-    rowDel(form, index, done) {
+
+    rowDel(row) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
       })
         .then(() => {
-          done(form);
-          this.$message({
-            type: "success",
-            message: "删除成功!",
+          let params = {};
+          params.id = row.id
+          deleteUserData(params).then(() => {
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+            this.onLoad(this.page);
           });
         })
+
         .catch(() => {});
     },
+
     resetChange() {
       this.$message.success("清空回调");
     },
-    searchChange(params, done) {
-      this.$message.success("2s后关闭锁定");
-      setTimeout(() => {
-        done();
-        this.$message.success(JSON.stringify(params));
-      }, 2000);
-    },
-  },
 
-  created() {
-    // 获取接口数据并渲染列表
-    axios.get("/customer/selectAllCustomer").then((res) => {
-      this.data = res.data.data.customerList;
-      // console.log(res);
-      console.log(res.data.data.customerList);
-    });
+    /**
+     * 搜索函数，获取年度日期与地市的绑定值，将它们放入params中，传给this.query以便在其他地方调用
+     * @param {[object]} params [搜索框数据]
+     * @param {[function]} done [结束]
+     */
+
+    searchChange(params, done) {
+      this.query = params;
+
+      this.onLoad(this.page, "search");
+      done();
+    },
+
+    /**
+     * 页面初次加载时，会调用该方法
+     * 当搜索时，会调用该方法，重置page的数据
+     * 最后调用getList，获取最新数据
+     * @param {[object]} page [分页器对象]
+     * @param {[string]} search [用于“监听”是否进行了搜索]
+     */
+    onLoad(page, search) {
+      if (search) {
+        page.total = 0;
+        page.currentPage = 1;
+      }
+      this.getList(page, this.query);
+    },
   },
 };
 </script>

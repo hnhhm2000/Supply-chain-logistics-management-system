@@ -169,7 +169,7 @@
               <el-col :span="8">
                 <el-form-item label="创建时间:">
                   <el-date-picker
-                    v-model="CreatedOn"
+                    v-model="createTime"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -193,7 +193,7 @@
               <el-col :span="8">
                 <el-form-item label="更新时间:">
                   <el-date-picker
-                    v-model="UpdateOn"
+                    v-model="updateTime"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -243,7 +243,7 @@ export default {
       Accounting: "",
       ReleaseNumber: "",
       CreatedBy: "",
-      CreatedOn: "",
+      createTime: "",
       DateTimeOut: "",
       ReleaseTo: "",
       PCS: "",
@@ -253,7 +253,7 @@ export default {
       Expense: "",
       Profit: "",
       UpdateBy: "",
-      UpdateOn: "",
+      updateTime: "",
       Commodity: "",
       Address: "",
       Carrier: "",

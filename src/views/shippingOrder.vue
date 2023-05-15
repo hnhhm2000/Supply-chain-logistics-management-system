@@ -53,7 +53,7 @@ export default {
           Accounting: "空",
           ShipmentOrders: "SAO0000001",
           CreatedBy: "创建人A",
-          CreatedOn: "2023-05-01",
+          createTime: "2023-05-01",
           Type: "海运",
           Departure: "2023-05-10",
           Arrival: "2023-05-20",
@@ -65,7 +65,7 @@ export default {
           Income: 5000,
           Expense: 3000,
           Profit: 2000,
-          UpdateOn: "2023-05-12",
+          updateTime: "2023-05-12",
           Remarks: "备注1",
         },
         {
@@ -73,7 +73,7 @@ export default {
           Accounting: "空",
           ShipmentOrders: "SGO0000001",
           CreatedBy: "创建人B",
-          CreatedOn: "2023-04-15",
+          createTime: "2023-04-15",
           Type: "空运",
           Departure: "2023-04-25",
           Arrival: "2023-05-05",
@@ -85,7 +85,7 @@ export default {
           Income: 8000,
           Expense: 4000,
           Profit: 4000,
-          UpdateOn: "2023-05-10",
+          updateTime: "2023-05-10",
           Remarks: "备注2",
         },
         {
@@ -93,7 +93,7 @@ export default {
           Accounting: "空",
           ShipmentOrders: "SAO0000002",
           CreatedBy: "创建人C",
-          CreatedOn: "2023-05-05",
+          createTime: "2023-05-05",
           Type: "陆运",
           Departure: "2023-05-15",
           Arrival: "2023-05-25",
@@ -105,7 +105,7 @@ export default {
           Income: 2000,
           Expense: 1500,
           Profit: 500,
-          UpdateOn: "2023-05-12",
+          updateTime: "2023-05-12",
           Remarks: "备注3",
         },
       ],
@@ -129,7 +129,8 @@ export default {
             label: "装运单编号",
             prop: "ShipmentOrders",
             search:true,
-            width:100
+            width:100,
+            searchLabelWidth:86
           },
           {
             label: "创建人",
@@ -138,7 +139,7 @@ export default {
           },
           {
             label: "创建时间",
-            prop: "CreatedOn",
+            prop: "createTime",
             search:true,
             width:90
           },
@@ -191,7 +192,7 @@ export default {
           },
           {
             label: "更新时间",
-            prop: "UpdateOn",
+            prop: "updateTime",
           },
           {
             label: "注释",

@@ -224,7 +224,7 @@ export default {
       Accouting: "",
       ShipmentOrders: "",
       CreatedBy: "",
-      CreatedOn: "",
+      createTime: "",
       Type: "",
       Departure: "",
       Arrival: "",
@@ -236,7 +236,7 @@ export default {
       Income: "",
       Expense: "",
       Profit: "",
-      UpdateOn: "",
+      updateTime: "",
       Origin: "",
       // 收货地
       Determine: "",
@@ -246,7 +246,7 @@ export default {
       ConsigneeAddress: "",
       ShipperAddress: "",
       UpdatedOn:"",
-      UpdatedBy:"",
+      updateBy:"",
       ShipperNumber:""
     };
   },

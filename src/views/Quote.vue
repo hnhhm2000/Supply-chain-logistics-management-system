@@ -54,7 +54,7 @@ export default {
           QuoteNumber: "QUO0000001",
           Project: "项目A",
           Mode: "海运",
-          CreatedOn: "2023-05-01",
+          createTime: "2023-05-01",
           UntilDate: "2023-05-15",
           Customer: "客户A",
           Origin: "上海",
@@ -68,9 +68,9 @@ export default {
           Expense: 3000,
           Profit: 2000,
           CreatedBy: "创建人A",
-          CreatedTime: "08:00",
-          UpdatedBy: "更新人A",
-          UpdateOn: "2023-05-10",
+          createTime: "08:00",
+          updateBy: "更新人A",
+          updateTime: "2023-05-10",
           Remarks: "备注1",
         },
         {
@@ -79,7 +79,7 @@ export default {
           QuoteNumber: "QUO0000002",
           Project: "项目B",
           Mode: "空运",
-          CreatedOn: "2023-04-15",
+          createTime: "2023-04-15",
           UntilDate: "2023-04-30",
           Customer: "客户B",
           Origin: "北京",
@@ -93,9 +93,9 @@ export default {
           Expense: 4000,
           Profit: 4000,
           CreatedBy: "创建人B",
-          CreatedTime: "12:30",
-          UpdatedBy: "更新人B",
-          UpdateOn: "2023-05-05",
+          createTime: "12:30",
+          updateBy: "更新人B",
+          updateTime: "2023-05-05",
           Remarks: "备注2",
         },
         {
@@ -104,7 +104,7 @@ export default {
           QuoteNumber: "QUO0000003",
           Project: "项目C",
           Mode: "陆运",
-          CreatedOn: "2023-05-05",
+          createTime: "2023-05-05",
           UntilDate: "2023-05-20",
           Customer: "客户C",
           Origin: "广州",
@@ -118,9 +118,9 @@ export default {
           Expense: 1500,
           Profit: 500,
           CreatedBy: "创建人C",
-          CreatedTime: "16:45",
-          UpdatedBy: "更新人C",
-          UpdateOn: "2023-05-08",
+          createTime: "16:45",
+          updateBy: "更新人C",
+          updateTime: "2023-05-08",
           Remarks: "备注3",
         },
       ],
@@ -157,7 +157,7 @@ export default {
           },
           {
             label: "创建日期",
-            prop: "CreatedOn",
+            prop: "createTime",
             search: true,
           },
           {
@@ -215,22 +215,22 @@ export default {
           },
           {
             label: "创建人",
-            prop: "CreatedOn",
+            prop: "createTime",
             width:90
           },
           {
             label: "创建时间",
-            prop: "CreatedOn",
+            prop: "createTime",
             width:90
           },
           {
             label: "更新人",
-            prop: "UpdatedBy",
+            prop: "updateBy",
             search: true,
           },
           {
             label: "最近更新",
-            prop: "UpdateOn",
+            prop: "updateTime",
             width:90
           },
           {

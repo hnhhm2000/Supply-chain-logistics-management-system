@@ -3,7 +3,7 @@
     <!-- 主要内容 -->
     <main class="add-main">
       <el-tabs v-model="activeName" type="card">
-        <el-tab-pane label="用户资料" name="first">
+        <el-tab-pane label="主要资料" name="first">
        <!-- 卡片一  -->
       <el-card class="whiteCard">
         <div slot="header" class="clearfix">
@@ -325,7 +325,7 @@
               <el-col :span="8">
                 <el-form-item label="创建时间:">
                   <el-date-picker
-                    v-model="CreatedOn"
+                    v-model="createTime"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -337,7 +337,7 @@
               <el-col :span="8">
                 <el-form-item label="更新人:">
                   <el-input
-                    v-model="UpdatedBy"
+                    v-model="updateBy"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -436,8 +436,8 @@ export default {
       Profit: "",
       Remarks: "",
       CreatedBy: "",
-      CreatedOn: "",
-      UpdatedBy: "",
+      createTime: "",
+      updateBy: "",
       UpdatedOn: "",
       PaymentTerm: "",
       TransitDays: "",

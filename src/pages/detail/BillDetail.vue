@@ -146,7 +146,7 @@ export default {
     InvoiceID:"",
     Number:"",
     CreatedBy:"",
-    CreatedOn:"",
+    createTime:"",
     Type:"",
     // 管理模块
     Module:"",

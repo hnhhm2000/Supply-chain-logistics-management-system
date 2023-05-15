@@ -22,6 +22,11 @@
   width: 17.7em;
 }
 
+/* 详情页-标签与内容的距离 */
+.context {
+  float: left;
+}
+
 /* 主要信息页面按钮栏 */
 .btns {
   display: flex;

@@ -4,29 +4,28 @@
     <TopMenu class="topmenu"></TopMenu>
 
     <main>
-           <avue-crud
-            :data="data"
-            :option="option"
-            :search-show="false"
-            @refresh-change="refreshChange"
-            @row-update="rowUpdate"
-            @row-del="rowDel"
-            @search-change="searchChange"
-            @search-reset="resetChange"
-            :cell-class-name="addClass"
-            @cell-click="pageto"
-            class="Mycrud"
-          >
-            
-              <el-button slot="menuLeft"
-                type="primary"
-                icon="el-icon-plus"
-                size="small"
-                @click="rowadd"
-                >新增</el-button
-              >
-           
-          </avue-crud>
+      <avue-crud
+        :data="data"
+        :option="option"
+        :search-show="false"
+        @refresh-change="refreshChange"
+        @row-update="rowUpdate"
+        @row-del="rowDel"
+        @search-change="searchChange"
+        @search-reset="resetChange"
+        :cell-class-name="addClass"
+        @cell-click="pageto"
+        class="Mycrud"
+      >
+        <el-button
+          slot="menuLeft"
+          type="primary"
+          icon="el-icon-plus"
+          size="small"
+          @click="rowadd"
+          >新增</el-button
+        >
+      </avue-crud>
     </main>
   </div>
 </template>
@@ -40,26 +39,43 @@ export default {
       activeName: "first",
       data: [
         {
-          id: 1,
-          name: "张三",
-          sex: "男",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
+          BillNumber: "B1234",
+          CreatedBy: "创建人A",
+          createTime: "2023-05-01",
+          Type: "类型A",
+          Reference: "REF1234",
+          Project: "项目A",
+          Date: "2023-05-05",
+          Vendor: "供应商A",
+          Duedate: "2023-05-15",
+          TotalAmount: 5000,
+          Remark: "备注1",
         },
         {
-          id: 2,
-          name: "李四",
-          sex: "女",
-          address: "长沙雨花区万家丽商业广场",
-          phone: "13667349408",
-          reprentative: "王五",
-          city: "长沙",
-          state: "在线",
-          ZIP: "410007",
+          BillNumber: "B5678",
+          CreatedBy: "创建人B",
+          createTime: "2023-04-15",
+          Type: "类型B",
+          Reference: "REF5678",
+          Project: "项目B",
+          Date: "2023-04-20",
+          Vendor: "供应商B",
+          Duedate: "2023-05-01",
+          TotalAmount: 8000,
+          Remark: "备注2",
+        },
+        {
+          BillNumber: "B9012",
+          CreatedBy: "创建人C",
+          createTime: "2023-05-05",
+          Type: "类型C",
+          Reference: "REF9012",
+          Project: "项目C",
+          Date: "2023-05-10",
+          Vendor: "供应商C",
+          Duedate: "2023-05-20",
+          TotalAmount: 2000,
+          Remark: "备注3",
         },
       ],
       option: {
@@ -69,15 +85,18 @@ export default {
         column: [
           {
             label: "账单号",
-            prop: "Number",
+            prop: "BillNumber",
+            search:true
           },
           {
             label: "创建人",
             prop: "CreatedBy",
+            search:true
           },
           {
             label: "创建时间",
-            prop: "CreatedOn",
+            prop: "createTime",
+            search:true
           },
           {
             label: "类型",
@@ -91,35 +110,32 @@ export default {
             label: "项目",
             prop: "Project",
           },
-            {
+          {
             label: "日期",
             prop: "Date",
           },
-            {
+          {
             label: "供应商",
             prop: "Vendor",
           },
-            {
+          {
             label: "截止日期",
             prop: "Duedate",
           },
-            {
+          {
             label: "总额",
             prop: "TotalAmount",
           },
-           {
+          {
             label: "备注",
             prop: "Remark",
-          },         
+          },
         ],
       },
     };
   },
 
   methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
-    },
     refreshChange() {
       this.$message.success("刷新回调");
     },

@@ -54,7 +54,7 @@ export default {
           Accounting: "空",
           number: "WRO0000001",
           CreatedBy: "创建人A",
-          CreateOn: "2023-05-01",
+          createTime: "2023-05-01",
           DateTimeOut: "2023-05-10",
           ReleaseTo: "发往A",
           PCS: 50,
@@ -63,7 +63,7 @@ export default {
           Income: 5000,
           Expense: 3000,
           Profit: 2000,
-          UpdatedBy: "更新人A",
+          updateBy: "更新人A",
           UpdatedOn: "2023-05-12",
         },
         {
@@ -71,7 +71,7 @@ export default {
           Accounting: "已开票",
           number: "WRO0000002",
           CreatedBy: "创建人B",
-          CreateOn: "2023-04-15",
+          createTime: "2023-04-15",
           DateTimeOut: "2023-04-30",
           ReleaseTo: "发往B",
           PCS: 20,
@@ -80,7 +80,7 @@ export default {
           Income: 8000,
           Expense: 4000,
           Profit: 4000,
-          UpdatedBy: "更新人B",
+          updateBy: "更新人B",
           UpdatedOn: "2023-05-05",
         },
         {
@@ -88,7 +88,7 @@ export default {
           Accounting: "待定中",
           number: "WRO0000003",
           CreatedBy: "创建人C",
-          CreateOn: "2023-05-05",
+          createTime: "2023-05-05",
           DateTimeOut: "2023-05-20",
           ReleaseTo: "发往C",
           PCS: 10,
@@ -97,7 +97,7 @@ export default {
           Income: 2000,
           Expense: 1500,
           Profit: 500,
-          UpdatedBy: "更新人C",
+          updateBy: "更新人C",
           UpdatedOn: "2023-05-12",
         },
       ],
@@ -129,7 +129,7 @@ export default {
           },
           {
             label: "创造时间",
-            prop: "CreateOn",
+            prop: "createTime",
             search:true,
             width:90
           },
@@ -168,7 +168,7 @@ export default {
           },
           {
             label: "更新人",
-            prop: "UpdatedBy",
+            prop: "updateBy",
           },
           {
             label: "更新时间",

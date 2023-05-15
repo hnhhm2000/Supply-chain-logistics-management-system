@@ -16,25 +16,17 @@
                   <el-col :span="8">
                     <el-form-item label="账户名称" prop="name">
                       <el-input
-                        v-model="name"
+                        v-model="userData.accountName"
                         size="small"
                         class="input"
                       ></el-input>
                     </el-form-item>
                   </el-col>
+
                   <el-col :span="8">
-                    <el-form-item label="密码" prop="password">
-                      <el-input
-                        v-model="password"
-                        size="small"
-                        class="input"
-                      ></el-input>
-                    </el-form-item>
-                  </el-col>
-                  <el-col :span="8">
-                    <el-form-item label="性别" prop="role">
+                    <el-form-item label="性别">
                       <el-select
-                        v-model="role"
+                        v-model="userData.sex"
                         placeholder="请选择"
                         class="select"
                         size="small"
@@ -49,27 +41,17 @@
                       </el-select>
                     </el-form-item>
                   </el-col>
-                </el-row>
-                <el-row>
+
                   <el-col :span="8">
-                    <el-form-item label="电子邮箱" prop="email">
-                      <el-input
-                        v-model="email"
-                        size="small"
-                        class="input"
-                      ></el-input>
-                    </el-form-item>
-                  </el-col>
-                  <el-col :span="8">
-                    <el-form-item label="状态">
+                    <el-form-item label="角色" prop="role">
                       <el-select
-                        v-model="status"
+                        v-model="userData.roles"
                         placeholder="请选择"
                         class="select"
                         size="small"
                       >
                         <el-option
-                          v-for="item in StatusOp"
+                          v-for="item in options"
                           :key="item.value"
                           :label="item.label"
                           :value="item.value"
@@ -78,16 +60,27 @@
                       </el-select>
                     </el-form-item>
                   </el-col>
+                </el-row>
+                <el-row>
                   <el-col :span="8">
-                    <el-form-item label="角色" prop="role">
+                    <el-form-item label="电子邮箱" prop="email">
+                      <el-input
+                        v-model="userData.email"
+                        size="small"
+                        class="input"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="状态">
                       <el-select
-                        v-model="role"
+                        v-model="userData.status"
                         placeholder="请选择"
                         class="select"
                         size="small"
                       >
                         <el-option
-                          v-for="item in Roles"
+                          v-for="item in StatusOp"
                           :key="item.value"
                           :label="item.label"
                           :value="item.value"
@@ -113,16 +106,16 @@
                   <el-col :span="8">
                     <el-form-item label="主要地址" prop="address">
                       <el-input
-                        v-model="address"
+                        v-model="userData.address"
                         size="small"
                         class="input"
                       ></el-input>
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
-                    <el-form-item label="电话号码" prop="phone">
+                    <el-form-item label="电话号码" prop="phoneNumber">
                       <el-input
-                        v-model="phone"
+                        v-model="userData.phoneNumber"
                         size="small"
                         class="input"
                         :maxlength="11"
@@ -130,9 +123,9 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
-                    <el-form-item label="城市" prop="salesAgency">
+                    <el-form-item label="城市">
                       <el-input
-                        v-model="salesAgency"
+                        v-model="userData.city"
                         size="small"
                         class="input"
                       ></el-input>
@@ -141,9 +134,9 @@
                 </el-row>
                 <el-row>
                   <el-col :span="8">
-                    <el-form-item label="国家" prop="id">
+                    <el-form-item label="国家">
                       <el-input
-                        v-model="country"
+                        v-model="userData.country"
                         size="small"
                         class="input"
                       ></el-input>
@@ -152,7 +145,7 @@
                   <el-col :span="8">
                     <el-form-item label="省份" prop="province">
                       <el-input
-                        v-model="province"
+                        v-model="userData.province"
                         size="small"
                         class="input"
                       ></el-input>
@@ -161,10 +154,9 @@
                   <el-col :span="8">
                     <el-form-item label="邮编">
                       <el-input
-                        v-model="updateTime"
+                        v-model="userData.zip"
                         size="small"
                         class="input"
-                        :maxlength="11"
                       ></el-input>
                     </el-form-item>
                   </el-col>
@@ -184,24 +176,13 @@
                 type="textarea"
                 :rows="4"
                 placeholder="请输入内容"
-                v-model="textarea"
-                maxlength="600"
+                v-model="userData.remarks"
+                :maxlength="600"
                 show-word-limit
               >
               </el-input>
             </div>
-          </el-card>  <!-- 商品库存 -->
-        <el-tab-pane label="商品" name="second">
-          <sim-quote></sim-quote>
-        </el-tab-pane>
-        <!-- 费用明细 -->
-        <el-tab-pane label="费用明细" name="third">
-          <sim-charges></sim-charges>
-        </el-tab-pane>
-        <!-- 任务 -->
-        <el-tab-pane label="任务" name="fourth">
-          <sim-task></sim-task>
-        </el-tab-pane>
+          </el-card>
 
           <!-- 卡片四  -->
           <el-card class="whiteCard">
@@ -213,18 +194,18 @@
               <el-form label-width="10em">
                 <el-row>
                   <el-col :span="8">
-                    <el-form-item label="创建人" prop="createBy">
+                    <el-form-item label="创建人">
                       <el-input
-                        v-model="createBy"
+                        v-model="userData.createBy"
                         size="small"
                         class="input"
                       ></el-input>
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
-                    <el-form-item label="创建时间" prop="createBy">
+                    <el-form-item label="创建时间">
                       <el-date-picker
-                        v-model="createdOn"
+                        v-model="userData.createTime"
                         type="date"
                         placeholder="选择日期"
                         size="small"
@@ -234,11 +215,12 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
-                    <el-form-item label="更新人" prop="salesAgency">
+                    <el-form-item label="更新人">
                       <el-input
-                        v-model="salesAgency"
+                        v-model="userData.updateBy"
                         size="small"
                         class="input"
+                        disabled
                       ></el-input>
                     </el-form-item>
                   </el-col>
@@ -247,11 +229,12 @@
                   <el-col :span="8">
                     <el-form-item label="更新时间">
                       <el-date-picker
-                        v-model="updateOn"
+                        v-model="userData.updateTime"
                         type="date"
                         placeholder="选择日期"
                         size="small"
                         class="input"
+                        disabled
                       >
                       </el-date-picker>
                     </el-form-item>
@@ -259,7 +242,7 @@
                   <el-col :span="8">
                     <el-form-item label="客户ID" prop="id">
                       <el-input
-                        v-model="id"
+                        v-model="userData.id"
                         size="small"
                         class="input"
                         disabled
@@ -293,9 +276,7 @@
     <!-- 底部栏 -->
     <footer class="btns">
       <div style="margin-top: 2em">
-        <el-button type="primary" @click="submitForm('form')"
-          >保存提交</el-button
-        >
+        <el-button type="primary" @click="submit">保存提交</el-button>
         <el-button type="primary" plain @click="$router.push({ path: '/crm' })"
           >返回</el-button
         >
@@ -304,8 +285,7 @@
   </div>
 </template>
 <script>
-// import axios from "axios";
-// console.log(this.$route.params.id);
+import { editUserData, getUserDetail } from "@/api/Crm";
 
 export default {
   name: "CrmEdit",
@@ -313,85 +293,100 @@ export default {
   data() {
     return {
       activeName: "first",
-      textarea: "",
 
-      // 账户信息
-      name: "",
-      password: "",
-      role: "",
-      email: "",
-      status: "",
-
-      // 纳税人信息
-      address: "",
-      city: "",
-      phone: "",
-      province: "",
-      salesAgency: "",
-      id: "",
-
-      // 操作人信息
-      isDeleted: "",
-      createBy: "",
-      createOn: "",
-      zip: "",
-      updateOn: "",
+      userData: {
+        accountName: "",
+        sex: "",
+        password: "",
+        role: "",
+        status: "",
+        email: "",
+        address: "",
+        country: "",
+        city: "",
+        phoneNumber: "",
+        province: "",
+        id: "",
+        createBy: "",
+        createTime: "",
+        updateBy: "",
+        updateTime: "",
+        zip: "",
+        remark: "",
+      },
 
       // 角色的选项
-      Roles: [
+      options: [
         {
-          value: "选项1",
+          value: "账户",
           label: "账户",
         },
         {
-          value: "选项2",
+          value: "托运人",
           label: "托运人",
         },
         {
-          value: "选项3",
+          value: "收货人",
           label: "收货人",
         },
         {
-          value: "选项4",
+          value: "承运人",
           label: "承运人",
-        },
-        {
-          value: "选项5",
-          label: "供应商",
         },
       ],
 
       // 性别的选项
       Sexs: [
         {
-          value: "选项1",
+          value: "男",
           label: "男",
         },
         {
-          value: "选项1",
+          value: "女",
           label: "女",
         },
       ],
 
-      // 性别的选项
+      // 状态的选项
       StatusOp: [
         {
-          value: "选项1",
+          value: "活跃",
           label: "活跃",
         },
         {
-          value: "选项1",
+          value: "不活跃",
           label: "不活跃",
         },
         {
-          value: "选项1",
+          value: "挂起",
           label: "挂起",
         },
       ],
     };
   },
 
-  methods: {},
+  methods: {
+    // 提交编辑，根据id进行编辑
+    submit() {
+      let data = {};
+      data = this.userData
+      data.id = this.$route.params.id;
+      editUserData(data).then((res) => {
+       if(res.data.code === 200) {
+       this.$message.success('编辑成功')
+       this.$router.push( {path: '/crm'} )
+       }
+      });
+    },
+  },
+
+  created() {
+    let data = {};
+    data.id = this.$route.params.id;
+    getUserDetail(data).then((res) => {
+      this.userData = res.data.data.userInfo;
+    });
+  },
 };
 </script>
 

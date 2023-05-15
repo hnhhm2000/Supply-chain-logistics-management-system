@@ -390,8 +390,8 @@ export default {
       MaxPieces: "",
       Remarks: "",
       CreatedBy: "",
-      CreatedOn: "",
-      UpdatedBy: "",
+      createTime: "",
+      updateBy: "",
       UpdatedOn: "",
 
       StatusOp: [

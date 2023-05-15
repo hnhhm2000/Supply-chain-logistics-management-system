@@ -75,9 +75,9 @@ export default {
           MaxPieces: "100",
           Remarks: "备注1",
           CreatedBy: "创建人A",
-          CreatedOn: "2023-05-01",
+          createTime: "2023-05-01",
           UpadatedBy: "更新人A",
-          UpdateOn: "2023-05-10",
+          updateTime: "2023-05-10",
         },
         {
           Status: "运输中",
@@ -105,9 +105,9 @@ export default {
           MaxPieces: "50",
           Remarks: "备注2",
           CreatedBy: "创建人B",
-          CreatedOn: "2023-04-15",
+          createTime: "2023-04-15",
           UpadatedBy: "更新人B",
-          UpdateOn: "2023-05-05",
+          updateTime: "2023-05-05",
         },
       ],
       option: {
@@ -221,7 +221,7 @@ export default {
           },
           {
             label: "创建时间",
-            prop: "CreatedOn",
+            prop: "createTime",
             search: true,
           },
           {
@@ -230,7 +230,7 @@ export default {
           },
           {
             label: "更新时间",
-            prop: "UpdateOn",
+            prop: "updateTime",
           },
         ],
       },

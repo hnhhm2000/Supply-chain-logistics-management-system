@@ -65,7 +65,7 @@
               <el-col :span="8">
                 <el-form-item label="创造时间:">
                   <el-date-picker
-                    v-model="createdTime"
+                    v-model="createTime"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -303,7 +303,7 @@
               <el-col :span="8">
                 <el-form-item label="创建时间:">
                   <el-date-picker
-                    v-model="CreatedOn"
+                    v-model="createTime"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -315,7 +315,7 @@
               <el-col :span="8">
                 <el-form-item label="更新人:">
                   <el-input
-                    v-model="UpdatedBy"
+                    v-model="updateBy"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -379,7 +379,7 @@ export default {
       Accouting: "",
       ShipmentOrders: "",
       CreatedBy: "",
-      CreatedOn: "",
+      createTime: "",
       Type: "",
       Departure: "",
       Arrival: "",
@@ -391,7 +391,7 @@ export default {
       Income: "",
       Expense: "",
       Profit: "",
-      UpdateOn: "",
+      updateTime: "",
       Origin: "",
       // 收货地
       Determine: "",
@@ -401,7 +401,7 @@ export default {
       ConsigneeAddress: "",
       ShipperAddress: "",
       UpdatedOn: "",
-      UpdatedBy: "",
+      updateBy: "",
       ShipperNumber: "",
 
       Types: [

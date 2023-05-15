@@ -172,7 +172,7 @@ export default {
           },
            {
             label: "创造于",
-            prop: "CreatedOn",
+            prop: "createTime",
           },
            {
             label: "更新人",
@@ -180,7 +180,7 @@ export default {
           },
            {
             label: "更新时间",
-            prop: "UpdateOn",
+            prop: "updateTime",
           },
            {
             label: "组织",
@@ -188,7 +188,7 @@ export default {
           },
            {
             label: "创造于",
-            prop: "CreatedOn",
+            prop: "createTime",
           },
         ],
       },

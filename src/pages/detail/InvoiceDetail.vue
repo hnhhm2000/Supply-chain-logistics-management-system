@@ -162,7 +162,7 @@ export default {
       Number: "",
       Payment: "",
       CreatedBy: "",
-      CreatedOn: "",
+      createTime: "",
       Type: "",
       // 关联模块
       Module: "",

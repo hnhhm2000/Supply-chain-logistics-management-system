@@ -69,9 +69,9 @@ export default {
           Expense: 3000,
           Profit: 2000,
           CreatedBy: "创建人A",
-          CreatedOn: "2023-05-01",
+          createTime: "2023-05-01",
           UpdatedOn: "更新人A",
-          UpdateOn: "2023-05-10",
+          updateTime: "2023-05-10",
           ETA: "2023-05-18",
           ETD: "2023-05-02",
           PodDate: "2023-05-16",
@@ -98,9 +98,9 @@ export default {
           Expense: 4000,
           Profit: 4000,
           CreatedBy: "创建人B",
-          CreatedOn: "2023-04-15",
+          createTime: "2023-04-15",
           UpdatedOn: "更新人B",
-          UpdateOn: "2023-05-05",
+          updateTime: "2023-05-05",
           ETA: "2023-05-03",
           ETD: "2023-04-20",
           PodDate: "2023-05-01",
@@ -199,7 +199,7 @@ export default {
           },
           {
             label: "创造时间",
-            prop: "CreatedOn",
+            prop: "createTime",
             search:true
           },
           {
@@ -208,7 +208,7 @@ export default {
           },
           {
             label: "最近更新",
-            prop: "UpdateOn",
+            prop: "updateTime",
             width:90
           },
           {

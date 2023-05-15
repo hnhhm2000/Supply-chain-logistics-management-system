@@ -1,8 +1,10 @@
 <template>
   <div class="bg">
-    <!-- 主要内容 -->
+   <!-- 主要内容 -->
     <main class="add-main">
-         <!-- 卡片一  -->
+      <el-tabs v-model="activeName" type="card">
+        <el-tab-pane label="主要资料" name="first">
+      <!-- 卡片一  -->
       <el-card class="whiteCard">
         <div slot="header" class="clearfix">
           <span class="CardTitle">主要信息</span>
@@ -323,7 +325,7 @@
               <el-col :span="8">
                 <el-form-item label="创建时间:">
                   <el-date-picker
-                    v-model="createdOn"
+                    v-model="createTime"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -335,7 +337,7 @@
               <el-col :span="8">
                 <el-form-item label="更新人:">
                   <el-input
-                    v-model="UpdatedBy"
+                    v-model="updateBy"
                     size="small"
                     class="input"
                   ></el-input>
@@ -347,7 +349,7 @@
               <el-col :span="8">
                 <el-form-item label="更新时间:">
                   <el-date-picker
-                    v-model="updateOn"
+                    v-model="updateTime"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -412,6 +414,20 @@
           </el-form>
         </div>
       </el-card>
+        </el-tab-pane>
+        <!-- 商品库存 -->
+        <el-tab-pane label="商品" name="second">
+          <sim-quote></sim-quote>
+        </el-tab-pane>
+        <!-- 费用明细 -->
+        <el-tab-pane label="费用明细" name="third">
+          <sim-charges></sim-charges>
+        </el-tab-pane>
+        <!-- 任务 -->
+        <el-tab-pane label="任务" name="fourth">
+          <sim-task></sim-task>
+        </el-tab-pane>
+      </el-tabs>
     </main>
 
     <!-- 底部栏 -->
@@ -454,8 +470,8 @@ export default {
       Expense: "",
       Profit: "",
       CreatedBy: "",
-      CreatedOn: "",
-      UpdatedBy: "",
+      createTime: "",
+      updateBy: "",
       UpdatedOn: "",
       // 预计到达时间
       ETA: "",
