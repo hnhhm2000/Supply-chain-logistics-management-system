@@ -17,14 +17,7 @@
         @cell-click="pageto"
         class="Mycrud"
       >
-        <el-button
-          slot="menuLeft"
-          type="primary"
-          icon="el-icon-plus"
-          size="small"
-          @click="rowadd"
-          >新增</el-button
-        >
+
       </avue-crud>
     </main>
   </div>
@@ -42,8 +35,7 @@ export default {
           BillNumber: "B1234",
           CreatedBy: "创建人A",
           createTime: "2023-05-01",
-          Type: "类型A",
-          Reference: "REF1234",
+          Reference: "OOD0000001",
           Project: "项目A",
           Date: "2023-05-05",
           Vendor: "供应商A",
@@ -55,8 +47,7 @@ export default {
           BillNumber: "B5678",
           CreatedBy: "创建人B",
           createTime: "2023-04-15",
-          Type: "类型B",
-          Reference: "REF5678",
+                    Reference: "OOD0000002",
           Project: "项目B",
           Date: "2023-04-20",
           Vendor: "供应商B",
@@ -68,8 +59,8 @@ export default {
           BillNumber: "B9012",
           CreatedBy: "创建人C",
           createTime: "2023-05-05",
-          Type: "类型C",
-          Reference: "REF9012",
+
+          Reference: "OOD0000003",
           Project: "项目C",
           Date: "2023-05-10",
           Vendor: "供应商C",
@@ -82,6 +73,8 @@ export default {
         searchShow: false,
         excelBtn: true,
         addBtn: false,
+        editBtn:false,
+        delBtn:false,
         column: [
           {
             label: "账单号",
@@ -99,12 +92,9 @@ export default {
             search:true
           },
           {
-            label: "类型",
-            prop: "Type",
-          },
-          {
             label: "引用",
             prop: "Reference",
+            width:100
           },
           {
             label: "项目",
@@ -139,41 +129,10 @@ export default {
     refreshChange() {
       this.$message.success("刷新回调");
     },
-    rowSave(form, done, loading) {
-      form.id = new Date().getTime();
-      setTimeout(() => {
-        loading();
-      }, 1000);
-      setTimeout(() => {
-        this.$message.success("新增数据" + JSON.stringify(form));
-        done(form);
-      }, 2000);
-    },
-    rowDel(form, index, done) {
-      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
-        .then(() => {
-          done(form);
-          this.$message({
-            type: "success",
-            message: "删除成功!",
-          });
-        })
-        .catch(() => {});
-    },
-    rowUpdate(form, index, done, loading) {
-      setTimeout(() => {
-        loading();
-      }, 1000);
-      setTimeout(() => {
-        this.$message.success(
-          "编辑数据" + JSON.stringify(form) + "数据序号" + index
-        );
-        done(form);
-      }, 2000);
+      // 清空搜索
+    searchReset() {
+      this.createdDate = ''
+      this.untilDate = ''
     },
   },
 };

@@ -17,14 +17,25 @@
         @cell-click="pageto"
         class="Mycrud"
       >
-        <el-button
-          slot="menuLeft"
-          type="primary"
-          icon="el-icon-plus"
-          size="small"
-          @click="rowadd"
-          >新增</el-button
-        >
+        <template slot="shippingTimeSearch">
+          <div style="display: flex">
+            <el-date-picker
+              v-model="createTime"
+              size="small"
+              type="date"
+              placeholder="创建日期"
+            >
+            </el-date-picker>
+            <label style="margin: 0 0.1em">—</label>
+            <el-date-picker
+              v-model="dueDate"
+              size="small"
+              type="date"
+              placeholder="截止日期"
+            >
+            </el-date-picker>
+          </div>
+        </template>
       </avue-crud>
     </main>
   </div>
@@ -37,13 +48,14 @@ export default {
   data() {
     return {
       activeName: "first",
+      createTime: "",
+      dueDate: "",
       data: [
         {
           invoiceNumber: "INV0000001",
           Payment: "是",
           CreatedBy: "创建人A",
           createTime: "2023-05-01",
-          Type: "类型A",
           Module: "关联模块A",
           Project: "项目A",
           Date: "2023-05-05",
@@ -58,7 +70,6 @@ export default {
           Payment: "是",
           CreatedBy: "创建人B",
           createTime: "2023-04-15",
-          Type: "类型B",
           Module: "关联模块B",
           Project: "项目B",
           Date: "2023-04-20",
@@ -73,7 +84,6 @@ export default {
           Payment: "否",
           CreatedBy: "创建人C",
           createTime: "2023-05-05",
-          Type: "类型C",
           Module: "关联模块C",
           Project: "项目C",
           Date: "2023-05-10",
@@ -88,31 +98,36 @@ export default {
         searchShow: false,
         excelBtn: true,
         addBtn: false,
+        editBtn: false,
+        delBtn: false,
         column: [
           {
             label: "发票号",
             prop: "invoiceNumber",
-            search:true
+            search: true,
+            width: 100,
           },
           {
             label: "是否付款",
             prop: "Payment",
-            search:true
+            search: true,
           },
           {
             label: "创造人",
             prop: "CreatedBy",
-            search:true
+            search: true,
+          },
+          {
+            label: "运输时间",
+            prop: "shippingTime",
+            search: true,
+            hide: true,
+            searchSpan: 7,
           },
           {
             label: "创造时间",
             prop: "createTime",
-            width:90,
-            search:true
-          },
-          {
-            label: "类型",
-            prop: "Type",
+            width: 90,
           },
           {
             label: "关联模块",
@@ -125,12 +140,12 @@ export default {
           {
             label: "开具日期",
             prop: "Date",
-            width:90
+            width: 90,
           },
           {
             label: "截止日期",
-            prop: "Duedate",
-            width:90
+            prop: "duedate",
+            width: 90,
           },
           {
             label: "金额",
@@ -154,11 +169,10 @@ export default {
   },
 
   methods: {
-
     refreshChange() {
       this.$message.success("刷新回调");
     },
-  
+
     rowDel(form, index, done) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
         confirmButtonText: "确定",
@@ -174,7 +188,11 @@ export default {
         })
         .catch(() => {});
     },
-
+       // 清空搜索
+    resetChange() {
+      this.createTime = ''
+      this.dueDate = ''
+    },
   },
 };
 </script>

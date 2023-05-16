@@ -36,6 +36,27 @@
             >编辑</el-button
           >
         </template>
+
+           <!-- 运输时间选择器 -->
+          <template slot="shippingTimeSearch">
+          <div style="display: flex">
+            <el-date-picker
+              v-model="departure"
+              size="small"
+              type="date"
+              placeholder="开始日期"
+            >
+            </el-date-picker>
+            <label style="margin: 0 0.1em">—</label>
+            <el-date-picker
+              v-model="arrival"
+              size="small"
+              type="date"
+              placeholder="截止日期"
+            >
+            </el-date-picker>
+          </div>
+        </template>
       </avue-crud>
     </main>
   </div>
@@ -47,14 +68,15 @@ export default {
 
   data() {
     return {
-      
+      departure:"",
+      arrival:"",
       data: [
         {
           Status: "预约中",
           Accounting: "已开票",
           ShipmentNumber: "OOD0000001",
-          Departure: "2023-05-01",
-          Arrival: "2023-05-05",
+          departure: "2023-05-01",
+          arrival: "2023-05-05",
           PortOfReceipt: "收货港A",
           PortOfOrigin: "发货港A",
           PlaceOfDate: "2023-05-10",
@@ -83,8 +105,8 @@ export default {
           Status: "运输中",
           Accounting: "空",
           ShipmentNumber: "OOD0000002",
-          Departure: "2023-04-15",
-          Arrival: "2023-04-20",
+          departure: "2023-04-15",
+          arrival: "2023-04-20",
           PortOfReceipt: "收货港B",
           PortOfOrigin: "发货港B",
           PlaceOfDate: "2023-04-25",
@@ -132,11 +154,13 @@ export default {
           },
           {
             label: "启航日",
-            prop: "Departure",
+            prop: "departure",
+            width:90
           },
           {
             label: "抵达日",
-            prop: "Arrival",
+            prop: "arrival",
+            width:90
           },
           {
             label: "收货港",
@@ -149,6 +173,7 @@ export default {
           {
             label: "收货日",
             prop: "PlaceOfDate",
+            width:90
           },
           {
             label: "托运人",
@@ -167,7 +192,7 @@ export default {
             prop: "PCS",
           },
           {
-            label: "重量(公斤)",
+            label: "重量",
             prop: "Weight",
           },
           {
@@ -185,6 +210,7 @@ export default {
           {
             label: "装载日期",
             prop: "LoadingDate",
+            width:90
           },
           {
             label: "项目",
@@ -197,6 +223,7 @@ export default {
           {
             label: "结算时间",
             prop: "Cutoffdate",
+            width:90
           },
           {
             label: "商品名",
@@ -222,7 +249,14 @@ export default {
           {
             label: "创建时间",
             prop: "createTime",
+            width:90
+          },
+          {
+            label: "运输时间",
+            prop: "shippingTime",
             search: true,
+            hide: true,
+            searchSpan: 7,
           },
           {
             label: "更新人",
@@ -231,6 +265,7 @@ export default {
           {
             label: "更新时间",
             prop: "updateTime",
+            width:90
           },
         ],
       },
@@ -258,6 +293,13 @@ export default {
     rowadd() {
       this.$router.push("./ocean/add");
     },
+
+     // 清空搜索
+    resetChange() {
+      this.departure = ''
+      this.arrival = ''
+    },
+
     refreshChange() {
       this.$message.success("刷新回调");
     },

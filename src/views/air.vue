@@ -36,6 +36,27 @@
             >编辑</el-button
           >
         </template>
+
+            <!-- 运输时间选择器 -->
+          <template slot="shippingTimeSearch">
+          <div style="display: flex">
+            <el-date-picker
+              v-model="departure"
+              size="small"
+              type="date"
+              placeholder="开始日期"
+            >
+            </el-date-picker>
+            <label style="margin: 0 0.1em">—</label>
+            <el-date-picker
+              v-model="arrival"
+              size="small"
+              type="date"
+              placeholder="截止日期"
+            >
+            </el-date-picker>
+          </div>
+        </template>
       </avue-crud>
     </main>
   </div>
@@ -48,13 +69,15 @@ export default {
   data() {
     return {
       activeName: "first",
+      departure:"",
+      arrival:"",
       data: [
         {
           Status: "装载中",
           Accouting: "已发票",
           Shipment: "S1234",
           Departure: "2023-05-01",
-          Arrival: "2023-05-05",
+          arrival: "2023-05-05",
           Origin: "始发地A",
           Destination: "目的地A",
           Customer: "客户A",
@@ -71,7 +94,7 @@ export default {
           Accouting: "空",
           Shipment: "AIR0000001",
           Departure: "2023-04-15",
-          Arrival: "2023-04-20",
+          arrival: "2023-04-20",
           Origin: "始发地B",
           Destination: "目的地B",
           Customer: "客户B",
@@ -88,7 +111,7 @@ export default {
           Accouting: "待定中",
           Shipment: "AIR0000002",
           Departure: "2023-05-05",
-          Arrival: "2023-05-10",
+          arrival: "2023-05-10",
           Origin: "始发地C",
           Destination: "目的地C",
           Customer: "客户C",
@@ -124,10 +147,12 @@ export default {
           {
             label: "起飞日",
             prop: "Departure",
+            width:90
           },
           {
             label: "抵达日",
-            prop: "Arrival",
+            prop: "arrival",
+            width:90
           },
           {
             label: "始发地",
@@ -138,6 +163,13 @@ export default {
             label: "目的地",
             prop: "Destination",
             search:true
+          },
+           {
+            label: "运输时间",
+            prop: "shippingTime",
+            search: true,
+            hide: true,
+            searchSpan: 7,
           },
           {
             label: "客户",
@@ -222,6 +254,11 @@ export default {
         );
         done(form);
       }, 2000);
+    },
+       // 清空搜索
+    resetChange() {
+      this.departure = ''
+      this.arrival = ''
     },
   },
 };

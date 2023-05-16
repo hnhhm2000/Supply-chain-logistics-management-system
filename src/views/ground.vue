@@ -36,6 +36,28 @@
             >编辑</el-button
           >
         </template>
+
+         <!-- 运输时间选择器 -->
+          <template slot="shippingTimeSearch">
+          <div style="display: flex">
+            <el-date-picker
+              v-model="departure"
+              size="small"
+              type="date"
+              placeholder="开始日期"
+            >
+            </el-date-picker>
+            <label style="margin: 0 0.1em">—</label>
+            <el-date-picker
+              v-model="arrival"
+              size="small"
+              type="date"
+              placeholder="截止日期"
+            >
+            </el-date-picker>
+          </div>
+        </template>
+
       </avue-crud>
     </main>
   </div>
@@ -48,6 +70,8 @@ export default {
   data() {
     return {
       activeName: "first",
+      departure:"",
+      arrival:"",
       data: [
         {
           Status: "预约中",
@@ -158,6 +182,13 @@ export default {
             prop: "PlaceOfDelivery",
             search: true,
           },
+           {
+            label: "运输时间",
+            prop: "shippingTime",
+            search: true,
+            hide: true,
+            searchSpan: 7,
+          },
           {
             label: "客户",
             prop: "customer",
@@ -265,6 +296,12 @@ export default {
         );
         done(form);
       }, 2000);
+    },
+
+     // 清空搜索
+    resetChange() {
+      this.departure = ''
+      this.arrival = ''
     },
   },
 };

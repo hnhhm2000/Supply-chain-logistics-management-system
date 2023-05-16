@@ -35,6 +35,26 @@
             >编辑</el-button
           >
         </template>
+          <!-- 运输时间选择器 -->
+          <template slot="shippingTimeSearch">
+          <div style="display: flex">
+            <el-date-picker
+              v-model="createdDate"
+              size="small"
+              type="date"
+              placeholder="开始日期"
+            >
+            </el-date-picker>
+            <label style="margin: 0 0.1em">—</label>
+            <el-date-picker
+              v-model="untilDate"
+              size="small"
+              type="date"
+              placeholder="截止日期"
+            >
+            </el-date-picker>
+          </div>
+        </template>
         
       </avue-crud>
     </main>
@@ -47,6 +67,8 @@ export default {
 
   data() {
     return {
+      createdDate:"",
+      untilDate:"",
       data: [
         {
           Status: "请求中",
@@ -54,8 +76,8 @@ export default {
           QuoteNumber: "QUO0000001",
           Project: "项目A",
           Mode: "海运",
-          createTime: "2023-05-01",
-          UntilDate: "2023-05-15",
+          CreatedDate: "2023-05-01",
+          untilDate: "2023-05-15",
           Customer: "客户A",
           Origin: "上海",
           Destination: "纽约",
@@ -68,7 +90,7 @@ export default {
           Expense: 3000,
           Profit: 2000,
           CreatedBy: "创建人A",
-          createTime: "08:00",
+          createTime: "2023-05-01",
           updateBy: "更新人A",
           updateTime: "2023-05-10",
           Remarks: "备注1",
@@ -79,8 +101,8 @@ export default {
           QuoteNumber: "QUO0000002",
           Project: "项目B",
           Mode: "空运",
-          createTime: "2023-04-15",
-          UntilDate: "2023-04-30",
+          CreatedDate: "2023-04-15",
+          untilDate: "2023-04-30",
           Customer: "客户B",
           Origin: "北京",
           Destination: "伦敦",
@@ -93,7 +115,7 @@ export default {
           Expense: 4000,
           Profit: 4000,
           CreatedBy: "创建人B",
-          createTime: "12:30",
+          createTime: "2023-05-05",
           updateBy: "更新人B",
           updateTime: "2023-05-05",
           Remarks: "备注2",
@@ -104,8 +126,8 @@ export default {
           QuoteNumber: "QUO0000003",
           Project: "项目C",
           Mode: "陆运",
-          createTime: "2023-05-05",
-          UntilDate: "2023-05-20",
+          CreatedDate: "2023-05-05",
+          untilDate: "2023-05-20",
           Customer: "客户C",
           Origin: "广州",
           Destination: "深圳",
@@ -118,7 +140,7 @@ export default {
           Expense: 1500,
           Profit: 500,
           CreatedBy: "创建人C",
-          createTime: "16:45",
+          createTime: "2023-05-05",
           updateBy: "更新人C",
           updateTime: "2023-05-08",
           Remarks: "备注3",
@@ -157,12 +179,13 @@ export default {
           },
           {
             label: "创建日期",
-            prop: "createTime",
-            search: true,
+            prop: "CreatedDate",
+            width:90
+
           },
           {
             label: "截止日期",
-            prop: "UntilDate",
+            prop: "untilDate",
             width:90
           },
           {
@@ -229,6 +252,13 @@ export default {
             search: true,
           },
           {
+            label: "运输时间",
+            prop: "shippingTime",
+            search: true,
+            hide: true,
+            searchSpan: 7,
+          },
+          {
             label: "最近更新",
             prop: "updateTime",
             width:90
@@ -284,16 +314,10 @@ export default {
         .catch(() => {});
     },
 
-    rowUpdate(form, index, done, loading) {
-      setTimeout(() => {
-        loading();
-      }, 1000);
-      setTimeout(() => {
-        this.$message.success(
-          "编辑数据" + JSON.stringify(form) + "数据序号" + index
-        );
-        done(form);
-      }, 2000);
+      // 清空搜索
+    resetChange() {
+      this.createdDate = ''
+      this.untilDate = ''
     },
   },
 };

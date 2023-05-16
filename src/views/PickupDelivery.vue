@@ -173,11 +173,11 @@ export default {
             prop: "Value",
           },
           {
-            label: "重量(斤)",
+            label: "重量",
             prop: "Weight",
           },
           {
-            label: "体积(立方米)",
+            label: "体积",
             prop: "VOL",
           },
           {
@@ -200,7 +200,8 @@ export default {
           {
             label: "创造时间",
             prop: "createTime",
-            search:true
+            search:true,
+            width:90
           },
           {
             label: "更新人",
