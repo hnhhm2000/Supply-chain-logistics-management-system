@@ -12,94 +12,186 @@
           <el-form ref="form" :model="form" :rules="rules" label-width="10em">
             <el-row>
               <el-col :span="8">
-                <el-form-item label="状态:"> </el-form-item>
+                <el-form-item label="状态:">
+                  <div class="context">
+                    {{ oceanInfo.status }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="财务:"> </el-form-item>
+                <el-form-item label="财务:">
+                  <div class="context">
+                    {{ oceanInfo.accounting }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="海运编号:"> </el-form-item>
-              </el-col>
-            </el-row>
-
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="启航日:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="抵达日:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="收货港:"> </el-form-item>
-              </el-col>
-            </el-row>
-
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="发货港:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="收货日:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="收货地点:"> </el-form-item>
+                <el-form-item label="海运编号:">
+                  <div class="context">
+                    {{ oceanInfo.oceanNumber }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="托运人:"> </el-form-item>
+                <el-form-item label="启航日:">
+                  <div class="context">
+                    {{ oceanInfo.departure }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="收货人:"> </el-form-item>
+                <el-form-item label="抵达日:">
+                  <div class="context">
+                    {{ oceanInfo.arrival }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="件数:"> </el-form-item>
-              </el-col>
-            </el-row>
-
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="重量:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="收入:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="支出:"> </el-form-item>
-              </el-col>
-            </el-row>
-
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="利润:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="装载日期:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="备注:"> </el-form-item>
+                <el-form-item label="收货港:">
+                  <div class="context">
+                    {{ oceanInfo.receive }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="项目:"> </el-form-item>
+                <el-form-item label="发货港:">
+                  <div class="context">
+                    {{ oceanInfo.pla }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="承运人:"> </el-form-item>
+                <el-form-item label="收货日:">
+                  <div class="context">
+                    {{ oceanInfo.placeOfDate }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="商品名:"> </el-form-item>
+                <el-form-item label="收货地点:">
+                  <div class="context">
+                    {{ oceanInfo.placeholder }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="最大容量:"> </el-form-item>
+                <el-form-item label="托运人:">
+                  <div class="context">
+                    {{ oceanInfo.shipper }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="客户:"> </el-form-item>
+                <el-form-item label="收货人:">
+                  <div class="context">
+                    {{ oceanInfo.consignee }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="件数:">
+                  <div class="context">
+                    {{ oceanInfo.pcs }}
+                  </div>
+                </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="重量:">
+                  <div class="context">
+                    {{ oceanInfo.weight }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="收入:">
+                  <div class="context">
+                    {{ oceanInfo.income }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="支出:">
+                  <div class="context">
+                    {{ oceanInfo.expense }}
+                  </div>
+                </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="利润:">
+                  <div class="context">
+                    {{ oceanInfo.profit }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="装载日期:">
+                  <div class="context">
+                    {{ oceanInfo.loadingDate }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="备注:">
+                  <div class="context">
+                    {{ oceanInfo.remark }}
+                  </div>
+                </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="项目:">
+                  <div class="context">
+                    {{ oceanInfo.project }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="承运人:">
+                  <div class="context">
+                    {{ oceanInfo.carrier }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="商品名:">
+                  <div class="context">
+                    {{ oceanInfo.commodity }}
+                  </div>
+                </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="最大容量:">
+                  <div class="context">
+                    {{ oceanInfo.maxPieces }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="客户:">
+                  <div class="context">
+                    {{ oceanInfo.customer }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
           </el-form>
@@ -112,7 +204,9 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-        <div></div>
+        <div class="remark">
+          {{ oceanInfo.remark }}
+        </div>
       </el-card>
 
       <!-- 卡片三  -->
@@ -125,23 +219,43 @@
           <el-form ref="form" :model="form" :rules="rules" label-width="10em">
             <el-row>
               <el-col :span="8">
-                <el-form-item label="创建人:"> </el-form-item>
+                <el-form-item label="创建人:">
+                  <div class="context">
+                    {{ oceanInfo.createBy }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="创建时间:"> </el-form-item>
+                <el-form-item label="创建时间:">
+                  <div class="context">
+                    {{ oceanInfo.createTime }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="更新人:"> </el-form-item>
+                <el-form-item label="更新人:">
+                  <div class="context">
+                    {{ oceanInfo.updateBy }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="更新时间:"> </el-form-item>
+                <el-form-item label="更新时间:">
+                  <div class="context">
+                    {{ oceanInfo.updateTime }}
+                  </div>
+                </el-form-item>
               </el-col>
 
               <el-col :span="8">
-                <el-form-item label="海运ID:"> </el-form-item>
+                <el-form-item label="海运ID:">
+                  <div class="context">
+                    {{ oceanInfo.id }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
           </el-form>
@@ -152,37 +266,44 @@
     <!-- 底部栏 -->
     <footer class="btns">
       <div style="margin-top: 2em">
-        <el-button type="primary" @click="submitForm('form')"
-          >保存提交</el-button
-        >
+        <el-button type="primary" @click="submit()">保存提交</el-button>
         <el-button type="primary" plain @click="$router.back()">返回</el-button>
       </div>
     </footer>
   </div>
 </template>
 <script>
-// import axios from "axios";
+import { getOceanDetail } from "@/api/Ocean";
 
 export default {
-  name: "BillAdd",
-
   data() {
     return {
-      InvoiceID: "",
-      Number: "",
-      CreatedBy: "",
-      createTime: "",
-      Type: "",
-      // 管理模块
-      Module: "",
-      Project: "",
-      Date: "",
-      // 供应商
-      Vendor: "",
-      DueDate: "",
-      TotalAmount: "",
-      Remarks: "",
+      oceanInfo: {
+        InvoiceID: "",
+        oceanNumber: "",
+        createdBy: "",
+        createTime: "",
+        type: "",
+        // 管理模块
+        module: "",
+        project: "",
+        date: "",
+        // 供应商
+        vendor: "",
+        dueDate: "",
+        totalAmount: "",
+        remarks: "",
+      },
     };
+  },
+
+  mounted() {
+    // 获取详情数据，将其填写到表单中
+    let data = {};
+    data.id = this.$route.params.id;
+    getOceanDetail(data).then((res) => {
+      this.oceanInfo = res.data.data.oceanInfo;
+    });
   },
 
   methods: {},

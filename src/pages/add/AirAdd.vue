@@ -32,7 +32,7 @@
               <el-col :span="8">
                 <el-form-item label="财务:">
                   <el-input
-                    v-model="Accounting"
+                    v-model="accounting"
                     size="small"
                     class="input"
                     disabled
@@ -42,7 +42,7 @@
               <el-col :span="8">
                 <el-form-item label="编号:">
                   <el-input
-                    v-model="Shipment"
+                    v-model="shipment"
                     size="small"
                     class="input"
                   ></el-input>
@@ -54,7 +54,7 @@
               <el-col :span="8">
                 <el-form-item label="起飞日:">
                   <el-date-picker
-                    v-model="Departure"
+                    v-model="departure"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -66,7 +66,7 @@
               <el-col :span="8">
                 <el-form-item label="抵达日:">
                   <el-date-picker
-                    v-model="Arrival"
+                    v-model="arrival"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -78,7 +78,7 @@
               <el-col :span="8">
                 <el-form-item label="始发地:">
                   <el-input
-                    v-model="Origin"
+                    v-model="origin"
                     size="small"
                     class="input"
                   ></el-input>
@@ -90,7 +90,7 @@
               <el-col :span="8">
                 <el-form-item label="目的地:">
                   <el-input
-                    v-model="Destination"
+                    v-model="destination"
                     size="small"
                     class="input"
                   ></el-input>
@@ -99,7 +99,7 @@
               <el-col :span="8">
                 <el-form-item label="客户:">
                   <el-input
-                    v-model="Customer"
+                    v-model="customer"
                     size="small"
                     class="input"
                   ></el-input>
@@ -108,7 +108,7 @@
               <el-col :span="8">
                 <el-form-item label="托运人:">
                   <el-input
-                    v-model="Shipper"
+                    v-model="shipper"
                     size="small"
                     class="input"
                   ></el-input>
@@ -120,7 +120,7 @@
               <el-col :span="8">
                 <el-form-item label="收货人:">
                   <el-input
-                    v-model="Consignee"
+                    v-model="consignee"
                     size="small"
                     class="input"
                   ></el-input>
@@ -128,13 +128,13 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="件数:">
-                  <el-input v-model="PCS" size="small" class="input"></el-input>
+                  <el-input v-model="pcs" size="small" class="input"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="重量:">
                   <el-input
-                    v-model="Weight"
+                    v-model="weight"
                     size="small"
                     class="input"
                   ></el-input>
@@ -145,7 +145,7 @@
               <el-col :span="8">
                 <el-form-item label="收入:">
                   <el-input
-                    v-model="Income"
+                    v-model="income"
                     size="small"
                     class="input"
                   ></el-input>
@@ -154,7 +154,7 @@
               <el-col :span="8">
                 <el-form-item label="支出:">
                   <el-input
-                    v-model="Expense"
+                    v-model="expense"
                     size="small"
                     class="input"
                   ></el-input>
@@ -163,7 +163,7 @@
               <el-col :span="8">
                 <el-form-item label="利润:">
                   <el-input
-                    v-model="Profit"
+                    v-model="profit"
                     size="small"
                     class="input"
                   ></el-input>
@@ -175,7 +175,7 @@
               <el-col :span="8">
                 <el-form-item label="承运人:">
                   <el-input
-                    v-model="Carrier"
+                    v-model="carrier"
                     size="small"
                     class="input"
                   ></el-input>
@@ -184,7 +184,7 @@
               <el-col :span="8">
                 <el-form-item label="项目:">
                   <el-input
-                    v-model="Project"
+                    v-model="project"
                     size="small"
                     class="input"
                   ></el-input>
@@ -193,7 +193,7 @@
               <el-col :span="8">
                 <el-form-item label="最大容量:">
                   <el-input
-                    v-model="MaxPieces"
+                    v-model="maxPieces"
                     size="small"
                     class="input"
                   ></el-input>
@@ -215,7 +215,7 @@
             type="textarea"
             :rows="4"
             placeholder="请输入内容"
-            v-model="textarea"
+            v-model="remark"
             maxlength="600"
             show-word-limit
           >
@@ -224,7 +224,7 @@
       </el-card>
 
       <!-- 卡片三  -->
-      <el-card class="whiteCard">
+       <el-card class="whiteCard">
         <div slot="header" class="clearfix">
           <span class="CardTitle">其他</span>
         </div>
@@ -235,7 +235,7 @@
               <el-col :span="8">
                 <el-form-item label="创建人:">
                   <el-input
-                    v-model="CreatedBy"
+                    v-model="createBy"
                     size="small"
                     class="input"
                   ></el-input>
@@ -243,17 +243,20 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="创建时间:">
-                  <el-input
+                  <el-date-picker
                     v-model="createTime"
+                    type="datetime"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="更新人:">
                   <el-input
-                    v-model="UpdateBy"
+                    v-model="updateBy"
                     size="small"
                     class="input"
                   ></el-input>
@@ -264,18 +267,21 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="更新时间:">
-                  <el-input
+                  <el-date-picker
                     v-model="updateTime"
+                    type="datetime"
+                    placeholder="选择日期"
                     size="small"
                     class="input"
-                  ></el-input>
+                  >
+                  </el-date-picker>
                 </el-form-item>
               </el-col>
 
               <el-col :span="8">
-                <el-form-item label="空运ID:">
+                <el-form-item label="陆运ID:">
                   <el-input
-                    v-model="AirID"
+                    v-model="GroundID"
                     disabled
                     size="small"
                     class="input"
@@ -291,7 +297,7 @@
     <!-- 底部栏 -->
     <footer class="btns">
       <div style="margin-top: 2em">
-        <el-button type="primary" @click="submitForm('form')"
+        <el-button type="primary" @click="submit()"
           >保存提交</el-button
         >
         <el-button type="primary" plain @click="$router.back()">返回</el-button>
@@ -300,59 +306,110 @@
   </div>
 </template>
 <script>
-// import axios from "axios";
+import { addAirData } from "@/api/Air";
+import { Message } from "element-ui";
 
 export default {
   name: "AirAdd",
 
   data() {
     return {
-      AirFreightID: "",
       status: "",
-      Accounting: "",
+      accounting: "",
       // 空运编号
-      Shipment: "",
+      airNumber: "",
       // 起飞日
-      Departure: "",
+      departure: "",
       // 抵达日
-      Arrival: "",
-      Origin: "",
-      Destination: "",
-      Customer: "",
-      Shipper: "",
-      Consignee: "",
-      PCS: "",
-      Weight: "",
-      Income: "",
-      Expense: "",
-      Profit: "",
-      Carrier: "",
-      Project: "",
-      MaxPieces: "",
+      arrival: "",
+      origin: "",
+      destination: "",
+      customer: "",
+      shipper: "",
+      consignee: "",
+      pcs: "",
+      weight: "",
+      income: "",
+      expense: "",
+      profit: "",
+      carrier: "",
+      project: "",
+      maxPieces: "",
+      createBy: "",
+      createTime: "",
+      updateBy: "",
+      updateTime: "",
       remarks: "",
 
       StatusOp: [
         {
-          value: "选项1",
+          value: "装载中",
           label: "装载中",
         },
         {
-          value: "选项2",
+          value: "运输中",
           label: "运输中",
         },
         {
-          value: "选项3",
+          value: "已抵达海关",
           label: "已抵达海关",
         },
         {
-          value: "选项3",
+          value: "已完成",
           label: "已完成",
         },
       ],
     };
   },
 
-  methods: {},
+    methods: {
+    // 提交添加
+    submit() {
+      let params = { ...this.$data };
+      delete params.StatusOp;
+
+      // 格式化创建日期/更新日期数据
+      params.createTime = this.formatDate(params.createTime);
+      params.updateTime = this.formatDate(params.updateTime);
+
+      addAirData(params)
+        .then((res) => {
+          console.log(res.data.code);
+          if (res.data.code === 200) {
+            // 成功消息
+            Message({
+              message: "添加成功",
+              type: "success",
+            });
+            this.$router.push({ path: "/air" });
+          } else {
+            // 错误消息
+            Message.error(`错误: ${res.message}`);
+          }
+        })
+        .catch((err) => {
+          // 请求失败的错误消息
+          Message.error(`请求失败: ${err}`);
+        });
+    },
+
+    // 格式化时间
+    formatDate(dateString) {
+      if (dateString !== "") {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        const hours = String(date.getHours()).padStart(2, "0");
+        const minutes = String(date.getMinutes()).padStart(2, "0");
+        const seconds = String(date.getSeconds()).padStart(2, "0");
+
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+      } else {
+        return "";
+      }
+    },
+  },
 };
 </script>
 

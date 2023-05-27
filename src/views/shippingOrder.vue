@@ -4,14 +4,15 @@
     <TopMenu class="topmenu"></TopMenu>
 
     <main>
-      <avue-crud
+     <avue-crud
         :data="data"
         :option="option"
         :search-show="false"
+        :page.sync="page"
         @refresh-change="refreshChange"
         @row-del="rowDel"
+        @on-load="onLoad"
         @search-change="searchChange"
-        @search-reset="resetChange"
         :cell-class-name="addClass"
         @cell-click="pageto"
         class="Mycrud"
@@ -41,154 +42,99 @@
 </template>
 
 <script>
+import {
+  getShipmentOrderData,
+  deleteShipmentOrderData,
+} from "../api/ShippingOrder";
+
 export default {
   name: "ShippingOrder",
 
   data() {
     return {
       activeName: "first",
-      data: [
-        {
-          Status: "已下单",
-          Accounting: "空",
-          ShipmentOrders: "SAO0000001",
-          CreatedBy: "创建人A",
-          createTime: "2023-05-01",
-          Type: "海运",
-          Departure: "2023-05-10",
-          Arrival: "2023-05-20",
-          Shipper: "托运人A",
-          Consignee: "收货人A",
-          PCS: 50,
-          Weight: 1000,
-          VOL: 10,
-          Income: 5000,
-          Expense: 3000,
-          Profit: 2000,
-          updateTime: "2023-05-12",
-          Remarks: "备注1",
-        },
-        {
-          Status: "提货中",
-          Accounting: "空",
-          ShipmentOrders: "SGO0000001",
-          CreatedBy: "创建人B",
-          createTime: "2023-04-15",
-          Type: "空运",
-          Departure: "2023-04-25",
-          Arrival: "2023-05-05",
-          Shipper: "托运人B",
-          Consignee: "收货人B",
-          PCS: 20,
-          Weight: 500,
-          VOL: 5,
-          Income: 8000,
-          Expense: 4000,
-          Profit: 4000,
-          updateTime: "2023-05-10",
-          Remarks: "备注2",
-        },
-        {
-          Status: "已装货",
-          Accounting: "空",
-          ShipmentOrders: "SAO0000002",
-          CreatedBy: "创建人C",
-          createTime: "2023-05-05",
-          Type: "陆运",
-          Departure: "2023-05-15",
-          Arrival: "2023-05-25",
-          Shipper: "托运人C",
-          Consignee: "收货人C",
-          PCS: 10,
-          Weight: 200,
-          VOL: 2,
-          Income: 2000,
-          Expense: 1500,
-          Profit: 500,
-          updateTime: "2023-05-12",
-          Remarks: "备注3",
-        },
-      ],
+      query: {},
+      data: [],
       option: {
         searchShow: false,
         excelBtn: true,
         addBtn: false,
         editBtn: false,
-        
+
         column: [
           {
             label: "状态",
-            prop: "Status",
+            prop: "status",
             search: true,
           },
           {
             label: "财务",
-            prop: "Accounting",
+            prop: "accounting",
           },
           {
             label: "装运单编号",
-            prop: "ShipmentOrders",
-            search:true,
-            width:100,
-            searchLabelWidth:86
+            prop: "shipmentOrderNumber",
+            search: true,
+            width: 180,
+            searchLabelWidth: 86,
           },
           {
             label: "创建人",
-            prop: "CreatedBy",
-            search:true
+            prop: "createBy",
+            search: true,
           },
           {
             label: "创建时间",
             prop: "createTime",
-            search:true,
-            width:90
+            search: true,
+            width: 90,
           },
           {
             label: "运输类型",
-            prop: "Type",
+            prop: "type",
           },
           {
             label: "发货日",
-            prop: "Departure",
-            search:true
+            prop: "departure",
+            search: true,
           },
           {
             label: "收货日",
-            prop: "Arrival",
+            prop: "arrival",
           },
           {
             label: "托运人",
-            prop: "Shipper",
-            search:true
+            prop: "shipper",
+            search: true,
           },
           {
             label: "收货人",
-            prop: "Consignee",
-            search:true
+            prop: "consignee",
+            search: true,
           },
           {
             label: "件数",
-            prop: "PCS",
+            prop: "pcs",
           },
           {
             label: "重量（斤）",
-            prop: "Weight",
+            prop: "weight",
           },
           {
             label: "体积",
-            prop: "VOL",
+            prop: "vol",
           },
           {
             label: "收入",
-            prop: "Income",
+            prop: "income",
           },
           {
             label: "支出",
-            prop: "Expense",
+            prop: "expense",
           },
           {
             label: "利润",
-            prop: "Profit",
+            prop: "profit",
           },
           {
             label: "更新时间",
@@ -196,7 +142,7 @@ export default {
           },
           {
             label: "注释",
-            prop: "Remarks",
+            prop: "remark",
           },
         ],
       },
@@ -224,22 +170,68 @@ export default {
       this.$message.success("刷新回调");
     },
 
+    // 获取数据并渲染
+    getList(page, params) {
+      params.currPage = page.currentPage;
+      params.pageSize = page.pageSize;
+      
+
+      getShipmentOrderData(params).then((res) => {
+        console.log(res);
+        this.data = res.data.data.shipmentOrderList;
+        this.page.total = res.data.data.total;
+      });
+    },
+
+    /**
+     * 搜索函数，获取年度日期与地市的绑定值，将它们放入params中，传给this.query以便在其他地方调用
+     * @param {[object]} params [搜索框数据]
+     * @param {[function]} done [结束]
+     */
+
+    searchChange(params, done) {
+      this.query = params;
+
+      this.onLoad(this.page, "search");
+      done();
+    },
+
+    /**
+     * 页面初次加载时，会调用该方法
+     * 当搜索时，会调用该方法，重置page的数据
+     * 最后调用getList，获取最新数据
+     * @param {[object]} page [分页器对象]
+     * @param {[string]} search [用于“监听”是否进行了搜索]
+     */
+    onLoad(page, search) {
+      if (search) {
+        page.total = 0;
+        page.currentPage = 1;
+      }
+      this.getList(page, this.query);
+    },
+
     // 增加数据
     rowadd() {
       this.$router.push("./shippingorder/add");
     },
 
-    rowDel(form, index, done) {
+    // 删除数据
+    rowDel(row) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
       })
         .then(() => {
-          done(form);
-          this.$message({
-            type: "success",
-            message: "删除成功!",
+          let params = {};
+          params.id = row.id;
+          deleteShipmentOrderData(params).then(() => {
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+            this.onLoad(this.page);
           });
         })
         .catch(() => {});

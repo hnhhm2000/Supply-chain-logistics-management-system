@@ -27,8 +27,8 @@
 
         <el-menu-item route @click="reset" index="./login" style="float: right">退出登录</el-menu-item>
         
-      <el-menu-item  route index="./setting" style="float: right"
-        >系统设置</el-menu-item
+      <el-menu-item  route index="./user" style="float: right"
+        >用户管理</el-menu-item
       >
     
     </el-menu>

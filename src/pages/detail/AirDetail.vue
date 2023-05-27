@@ -12,70 +12,138 @@
           <el-form ref="form" :model="form" :rules="rules" label-width="10em">
             <el-row>
               <el-col :span="8">
-                <el-form-item label="状态:"> </el-form-item>
+                <el-form-item label="状态:">
+                  <div class="context">
+                    {{ airInfo.status }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="财务:"> </el-form-item>
+                <el-form-item label="财务:">
+                  <div class="context">
+                    {{ airInfo.accounting }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="编号:"> </el-form-item>
-              </el-col>
-            </el-row>
-
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="起飞日:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="始发地:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="目的地:"> </el-form-item>
-              </el-col>
-            </el-row>
-
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="客户:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="托运人:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="收货人:"> </el-form-item>
+                <el-form-item label="编号:">
+                  <div class="context">
+                    {{ airInfo.airNumber }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="件数:"> </el-form-item>
+                <el-form-item label="起飞日:">
+                  <div class="context">
+                    {{ airInfo.arrival }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="重量:"> </el-form-item>
+                <el-form-item label="始发地:">
+                  <div class="context">
+                    {{ airInfo.departure }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="收入:"> </el-form-item>
+                <el-form-item label="目的地:">
+                  <div class="context">
+                    {{ airInfo.destination }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="支出:"> </el-form-item>
+                <el-form-item label="客户:">
+                  <div class="context">
+                    {{ airInfo.customer }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="利润:"> </el-form-item>
+                <el-form-item label="托运人:">
+                  <div class="context">
+                    {{ airInfo.shipper }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="承运人:"> </el-form-item>
+                <el-form-item label="收货人:">
+                  <div class="context">
+                    {{ airInfo.consignee }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="项目:"> </el-form-item>
+                <el-form-item label="件数:">
+                  <div class="context">
+                    {{ airInfo.pcs }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="最大容量:"> </el-form-item>
+                <el-form-item label="重量:">
+                  <div class="context">
+                    {{ airInfo.weight }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="收入:">
+                  <div class="context">
+                    {{ airInfo.income }}
+                  </div>
+                </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="支出:">
+                  <div class="context">
+                    {{ airInfo.expense }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="利润:">
+                  <div class="context">
+                    {{ airInfo.profit }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="承运人:">
+                  <div class="context">
+                    {{ airInfo.carrier }}
+                  </div>
+                </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="项目:">
+                  <div class="context">
+                    {{ airInfo.project }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="最大容量:">
+                  <div class="context">
+                    {{ airInfo.maxPieces }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
           </el-form>
@@ -89,7 +157,7 @@
         </div>
 
         <div class="remark">
-        
+          {{ airInfo.remarks }}
         </div>
       </el-card>
 
@@ -103,23 +171,43 @@
           <el-form ref="form" :model="form" :rules="rules" label-width="10em">
             <el-row>
               <el-col :span="8">
-                <el-form-item label="创建人:"> </el-form-item>
+                <el-form-item label="创建人:">
+                  <div class="context">
+                    {{ airInfo.createBy }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="创建时间:"> </el-form-item>
+                <el-form-item label="创建时间:">
+                  <div class="context">
+                    {{ airInfo.createTime }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="更新人:"> </el-form-item>
+                <el-form-item label="更新人:">
+                  <div class="context">
+                    {{ airInfo.updatedTime }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="更新时间:"> </el-form-item>
+                <el-form-item label="更新时间:">
+                  <div class="context">
+                    {{ airInfo.createTime }}
+                  </div>
+                </el-form-item>
               </el-col>
 
               <el-col :span="8">
-                <el-form-item label="空运ID:"> </el-form-item>
+                <el-form-item label="空运ID:">
+                  <div class="context">
+                    {{ airInfo.id }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
           </el-form>
@@ -134,7 +222,7 @@
           type="primary"
           @click="
             $router.push({
-              name: 'InventoryEdit',
+              name: 'AirEdit',
               params: { id: $route.params.id },
             })
           "
@@ -146,37 +234,51 @@
   </div>
 </template>
 <script>
-// import axios from "axios";
+import { getAirDetail } from "@/api/Air";
 
 export default {
   name: "AirDetail",
 
   data() {
     return {
-      AirFreightID: "",
-      Status: "",
-      Accounting: "",
-      // 空运编号
-      Shipment: "",
-      // 起飞日
-      Departure: "",
-      // 抵达日
-      Arrival: "",
-      Origin: "",
-      Destination: "",
-      Customer: "",
-      Shipper: "",
-      Consignee: "",
-      PCS: "",
-      Weight: "",
-      Income: "",
-      Expense: "",
-      Profit: "",
-      Carrier: "",
-      Project: "",
-      MaxPieces: "",
-      remarks: "",
+      airInfo: {
+        status: "",
+        accounting: "",
+        // 空运编号
+        airNumber: "",
+        // 起飞日
+        departure: "",
+        // 抵达日
+        arrival: "",
+        origin: "",
+        destination: "",
+        customer: "",
+        shipper: "",
+        consignee: "",
+        pcs: "",
+        weight: "",
+        income: "",
+        expense: "",
+        profit: "",
+        carrier: "",
+        project: "",
+        maxPieces: "",
+        createBy: "",
+        createTime: "",
+        updateBy: "",
+        updateTime: "",
+        remarks: "",
+      },
     };
+  },
+
+  mounted() {
+    // 获取详情数据，将其填写到表单中
+    let data = {};
+    data.id = this.$route.params.id;
+    getAirDetail(data).then((res) => {
+      this.airInfo = res.data.data.airInfo;
+    });
   },
 
   methods: {},

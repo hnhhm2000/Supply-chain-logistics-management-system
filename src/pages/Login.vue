@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { login } from "../api/api";
 import { Message } from "element-ui";
 
 export default {
@@ -72,33 +73,39 @@ export default {
 
   methods: {
     login() {
-      if (this.form.username === "admin" && this.form.password === "123456") {
-        // 登录成功
-        // 1. 存储 token 与账号密码
-        localStorage.setItem("token", "Bearer xxxx");
+      let params = {};
+      params.phoneNumber = this.form.username;
+      params.password = this.form.password;
 
-        if (this.form.remember) {
-          // 如果勾选了“记住我”，则保存用户名和密码
-          localStorage.setItem("username", this.form.username);
-          localStorage.setItem("password", this.form.password);
+      login(params).then((res) => {
+        if (res.data.code === 200) {
+          // 登录成功
+          // 1. 存储 token 与账号密码
+          localStorage.setItem("token", res.data.data.token);
+
+          if (this.form.remember) {
+            // 如果勾选了“记住我”，则保存用户名和密码
+            localStorage.setItem("username", this.form.username);
+            localStorage.setItem("password", this.form.password);
+          } else {
+            // 否则清除保存的用户名和密码
+            localStorage.removeItem("username");
+            localStorage.removeItem("password");
+          }
+
+          // 2. 跳转到后台主页
+          this.$router.push("/");
+          Message.success("登录成功");
         } else {
-          // 否则清除保存的用户名和密码
-          localStorage.removeItem("username");
-          localStorage.removeItem("password");
+          // 登录失败
+          localStorage.removeItem("token");
+          Message.error(`${res.data.message}，如有疑问，请联系管理员[Q986667872]`);
         }
-
-        // 2. 跳转到后台主页
-        this.$router.push("/");
-        Message.success("登录成功");
-      } else {
-        // 登录失败
-        localStorage.removeItem("token");
-        Message.error("账号或密码错误，请联系管理员");
-      }
+      });
     },
 
+    // 尝试从 localStorage 中获取保存的用户名和密码
     restoreUserInfo() {
-      // 尝试从 localStorage 中获取保存的用户名和密码
       const username = localStorage.getItem("username");
       const password = localStorage.getItem("password");
       if (username && password) {

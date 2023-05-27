@@ -2,7 +2,7 @@
   <div class="bg">
     <!-- 主要内容 -->
     <main class="add-main">
-        <!-- 卡片一  -->
+      <!-- 卡片一  -->
       <el-card class="whiteCard">
         <div slot="header" class="clearfix">
           <span class="CardTitle">主要信息</span>
@@ -13,26 +13,26 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="状态:">
-                    <el-select
-                        v-model="status"
-                        placeholder="请选择"
-                        style="width: 18.6em"
-                        size="small"
-                      >
-                        <el-option
-                          v-for="item in StatusOp"
-                          :key="item.value"
-                          :label="item.label"
-                          :value="item.value"
-                        >
-                        </el-option>
-                    </el-select>
+                  <el-select
+                    v-model="status"
+                    placeholder="请选择"
+                    style="width: 18.6em"
+                    size="small"
+                  >
+                    <el-option
+                      v-for="item in StatusOp"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="财务:">
                   <el-input
-                    v-model="Accouting"
+                    v-model="accouting"
                     size="small"
                     class="input"
                     disabled
@@ -40,9 +40,9 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="订单编号:">
+                <el-form-item label="编号:">
                   <el-input
-                    v-model="OrderNumber"
+                    v-model="pickupDeliveryNumber"
                     size="small"
                     class="input"
                   ></el-input>
@@ -53,7 +53,7 @@
               <el-col :span="8">
                 <el-form-item label="提货日期:">
                   <el-date-picker
-                    v-model="PickupFrom"
+                    v-model="pickupDate"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -65,7 +65,7 @@
               <el-col :span="8">
                 <el-form-item label="发货日期:">
                   <el-date-picker
-                    v-model="DeliveryDate"
+                    v-model="deliveryDate"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -78,7 +78,7 @@
               <el-col :span="8">
                 <el-form-item label="利润:">
                   <el-input
-                    v-model="Profit"
+                    v-model="profit"
                     size="small"
                     class="input"
                   ></el-input>
@@ -90,7 +90,7 @@
               <el-col :span="8">
                 <el-form-item label="托运人:">
                   <el-input
-                    v-model="Shipper"
+                    v-model="shipper"
                     size="small"
                     class="input"
                   ></el-input>
@@ -99,7 +99,7 @@
               <el-col :span="8">
                 <el-form-item label="收货人:">
                   <el-input
-                    v-model="Consignee"
+                    v-model="consignee"
                     size="small"
                     class="input"
                   ></el-input>
@@ -108,7 +108,7 @@
               <el-col :span="8">
                 <el-form-item label="提货人:">
                   <el-input
-                    v-model="PickupFrom"
+                    v-model="pickupFrom"
                     size="small"
                     class="input"
                   ></el-input>
@@ -120,7 +120,7 @@
               <el-col :span="8">
                 <el-form-item label="送货人:">
                   <el-input
-                    v-model="DeliveryTo"
+                    v-model="deliveryTo"
                     size="small"
                     class="input"
                   ></el-input>
@@ -129,7 +129,7 @@
               <el-col :span="8">
                 <el-form-item label="承运人:">
                   <el-input
-                    v-model="Carrier"
+                    v-model="carrier"
                     size="small"
                     class="input"
                   ></el-input>
@@ -138,7 +138,7 @@
               <el-col :span="8">
                 <el-form-item label="客户:">
                   <el-input
-                    v-model="Customers"
+                    v-model="customers"
                     size="small"
                     class="input"
                   ></el-input>
@@ -149,13 +149,13 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="件数:">
-                  <el-input v-model="PCS" size="small" class="input"></el-input>
+                  <el-input v-model="pcs" size="small" class="input"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="价格:">
                   <el-input
-                    v-model="Value"
+                    v-model="price"
                     size="small"
                     class="input"
                   ></el-input>
@@ -164,7 +164,7 @@
               <el-col :span="8">
                 <el-form-item label="重量:">
                   <el-input
-                    v-model="Weight"
+                    v-model="weight"
                     size="small"
                     class="input"
                   ></el-input>
@@ -175,13 +175,13 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="体积:">
-                  <el-input v-model="VOL" size="small" class="input"></el-input>
+                  <el-input v-model="vol" size="small" class="input"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="收入:">
                   <el-input
-                    v-model="Income"
+                    v-model="income"
                     size="small"
                     class="input"
                   ></el-input>
@@ -190,7 +190,7 @@
               <el-col :span="8">
                 <el-form-item label="支出:">
                   <el-input
-                    v-model="Expense"
+                    v-model="expense"
                     size="small"
                     class="input"
                   ></el-input>
@@ -213,7 +213,7 @@
               <el-col :span="8">
                 <el-form-item label="发出公司:" prop="address">
                   <el-input
-                    v-model="IssuingCompanyName"
+                    v-model="issuingCompanyName"
                     size="small"
                     class="input"
                   ></el-input>
@@ -222,7 +222,7 @@
               <el-col :span="8">
                 <el-form-item label="托运人地址:" prop="address">
                   <el-input
-                    v-model="ShipperAddresse"
+                    v-model="shipperAddress"
                     size="small"
                     class="input"
                   ></el-input>
@@ -231,7 +231,7 @@
               <el-col :span="8">
                 <el-form-item label="收货人地址:" prop="address">
                   <el-input
-                    v-model="ConsigneeAddress"
+                    v-model="consigneeAddress"
                     size="small"
                     class="input"
                   ></el-input>
@@ -242,7 +242,7 @@
               <el-col :span="8">
                 <el-form-item label="运输方式:" prop="province">
                   <el-input
-                    v-model="Type"
+                    v-model="type"
                     size="small"
                     class="input"
                   ></el-input>
@@ -251,7 +251,7 @@
               <el-col :span="8">
                 <el-form-item label="商品名称:" prop="salesAgency">
                   <el-input
-                    v-model="Commodity"
+                    v-model="commodity"
                     size="small"
                     class="input"
                   ></el-input>
@@ -260,7 +260,7 @@
               <el-col :span="8">
                 <el-form-item label="注意事项:" prop="id">
                   <el-input
-                    v-model="Notes"
+                    v-model="notes"
                     size="small"
                     class="input"
                   ></el-input>
@@ -272,7 +272,7 @@
               <el-col :span="8">
                 <el-form-item label="货物描述:" prop="province">
                   <el-input
-                    v-model="Description"
+                    v-model="description"
                     size="small"
                     class="input"
                   ></el-input>
@@ -291,10 +291,10 @@
 
         <div>
           <el-input
-            type="textarea"
+            type="remark"
             :rows="4"
             placeholder="请输入内容"
-            v-model="textarea"
+            v-model="remark"
             maxlength="600"
             show-word-limit
           >
@@ -314,7 +314,7 @@
               <el-col :span="8">
                 <el-form-item label="创建人:">
                   <el-input
-                    v-model="CreatedBy"
+                    v-model="createdBy"
                     size="small"
                     class="input"
                   ></el-input>
@@ -324,7 +324,7 @@
                 <el-form-item label="创建时间:">
                   <el-date-picker
                     v-model="createTime"
-                    type="date"
+                    type="datetime"
                     placeholder="选择日期"
                     size="small"
                     class="input"
@@ -348,7 +348,7 @@
                 <el-form-item label="更新时间:">
                   <el-date-picker
                     v-model="updateTime"
-                    type="date"
+                    type="datetime"
                     placeholder="选择日期"
                     size="small"
                     class="input"
@@ -360,7 +360,7 @@
               <el-col :span="8">
                 <el-form-item label="预计到达时间:">
                   <el-date-picker
-                    v-model="ETA"
+                    v-model="eta"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -373,7 +373,7 @@
               <el-col :span="8">
                 <el-form-item label="预计发货时间:">
                   <el-date-picker
-                    v-model="ETD"
+                    v-model="etd"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -388,7 +388,7 @@
               <el-col :span="8">
                 <el-form-item label="货物签收时间:">
                   <el-date-picker
-                    v-model="PodDate"
+                    v-model="podDate"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -401,7 +401,7 @@
               <el-col :span="8">
                 <el-form-item label="提货送货ID:">
                   <el-input
-                    v-model="name"
+                    v-model="id"
                     size="small"
                     class="input"
                     disabled
@@ -417,16 +417,15 @@
     <!-- 底部栏 -->
     <footer class="btns">
       <div style="margin-top: 2em">
-        <el-button type="primary" @click="submitForm('form')"
-          >保存提交</el-button
-        >
+        <el-button type="primary" @click="submit()">保存提交</el-button>
         <el-button type="primary" plain @click="$router.back()">返回</el-button>
       </div>
     </footer>
   </div>
 </template>
 <script>
-// import axios from "axios";
+import { addPickupDeliveryData } from "@/api/PickupDelivery";
+import { Message } from "element-ui";
 
 export default {
   name: "ShippingOrderAdd",
@@ -434,80 +433,133 @@ export default {
   data() {
     return {
       status: "",
-      Accouting: "",
-      Number: "",
-      BillOfLading: "",
-      PickupDate: "",
-      DeliveryDate: "",
-      Shipper: "",
-      Consignee: "",
-      PickupFrom: "",
-      DeliveryTo: "",
-      Carrier: "",
-      PCS: "",
-      Value: "",
-      Income: "",
-      Expense: "",
-      Profit: "",
-      CreatedBy: "",
+      accouting: "",
+      pickupDeliveryNumber: "",
+      pickupDate: "",
+      deliveryDate: "",
+      shipper: "",
+      customers: "",
+      consignee: "",
+      pickupFrom: "",
+      deliveryTo: "",
+      carrier: "",
+      pcs: "",
+      vol: "",
+      price: "",
+      weight: "",
+      income: "",
+      expense: "",
+      profit: "",
+      createdBy: "",
       createTime: "",
       updateBy: "",
-      UpdatedOn: "",
+      updateTime: "",
       // 预计到达时间
-      ETA: "",
+      eta: "",
       // 预计发货时间
-      ETD: "",
+      etd: "",
       // 货物签收时间
-      PodDate: "",
-      Remarks: "",
+      podDate: "",
+      remark: "",
       // 发出公司名称
-      IssuingCompanyName: "",
-      ShipperAddress: "",
-      ConsigneeAddress: "",
-      Type: "",
-      Commodity: "",
+      issuingCompanyName: "",
+      shipperAddress: "",
+      consigneeAddress: "",
+      type: "",
+      commodity: "",
       // 注意事项
-      Notes: "",
-      Description: "",
+      notes: "",
+      description: "",
 
       StatusOp: [
         {
-          value: "选项1",
+          value: "请求中",
           label: "请求中",
         },
         {
-          value: "选项2",
+          value: "正在调度",
           label: "正在调度",
         },
         {
-          value: "选项3",
+          value: "暂停中",
           label: "暂停中",
         },
         {
-          value: "选项3",
+          value: "已提货",
           label: "已提货",
         },
         {
-          value: "选项3",
+          value: "运输中",
           label: "运输中",
         },
         {
-          value: "选项3",
+          value: "晚点",
           label: "晚点",
         },
         {
-          value: "选项3",
+          value: "已收货",
           label: "已收货",
         },
         {
-          value: "选项3",
-          label: "完成",
+          value: "已完成",
+          label: "已完成",
         },
       ],
     };
   },
 
-  methods: {},
+  methods: {
+    // 提交添加
+    submit() {
+      let params = { ...this.$data };
+      delete params.StatusOp;
+
+      // 格式化创建日期/更新日期数据
+      params.createTime = this.formatDate(params.createTime);
+      params.updateTime = this.formatDate(params.updateTime);
+      params.pickupDate = this.formatDate(params.pickupDate);
+      params.deliveryDate = this.formatDate(params.deliveryDate);
+      params.eta = this.formatDate(params.eta);
+      params.etd = this.formatDate(params.etd);
+
+      addPickupDeliveryData(params)
+        .then((res) => {
+          console.log(res.data.code);
+          if (res.data.code === 200) {
+            // 成功消息
+            Message({
+              message: "添加成功",
+              type: "success",
+            });
+            this.$router.push({ path: "/pickupdelivery" });
+          } else {
+            // 错误消息
+            Message.error(`错误: ${res.message}`);
+          }
+        })
+        .catch((err) => {
+          // 请求失败的错误消息
+          Message.error(`请求失败: ${err}`);
+        });
+    },
+
+    // 格式化时间
+    formatDate(dateString) {
+      if (dateString !== "") {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        const hours = String(date.getHours()).padStart(2, "0");
+        const minutes = String(date.getMinutes()).padStart(2, "0");
+        const seconds = String(date.getSeconds()).padStart(2, "0");
+
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+      } else {
+        return ""
+      }
+    },
+  },
 };
 </script>
 

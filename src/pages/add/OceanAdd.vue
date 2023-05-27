@@ -78,7 +78,7 @@
               <el-col :span="8">
                 <el-form-item label="收货港:">
                   <el-input
-                    v-model="portOfReceipt"
+                    v-model="destination"
                     size="small"
                     class="input"
                   ></el-input>
@@ -90,7 +90,7 @@
               <el-col :span="8">
                 <el-form-item label="发货港:">
                   <el-input
-                    v-model="portOfOrigin"
+                    v-model="origin"
                     size="small"
                     class="input"
                   ></el-input>
@@ -141,7 +141,7 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item label="件数:">
-                  <el-input v-model="PCS" size="small" class="input"></el-input>
+                  <el-input v-model="pcs" size="small" class="input"></el-input>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -253,7 +253,7 @@
             type="textarea"
             :rows="4"
             placeholder="请输入内容"
-            v-model="textarea"
+            v-model="remark"
             maxlength="600"
             show-word-limit
           >
@@ -273,7 +273,7 @@
               <el-col :span="8">
                 <el-form-item label="创建人:">
                   <el-input
-                    v-model="CreatedBy"
+                    v-model="createBy"
                     size="small"
                     class="input"
                   ></el-input>
@@ -282,8 +282,8 @@
               <el-col :span="8">
                 <el-form-item label="创建时间:">
                   <el-date-picker
-                    v-model="PickupFrom"
-                    type="date"
+                    v-model="createTime"
+                    type="datetime"
                     placeholder="选择日期"
                     size="small"
                     class="input"
@@ -294,7 +294,7 @@
               <el-col :span="8">
                 <el-form-item label="更新人:">
                   <el-input
-                    v-model="UpdateBy"
+                    v-model="updateBy"
                     size="small"
                     class="input"
                   ></el-input>
@@ -306,8 +306,8 @@
               <el-col :span="8">
                 <el-form-item label="更新时间:">
                   <el-date-picker
-                    v-model="PickupFrom"
-                    type="date"
+                    v-model="updateTime"
+                    type="datetime"
                     placeholder="选择日期"
                     size="small"
                     class="input"
@@ -319,7 +319,7 @@
               <el-col :span="8">
                 <el-form-item label="海运ID:">
                   <el-input
-                    v-model="OceanID"
+                    v-model="id"
                     disabled
                     size="small"
                     class="input"
@@ -335,7 +335,7 @@
     <!-- 底部栏 -->
     <footer class="btns">
       <div style="margin-top: 2em">
-        <el-button type="primary" @click="submitForm('form')"
+        <el-button type="primary" @click="submit()"
           >保存提交</el-button
         >
         <el-button type="primary" plain @click="$router.back()">返回</el-button>
@@ -344,7 +344,8 @@
   </div>
 </template>
 <script>
-// import axios from "axios";
+import { addOceanData } from "@/api/Ocean";
+import { Message } from "element-ui";
 
 export default {
   name: "OceanAdd",
@@ -356,12 +357,13 @@ export default {
       oceanNumber: "",
       departure: "",
       arrival: "",
-      portOfReceipt: "",
-      portOfOrigin: "",
-      placeOfDate: "",
+      destination:"",
+      origin: "",
+      placeOfDate: "",  
       shipper: "",
-      Consignee: "",
-      PCS: "",
+      customer:"",
+      consignee: "",
+      pcs: "",
       weight: "",
       income: "",
       expense: "",
@@ -370,51 +372,98 @@ export default {
       project: "",
       carrier: "",
       commodity: "",
-      MaxPieces: "",
-      Remarks: "",
-      CreatedBy: "",
+      maxPieces: "",
+      remark: "",
+      createBy: "",
       createTime: "",
       updateBy: "",
-      UpdatedOn: "",
+      updateTime: "",
 
       StatusOp: [
         {
-          value: "选项1",
+          value: "预约中",
           label: "预约中",
         },
         {
-          value: "选项2",
+          value: "准备装载",
           label: "准备装载",
         },
         {
-          value: "选项2",
+          value: "文件处理中",
           label: "文件处理中",
         },
         {
-          value: "选项2",
+          value: "装载中",
           label: "装载中",
         },
         {
-          value: "选项2",
+          value: "发送账单中",
           label: "发送账单中",
         },
         {
-          value: "选项2",
+          value: "运输途中",
           label: "运输途中",
         },
         {
-          value: "选项2",
+          value: "已抵达目的地",
           label: "已抵达目的地",
         },
         {
-          value: "选项2",
+          value: "已完成",
           label: "已完成",
         },
       ],
     };
   },
 
-  methods: {},
+  methods: {
+    // 提交添加
+    submit() {
+      let params = { ...this.$data };
+      delete params.StatusOp;
+
+      // 格式化创建日期/更新日期数据
+      params.createTime = this.formatDate(params.createTime);
+      params.updateTime = this.formatDate(params.updateTime);
+
+      addOceanData(params)
+        .then((res) => {
+          console.log(res.data.code);
+          if (res.data.code === 200) {
+            // 成功消息
+            Message({
+              message: "添加成功",
+              type: "success",
+            });
+            this.$router.push({ path: "/ocean" });
+          } else {
+            // 错误消息
+            Message.error(`错误: ${res.message}`);
+          }
+        })
+        .catch((err) => {
+          // 请求失败的错误消息
+          Message.error(`请求失败: ${err}`);
+        });
+    },
+
+    // 格式化时间
+    formatDate(dateString) {
+      if (dateString !== "") {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        const hours = String(date.getHours()).padStart(2, "0");
+        const minutes = String(date.getMinutes()).padStart(2, "0");
+        const seconds = String(date.getSeconds()).padStart(2, "0");
+
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+      } else {
+        return "";
+      }
+    },
+  },
 };
 </script>
 

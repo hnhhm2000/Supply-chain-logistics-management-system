@@ -143,7 +143,7 @@
                 type="textarea"
                 :rows="4"
                 placeholder="请输入内容"
-                v-model="textarea"
+                v-model="remark"
                 maxlength="600"
                 show-word-limit
               >
@@ -220,7 +220,7 @@
     <!-- 底部栏 -->
     <footer class="btns">
       <div style="margin-top: 2em">
-        <el-button type="primary" @click="submitForm('form')"
+        <el-button type="primary" @click="submit()"
           >保存提交</el-button
         >
         <el-button type="primary" plain @click="$router.back()">返回</el-button>

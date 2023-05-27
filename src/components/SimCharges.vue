@@ -120,7 +120,7 @@
             </el-tab-pane>
 
             <!-- 支出tab -->
-             <el-tab-pane label="支出" name="second">
+            <el-tab-pane label="支出" name="second">
               <el-row>
                 <el-col :span="6">
                   <el-form-item label="数量" :label-width="formLabelWidth">
@@ -206,15 +206,16 @@
       </el-dialog>
     </template>
 
-    <!-- 生成发票按钮 -->
-    <el-button
-      slot="menuLeft"
-      type="primary"
-      icon="el-icon-plus"
-      size="small"
-      @click="invoiceAdd"
-      >生成发票</el-button
-    >
+    <!-- 生成财务数据 -->
+    <el-dropdown slot="menuLeft">
+  <el-button type="primary" size="small">
+    生成财务数据<i class="el-icon-arrow-down el-icon--right"></i>
+  </el-button>
+  <el-dropdown-menu slot="dropdown">
+    <el-dropdown-item  @click="invoiceAdd">生成发票</el-dropdown-item>
+    <el-dropdown-item  @click="billAdd">生成账单</el-dropdown-item>
+  </el-dropdown-menu>
+</el-dropdown>
 
     <!-- 自定义编辑 -->
     <template slot-scope="{ type, size }" slot="menu">

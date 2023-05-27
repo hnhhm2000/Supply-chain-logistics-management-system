@@ -45,7 +45,7 @@
 import { getUserData, deleteUserData } from "../api/Crm";
 
 export default {
-  name: "SystemCrm",
+  name: "CrmManage",
 
   data() {
     return {
@@ -163,7 +163,7 @@ export default {
     getList(page, params) {
       params.currPage = page.currentPage;
       params.pageSize = page.pageSize;
-      console.log(page.pageSize);
+      
 
       getUserData(params).then((res) => {
         console.log(res);
@@ -176,6 +176,7 @@ export default {
       this.$message.success("刷新回调");
     },
 
+    // 删除数据
     rowDel(row) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
         confirmButtonText: "确定",
@@ -184,7 +185,7 @@ export default {
       })
         .then(() => {
           let params = {};
-          params.id = row.id
+          params.id = row.id;
           deleteUserData(params).then(() => {
             this.$message({
               type: "success",

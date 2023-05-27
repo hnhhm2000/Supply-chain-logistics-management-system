@@ -28,7 +28,7 @@ const routes = [
     name: "PickupDelivery",
     component: () => import("../views/PickupDelivery"),
     meta: {
-      title: "订单管理",
+      title: "提货送货",
       showNavMenu: true,
       showtopMenu: true
     },
@@ -200,6 +200,17 @@ const routes = [
     component: () => import("../pages/Setting"),
     meta: {
       title: "系统设置",
+      showNavMenu: true,
+      showtopMenu: true
+    },
+  },
+
+  {
+    path: "/user",
+    name: "UserManage",
+    component: () => import("../pages/UserManage"),
+    meta: {
+      title: "用户管理",
       showNavMenu: true,
       showtopMenu: true
     },

@@ -13,29 +13,23 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="状态:">
-                  <el-input
-                    v-model="Status"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <div class="context">
+                    {{ releaseInfo.status }}
+                  </div>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="财务:">
-                  <el-input
-                    v-model="Accounting"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <div class="context">
+                    {{ releaseInfo.accounting }}
+                  </div>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="编号:">
-                  <el-input
-                    v-model="Number"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <div class="context">
+                    {{ releaseInfo.releaseNumber }}
+                  </div>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -43,25 +37,23 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="发往:">
-                  <el-input
-                    v-model="ReleaseTo"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <div class="context">
+                    {{ releaseInfo.releaseTo }}
+                  </div>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="件数:">
-                  <el-input v-model="PCS" size="small" class="input"></el-input>
+                  <div class="context">
+                    {{ releaseInfo.pcs }}
+                  </div>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="重量:">
-                  <el-input
-                    v-model="Weight"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <div class="context">
+                    {{ releaseInfo.weight }}
+                  </div>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -69,25 +61,23 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="体积:">
-                  <el-input v-model="VOL" size="small" class="input"></el-input>
+                  <div class="context">
+                    {{ releaseInfo.vol }}
+                  </div>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="收入:">
-                  <el-input
-                    v-model="Income"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <div class="context">
+                    {{ releaseInfo.income }}
+                  </div>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="支出:">
-                  <el-input
-                    v-model="Expense"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <div class="context">
+                    {{ releaseInfo.expense }}
+                  </div>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -95,20 +85,16 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="利润:">
-                  <el-input
-                    v-model="Profit"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <div class="context">
+                    {{ releaseInfo.profit }}
+                  </div>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="出库时间:">
-                  <el-input
-                    v-model="DateTimeOut"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <div class="context">
+                    {{ releaseInfo.dateTimeOut }}
+                  </div>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -122,8 +108,8 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-         <div class="remark">
-        
+        <div class="context">
+          {{ releaseInfo.remark }}
         </div>
       </el-card>
 
@@ -138,29 +124,23 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="创建人:">
-                  <el-input
-                    v-model="CreatedBy"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <div class="context">
+                    {{ releaseInfo.createBy }}
+                  </div>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="创建时间:">
-                  <el-input
-                    v-model="createTime"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <div class="context">
+                    {{ releaseInfo.createTime }}
+                  </div>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
                 <el-form-item label="更新人:">
-                  <el-input
-                    v-model="UpdateBy"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <div class="context">
+                    {{ releaseInfo.createBy }}
+                  </div>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -168,22 +148,17 @@
             <el-row>
               <el-col :span="8">
                 <el-form-item label="更新时间:">
-                  <el-input
-                    v-model="updateTime"
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <div class="context">
+                    {{ releaseInfo.createTime }}
+                  </div>
                 </el-form-item>
               </el-col>
 
               <el-col :span="8">
                 <el-form-item label="库存ID:">
-                  <el-input
-                    v-model="InventoryID"
-                    disabled
-                    size="small"
-                    class="input"
-                  ></el-input>
+                  <div class="context">
+                    {{ releaseInfo.id }}
+                  </div>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -199,7 +174,7 @@
           type="primary"
           @click="
             $router.push({
-              name: 'InventoryEdit',
+              name: 'releaseEdit',
               params: { id: $route.params.id },
             })
           "
@@ -211,36 +186,45 @@
   </div>
 </template>
 <script>
-// import axios from "axios";
+import { getReleaseDetail } from "@/api/Release";
 
 export default {
   name: "ReleaseDetail",
 
   data() {
     return {
-      OutboundID: "",
-      Status: "",
-      Accounting: "",
-      Number: "",
-      CreatedBy: "",
-      createTime: "",
-      DateTimeOut: "",
-      ReleaseTo: "",
-      PCS: "",
-      Weight: "",
-      VOL: "",
-      Income: "",
-      Expense: "",
-      Profit: "",
-      UpdateBy: "",
-      updateTime: "",
-      Commodity: "",
-      Address: "",
-      Carrier: "",
-      Remarks: "",
-      // 取件地址
-      PickupFrom: "",
+      releaseInfo: {
+        outboundID: "",
+        status: "",
+        accounting: "",
+        releaseNumber: "",
+        createdBy: "",
+        createTime: "",
+        dateTimeOut: "",
+        releaseTo: "",
+        pcs: "",
+        weight: "",
+        vol: "",
+        income: "",
+        expense: "",
+        profit: "",
+        updateBy: "",
+        updateTime: "",
+        commodity: "",
+        address: "",
+        carrier: "",
+        remark: "",
+      },
     };
+  },
+
+  mounted() {
+    // 获取详情数据，将其填写到表单中
+    let data = {};
+    data.id = this.$route.params.id;
+    getReleaseDetail(data).then((res) => {
+      this.releaseInfo = res.data.data.releaseInfo;
+    });
   },
 
   methods: {},

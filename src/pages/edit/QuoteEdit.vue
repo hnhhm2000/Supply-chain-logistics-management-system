@@ -4,25 +4,25 @@
     <main class="add-main">
       <el-tabs v-model="activeName" type="card">
         <el-tab-pane label="主要资料" name="first">
-       <!-- 卡片一  -->
+             <!-- 卡片一  -->
       <el-card class="whiteCard">
         <div slot="header" class="clearfix">
           <span class="CardTitle">主要信息</span>
         </div>
 
         <div>
-          <el-form ref="form" :model="form" :rules="rules" label-width="10em">
+          <el-form ref="form" :rules="rules" label-width="10em">
             <el-row>
               <el-col :span="8">
                 <el-form-item label="状态:">
                   <el-select
-                    v-model="status"
+                    v-model="quoteData.status"
                     placeholder="请选择"
                     style="width: 17.6em"
                     size="small"
                   >
                     <el-option
-                      v-for="item in StatusOp"
+                      v-for="item in statusOp"
                       :key="item.value"
                       :label="item.label"
                       :value="item.value"
@@ -32,9 +32,9 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="活动:">
+                <el-form-item label="引用:">
                   <el-input
-                    v-model="Activity"
+                    v-model="quoteData.reference"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -44,7 +44,7 @@
               <el-col :span="8">
                 <el-form-item label="报价编号:">
                   <el-input
-                    v-model="QuoteNumber"
+                    v-model="quoteData.quoteNumber"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -54,9 +54,9 @@
             </el-row>
             <el-row>
               <el-col :span="8">
-                <el-form-item label="商业项目:">
+                <el-form-item label="项目:">
                   <el-input
-                    v-model="Project"
+                    v-model="quoteData.project"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -66,7 +66,7 @@
               <el-col :span="8">
                 <el-form-item label="报价者:">
                   <el-input
-                    v-model="Quoter"
+                    v-model="quoteData.quoter"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -76,7 +76,7 @@
               <el-col :span="8">
                 <el-form-item label="创建日期:" prop="phone">
                   <el-date-picker
-                    v-model="CreatedDate"
+                    v-model="quoteData.createdDate"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -91,7 +91,7 @@
               <el-col :span="8">
                 <el-form-item label="截止日期:">
                   <el-date-picker
-                    v-model="UntilDate"
+                    v-model="quoteData.untilDate"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -103,7 +103,7 @@
               <el-col :span="8">
                 <el-form-item label="客户:">
                   <el-input
-                    v-model="Customer"
+                    v-model="quoteData.customer"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -122,12 +122,12 @@
         </div>
 
         <div>
-          <el-form ref="form" :model="form" :rules="rules" label-width="10em">
+          <el-form ref="form" :rules="rules" label-width="10em">
             <el-row>
               <el-col :span="8">
                 <el-form-item label="客户地址:">
                   <el-input
-                    v-model="CustomerAddress"
+                    v-model="quoteData.customerAddress"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -137,7 +137,7 @@
               <el-col :span="8">
                 <el-form-item label="货物描述:">
                   <el-input
-                    v-model="DescriptionOfGoods"
+                    v-model="quoteData.descriptionOfGoods"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -147,7 +147,7 @@
               <el-col :span="8">
                 <el-form-item label="始发地:">
                   <el-input
-                    v-model="input"
+                    v-model="quoteData.origin"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -160,7 +160,7 @@
               <el-col :span="8">
                 <el-form-item label="目的地:">
                   <el-input
-                    v-model="Origin"
+                    v-model="quoteData.destination"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -170,7 +170,7 @@
               <el-col :span="8">
                 <el-form-item label="运输方式:">
                   <el-input
-                    v-model="Mode"
+                    v-model="quoteData.mode"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -181,7 +181,7 @@
               <el-col :span="8">
                 <el-form-item label="付款方式:">
                   <el-input
-                    v-model="PaymentTerm"
+                    v-model="quoteData.paymentTerm"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -194,7 +194,7 @@
               <el-col :span="8">
                 <el-form-item label="运输天数:">
                   <el-input
-                    v-model="TransitDays"
+                    v-model="quoteData.transitDays"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -204,7 +204,7 @@
               <el-col :span="8">
                 <el-form-item label="个数/件数:">
                   <el-input
-                    v-model="PCS"
+                    v-model="quoteData.pcs"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -214,7 +214,7 @@
               <el-col :span="8">
                 <el-form-item label="重量:">
                   <el-input
-                    v-model="Weight"
+                    v-model="quoteData.weight"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -227,7 +227,7 @@
               <el-col :span="8">
                 <el-form-item label="体积:">
                   <el-input
-                    v-model="VOL"
+                    v-model="quoteData.vol"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -237,7 +237,7 @@
               <el-col :span="8">
                 <el-form-item label="收入:">
                   <el-input
-                    v-model="Income"
+                    v-model="quoteData.income"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -247,7 +247,7 @@
               <el-col :span="8">
                 <el-form-item label="支出:">
                   <el-input
-                    v-model="Expense"
+                    v-model="quoteData.expense"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -260,7 +260,7 @@
               <el-col :span="8">
                 <el-form-item label="利润:">
                   <el-input
-                    v-model="Profit"
+                    v-model="quoteData.profit"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -271,7 +271,7 @@
               <el-col :span="8">
                 <el-form-item label="托运人:">
                   <el-input
-                    v-model="Shipper"
+                    v-model="quoteData.shipper"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -282,7 +282,7 @@
               <el-col :span="8">
                 <el-form-item label="承运人:">
                   <el-input
-                    v-model="Carrier"
+                    v-model="quoteData.carrier"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -300,7 +300,17 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-        <div class="remark"></div>
+        <div>
+          <el-input
+            type="textarea"
+            :rows="4"
+            placeholder="请输入内容"
+            v-model="quoteData.remark"
+            maxlength="600"
+            show-word-limit
+          >
+          </el-input>
+        </div>
       </el-card>
 
       <!-- 卡片四  -->
@@ -310,12 +320,12 @@
         </div>
 
         <div>
-          <el-form ref="form" :model="form" :rules="rules" label-width="10em">
+          <el-form ref="form" :rules="rules" label-width="10em">
             <el-row>
               <el-col :span="8">
                 <el-form-item label="创建人:">
                   <el-input
-                    v-model="CreatedBy"
+                    v-model="quoteData.createdBy"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -325,7 +335,7 @@
               <el-col :span="8">
                 <el-form-item label="创建时间:">
                   <el-date-picker
-                    v-model="createTime"
+                    v-model="quoteData.createTime"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -337,7 +347,7 @@
               <el-col :span="8">
                 <el-form-item label="更新人:">
                   <el-input
-                    v-model="updateBy"
+                    v-model="quoteData.updateBy"
                     size="small"
                     class="input"
                     placeholder="请输入内容"
@@ -349,7 +359,7 @@
               <el-col :span="8">
                 <el-form-item label="更新时间:">
                   <el-date-picker
-                    v-model="UpdatedOn"
+                    v-model="quoteData.updatedOn"
                     type="date"
                     placeholder="选择日期"
                     size="small"
@@ -362,7 +372,7 @@
               <el-col :span="8">
                 <el-form-item label="报价ID:">
                   <el-input
-                    v-model="QuoteID"
+                    v-model="quoteData.quoteId"
                     disabled
                     size="small"
                     class="input"
@@ -392,7 +402,7 @@
     <!-- 底部栏 -->
     <footer class="btns">
       <div style="margin-top: 2em">
-        <el-button type="primary" @click="submitForm('form')"
+        <el-button type="primary" @click="submit()"
           >保存提交</el-button
         >
         <el-button
@@ -406,97 +416,121 @@
   </div>
 </template>
 <script>
+import { editQuoteData, getQuoteDetail } from "@/api/Quote";
+
 export default {
   name: "QuoteEdit",
 
   data() {
     return {
       activeName: "first",
-      QuoteId: "",
-      Status: "",
-      Activity: "",
-      QuoteNumber: "",
-      Project: "",
-      Mode: "",
-      CreatedDate: "",
-      UntilDate: "",
-      Customer: "",
-      Shipper: "",
-      Origin: "",
-      Destination: "",
-      Carrier: "",
-      IssuingCompanyName: "",
-      CustomerAddress: "",
-      DescriptionOfGoods: "",
-      PCS: "",
-      Weight: "",
-      VOL: "",
-      Income: "",
-      Expense: "",
-      Profit: "",
-      Remarks: "",
-      CreatedBy: "",
-      createTime: "",
-      updateBy: "",
-      UpdatedOn: "",
-      PaymentTerm: "",
-      TransitDays: "",
-      PickupAddress: "",
-      DeliverAddress: "",
+      quoteData: {
+        quoteId: "",
+        status: "",
+        reference: "",
+        quoteNumber: "",
+        project: "",
+        quoter: "",
+        createdDate: "",
+        untilDate: "",
+        customer: "",
+        shipper: "",
+        origin: "",
+        destination: "",
+        carrier: "",
+        customerAddress: "",
+        descriptionOfGoods: "",
+        mode: "",
+        pcs: "",
+        weight: "",
+        vol: "",
+        income: "",
+        expense: "",
+        profit: "",
+        remark: "",
+        createdBy: "",
+        createTime: "",
+        updateBy: "",
+        updatedOn: "",
+        paymentTerm: "",
+        transitDays: "",
+      },
 
       options: [
         {
-          value: "选项1",
+          value: "账户",
           label: "账户",
         },
         {
-          value: "选项2",
+          value: "托运人",
           label: "托运人",
         },
         {
-          value: "选项3",
+          value: "收货人",
           label: "收货人",
         },
         {
-          value: "选项4",
+          value: "承运人",
           label: "承运人",
         },
       ],
 
       statusOp: [
-          {
-          value: "选项1",
+        {
+          value: "请求中",
           label: "请求中",
         },
         {
-          value: "选项2",
+          value: "定价中",
           label: "定价中",
         },
         {
-          value: "选项3",
+          value: "正在修改",
           label: "正在修改",
         },
         {
-          value: "选项4",
+          value: "已发送",
           label: "已发送",
         },
-         {
-          value: "选项4",
+        {
+          value: "已批准",
           label: "已批准",
         },
-         {
-          value: "选项4",
+        {
+          value: "已取消",
           label: "已取消",
         },
-          {
-          value: "选项4",
+        {
+          value: "已完成",
           label: "已完成",
         },
-      ]
+      ],
     };
   },
 
-  methods: {},
+  methods: {
+    // 提交编辑，根据id进行编辑
+    submit() {
+      let data = {};
+      data = this.quoteData;
+      data.id = this.$route.params.id;
+      editQuoteData(data).then((res) => {
+        if (res.data.code === 200) {
+          this.$message.success("编辑成功");
+          this.$router.push({ path: "/quote" });
+        }
+      });
+    },
+  },
+
+  created() {
+    let data = {};
+    data.id = this.$route.params.id;
+    getQuoteDetail(data).then((res) => {
+      console.log(res);
+      this.quoteData = res.data.data.quoteInfo;
+    });
+  },
 };
 </script>
 

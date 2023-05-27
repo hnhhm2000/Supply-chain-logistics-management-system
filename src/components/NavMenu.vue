@@ -18,7 +18,7 @@
     </el-menu-item>
 
     <el-menu-item route index="./crm">
-      <i class="el-icon-document"></i>
+      <img class="NavMenu-icon" src="../assets/img/account.png" />
       <span slot="title">客户管理</span>
     </el-menu-item>
 
@@ -50,7 +50,6 @@
       </el-menu-item-group>
     </el-submenu>
 
-
     <el-menu-item route index="./air">
       <img class="NavMenu-icon" src="../assets/img/Air.png" />
       <span slot="title">空运</span>
@@ -59,7 +58,7 @@
       <img class="NavMenu-icon" src="../assets/img/ground.png" />
       <span slot="title">陆运</span>
     </el-menu-item>
-    
+
     <!-- <el-submenu index="2">
       <template slot="title">
         <img src="../assets/img/ocean.png" class="NavMenu-icon">
@@ -81,7 +80,7 @@
 
     <el-submenu index="3">
       <template slot="title">
-        <img src="../assets/img/statistics.png" class="NavMenu-icon" />
+        <img src="../assets/img/invoice.png" class="NavMenu-icon" />
         <span slot="title">财务管理</span>
       </template>
 

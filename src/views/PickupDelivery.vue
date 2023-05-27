@@ -8,10 +8,11 @@
         :data="data"
         :option="option"
         :search-show="false"
+        :page.sync="page"
         @refresh-change="refreshChange"
         @row-del="rowDel"
+        @on-load="onLoad"
         @search-change="searchChange"
-        @search-reset="resetChange"
         :cell-class-name="addClass"
         @cell-click="pageto"
         class="Mycrud"
@@ -41,72 +42,23 @@
 </template>
 
 <script>
+import {
+  getPickupDeliveryData,
+  deletePickupDeliveryData,
+} from "../api/PickupDelivery";
+
 export default {
   name: "PickupDelivery",
 
   data() {
     return {
       activeName: "first",
-      data: [
-        {
-          Status: "请求中",
-          Accounting: "空",
-          OrderNumber: "PKD0000001",
-          BillOfLading: "BOL1234",
-          PickupDate: "2023-05-01",
-          DeliveryDate: "2023-05-15",
-          Shipper: "托运人A",
-          Consignee: "收货人A",
-          PickupFrom: "提货人A",
-          DeliveryTo: "送货人A",
-          Carrier: "承运人A",
-          Customer: "客户A",
-          PCS: 50,
-          Value: 5000,
-          Weight: 1000,
-          VOL: 10,
-          Income: 5000,
-          Expense: 3000,
-          Profit: 2000,
-          CreatedBy: "创建人A",
-          createTime: "2023-05-01",
-          UpdatedOn: "更新人A",
-          updateTime: "2023-05-10",
-          ETA: "2023-05-18",
-          ETD: "2023-05-02",
-          PodDate: "2023-05-16",
-          Remarks: "备注1",
-        },
-        {
-          Status: "正在调度",
-          Accounting: "空",
-          OrderNumber: "PKD0000004",
-          BillOfLading: "BOL5678",
-          PickupDate: "2023-04-15",
-          DeliveryDate: "2023-04-30",
-          Shipper: "托运人B",
-          Consignee: "收货人B",
-          PickupFrom: "提货人B",
-          DeliveryTo: "送货人B",
-          Carrier: "承运人B",
-          Customer: "客户B",
-          PCS: 20,
-          Value: 8000,
-          Weight: 500,
-          VOL: 5,
-          Income: 8000,
-          Expense: 4000,
-          Profit: 4000,
-          CreatedBy: "创建人B",
-          createTime: "2023-04-15",
-          UpdatedOn: "更新人B",
-          updateTime: "2023-05-05",
-          ETA: "2023-05-03",
-          ETD: "2023-04-20",
-          PodDate: "2023-05-01",
-          Remarks: "备注2",
-        },
-      ],
+      query: {},
+      data: [],
+      page: {
+        pageSize: 10,
+        currentPage: 1,
+      },
       option: {
         searchShow: false,
         excelBtn: true,
@@ -115,121 +67,121 @@ export default {
         column: [
           {
             label: "状态",
-            prop: "Status",
-            search:true
+            prop: "status",
+            search: true,
           },
           {
             label: "财务",
-            prop: "Accounting",
+            prop: "accounting",
           },
           {
             label: "订单编号",
-            prop: "OrderNumber",
-            search:true,
-            width:100
+            prop: "pickupDeliveryNumber",
+            search: true,
+            width: 180,
           },
           {
             label: "提货日期",
-            prop: "PickupDate",
-            search:true,
-            width:90
+            prop: "pickupDate",
+            search: true,
+            width: 90,
           },
           {
             label: "发货日期",
-            prop: "DeliveryDate",
-            width:90
+            prop: "deliveryDate",
+            width: 90,
           },
           {
             label: "托运人",
-            prop: "Shipper",
+            prop: "shipper",
           },
           {
             label: "收货人",
-            prop: "Consignee",
+            prop: "consignee",
           },
           {
             label: "提货人",
-            prop: "PickupFrom",
+            prop: "pickupFrom",
           },
           {
             label: "送货人",
-            prop: "DeliveryTo",
+            prop: "deliveryTo",
           },
           {
             label: "承运人",
-            prop: "Carrier",
+            prop: "carrier",
           },
           {
             label: "客户",
-            prop: "Customer",
-            search:true
+            prop: "customer",
+            search: true,
           },
           {
             label: "件数",
-            prop: "PCS",
+            prop: "pcs",
           },
           {
             label: "价格",
-            prop: "Value",
+            prop: "price",
           },
           {
             label: "重量",
-            prop: "Weight",
+            prop: "weight",
           },
           {
             label: "体积",
-            prop: "VOL",
+            prop: "vol",
           },
           {
             label: "收入",
-            prop: "Income",
+            prop: "income",
           },
           {
             label: "支出",
-            prop: "Expense",
+            prop: "expense",
           },
           {
             label: "利润",
-            prop: "Profit",
+            prop: "profit",
           },
           {
             label: "创造人",
-            prop: "CreatedBy",
-            search:true
+            prop: "createBy",
+            search: true,
           },
           {
             label: "创造时间",
             prop: "createTime",
-            search:true,
-            width:90
+            search: true,
+            width: 90,
           },
           {
             label: "更新人",
-            prop: "UpdatedOn",
+            prop: "updateBy",
           },
           {
             label: "最近更新",
             prop: "updateTime",
-            width:90
+            width: 90,
           },
           {
             label: "预计到达时间",
-            prop: "ETA",
-            width:90
+            prop: "eta",
+            width: 90,
           },
           {
             label: "预计发货时间",
-            prop: "ETD",
-            width:90
+            prop: "etd",
+            width: 90,
           },
           {
             label: "货物签收时间",
-            prop: "PodDate",
-            width:90
+            prop: "podDate",
+            width: 90,
           },
           {
             label: "备注",
-            prop: "Remarks",
+            prop: "remark",
           },
         ],
       },
@@ -237,7 +189,6 @@ export default {
   },
 
   methods: {
-    
     // 点击姓名进入详情
     addClass({ columnIndex }) {
       if (columnIndex === 2) {
@@ -259,22 +210,64 @@ export default {
       this.$router.push("./pickupdelivery/add");
     },
 
+    // 获取数据并渲染
+    getList(page, params) {
+      params.currPage = page.currentPage;
+      params.pageSize = page.pageSize;
+      
+
+      getPickupDeliveryData(params).then((res) => {
+        console.log(res);
+        this.data = res.data.data.pickupDeliveryList;
+        this.page.total = res.data.data.total;
+      });
+    },
+
+    searchChange(params, done) {
+      this.query = params;
+
+      this.onLoad(this.page, "search");
+      done();
+    },
+
+    /**
+     * 页面初次加载时，会调用该方法
+     * 当搜索时，会调用该方法，重置page的数据
+     * 最后调用getList，获取最新数据
+     * @param {[object]} page [分页器对象]
+     * @param {[string]} search [用于“监听”是否进行了搜索]
+     */
+    onLoad(page, search) {
+      if (search) {
+        page.total = 0;
+        page.currentPage = 1;
+      }
+      this.getList(page, this.query);
+    },
+
     refreshChange() {
       this.$message.success("刷新回调");
     },
-    rowDel(form, index, done) {
+
+    // 删除数据
+    rowDel(row) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
       })
         .then(() => {
-          done(form);
-          this.$message({
-            type: "success",
-            message: "删除成功!",
+          let params = {};
+          params.id = row.id;
+          deletePickupDeliveryData(params).then(() => {
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+            this.onLoad(this.page);
           });
         })
+
         .catch(() => {});
     },
   },

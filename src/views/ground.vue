@@ -8,11 +8,11 @@
         :data="data"
         :option="option"
         :search-show="false"
+        :page.sync="page"
         @refresh-change="refreshChange"
-        @row-update="rowUpdate"
         @row-del="rowDel"
+        @on-load="onLoad"
         @search-change="searchChange"
-        @search-reset="resetChange"
         :cell-class-name="addClass"
         @cell-click="pageto"
         class="Mycrud"
@@ -37,8 +37,8 @@
           >
         </template>
 
-         <!-- 运输时间选择器 -->
-          <template slot="shippingTimeSearch">
+        <!-- 运输时间选择器 -->
+        <template slot="shippingTimeSearch">
           <div style="display: flex">
             <el-date-picker
               v-model="departure"
@@ -57,89 +57,28 @@
             </el-date-picker>
           </div>
         </template>
-
       </avue-crud>
     </main>
   </div>
 </template>
 
 <script>
+import { getGroundData, deleteGroundData } from "../api/Ground";
+
 export default {
   name: "MyGround",
 
   data() {
     return {
       activeName: "first",
-      departure:"",
-      arrival:"",
-      data: [
-        {
-          Status: "预约中",
-          Accounting: "已开票",
-          ShipmentNumber: "GOC0000001",
-          Departure: "2023-05-01",
-          Arrival: "2023-05-05",
-          PortOfOrigin: "发货地点A",
-          PlaceOfDate: "2023-05-10",
-          PlaceOfDelivery: "收货地点A",
-          customer: "客户A",
-          Shipper: "托运人A",
-          Consignee: "收货人A",
-          PCS: 50,
-          Weight: "1000 斤",
-          VOL: "10 m³",
-          Income: 5000,
-          Expense: 3000,
-          Profit: 2000,
-          PODDelivery: "2023-05-06",
-          PODReceive: "2023-05-07",
-          Remarks: "备注1",
-        },
-        {
-          Status: "准备装载",
-          Accounting: "待定",
-          ShipmentNumber: "GOC0000002",
-          Departure: "2023-04-15",
-          Arrival: "2023-04-20",
-          PortOfOrigin: "发货地点B",
-          PlaceOfDate: "2023-04-25",
-          PlaceOfDelivery: "收货地点B",
-          customer: "客户B",
-          Shipper: "托运人B",
-          Consignee: "收货人B",
-          PCS: 20,
-          Weight: "500 斤",
-          VOL: "10 m³",
-          Income: 8000,
-          Expense: 4000,
-          Profit: 4000,
-          PODDelivery: "2023-05-06",
-          PODReceive: "2023-05-07",
-          Remarks: "备注2",
-        },
-        {
-          Status: "装载中",
-          Accounting: "空",
-          ShipmentNumber: "GOC0000003",
-          Departure: "2023-05-05",
-          Arrival: "2023-05-10",
-          PortOfOrigin: "发货地点C",
-          PlaceOfDate: "2023-05-15",
-          PlaceOfDelivery: "收货地点C",
-          customer: "客户C",
-          Shipper: "托运人C",
-          Consignee: "收货人C",
-          PCS: 10,
-          Weight: "200 斤",
-          VOL: "10 m³",
-          Income: 2000,
-          Expense: 1500,
-          Profit: 500,
-          PODDelivery: "2023-05-06",
-          PODReceive: "2023-05-07",
-          Remarks: "备注3",
-        },
-      ],
+      departure: "",
+      arrival: "",
+      query: {},
+      data: [],
+      page: {
+        pageSize: 10,
+        currentPage: 1,
+      },
 
       option: {
         searchShow: false,
@@ -149,40 +88,40 @@ export default {
         column: [
           {
             label: "状态",
-            prop: "Status",
+            prop: "status",
             search: true,
           },
           {
             label: "财务",
-            prop: "Accounting",
+            prop: "accounting",
           },
           {
             label: "陆运编号",
-            prop: "ShipmentNumber",
-            width: 100,
+            prop: "groundNumber",
+            width: 180,
             search: true,
           },
           {
             label: "发货日",
-            prop: "Departure",
+            prop: "departure",
             width: 90,
           },
           {
             label: "抵达日",
-            prop: "Arrival",
+            prop: "arrival",
             width: 90,
           },
           {
             label: "发货地点",
-            prop: "PortOfOrigin",
+            prop: "origin",
             search: true,
           },
           {
             label: "收货地点",
-            prop: "PlaceOfDelivery",
+            prop: "destination",
             search: true,
           },
-           {
+          {
             label: "运输时间",
             prop: "shippingTime",
             search: true,
@@ -195,50 +134,50 @@ export default {
           },
           {
             label: "托运人",
-            prop: "Shipper",
+            prop: "shipper",
           },
           {
             label: "收货人",
-            prop: "Consignee",
+            prop: "consignee",
           },
           {
             label: "件数",
-            prop: "PCS",
+            prop: "pcs",
           },
           {
             label: "重量",
-            prop: "Weight",
+            prop: "weight",
           },
           {
             label: "体积",
-            prop: "VOL",
+            prop: "vol",
           },
           {
             label: "收入",
-            prop: "Income",
+            prop: "income",
           },
           {
             label: "支出",
-            prop: "Expense",
+            prop: "expense",
           },
           {
             label: "利润",
-            prop: "Profit",
+            prop: "profit",
           },
           {
             label: "货物交付时间",
-            prop: "PODDelivery",
-            width:90
+            prop: "podDelivery",
+            width: 90,
           },
           {
             label: "货物签收时间",
-            prop: "PODReceive",
-            width:90
+            prop: "podReceive",
+            width: 90,
           },
 
           {
             label: "备注",
-            prop: "Remarks",
+            prop: "remarks",
           },
         ],
       },
@@ -267,41 +206,75 @@ export default {
       this.$router.push("./ground/add");
     },
 
+    // 获取数据并渲染
+    getList(page, params) {
+      params.currPage = page.currentPage;
+      params.pageSize = page.pageSize;
+
+      getGroundData(params).then((res) => {
+        console.log(res);
+        this.data = res.data.data.groundList;
+        this.page.total = res.data.data.total;
+      });
+    },
+
+    /**
+     * 搜索函数，获取年度日期与地市的绑定值，将它们放入params中，传给this.query以便在其他地方调用
+     * @param {[object]} params [搜索框数据]
+     * @param {[function]} done [结束]
+     */
+
+    searchChange(params, done) {
+      this.query = params;
+
+      this.onLoad(this.page, "search");
+      done();
+    },
+
+    /**
+     * 页面初次加载时，会调用该方法
+     * 当搜索时，会调用该方法，重置page的数据
+     * 最后调用getList，获取最新数据
+     * @param {[object]} page [分页器对象]
+     * @param {[string]} search [用于“监听”是否进行了搜索]
+     */
+    onLoad(page, search) {
+      if (search) {
+        page.total = 0;
+        page.currentPage = 1;
+      }
+      this.getList(page, this.query);
+    },
+
     refreshChange() {
       this.$message.success("刷新回调");
     },
 
-    rowDel(form, index, done) {
+    // 删除数据
+    rowDel(row) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
       })
         .then(() => {
-          done(form);
-          this.$message({
-            type: "success",
-            message: "删除成功!",
+          let params = {};
+          params.id = row.id;
+          deleteGroundData(params).then(() => {
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+            this.onLoad(this.page);
           });
         })
         .catch(() => {});
     },
-    rowUpdate(form, index, done, loading) {
-      setTimeout(() => {
-        loading();
-      }, 1000);
-      setTimeout(() => {
-        this.$message.success(
-          "编辑数据" + JSON.stringify(form) + "数据序号" + index
-        );
-        done(form);
-      }, 2000);
-    },
 
-     // 清空搜索
+    // 清空搜索
     resetChange() {
-      this.departure = ''
-      this.arrival = ''
+      this.departure = "";
+      this.arrival = "";
     },
   },
 };

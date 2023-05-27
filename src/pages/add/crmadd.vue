@@ -40,6 +40,25 @@
                   </el-select>
                 </el-form-item>
               </el-col>
+
+                <el-col :span="8">
+                <el-form-item label="角色" prop="role">
+                  <el-select
+                    v-model="role"
+                    placeholder="请选择"
+                    class="select"
+                    size="small"
+                  >
+                    <el-option
+                      v-for="item in options"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
             </el-row>
             <el-row>
               <el-col :span="8">
@@ -69,24 +88,7 @@
                   </el-select>
                 </el-form-item>
               </el-col>
-              <el-col :span="8">
-                <el-form-item label="角色" prop="role">
-                  <el-select
-                    v-model="role"
-                    placeholder="请选择"
-                    class="select"
-                    size="small"
-                  >
-                    <el-option
-                      v-for="item in options"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value"
-                    >
-                    </el-option>
-                  </el-select>
-                </el-form-item>
-              </el-col>
+            
             </el-row>
           </el-form>
         </div>

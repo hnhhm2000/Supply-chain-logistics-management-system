@@ -8,9 +8,11 @@
         :data="data"
         :option="option"
         :search-show="false"
+        :page.sync="page"
         @refresh-change="refreshChange"
         @row-update="rowUpdate"
         @row-del="rowDel"
+        @on-load="onLoad"
         @search-change="searchChange"
         @search-reset="resetChange"
         :cell-class-name="addClass"
@@ -26,7 +28,7 @@
           >新增</el-button
         >
 
-         <template slot-scope="{ type, size, row }" slot="menu">
+        <template slot-scope="{ type, size, row }" slot="menu">
           <el-button
             icon="el-icon-edit"
             class="editbtn"
@@ -42,129 +44,84 @@
 </template>
 
 <script>
+import { getReleaseData, deleteReleaseData } from "../api/Release";
+
 export default {
   name: "MyRelease",
 
   data() {
     return {
       activeName: "first",
-      data: [
-        {
-          Status: "预发货",
-          Accounting: "空",
-          number: "WRO0000001",
-          CreatedBy: "创建人A",
-          createTime: "2023-05-01",
-          DateTimeOut: "2023-05-10",
-          ReleaseTo: "发往A",
-          PCS: 50,
-          Weight: "1000 kg",
-          VOL: "10 m³",
-          Income: 5000,
-          Expense: 3000,
-          Profit: 2000,
-          updateBy: "更新人A",
-          UpdatedOn: "2023-05-12",
-        },
-        {
-          Status: "已完成",
-          Accounting: "已开票",
-          number: "WRO0000002",
-          CreatedBy: "创建人B",
-          createTime: "2023-04-15",
-          DateTimeOut: "2023-04-30",
-          ReleaseTo: "发往B",
-          PCS: 20,
-          Weight: "500 kg",
-          VOL: "5 m³",
-          Income: 8000,
-          Expense: 4000,
-          Profit: 4000,
-          updateBy: "更新人B",
-          UpdatedOn: "2023-05-05",
-        },
-        {
-          Status: "发货中",
-          Accounting: "待定中",
-          number: "WRO0000003",
-          CreatedBy: "创建人C",
-          createTime: "2023-05-05",
-          DateTimeOut: "2023-05-20",
-          ReleaseTo: "发往C",
-          PCS: 10,
-          Weight: "200 kg",
-          VOL: "2 m³",
-          Income: 2000,
-          Expense: 1500,
-          Profit: 500,
-          updateBy: "更新人C",
-          UpdatedOn: "2023-05-12",
-        },
-      ],
+      query: {},
+      data: [],
+      page: {
+        pageSize: 10,
+        currentPage: 1,
+      },
       option: {
         searchShow: false,
         excelBtn: true,
         addBtn: false,
-        editBtn:false,
+        editBtn: false,
         column: [
           {
             label: "状态",
-            prop: "Status",
-            search:true
+            prop: "status",
+            search: true,
           },
           {
             label: "财务",
-            prop: "Accounting",
+            prop: "accounting",
           },
           {
             label: "编号",
-            prop: "number",
-            search:true,
-            width:100
+            prop: "releaseNumber",
+            search: true,
+            width: 180,
           },
           {
             label: "创建人",
-            prop: "CreatedBy",
-            search:true
+            prop: "createBy",
+            search: true,
           },
           {
             label: "创造时间",
             prop: "createTime",
-            search:true,
-            width:90
+            search: true,
+            width: 140,
           },
           {
             label: "出库日期",
-            prop: "DateTimeOut",
-            width:90
+            prop: "dateTimeOut",
+            width: 90,
           },
           {
             label: "发往",
-            prop: "ReleaseTo",
+            prop: "releaseTo",
           },
           {
             label: "件数",
-            prop: "PCS",
+            prop: "pcs",
           },
           {
             label: "重量",
-            prop: "Weight",
+            prop: "weight",
           },
           {
             label: "体积",
-            prop: "VOL",
+            prop: "vol",
           },
           {
             label: "收入",
-            prop: "Income",
+            prop: "income",
           },
           {
             label: "支出",
-            prop: "Expense",
+            prop: "expense",
           },
           {
             label: "利润",
-            prop: "Profit",
+            prop: "profit",
           },
           {
             label: "更新人",
@@ -172,8 +129,8 @@ export default {
           },
           {
             label: "更新时间",
-            prop: "UpdatedOn",
-            width:90
+            prop: "updateTime",
+            width: 140,
           },
         ],
       },
@@ -197,6 +154,46 @@ export default {
       }
     },
 
+    // 获取数据并渲染
+    getList(page, params) {
+      params.currPage = page.currentPage;
+      params.pageSize = page.pageSize;
+
+      getReleaseData(params).then((res) => {
+        console.log(res);
+        this.data = res.data.data.releaseList;
+        this.page.total = res.data.data.total;
+      });
+    },
+
+    /**
+     * 搜索函数，获取年度日期与地市的绑定值，将它们放入params中，传给this.query以便在其他地方调用
+     * @param {[object]} params [搜索框数据]
+     * @param {[function]} done [结束]
+     */
+
+    searchChange(params, done) {
+      this.query = params;
+
+      this.onLoad(this.page, "search");
+      done();
+    },
+
+    /**
+     * 页面初次加载时，会调用该方法
+     * 当搜索时，会调用该方法，重置page的数据
+     * 最后调用getList，获取最新数据
+     * @param {[object]} page [分页器对象]
+     * @param {[string]} search [用于“监听”是否进行了搜索]
+     */
+    onLoad(page, search) {
+      if (search) {
+        page.total = 0;
+        page.currentPage = 1;
+      }
+      this.getList(page, this.query);
+    },
+
     refreshChange() {
       this.$message.success("刷新回调");
     },
@@ -206,31 +203,26 @@ export default {
       this.$router.push("./release/add");
     },
 
-    rowDel(form, index, done) {
+    // 删除数据
+    rowDel(row) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
       })
         .then(() => {
-          done(form);
-          this.$message({
-            type: "success",
-            message: "删除成功!",
+          let params = {};
+          params.id = row.id;
+          deleteReleaseData(params).then(() => {
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+            this.onLoad(this.page);
           });
         })
+
         .catch(() => {});
-    },
-    rowUpdate(form, index, done, loading) {
-      setTimeout(() => {
-        loading();
-      }, 1000);
-      setTimeout(() => {
-        this.$message.success(
-          "编辑数据" + JSON.stringify(form) + "数据序号" + index
-        );
-        done(form);
-      }, 2000);
     },
   },
 };

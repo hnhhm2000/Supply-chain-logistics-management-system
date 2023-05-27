@@ -8,10 +8,11 @@
         :data="data"
         :option="option"
         :search-show="false"
+        :page.sync="page"
         @refresh-change="refreshChange"
         @row-del="rowDel"
+        @on-load="onLoad"
         @search-change="searchChange"
-        @search-reset="resetChange"
         :cell-class-name="addClass"
         @cell-click="pageto"
         class="Mycrud"
@@ -40,74 +41,21 @@
 </template>
 
 <script>
+
+import { getReceiptData, deleteReceiptData } from "../api/Receipt";
+
 export default {
   name: "PickupDelivery",
 
   data() {
     return {
       activeName: "first",
-      data: [
-        {
-          Status: "测量中",
-          Accounting: "待定",
-          Receipt: "WRI0000001",
-          CreatedBy: "创建人A",
-          createTime: "2023-05-01",
-          ReceiptTime: "2023-05-05",
-          Shipper: "托运人A",
-          Consignee: "收货人A",
-          Project: "项目A",
-          PCS: 50,
-          Weight: "1000 kg",
-          VOL: "10 m³",
-          Handing: "注意事项1",
-          Income: 5000,
-          Expense: 3000,
-          Profit: 2000,
-          UpdatedOn: "2023-05-10",
-          ServiceType: "服务类别A",
-        },
-        {
-          Status: "文件处理中",
-          Accounting: "已开票",
-          Receipt: "WRI0000002",
-          CreatedBy: "创建人B",
-          createTime: "2023-04-15",
-          ReceiptTime: "2023-04-20",
-          Shipper: "托运人B",
-          Consignee: "收货人B",
-          Project: "项目B",
-          PCS: 20,
-          Weight: "500 kg",
-          VOL: "5 m³",
-          Handing: "注意事项2",
-          Income: 8000,
-          Expense: 4000,
-          Profit: 4000,
-          UpdatedOn: "2023-05-05",
-          ServiceType: "服务类别B",
-        },
-        {
-          Status: "拍照扫描中",
-          Accounting: "空",
-          Receipt: "WRI0000003",
-          CreatedBy: "创建人C",
-          createTime: "2023-05-05",
-          ReceiptTime: "2023-05-10",
-          Shipper: "托运人C",
-          Consignee: "收货人C",
-          Project: "项目C",
-          PCS: 10,
-          Weight: "200 kg",
-          VOL: "2 m³",
-          Handing: "注意事项3",
-          Income: 2000,
-          Expense: 1500,
-          Profit: 500,
-          UpdatedOn: "2023-05-12",
-          ServiceType: "服务类别C",
-        },
-      ],
+      query: {},
+      data: [],
+      page: {
+        pageSize: 10,
+        currentPage: 1,
+      },
       option: {
         searchShow: false,
         excelBtn: true,
@@ -117,22 +65,22 @@ export default {
         column: [
           {
             label: "状态",
-            prop: "Status",
+            prop: "status",
             search: true,
           },
           {
             label: "财务",
-            prop: "Accounting",
+            prop: "accounting",
           },
           {
             label: "收据编号",
-            prop: "Receipt",
+            prop: "receiptNumber",
             search: true,
-            width:100
+            width: 180,
           },
           {
             label: "创造人",
-            prop: "CreatedBy",
+            prop: "createBy",
             search: true,
           },
           {
@@ -143,57 +91,57 @@ export default {
           },
           {
             label: "开具时间",
-            prop: "ReceiptTime",
+            prop: "kaiDate",
             width: 90,
           },
           {
             label: "托运人",
-            prop: "Shipper",
+            prop: "shipper",
           },
           {
             label: "收货人",
-            prop: "Consignee",
+            prop: "consignee",
           },
           {
             label: "项目",
-            prop: "Project",
+            prop: "project",
           },
           {
             label: "件数",
-            prop: "PCS",
+            prop: "pcs",
           },
           {
             label: "重量",
-            prop: "Weight",
+            prop: "weight",
           },
           {
             label: "体积",
-            prop: "VOL",
+            prop: "vol",
           },
           {
             label: "注意事项",
-            prop: "Handing",
+            prop: "notes",
           },
           {
             label: "收入",
-            prop: "Income",
+            prop: "income",
           },
           {
             label: "支出",
-            prop: "Expense",
+            prop: "expense",
           },
           {
             label: "利润",
-            prop: "Profit",
+            prop: "profit",
           },
           {
-            label: "最近更新",
-            prop: "UpdatedOn",
+            label: "更新时间",
+            prop: "updateTime",
             width: 90,
           },
           {
             label: "服务类别",
-            prop: "ServiceType",
+            prop: "serviceType",
           },
         ],
       },
@@ -222,20 +170,67 @@ export default {
       this.$router.push("./receipt/add");
     },
 
+    // 获取数据并渲染
+    getList(page, params) {
+      params.currPage = page.currentPage;
+      params.pageSize = page.pageSize;
+      
+
+      getReceiptData(params).then((res) => {
+        console.log(res);
+        this.data = res.data.data.receiptList;
+        this.page.total = res.data.data.total;
+      });
+    },
+
+     /**
+     * 搜索函数，获取年度日期与地市的绑定值，将它们放入params中，传给this.query以便在其他地方调用
+     * @param {[object]} params [搜索框数据]
+     * @param {[function]} done [结束]
+     */
+
+    searchChange(params, done) {
+      this.query = params;
+
+      this.onLoad(this.page, "search");
+      done();
+    },
+
+    /**
+     * 页面初次加载时，会调用该方法
+     * 当搜索时，会调用该方法，重置page的数据
+     * 最后调用getList，获取最新数据
+     * @param {[object]} page [分页器对象]
+     * @param {[string]} search [用于“监听”是否进行了搜索]
+     */
+    onLoad(page, search) {
+      if (search) {
+        page.total = 0;
+        page.currentPage = 1;
+      }
+      this.getList(page, this.query);
+    },
+
     refreshChange() {
       this.$message.success("刷新回调");
     },
-    rowDel(form, index, done) {
+
+     // 删除数据
+    rowDel(row) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
       })
         .then(() => {
-          done(form);
-          this.$message({
-            type: "success",
-            message: "删除成功!",
+          let params = {};
+          params.id = row.id;
+          deleteReceiptData(params).then(() => {
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+            this.onLoad(this.page);
           });
         })
         .catch(() => {});

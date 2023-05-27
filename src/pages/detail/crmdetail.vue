@@ -228,6 +228,7 @@ export default {
   },
 
   mounted() {
+    // 获取详情数据，将其填写到表单中
     let data = {};
     data.id = this.$route.params.id;
     getUserDetail(data).then((res) => {

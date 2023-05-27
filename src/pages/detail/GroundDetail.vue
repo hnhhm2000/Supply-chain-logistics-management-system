@@ -12,70 +12,138 @@
           <el-form ref="form" :model="form" :rules="rules" label-width="10em">
             <el-row>
               <el-col :span="8">
-                <el-form-item label="状态:"> </el-form-item>
+                <el-form-item label="状态:">
+                  <div class="context">
+                    {{ groundInfo.status }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="财务:"> </el-form-item>
+                <el-form-item label="财务:">
+                  <div class="context">
+                    {{ groundInfo.accounting }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="编号:"> </el-form-item>
-              </el-col>
-            </el-row>
-
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="起飞日:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="始发地:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="目的地:"> </el-form-item>
-              </el-col>
-            </el-row>
-
-            <el-row>
-              <el-col :span="8">
-                <el-form-item label="客户:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="托运人:"> </el-form-item>
-              </el-col>
-              <el-col :span="8">
-                <el-form-item label="收货人:"> </el-form-item>
+                <el-form-item label="编号:">
+                  <div class="context">
+                    {{ groundInfo.groundNumber }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="件数:"> </el-form-item>
+                <el-form-item label="起飞日:">
+                  <div class="context">
+                    {{ groundInfo.departure }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="重量:"> </el-form-item>
+                <el-form-item label="始发地:">
+                  <div class="context">
+                    {{ groundInfo.origin }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="收入:"> </el-form-item>
+                <el-form-item label="目的地:">
+                  <div class="context">
+                    {{ groundInfo.destination }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="支出:"> </el-form-item>
+                <el-form-item label="客户:">
+                  <div class="context">
+                    {{ groundInfo.customer }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="利润:"> </el-form-item>
+                <el-form-item label="托运人:">
+                  <div class="context">
+                    {{ groundInfo.shipper }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="承运人:"> </el-form-item>
+                <el-form-item label="收货人:">
+                  <div class="context">
+                    {{ groundInfo.consignee }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="项目:"> </el-form-item>
+                <el-form-item label="件数:">
+                  <div class="context">
+                    {{ groundInfo.pcs }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="最大容量:"> </el-form-item>
+                <el-form-item label="重量:">
+                  <div class="context">
+                    {{ groundInfo.weight }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="收入:">
+                  <div class="context">
+                    {{ groundInfo.income }}
+                  </div>
+                </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="支出:">
+                  <div class="context">
+                    {{ groundInfo.expense }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="利润:">
+                  <div class="context">
+                    {{ groundInfo.profit }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="承运人:">
+                  <div class="context">
+                    {{ groundInfo.carrier }}
+                  </div>
+                </el-form-item>
+              </el-col>
+            </el-row>
+
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label="项目:">
+                  <div class="context">
+                    {{ groundInfo.project }}
+                  </div>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item label="最大容量:">
+                  <div class="context">
+                    {{ groundInfo.maxPieces }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
           </el-form>
@@ -88,8 +156,8 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-         <div class="remark">
-        
+        <div class="remark">
+          {{ groundInfo.remarks }}
         </div>
       </el-card>
 
@@ -103,23 +171,43 @@
           <el-form ref="form" :model="form" :rules="rules" label-width="10em">
             <el-row>
               <el-col :span="8">
-                <el-form-item label="创建人:"> </el-form-item>
+                <el-form-item label="创建人:">
+                  <div class="context">
+                    {{ groundInfo.createBy }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="创建时间:"> </el-form-item>
+                <el-form-item label="创建时间:">
+                  <div class="context">
+                    {{ groundInfo.createTime }}
+                  </div>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="更新人:"> </el-form-item>
+                <el-form-item label="更新人:">
+                  <div class="context">
+                    {{ groundInfo.updateBy }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
 
             <el-row>
               <el-col :span="8">
-                <el-form-item label="更新时间:"> </el-form-item>
+                <el-form-item label="更新时间:">
+                  <div class="context">
+                    {{ groundInfo.createTime }}
+                  </div>
+                </el-form-item>
               </el-col>
 
               <el-col :span="8">
-                <el-form-item label="空运ID:"> </el-form-item>
+                <el-form-item label="陆运ID:">
+                  <div class="context">
+                    {{ groundInfo.id }}
+                  </div>
+                </el-form-item>
               </el-col>
             </el-row>
           </el-form>
@@ -134,7 +222,7 @@
           type="primary"
           @click="
             $router.push({
-              name: 'InventoryEdit',
+              name: 'GroundEdit',
               params: { id: $route.params.id },
             })
           "
@@ -146,40 +234,24 @@
   </div>
 </template>
 <script>
-// import axios from "axios";
+import { getGroundDetail } from "@/api/Ground";
 
 export default {
   name: "GroundDetail",
 
   data() {
     return {
-      GroundFreightID: "",
-      Status: "",
-      Accounting: "",
-      ShipmentNumber: "",
-      Departure: "",
-      Arrival: "",
-      // 发货港
-      PortOfOrigin: "",
-      // 收货日
-      PlaceOfDate: "",
-      PlaceOfDelivery: "",
-      Shipper: "",
-      Consignee: "",
-      PCS: "",
-      Weight: "",
-      Income: "",
-      Expense: "",
-      Profit: "",
-      // 装载日期
-      LoadingDate: "",
-      Remark: "",
-      Project: "",
-      Carrier: "",
-      Commodity: "",
-      MaxPieces: "",
-      Customer: "",
+      groundInfo: {},
     };
+  },
+
+  mounted() {
+    // 获取详情数据，将其填写到表单中
+    let data = {};
+    data.id = this.$route.params.id;
+    getGroundDetail(data).then((res) => {
+      this.groundInfo = res.data.data.groundInfo;
+    });
   },
 
   methods: {},

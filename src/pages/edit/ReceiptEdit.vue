@@ -21,9 +21,9 @@
                   <el-col :span="8">
                     <el-form-item label="状态:">
                       <el-select
-                        v-model="status"
+                        v-model="receiptInfo.status"
                         placeholder="请选择"
-                        style="width:17.6em"
+                        style="width: 17.6em"
                         size="small"
                       >
                         <el-option
@@ -39,7 +39,7 @@
                   <el-col :span="8">
                     <el-form-item label="财务:">
                       <el-input
-                        v-model="Accouting"
+                        v-model="receiptInfo.accouting"
                         size="small"
                         class="input"
                         disabled
@@ -49,7 +49,7 @@
                   <el-col :span="8">
                     <el-form-item label="收据编号:">
                       <el-input
-                        v-model="Receipt"
+                        v-model="receiptInfo.receiptNumber"
                         size="small"
                         class="input"
                       ></el-input>
@@ -60,7 +60,7 @@
                   <el-col :span="8">
                     <el-form-item label="开具时间:">
                       <el-date-picker
-                        v-model="ReceiptTime"
+                        v-model="receiptInfo.kaiDate"
                         type="date"
                         placeholder="选择日期"
                         size="small"
@@ -72,7 +72,7 @@
                   <el-col :span="8">
                     <el-form-item label="托运人:">
                       <el-input
-                        v-model="Shipper"
+                        v-model="receiptInfo.shipper"
                         size="small"
                         class="input"
                       ></el-input>
@@ -81,7 +81,7 @@
                   <el-col :span="8">
                     <el-form-item label="收货人:">
                       <el-input
-                        v-model="Consignee"
+                        v-model="receiptInfo.consignee"
                         size="small"
                         class="input"
                       ></el-input>
@@ -93,7 +93,7 @@
                   <el-col :span="8">
                     <el-form-item label="项目:">
                       <el-input
-                        v-model="Project"
+                        v-model="receiptInfo.project"
                         size="small"
                         class="input"
                       ></el-input>
@@ -102,7 +102,7 @@
                   <el-col :span="8">
                     <el-form-item label="件数:">
                       <el-input
-                        v-model="PCS"
+                        v-model="receiptInfo.pcs"
                         size="small"
                         class="input"
                       ></el-input>
@@ -111,7 +111,7 @@
                   <el-col :span="8">
                     <el-form-item label="重量:">
                       <el-input
-                        v-model="Weight"
+                        v-model="receiptInfo.weight"
                         size="small"
                         class="input"
                       ></el-input>
@@ -123,7 +123,7 @@
                   <el-col :span="8">
                     <el-form-item label="体积:">
                       <el-input
-                        v-model="VOL"
+                        v-model="receiptInfo.vol"
                         size="small"
                         class="input"
                       ></el-input>
@@ -132,7 +132,7 @@
                   <el-col :span="8">
                     <el-form-item label="注意事项:">
                       <el-input
-                        v-model="Handing"
+                        v-model="receiptInfo.notes"
                         size="small"
                         class="input"
                       ></el-input>
@@ -141,7 +141,7 @@
                   <el-col :span="8">
                     <el-form-item label="收入:">
                       <el-input
-                        v-model="Income"
+                        v-model="receiptInfo.income"
                         size="small"
                         class="input"
                       ></el-input>
@@ -153,7 +153,7 @@
                   <el-col :span="8">
                     <el-form-item label="支出:">
                       <el-input
-                        v-model="Expense"
+                        v-model="receiptInfo.expense"
                         size="small"
                         class="input"
                       ></el-input>
@@ -162,7 +162,7 @@
                   <el-col :span="8">
                     <el-form-item label="利润:">
                       <el-input
-                        v-model="Profit"
+                        v-model="receiptInfo.profit"
                         size="small"
                         class="input"
                       ></el-input>
@@ -184,7 +184,7 @@
                 type="textarea"
                 :rows="4"
                 placeholder="请输入内容"
-                v-model="textarea"
+                v-model="receiptInfo.emark"
                 maxlength="600"
                 show-word-limit
               >
@@ -209,7 +209,7 @@
                   <el-col :span="8">
                     <el-form-item label="创建人:">
                       <el-input
-                        v-model="CreatedBy"
+                        v-model="receiptInfo.createBy"
                         size="small"
                         class="input"
                       ></el-input>
@@ -218,8 +218,8 @@
                   <el-col :span="8">
                     <el-form-item label="创建时间:">
                       <el-date-picker
-                        v-model="createTime"
-                        type="date"
+                        v-model="receiptInfo.createTime"
+                        type="datetime"
                         placeholder="选择日期"
                         size="small"
                         class="input"
@@ -230,7 +230,7 @@
                   <el-col :span="8">
                     <el-form-item label="更新人:">
                       <el-input
-                        v-model="UpdateBy"
+                        v-model="receiptInfo.updateBy"
                         size="small"
                         class="input"
                       ></el-input>
@@ -242,8 +242,8 @@
                   <el-col :span="8">
                     <el-form-item label="更新时间:">
                       <el-date-picker
-                        v-model="updateTime"
-                        type="date"
+                        v-model="receiptInfo.updateTime"
+                        type="datetime"
                         placeholder="选择日期"
                         size="small"
                         class="input"
@@ -255,7 +255,7 @@
                   <el-col :span="8">
                     <el-form-item label="收据ID:">
                       <el-input
-                        v-model="ReceiptID"
+                        v-model="receiptInfo.id"
                         disabled
                         size="small"
                         class="input"
@@ -285,7 +285,7 @@
     <!-- 底部栏 -->
     <footer class="btns">
       <div style="margin-top: 2em">
-        <el-button type="primary" @click="submitForm('form')"
+        <el-button type="primary" @click="submit()"
           >保存提交</el-button
         >
         <el-button
@@ -299,63 +299,106 @@
   </div>
 </template>
 <script>
+import { updateReceiptData, getReceiptDetail } from "@/api/Receipt";
+
 export default {
   name: "ReceiptEdit",
 
   data() {
     return {
       activeName: "first",
-      ReceiptID: "",
-      Status: "",
-      Accounting: "",
-      Receipt: "",
-      CreatedBy: "",
-      createTime: "",
-      ReceiptTime: "",
-      Shipper: "",
-      Consignee: "",
-      Project: "",
-      PCS: "",
-      Weight: "",
-      VOL: "",
-      // 注意事项
-      Handing: "",
-      Expense: "",
-      Profit: "",
-      updateTime: "",
-      ServiceType: "",
-      Commodity: "",
-      IssuingCompany: "",
-      ShipperAddress: "",
-      ConsigneeAddress: "",
-      Remarks: "",
+      receiptInfo: {
+        receiptID: "",
+        status: "",
+        accounting: "",
+        receipt: "",
+        createBy: "",
+        createTime: "",
+        receiptTime: "",
+        shipper: "",
+        consignee: "",
+        project: "",
+        pcs: "",
+        weight: "",
+        vol: "",
+        // 注意事项
+        notes: "",
+        expense: "",
+        profit: "",
+        updateTime: "",
+        serviceType: "",
+        commodity: "",
+        issuingCompany: "",
+        shipperAddress: "",
+        consigneeAddress: "",
+        remark: "",
+      },
 
       StatusOp: [
         {
-          value: "选项1",
+          value: "测量中",
           label: "测量中",
         },
         {
-          value: "选项2",
+          value: "文件处理中",
           label: "文件处理中",
         },
         {
-          value: "选项2",
+          value: "拍照扫描中",
           label: "拍照扫描中",
         },
         {
-          value: "选项2",
+          value: "已抵达",
           label: "已抵达",
         },
         {
-          value: "选项2",
+          value: "分配中",
           label: "分配中",
         },
       ],
     };
   },
 
-  methods: {},
+  methods: {
+    // 提交编辑，根据id进行编辑
+    submit() {
+      let data = {};
+      data = this.receiptInfo;
+
+      // 格式化创建日期/更新日期数据
+      data.createTime = this.formatDate(data.createTime);
+      data.updateTime = this.formatDate(data.updateTime);
+
+      updateReceiptData(data).then((res) => {
+        if (res.data.code === 200) {
+          this.$message.success("编辑成功");
+          this.$router.push({ path: "/receipts" });
+        }
+      });
+    },
+
+     // 格式化时间
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      const hours = String(date.getHours()).padStart(2, "0");
+      const minutes = String(date.getMinutes()).padStart(2, "0");
+      const seconds = String(date.getSeconds()).padStart(2, "0");
+
+      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    },
+  },
+
+  // 打开页面时，显示所有已有数据
+  created() {
+    let data = {};
+    data.id = this.$route.params.id;
+    getReceiptDetail(data).then((res) => {
+      this.receiptInfo = res.data.data.receiptInfo;
+    });
+  },
 };
 </script>
 

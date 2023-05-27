@@ -379,7 +379,8 @@ export default {
       });
     },
   },
-
+  
+  // 打开页面时，显示所有已有数据
   created() {
     let data = {};
     data.id = this.$route.params.id;

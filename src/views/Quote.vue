@@ -8,8 +8,10 @@
         :data="data"
         :option="option"
         :search-show="false"
+        :page.sync="page"
         @refresh-change="refreshChange"
         @row-del="rowDel"
+        @on-load="onLoad"
         @search-change="searchChange"
         @search-reset="resetChange"
         :cell-class-name="addClass"
@@ -35,8 +37,8 @@
             >编辑</el-button
           >
         </template>
-          <!-- 运输时间选择器 -->
-          <template slot="shippingTimeSearch">
+        <!-- 运输时间选择器 -->
+        <template slot="shippingTimeSearch">
           <div style="display: flex">
             <el-date-picker
               v-model="createdDate"
@@ -55,97 +57,27 @@
             </el-date-picker>
           </div>
         </template>
-        
       </avue-crud>
     </main>
   </div>
 </template>
 
 <script>
+import { getQuoteData, deleteQuoteData } from "../api/Quote";
+
 export default {
   name: "QuoteManage",
 
   data() {
     return {
-      createdDate:"",
-      untilDate:"",
-      data: [
-        {
-          Status: "请求中",
-          Activity: "WRO0000001",
-          QuoteNumber: "QUO0000001",
-          Project: "项目A",
-          Mode: "海运",
-          CreatedDate: "2023-05-01",
-          untilDate: "2023-05-15",
-          Customer: "客户A",
-          Origin: "上海",
-          Destination: "纽约",
-          Carrier: "承运人A",
-          TransitDays: 10,
-          PCS: 50,
-          Weight: 1000,
-          VOL: 10,
-          Income: 5000,
-          Expense: 3000,
-          Profit: 2000,
-          CreatedBy: "创建人A",
-          createTime: "2023-05-01",
-          updateBy: "更新人A",
-          updateTime: "2023-05-10",
-          Remarks: "备注1",
-        },
-        {
-          Status: "定价中",
-          Activity: "WRO0000002",
-          QuoteNumber: "QUO0000002",
-          Project: "项目B",
-          Mode: "空运",
-          CreatedDate: "2023-04-15",
-          untilDate: "2023-04-30",
-          Customer: "客户B",
-          Origin: "北京",
-          Destination: "伦敦",
-          Carrier: "承运人B",
-          TransitDays: 7,
-          PCS: 20,
-          Weight: 500,
-          VOL: 5,
-          Income: 8000,
-          Expense: 4000,
-          Profit: 4000,
-          CreatedBy: "创建人B",
-          createTime: "2023-05-05",
-          updateBy: "更新人B",
-          updateTime: "2023-05-05",
-          Remarks: "备注2",
-        },
-        {
-          Status: "已取消",
-          Activity: "WRO0000003",
-          QuoteNumber: "QUO0000003",
-          Project: "项目C",
-          Mode: "陆运",
-          CreatedDate: "2023-05-05",
-          untilDate: "2023-05-20",
-          Customer: "客户C",
-          Origin: "广州",
-          Destination: "深圳",
-          Carrier: "承运人C",
-          TransitDays: 3,
-          PCS: 10,
-          Weight: 200,
-          VOL: 2,
-          Income: 2000,
-          Expense: 1500,
-          Profit: 500,
-          CreatedBy: "创建人C",
-          createTime: "2023-05-05",
-          updateBy: "更新人C",
-          updateTime: "2023-05-08",
-          Remarks: "备注3",
-        },
-      ],
+      createdDate: "",
+      untilDate: "",
+      query: {},
+      data: [],
+      page: {
+        pageSize: 10,
+        currentPage: 1,
+      },
       option: {
         searchShow: false,
         excelBtn: true,
@@ -154,97 +86,96 @@ export default {
         column: [
           {
             label: "状态",
-            prop: "Status",
+            prop: "status",
             search: true,
           },
           {
-            label: "业务",
-            prop: "Activity",
-            width:100
+            label: "引用",
+            prop: "reference",
+            width: 100,
           },
           {
             label: "报价编号",
-            prop: "QuoteNumber",
+            prop: "quoteNumber",
             search: true,
-            width:100
+            width: 180,
           },
           {
             label: "项目",
-            prop: "Project",
+            prop: "project",
           },
           {
             label: "运输方式",
-            prop: "Mode",
+            prop: "mode",
             search: true,
           },
           {
             label: "创建日期",
-            prop: "CreatedDate",
-            width:90
-
+            prop: "createdDate",
+            width: 90,
           },
           {
             label: "截止日期",
             prop: "untilDate",
-            width:90
+            width: 90,
           },
           {
             label: "客户",
-            prop: "Customer",
+            prop: "customer",
             search: true,
           },
           {
             label: "始发地",
-            prop: "Origin",
+            prop: "origin",
             search: true,
           },
           {
             label: "目的地",
-            prop: "Destination",
+            prop: "destination",
             search: true,
           },
           {
             label: "承运人",
-            prop: "Carrier",
+            prop: "carrier",
             search: true,
           },
           {
             label: "运输天数",
-            prop: "TransitDays",
+            prop: "transitDays",
           },
           {
             label: "件数",
-            prop: "PCS",
+            prop: "pcs",
           },
           {
-            label: "重量（斤）",
-            prop: "Weight",
+            label: "重量",
+            prop: "weight",
           },
           {
             label: "体积",
-            prop: "VOL",
+            prop: "vol",
           },
           {
             label: "收入",
-            prop: "Income",
+            prop: "income",
           },
           {
             label: "支出",
-            prop: "Expense",
+            prop: "expense",
           },
           {
             label: "利润",
-            prop: "Profit",
+            prop: "profit",
           },
           {
             label: "创建人",
             prop: "createTime",
-            width:90
+            width: 90,
           },
           {
             label: "创建时间",
             prop: "createTime",
-            width:90
+            width: 90,
           },
           {
             label: "更新人",
@@ -261,11 +192,11 @@ export default {
           {
             label: "最近更新",
             prop: "updateTime",
-            width:90
+            width: 90,
           },
           {
             label: "备注",
-            prop: "Remarks",
+            prop: "remark",
           },
         ],
       },
@@ -293,31 +224,82 @@ export default {
       this.$message.success("刷新回调");
     },
 
+    // 获取数据并渲染
+    getList(page, params) {
+      params.currPage = page.currentPage;
+      params.pageSize = page.pageSize;
+      
+      console.log(params);
+
+      getQuoteData(params).then((res) => {
+        console.log(res);
+        this.data = res.data.data.quoteList;
+        this.page.total = res.data.data.total;
+      });
+    },
+
     // 增加数据
     rowadd() {
       this.$router.push("./quote/add");
     },
 
-    rowDel(form, index, done) {
+    // 删除数据
+    rowDel(row) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
       })
         .then(() => {
-          done(form);
-          this.$message({
-            type: "success",
-            message: "删除成功!",
+          let params = {};
+          params.id = row.id;
+          deleteQuoteData(params).then(() => {
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+            this.onLoad(this.page);
           });
         })
+
         .catch(() => {});
     },
 
-      // 清空搜索
+    /**
+     * 搜索函数，获取年度日期与地市的绑定值，将它们放入params中，传给this.query以便在其他地方调用
+     * @param {[object]} params [搜索框数据]
+     * @param {[function]} done [结束]
+     */
+
+    searchChange(params, done) {
+      this.query = params;
+      params.createdDate = this.createdDate;
+      params.untilDate = this.untilDate;
+
+      this.onLoad(this.page, "search");
+      done();
+    },
+
+    /**
+     * 页面初次加载时，会调用该方法
+     * 当搜索时，会调用该方法，重置page的数据
+     * 最后调用getList，获取最新数据
+     * @param {[object]} page [分页器对象]
+     * @param {[string]} search [用于“监听”是否进行了搜索]
+     */
+    onLoad(page, search) {
+      console.log(page);
+      console.log(this.page);
+      if (search) {
+        page.total = 0;
+        page.currentPage = 1;
+      }
+      this.getList(page, this.query);
+    },
+    // 清空搜索
     resetChange() {
-      this.createdDate = ''
-      this.untilDate = ''
+      this.createdDate = "";
+      this.untilDate = "";
     },
   },
 };

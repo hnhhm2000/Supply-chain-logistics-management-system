@@ -21,7 +21,7 @@
                   <el-col :span="8">
                     <el-form-item label="状态:">
                       <el-select
-                        v-model="status"
+                        v-model="shipmentOrderInfo.status"
                         placeholder="请选择"
                         style="width: 17.6em"
                         size="small"
@@ -39,7 +39,7 @@
                   <el-col :span="8">
                     <el-form-item label="财务:">
                       <el-input
-                        v-model="Accouting"
+                        v-model="shipmentOrderInfo.accouting"
                         size="small"
                         class="input"
                         disabled
@@ -50,7 +50,7 @@
                   <el-col :span="8">
                     <el-form-item label="装运单编号:">
                       <el-input
-                        v-model="ShipperNumber"
+                        v-model="shipmentOrderInfo.shipmentOrderNumber"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -59,32 +59,11 @@
                   </el-col>
                 </el-row>
                 <el-row>
-                  <el-col :span="8">
-                    <el-form-item label="创造人:">
-                      <el-input
-                        v-model="CreatedBy"
-                        size="small"
-                        class="input"
-                        placeholder="请输入内容"
-                      ></el-input>
-                    </el-form-item>
-                  </el-col>
-                  <el-col :span="8">
-                    <el-form-item label="创造时间:">
-                      <el-date-picker
-                        v-model="createTime"
-                        type="date"
-                        placeholder="选择日期"
-                        size="small"
-                        class="input"
-                      >
-                      </el-date-picker>
-                    </el-form-item>
-                  </el-col>
+                 
                   <el-col :span="8">
                     <el-form-item label="运输类型:">
                       <el-select
-                        v-model="Type"
+                        v-model="shipmentOrderInfo.type"
                         placeholder="请选择"
                         style="width: 17.6em"
                         size="small"
@@ -99,13 +78,33 @@
                       </el-select>
                     </el-form-item>
                   </el-col>
+                    <el-col :span="8">
+                    <el-form-item label="始发地:">
+                      <el-input
+                        v-model="shipmentOrderInfo.origin"
+                        size="small"
+                        class="input"
+                        placeholder="请输入内容"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="8">
+                    <el-form-item label="收货地:">
+                      <el-input
+                        v-model="shipmentOrderInfo.determine"
+                        size="small"
+                        class="input"
+                        placeholder="请输入内容"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
                 </el-row>
 
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="发货日:">
                       <el-input
-                        v-model="Departure"
+                        v-model="shipmentOrderInfo.departure"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -115,7 +114,7 @@
                   <el-col :span="8">
                     <el-form-item label="收货日:">
                       <el-input
-                        v-model="Arrival"
+                        v-model="shipmentOrderInfo.arrival"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -125,7 +124,7 @@
                   <el-col :span="8">
                     <el-form-item label="托运人:">
                       <el-input
-                        v-model="Shipper"
+                        v-model="shipmentOrderInfo.shipper"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -138,7 +137,7 @@
                   <el-col :span="8">
                     <el-form-item label="收货人:">
                       <el-input
-                        v-model="Consignee"
+                        v-model="shipmentOrderInfo.consignee"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -148,7 +147,7 @@
                   <el-col :span="8">
                     <el-form-item label="件数:">
                       <el-input
-                        v-model="PCS"
+                        v-model="shipmentOrderInfo. pcs"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -158,7 +157,7 @@
                   <el-col :span="8">
                     <el-form-item label="重量:">
                       <el-input
-                        v-model="Weight"
+                        v-model="shipmentOrderInfo.weight"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -171,7 +170,7 @@
                   <el-col :span="8">
                     <el-form-item label="体积:">
                       <el-input
-                        v-model="VOL"
+                        v-model="shipmentOrderInfo.vol"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -181,7 +180,7 @@
                   <el-col :span="8">
                     <el-form-item label="收入:">
                       <el-input
-                        v-model="Income"
+                        v-model="shipmentOrderInfo.income"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -191,7 +190,7 @@
                   <el-col :span="8">
                     <el-form-item label="支出:">
                       <el-input
-                        v-model="Expense"
+                        v-model="shipmentOrderInfo.expense"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -204,7 +203,7 @@
                   <el-col :span="8">
                     <el-form-item label="利润:">
                       <el-input
-                        v-model="Profit"
+                        v-model="shipmentOrderInfo.profit"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -212,9 +211,9 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
-                    <el-form-item label="始发地:">
+                    <el-form-item label="收货人地址:">
                       <el-input
-                        v-model="Origin"
+                        v-model="shipmentOrderInfo.consigneeAddress"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -222,9 +221,9 @@
                     </el-form-item>
                   </el-col>
                   <el-col :span="8">
-                    <el-form-item label="收货地:">
+                    <el-form-item label="托运人地址:">
                       <el-input
-                        v-model="Determine"
+                        v-model="shipmentOrderInfo.shipperAddress"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -237,33 +236,14 @@
                   <el-col :span="8">
                     <el-form-item label="承运人:">
                       <el-input
-                        v-model="Carrier"
+                        v-model="shipmentOrderInfo.carrier"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
                       ></el-input>
                     </el-form-item>
                   </el-col>
-                  <el-col :span="8">
-                    <el-form-item label="收货人地址:">
-                      <el-input
-                        v-model="ConsigneeAddress"
-                        size="small"
-                        class="input"
-                        placeholder="请输入内容"
-                      ></el-input>
-                    </el-form-item>
-                  </el-col>
-                  <el-col :span="8">
-                    <el-form-item label="托运人地址:">
-                      <el-input
-                        v-model="ShipperAddress"
-                        size="small"
-                        class="input"
-                        placeholder="请输入内容"
-                      ></el-input>
-                    </el-form-item>
-                  </el-col>
+                
                 </el-row>
               </el-form>
             </div>
@@ -280,7 +260,7 @@
                 type="textarea"
                 :rows="4"
                 placeholder="请输入内容"
-                v-model="textarea"
+                v-model="remark"
                 maxlength="600"
                 show-word-limit
               >
@@ -305,7 +285,7 @@
                   <el-col :span="8">
                     <el-form-item label="创建人:">
                       <el-input
-                        v-model="CreatedBy"
+                        v-model="shipmentOrderInfo.createBy"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -315,8 +295,8 @@
                   <el-col :span="8">
                     <el-form-item label="创建时间:">
                       <el-date-picker
-                        v-model="createTime"
-                        type="date"
+                        v-model="shipmentOrderInfo.createTime"
+                        type="datetime"
                         placeholder="选择日期"
                         size="small"
                         class="input"
@@ -327,7 +307,7 @@
                   <el-col :span="8">
                     <el-form-item label="更新人:">
                       <el-input
-                        v-model="updateBy"
+                        v-model="shipmentOrderInfo.updateBy"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -339,8 +319,8 @@
                   <el-col :span="8">
                     <el-form-item label="更新时间:">
                       <el-date-picker
-                        v-model="UpdatedOn"
-                        type="date"
+                        v-model="shipmentOrderInfo.updateTime"
+                        type="datetime"
                         placeholder="选择日期"
                         size="small"
                         class="input"
@@ -352,7 +332,7 @@
                   <el-col :span="8">
                     <el-form-item label="装运单ID:">
                       <el-input
-                        v-model="ShipmentOrderID"
+                        v-model="shipmentOrderInfo.id"
                         size="small"
                         class="input"
                         disabled
@@ -383,7 +363,7 @@
     <!-- 底部栏 -->
     <footer class="btns">
       <div style="margin-top: 2em">
-        <el-button type="primary" @click="submitForm('form')"
+        <el-button type="primary" @click="submit()"
           >保存提交</el-button
         >
         <el-button
@@ -397,98 +377,132 @@
   </div>
 </template>
 <script>
+import { updateShipmentOrder, getShipmentOrderDetails } from "@/api/ShippingOrder";
+
 export default {
   name: "ShippingOrderEdit",
 
   data() {
     return {
       activeName: "first",
-      status: "",
-      Accouting: "",
-      ShipperNumber: "",
-      Type: "",
-      Departure: "",
-      Arrival: "",
-      Consignee: "",
-      Determine: "",
-      ConsigneeAddress: "",
-      ShipperAddress: "",
-      Activity: "",
-      QuoteNumber: "",
-      Project: "",
-      Mode: "",
-      CreatedDate: "",
-      UntilDate: "",
-      Customer: "",
-      Shipper: "",
-      Origin: "",
-      Destination: "",
-      Carrier: "",
-      IssuingCompanyName: "",
-      CustomerAddress: "",
-      DescriptionOfGoods: "",
-      PCS: "",
-      Weight: "",
-      VOL: "",
-      Income: "",
-      Expense: "",
-      Profit: "",
-      Remarks: "",
-      CreatedBy: "",
-      createTime: "",
-      updateBy: "",
-      UpdatedOn: "",
-      PaymentTerm: "",
-      TransitDays: "",
-      PickupAddress: "",
-      DeliverAddress: "",
-      createTime: "",
+      shipmentOrderInfo: {
+        textarea: "",
+        shipmentOrderID: "",
+        status: "",
+        accouting: "",
+        shipmentOrders: "",
+        createBy: "",
+        createTime: "",
+        type: "",
+        departure: "",
+        arrival: "",
+        shipper: "",
+        consignee: "",
+        pcs: "",
+        weight: "",
+        vol: "",
+        income: "",
+        expense: "",
+        profit: "",
+        updateTime: "",
+        origin: "",
+        // 收货地
+        determine: "",
+        // 订购日
+        orderDate: "",
+        carrier: "",
+        consigneeAddress: "",
+        shipperAddress: "",
+        updatedOn: "",
+        updateBy: "",
+        shipperNumber: "",
+      },
 
       Types: [
         {
-          value: "选项1",
+          value: "空运",
           label: "空运",
         },
         {
-          value: "选项2",
+          value: "陆运",
           label: "陆运",
         },
         {
-          value: "选项3",
+          value: "海运",
           label: "海运",
         },
       ],
 
-      statusOp: [
+      StatusOp: [
         {
-          value: "选项1",
+          value: "已下单",
           label: "已下单",
         },
         {
-          value: "选项2",
+          value: "提货中",
           label: "提货中",
         },
         {
-          value: "选项3",
+          value: "已装货",
           label: "已装货",
         },
         {
-          value: "选项3",
+          value: "运输中",
           label: "运输中",
         },
         {
-          value: "选项3",
+          value: "发送账单",
           label: "发送账单",
         },
         {
-          value: "选项3",
+          value: "已完成",
           label: "已完成",
         },
       ],
     };
   },
 
-  methods: {},
+   methods: {
+    // 提交编辑，根据id进行编辑
+    submit() {
+      let data = {};
+      data = this.shipmentOrderInfo
+      data.id = this.$route.params.id;
+      
+    // 格式化创建日期/更新日期数据
+      data.createTime = this.formatDate(data.createTime);
+      data.updateTime = this.formatDate(data.updateTime);
+
+      updateShipmentOrder(data).then((res) => {
+       if(res.data.code === 200) {
+       this.$message.success('编辑成功')
+       this.$router.push( {path: '/shippingorder'} )
+       }
+      });
+    },
+
+     // 格式化时间
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      const hours = String(date.getHours()).padStart(2, "0");
+      const minutes = String(date.getMinutes()).padStart(2, "0");
+      const seconds = String(date.getSeconds()).padStart(2, "0");
+
+      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    },
+  },
+  
+  // 打开页面时，显示所有已有数据
+  created() {
+    let data = {};
+    data.id = this.$route.params.id;
+    getShipmentOrderDetails(data).then((res) => {
+      this.shipmentOrderInfo = res.data.data.shipmentOrderInfo;
+    });
+  },
 };
 </script>
 
