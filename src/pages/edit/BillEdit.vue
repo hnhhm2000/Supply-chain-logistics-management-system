@@ -11,7 +11,7 @@
         </div>
 
         <div>
-          <el-form ref="form" :model="form" :rules="rules" label-width="10em">
+          <el-form ref="form" :model="form"  label-width="10em">
             <el-row>
               <el-col :span="8">
                 <el-form-item label="号码:">
@@ -107,7 +107,7 @@
                 type="textarea"
                 :rows="4"
                 placeholder="请输入内容"
-                v-model="remark"
+                v-model="remarks"
                 maxlength="600"
                 show-word-limit
               >
@@ -122,7 +122,7 @@
         </div>
 
         <div>
-          <el-form ref="form" :model="form" :rules="rules" label-width="10em">
+          <el-form ref="form" :model="form"  label-width="10em">
             <el-row>
               <el-col :span="8">
                 <el-form-item label="创建人:">
@@ -230,7 +230,7 @@ export default {
       Vendor: "",
       DueDate: "",
       TotalAmount: "",
-      Remarks: "",
+      remarks: "",
     };
   },
 

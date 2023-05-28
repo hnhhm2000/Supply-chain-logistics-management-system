@@ -41,7 +41,7 @@ export default {
           Vendor: "供应商A",
           Duedate: "2023-05-15",
           TotalAmount: 5000,
-          Remark: "备注1",
+          remarks: "备注1",
         },
         {
           BillNumber: "B5678",
@@ -53,7 +53,7 @@ export default {
           Vendor: "供应商B",
           Duedate: "2023-05-01",
           TotalAmount: 8000,
-          Remark: "备注2",
+          remarks: "备注2",
         },
         {
           BillNumber: "B9012",
@@ -66,7 +66,7 @@ export default {
           Vendor: "供应商C",
           Duedate: "2023-05-20",
           TotalAmount: 2000,
-          Remark: "备注3",
+          remarks: "备注3",
         },
       ],
       option: {
@@ -118,7 +118,7 @@ export default {
           },
           {
             label: "备注",
-            prop: "Remark",
+            prop: "remarks",
           },
         ],
       },

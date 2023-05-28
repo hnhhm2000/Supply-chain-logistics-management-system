@@ -11,6 +11,7 @@
         :search-show="false"
         :page.sync="page"
         @refresh-change="refreshChange"
+        @row-save="rowSave"
         @row-update="rowUpdate"
         @row-del="rowDel"
         @on-load="onLoad"
@@ -18,8 +19,31 @@
         @search-reset="resetChange"
         :cell-class-name="addClass"
         @cell-click="pageto"
+        v-model="data"
         class="Mycrud"
       >
+        <!-- 状态选择框 -->
+        <template slot-scope="" slot="statusForm">
+          <el-select v-model="data.status" placeholder="请选择 状态">
+            <el-option
+              v-for="item in statusOp"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </template>
+
+        <!-- 入库日期选择框 -->
+        <template slot-scope="" slot="receivedDateForm">
+          <el-date-picker
+            v-model="data.receivedDate"
+            type="date"
+            placeholder="选择 入库日期"
+          >
+          </el-date-picker>
+        </template>
       </avue-crud>
     </main>
   </div>
@@ -44,6 +68,16 @@ export default {
         pageSize: 10,
         currentPage: 1,
       },
+      statusOp: [
+        {
+          value: "已收货",
+          label: "已收货",
+        },
+        {
+          value: "运输中",
+          label: "运输中",
+        },
+      ],
       option: {
         searchShow: false,
         excelBtn: true,
@@ -52,6 +86,7 @@ export default {
             label: "状态",
             prop: "status",
             search: true,
+            formslot: true,
           },
           {
             label: "收据",
@@ -96,6 +131,8 @@ export default {
           {
             label: "入库日期",
             prop: "receivedDate",
+            width: 90,
+            formslot: true,
           },
         ],
       },
@@ -190,15 +227,17 @@ export default {
     },
 
     // 新增数据
-    rowSave(form) {
+    rowSave(form, done) {
       addInventoryData(form).then(() => {
+        this.onLoad(this.page);
         this.$message({
           type: "success",
           message: "新增成功!",
         });
-        this.onLoad(this.page);
+        done();
       });
     },
+
     // 删除数据
     rowDel(row) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
@@ -220,14 +259,33 @@ export default {
         .catch(() => {});
     },
     // 修改数据
-    rowUpdate(form) {
-      updateInventoryData(form).then(() => {
+    rowUpdate(row, form, done) {
+      row.receivedDate = this.formatDate(row.receivedDate);
+      updateInventoryData(row).then(() => {
+        this.onLoad(this.page);
         this.$message({
           type: "success",
           message: "编辑成功!",
         });
-        this.onLoad(this.page);
+        done(form);
       });
+    },
+
+      // 格式化时间
+    formatDate(dateString) {
+      if (dateString !== "") {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        const hours = String(date.getHours()).padStart(2, "0");
+        const minutes = String(date.getMinutes()).padStart(2, "0");
+        const seconds = String(date.getSeconds()).padStart(2, "0");
+
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+      } else {
+        return "";
+      }
     },
   },
 };

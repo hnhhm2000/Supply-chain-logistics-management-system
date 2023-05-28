@@ -142,7 +142,7 @@ export default {
           },
           {
             label: "注释",
-            prop: "remark",
+            prop: "remarks",
           },
         ],
       },

@@ -172,7 +172,7 @@
             type="textarea"
             :rows="4"
             placeholder="请输入内容"
-            v-model="remark"
+            v-model="remarks"
             maxlength="600"
             show-word-limit
           >
@@ -289,13 +289,13 @@ export default {
       updateBy: "",
       updateTime: "",
       zip: "",
-      remark: "",
+      remarks: "",
 
       // 角色的选项
       options: [
         {
-          value: "账户",
-          label: "账户",
+          value: "客户",
+          label: "客户",
         },
         {
           value: "托运人",

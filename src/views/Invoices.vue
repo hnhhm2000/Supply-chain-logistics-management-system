@@ -63,7 +63,7 @@ export default {
           Amount: 5000,
           TaxAmount: 500,
           TotalAmount: 5500,
-          Remarks: "备注1",
+          remarks: "备注1",
         },
         {
           invoiceNumber: "INV0000002",
@@ -77,7 +77,7 @@ export default {
           Amount: 8000,
           TaxAmount: 800,
           TotalAmount: 8800,
-          Remarks: "备注2",
+          remarks: "备注2",
         },
         {
           invoiceNumber: "INV0000003",
@@ -92,7 +92,7 @@ export default {
           Amount: 2000,
           TaxAmount: 200,
           TotalAmount: 2200,
-          Remarks: "备注3",
+          remarks: "备注3",
         },
       ],
       option: {
@@ -166,7 +166,7 @@ export default {
           },
           {
             label: "注释",
-            prop: "Remarks",
+            prop: "remarks",
           },
         ],
       },

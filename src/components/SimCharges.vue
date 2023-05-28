@@ -107,12 +107,12 @@
               </el-row>
 
               <el-form-item label="备注" :label-width="formLabelWidth">
-                <div class="remark">
+                <div class="remarks">
                   <el-input
                     type="textarea"
                     :rows="4"
                     placeholder="请输入内容"
-                    v-model="Incomeform.Remark"
+                    v-model="Incomeform.remarks"
                   >
                   </el-input>
                 </div>
@@ -186,12 +186,12 @@
               </el-row>
 
               <el-form-item label="备注" :label-width="formLabelWidth">
-                <div class="remark">
+                <div class="remarks">
                   <el-input
                     type="textarea"
                     :rows="4"
                     placeholder="请输入内容"
-                    v-model="Incomeform.Remark"
+                    v-model="Incomeform.remarks"
                   >
                   </el-input>
                 </div>
@@ -266,7 +266,7 @@ export default {
         Rate: "",
         BillToName: "",
         Reference: "",
-        Remark: "",
+        remarks: "",
       },
 
       Expenseform: {
@@ -277,7 +277,7 @@ export default {
         Rate: "",
         BillToName: "",
         Reference: "",
-        Remarks: "",
+        remarks: "",
       },
 
       data: [

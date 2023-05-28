@@ -119,7 +119,7 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-        <div class="remark">
+        <div class="remarks">
           {{ userData.remarks }}
         </div>
       </el-card>
@@ -222,7 +222,7 @@ export default {
         updateBy: "",
         updateTime: "",
         zip: "",
-        remark: "",
+        remarks: "",
       },
     };
   },

@@ -14,7 +14,7 @@
               <el-form
                 ref="form"
                 :model="form"
-                :rules="rules"
+                
                 label-width="10em"
               >
                 <el-row>
@@ -202,7 +202,7 @@
               <el-form
                 ref="form"
                 :model="form"
-                :rules="rules"
+                
                 label-width="10em"
               >
                 <el-row>
@@ -331,7 +331,7 @@ export default {
         issuingCompany: "",
         shipperAddress: "",
         consigneeAddress: "",
-        remark: "",
+        remarks: "",
       },
 
       StatusOp: [

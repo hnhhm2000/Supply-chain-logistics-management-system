@@ -14,7 +14,7 @@
               <el-form
                 ref="form"
                 :model="form"
-                :rules="rules"
+                
                 label-width="10em"
               >
                 <el-row>
@@ -155,7 +155,7 @@
                 type="textarea"
                 :rows="4"
                 placeholder="请输入内容"
-                v-model="releaseInfo.remark"
+                v-model="releaseInfo.remarks"
                 maxlength="600"
                 show-word-limit
               >
@@ -173,7 +173,7 @@
               <el-form
                 ref="form"
                 :model="form"
-                :rules="rules"
+                
                 label-width="10em"
               >
                 <el-row>

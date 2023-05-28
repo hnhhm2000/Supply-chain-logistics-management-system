@@ -9,7 +9,7 @@
         </div>
 
         <div>
-          <el-form ref="form" :model="form" :rules="rules" label-width="10em">
+          <el-form ref="form" :model="form"  label-width="10em">
             <el-row>
               <el-col :span="8">
                 <el-form-item label="状态:">
@@ -109,7 +109,7 @@
         </div>
 
         <div class="context">
-          {{ releaseInfo.remark }}
+          {{ releaseInfo.remarks }}
         </div>
       </el-card>
 
@@ -120,7 +120,7 @@
         </div>
 
         <div>
-          <el-form ref="form" :model="form" :rules="rules" label-width="10em">
+          <el-form ref="form" :model="form"  label-width="10em">
             <el-row>
               <el-col :span="8">
                 <el-form-item label="创建人:">
@@ -213,7 +213,7 @@ export default {
         commodity: "",
         address: "",
         carrier: "",
-        remark: "",
+        remarks: "",
       },
     };
   },

@@ -312,14 +312,14 @@ export default {
         updateBy: "",
         updateTime: "",
         zip: "",
-        remark: "",
+        remarks: "",
       },
 
       // 角色的选项
       options: [
         {
-          value: "账户",
-          label: "账户",
+          value: "客户",
+          label: "客户",
         },
         {
           value: "托运人",

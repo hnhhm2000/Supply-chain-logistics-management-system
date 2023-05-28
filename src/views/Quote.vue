@@ -169,7 +169,7 @@ export default {
           },
           {
             label: "创建人",
-            prop: "createTime",
+            prop: "createBy",
             width: 90,
           },
           {
@@ -196,7 +196,7 @@ export default {
           },
           {
             label: "备注",
-            prop: "remark",
+            prop: "remarks",
           },
         ],
       },

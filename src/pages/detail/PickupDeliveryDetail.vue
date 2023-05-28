@@ -9,7 +9,7 @@
         </div>
 
         <div>
-          <el-form ref="form" :model="form" :rules="rules" label-width="10em">
+          <el-form ref="form" :model="form"  label-width="10em">
             <el-row>
               <el-col :span="8">
                 <el-form-item label="状态:">
@@ -163,7 +163,7 @@
         </div>
 
         <div>
-          <el-form ref="form" :model="form" :rules="rules" label-width="10em">
+          <el-form ref="form" :model="form"  label-width="10em">
             <el-row>
               <el-col :span="8">
                 <el-form-item label="发出公司:" prop="address">
@@ -231,7 +231,7 @@
         </div>
 
         <div class="context">
-          {{ pickupDeliveryInfo.remark }}
+          {{ pickupDeliveryInfo.remarks }}
         </div>
       </el-card>
 
@@ -242,7 +242,7 @@
         </div>
 
         <div>
-          <el-form ref="form" :model="form" :rules="rules" label-width="10em">
+          <el-form ref="form" :model="form"  label-width="10em">
             <el-row>
               <el-col :span="8">
                 <el-form-item label="创建人:">

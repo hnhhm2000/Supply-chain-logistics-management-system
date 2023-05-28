@@ -181,7 +181,7 @@ export default {
           },
           {
             label: "备注",
-            prop: "remark",
+            prop: "remarks",
           },
         ],
       },

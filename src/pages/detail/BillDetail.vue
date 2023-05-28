@@ -9,7 +9,7 @@
         </div>
 
         <div>
-          <el-form ref="form" :model="form" :rules="rules" label-width="10em">
+          <el-form ref="form" :model="form"  label-width="10em">
             <el-row>
               <el-col :span="8">
                 <el-form-item label="号码:">
@@ -68,7 +68,7 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-        <div class="remark">
+        <div class="remarks">
         
         </div>
       </el-card>
@@ -80,7 +80,7 @@
         </div>
 
         <div>
-          <el-form ref="form" :model="form" :rules="rules" label-width="10em">
+          <el-form ref="form" :model="form"  label-width="10em">
             <el-row>
               <el-col :span="8">
                 <el-form-item label="创建人:">
@@ -156,7 +156,7 @@ export default {
     Vendor:"",
     DueDate:"",
     TotalAmount:"",
-    Remarks:"",
+    remarks:"",
     };
   },
 

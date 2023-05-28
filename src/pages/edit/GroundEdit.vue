@@ -14,7 +14,7 @@
               <el-form
                 ref="form"
                 :model="form"
-                :rules="rules"
+                
                 label-width="10em"
               >
                 <el-row>
@@ -264,7 +264,7 @@
                 type="textarea"
                 :rows="4"
                 placeholder="请输入内容"
-                v-model="remark"
+                v-model="remarks"
                 maxlength="600"
                 show-word-limit
               >
@@ -282,7 +282,7 @@
               <el-form
                 ref="form"
                 :model="form"
-                :rules="rules"
+                
                 label-width="10em"
               >
                 <el-row>
@@ -408,7 +408,7 @@ export default {
         PODReceive: "",
         // 装载日期
         LoadingDate: "",
-        Remark: "",
+        remarks: "",
         Project: "",
         Carrier: "",
         Commodity: "",

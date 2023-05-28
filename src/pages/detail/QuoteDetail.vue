@@ -12,7 +12,7 @@
           <el-form
             ref="formCustomers"
             :model="Customers"
-            :rules="rules"
+            
             label-width="10em"
           >
             <el-row>
@@ -82,7 +82,7 @@
           <el-form
             ref="formTaxpayers"
             :model="Taxpayers"
-            :rules="rules"
+            
             label-width="10em"
           >
             <el-row>
@@ -149,7 +149,7 @@
           <span class="CardTitle">备注说明</span>
         </div>
 
-        <div class="remark">
+        <div class="remarks">
         
         </div>
       </el-card>
@@ -164,7 +164,7 @@
           <el-form
             ref="formOperator"
             :model="Operator"
-            :rules="rules"
+            
             label-width="10em"
           >
             <el-row>
