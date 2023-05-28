@@ -72,8 +72,8 @@ export default {
           createTime: "2023-04-15",
           Module: "关联模块B",
           Project: "项目B",
-          Date: "2023-04-20",
-          Duedate: "2023-05-01",
+          kaiDate: "2023-04-20",
+          duedate: "2023-05-01",
           Amount: 8000,
           TaxAmount: 800,
           TotalAmount: 8800,
@@ -85,6 +85,7 @@ export default {
           CreatedBy: "创建人C",
           createTime: "2023-05-05",
           Module: "关联模块C",
+          billto:"黄皓铭",
           Project: "项目C",
           Date: "2023-05-10",
           Duedate: "2023-05-20",
@@ -130,8 +131,12 @@ export default {
             width: 90,
           },
           {
-            label: "关联模块",
+            label: "引用",
             prop: "Module",
+          },
+           {
+            label: "收票人",
+            prop: "billto",
           },
           {
             label: "项目",
@@ -139,7 +144,7 @@ export default {
           },
           {
             label: "开具日期",
-            prop: "Date",
+            prop: "kaiDate",
             width: 90,
           },
           {

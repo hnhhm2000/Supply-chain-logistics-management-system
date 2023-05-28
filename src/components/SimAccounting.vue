@@ -42,7 +42,7 @@ export default {
             prop: "Type",
           },
           {
-            label: "日期",
+            label: "创造日期",
             prop: "Date",
           },
           {
@@ -50,7 +50,7 @@ export default {
             prop: "BillToOrVendor",
           },
           {
-            label: "到期时间",
+            label: "截止时间",
             prop: "DueDate",
           },
           {
