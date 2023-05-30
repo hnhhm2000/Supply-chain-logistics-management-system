@@ -11,7 +11,7 @@
             </div>
 
             <div>
-              <el-form ref="form"  label-width="10em">
+              <el-form ref="form" label-width="10em">
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="状态:">
@@ -103,13 +103,14 @@
                   </el-col>
                   <el-col :span="8">
                     <el-form-item label="客户:">
-                      <el-input
+                      <el-autocomplete
                         v-model="quoteData.customer"
+                        :fetch-suggestions="querySearch"
+                        placeholder="请输入内容"
                         size="small"
                         class="input"
                         @input="getcrm('客户')"
-                        placeholder="请输入内容"
-                      ></el-input>
+                      ></el-autocomplete>
                     </el-form-item>
                   </el-col>
                 </el-row>
@@ -124,7 +125,7 @@
             </div>
 
             <div>
-              <el-form ref="form"  label-width="10em">
+              <el-form ref="form" label-width="10em">
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="客户地址:">
@@ -322,7 +323,7 @@
             </div>
 
             <div>
-              <el-form ref="form"  label-width="10em">
+              <el-form ref="form" label-width="10em">
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="创建人:">
@@ -385,6 +386,19 @@
               </el-form>
             </div>
           </el-card>
+
+          <!-- 底部栏 -->
+          <footer class="btns">
+            <div style="margin-top: 2em">
+              <el-button type="primary" @click="submit()">保存提交</el-button>
+              <el-button
+                type="primary"
+                plain
+                @click="$router.push({ path: '/quote' })"
+                >返回</el-button
+              >
+            </div>
+          </footer>
         </el-tab-pane>
         <!-- 商品库存 -->
         <el-tab-pane label="商品" name="second">
@@ -400,24 +414,11 @@
         </el-tab-pane>
       </el-tabs>
     </main>
-
-    <!-- 底部栏 -->
-    <footer class="btns">
-      <div style="margin-top: 2em">
-        <el-button type="primary" @click="submit()">保存提交</el-button>
-        <el-button
-          type="primary"
-          plain
-          @click="$router.push({ path: '/quote' })"
-          >返回</el-button
-        >
-      </div>
-    </footer>
   </div>
 </template>
 <script>
-import { editQuoteData, getQuoteDetail } from "@/api/Quote";
-import { getUserListByRole } from "@/api/api";
+import { updateQuoteData, getQuoteDetail } from "@/api/Quote";
+import { getUserListByRole } from "@/api/User";
 export default {
   name: "QuoteEdit",
 
@@ -455,6 +456,7 @@ export default {
         paymentTerm: "",
         transitDays: "",
       },
+      userList: [],
 
       options: [
         {
@@ -514,7 +516,7 @@ export default {
       let data = {};
       data = this.quoteData;
       data.id = this.$route.params.id;
-      editQuoteData(data).then((res) => {
+      updateQuoteData(data).then((res) => {
         if (res.data.code === 200) {
           this.$message.success("编辑成功");
           this.$router.push({ path: "/quote" });
@@ -524,11 +526,31 @@ export default {
 
     // 从客户关系管理中查找客户
     getcrm(data) {
-      let params = {}
-      params.role = data
-      getUserListByRole(params).then((res) => {
-        console.log(res);  
-      })
+    let params = {};
+    params.role = data;
+    getUserListByRole(params).then((res) => {
+      console.log(res);
+      if(res.success && res.data && res.data.userList) {
+        this.userList = res.data.userList;
+      }
+    });
+  },
+
+    querySearch(queryString, cb) {
+      var userList = this.userList;
+      var results = queryString
+        ? userList.filter(this.createFilter(queryString))
+        : userList;
+        // console.log(queryString);
+        // console.log(results);
+      // 调用 callback 返回建议列表的数据
+      cb(results);
+    },
+
+    createFilter(queryString) {
+      return (user) => {
+        return user.toLowerCase().indexOf(queryString.toLowerCase()) === 0;
+      };
     },
   },
 

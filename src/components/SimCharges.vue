@@ -22,19 +22,13 @@
           <el-row>
             <el-col :offset="1" :span="6">
               <el-form-item label="服务" :label-width="formLabelWidth">
-                <el-input
-                  v-model="Incomeform.Service"
-                  autocomplete="off"
-                ></el-input>
+                <el-input v-model="Service" autocomplete="off"></el-input>
               </el-form-item>
             </el-col>
 
             <el-col :offset="1" :span="16">
               <el-form-item label="服务描述" :label-width="formLabelWidth">
-                <el-input
-                  v-model="Incomeform.ServiceDescription"
-                  autocomplete="off"
-                ></el-input>
+                <el-input v-model="Description" autocomplete="off"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -46,7 +40,7 @@
                 <el-col :span="6">
                   <el-form-item label="数量" :label-width="formLabelWidth">
                     <el-input
-                      v-model="Incomeform.Quantity"
+                      v-model="financeService.incomeQuantity"
                       autocomplete="off"
                       size="small"
                     ></el-input>
@@ -56,7 +50,7 @@
                 <el-col :span="6">
                   <el-form-item label="单位" :label-width="formLabelWidth">
                     <el-input
-                      v-model="Incomeform.Units"
+                      v-model="financeService.incomeUnits"
                       autocomplete="off"
                       size="small"
                     ></el-input>
@@ -64,9 +58,9 @@
                 </el-col>
 
                 <el-col :span="6">
-                  <el-form-item label="价格" :label-width="formLabelWidth">
+                  <el-form-item label="单价" :label-width="formLabelWidth">
                     <el-input
-                      v-model="Incomeform.Rate"
+                      v-model="financeService.incomePrice"
                       autocomplete="off"
                       size="small"
                     ></el-input>
@@ -74,9 +68,9 @@
                 </el-col>
 
                 <el-col :span="6">
-                  <el-form-item label="金额" :label-width="formLabelWidth">
+                  <el-form-item label="总价" :label-width="formLabelWidth">
                     <el-input
-                      v-model="Incomeform.Amount"
+                      v-model="financeService.incomeAmount"
                       autocomplete="off"
                       size="small"
                     ></el-input>
@@ -88,7 +82,7 @@
                 <el-col :span="6">
                   <el-form-item label="引用" :label-width="formLabelWidth">
                     <el-input
-                      v-model="Incomeform.Reference"
+                      v-model="financeService.incomeReference"
                       autocomplete="off"
                       size="small"
                     ></el-input>
@@ -96,12 +90,29 @@
                 </el-col>
 
                 <el-col :span="6">
-                  <el-form-item label="发送给" :label-width="formLabelWidth">
+                  <el-form-item label="收票人" :label-width="formLabelWidth">
                     <el-input
-                      v-model="Incomeform.BillToName"
+                      v-model="financeService.incomeBillToName"
                       autocomplete="off"
                       size="small"
                     ></el-input>
+                  </el-form-item>
+                </el-col>
+
+                <el-col :span="6">
+                  <el-form-item label="是否付款" label-width="80px">
+                    <el-select
+                      v-model="financeService.incomepayment"
+                      placeholder="请选择"
+                    >
+                      <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                      >
+                      </el-option>
+                    </el-select>
                   </el-form-item>
                 </el-col>
               </el-row>
@@ -112,7 +123,7 @@
                     type="textarea"
                     :rows="4"
                     placeholder="请输入内容"
-                    v-model="Incomeform.remarks"
+                    v-model="financeService.incomeremarks"
                   >
                   </el-input>
                 </div>
@@ -125,7 +136,7 @@
                 <el-col :span="6">
                   <el-form-item label="数量" :label-width="formLabelWidth">
                     <el-input
-                      v-model="Expenseform.Quantity"
+                      v-model="financeService.expenseQuantity"
                       autocomplete="off"
                       size="small"
                     ></el-input>
@@ -135,7 +146,7 @@
                 <el-col :span="6">
                   <el-form-item label="单位" :label-width="formLabelWidth">
                     <el-input
-                      v-model="Expenseform.Units"
+                      v-model="financeService.expenseUnits"
                       autocomplete="off"
                       size="small"
                     ></el-input>
@@ -143,9 +154,9 @@
                 </el-col>
 
                 <el-col :span="6">
-                  <el-form-item label="价格" :label-width="formLabelWidth">
+                  <el-form-item label="单价" :label-width="formLabelWidth">
                     <el-input
-                      v-model="Expenseform.Rate"
+                      v-model="financeService.expensePrice"
                       autocomplete="off"
                       size="small"
                     ></el-input>
@@ -153,9 +164,9 @@
                 </el-col>
 
                 <el-col :span="6">
-                  <el-form-item label="金额" :label-width="formLabelWidth">
+                  <el-form-item label="总价" :label-width="formLabelWidth">
                     <el-input
-                      v-model="Expenseform.Amount"
+                      v-model="financeService.expenseAmount"
                       autocomplete="off"
                       size="small"
                     ></el-input>
@@ -167,7 +178,7 @@
                 <el-col :span="6">
                   <el-form-item label="引用" :label-width="formLabelWidth">
                     <el-input
-                      v-model="Expenseform.Reference"
+                      v-model="financeService.expenseReference"
                       autocomplete="off"
                       size="small"
                     ></el-input>
@@ -177,10 +188,27 @@
                 <el-col :span="6">
                   <el-form-item label="供应商" :label-width="formLabelWidth">
                     <el-input
-                      v-model="Expenseform.BillToName"
+                      v-model="financeService.expenseBillToName"
                       autocomplete="off"
                       size="small"
                     ></el-input>
+                  </el-form-item>
+                </el-col>
+
+                <el-col :span="6">
+                  <el-form-item label="是否付款" label-width="80px">
+                    <el-select
+                      v-model="financeService.expensepayment"
+                      placeholder="请选择"
+                    >
+                      <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                      >
+                      </el-option>
+                    </el-select>
                   </el-form-item>
                 </el-col>
               </el-row>
@@ -191,7 +219,7 @@
                     type="textarea"
                     :rows="4"
                     placeholder="请输入内容"
-                    v-model="Incomeform.remarks"
+                    v-model="financeService.expenseremarks"
                   >
                   </el-input>
                 </div>
@@ -208,14 +236,14 @@
 
     <!-- 生成财务数据 -->
     <el-dropdown slot="menuLeft">
-  <el-button type="primary" size="small">
-    生成财务数据<i class="el-icon-arrow-down el-icon--right"></i>
-  </el-button>
-  <el-dropdown-menu slot="dropdown">
-    <el-dropdown-item  @click="invoiceAdd">生成发票</el-dropdown-item>
-    <el-dropdown-item  @click="billAdd">生成账单</el-dropdown-item>
-  </el-dropdown-menu>
-</el-dropdown>
+      <el-button type="primary" size="small">
+        生成财务数据<i class="el-icon-arrow-down el-icon--right"></i>
+      </el-button>
+      <el-dropdown-menu slot="dropdown">
+        <el-dropdown-item @click="invoiceAdd">生成发票</el-dropdown-item>
+        <el-dropdown-item @click="billAdd">生成账单</el-dropdown-item>
+      </el-dropdown-menu>
+    </el-dropdown>
 
     <!-- 自定义编辑 -->
     <template slot-scope="{ type, size }" slot="menu">
@@ -258,27 +286,37 @@ export default {
       activeName: "first",
       formLabelWidth: "70px",
 
-      Incomeform: {
-        Service: "",
-        ServiceDescription: "",
-        Quantity: "",
-        Units: "",
-        Rate: "",
-        BillToName: "",
-        Reference: "",
-        remarks: "",
+      financeService: {
+        service: "",
+        serviceDescription: "",
+        incomeQuantity: "",
+        expenseQuantity: "",
+        incomeUnits: "",
+        expenseUnits: "",
+        incomePrice: "",
+        expensePrice: "",
+        incometotal: "",
+        expensetotal:"",
+        billToName: "",
+        vendor: "",
+        incomeReference: "",
+        expenseReference: "",
+        incomePayment: "",
+        expensePayment: "",
+        incomeRemarks: "",
+        expenseRemarks: "",
       },
 
-      Expenseform: {
-        Service: "",
-        ServiceDescription: "",
-        Quantity: "",
-        Units: "",
-        Rate: "",
-        BillToName: "",
-        Reference: "",
-        remarks: "",
-      },
+      options: [
+        {
+          value: "已付款",
+          label: "已付款",
+        },
+        {
+          value: "未付款",
+          label: "未付款",
+        },
+      ],
 
       data: [
         {
@@ -286,36 +324,36 @@ export default {
           Description: "运输电子产品的相关费用",
           QTY: 10,
           UNIT: "公斤",
-          Rate: 5.0,
+          Price: 5.0,
           Income: 50.0,
           Profit: 20.0,
           BillTo: "发送给A",
           QtyExpense: 10.0,
-          RateExpense: 5.0,
+          PriceExpense: 5.0,
         },
         {
           Status: "已开票",
           Description: "进口钢材的相关费用",
           QTY: 20,
           UNIT: "公斤",
-          Rate: 8.0,
+          Price: 8.0,
           Income: 160.0,
           Profit: 80.0,
           BillTo: "发送给B",
           QtyExpense: 20.0,
-          RateExpense: 10.0,
+          PriceExpense: 10.0,
         },
         {
           Status: "已取消",
           Description: "运输电子产品的相关费用",
           QTY: 5,
           UNIT: "公斤",
-          Rate: 12.0,
+          Price: 12.0,
           Income: 60.0,
           Profit: 30.0,
           BillTo: "发送给C",
           QtyExpense: 5.0,
-          RateExpense: 6.0,
+          PriceExpense: 6.0,
         },
       ],
       option: {
@@ -343,8 +381,8 @@ export default {
             prop: "UNIT",
           },
           {
-            label: "价格",
-            prop: "Rate",
+            label: "单价",
+            prop: "price",
           },
           {
             label: "收入",
@@ -359,12 +397,8 @@ export default {
             prop: "BillTo",
           },
           {
-            label: "数量费用",
-            prop: "QtyExpense",
-          },
-          {
-            label: "费率费用",
-            prop: "RateExpense",
+            label: "总价",
+            prop: "total",
           },
         ],
       },

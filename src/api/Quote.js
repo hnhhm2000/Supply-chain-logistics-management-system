@@ -21,7 +21,7 @@ export const addQuoteData = (data) => {
 }
 
 // 编辑
-export const editQuoteData = (data) => {
+export const updateQuoteData = (data) => {
   return request({
     url: '/api/quote/updateQuote',
     method: 'post',
@@ -49,4 +49,6 @@ export const deleteQuoteData = (params) => {
     params,
   })
 }
+
+
 

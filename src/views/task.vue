@@ -50,11 +50,19 @@
         <!-- 截止日期选择框 -->
         <template slot-scope="" slot="dueDateForm">
           <el-date-picker
-            v-model="data.dueDate"
-            type="date"
-            placeholder="选择 截止日期"
-          >
-          </el-date-picker>
+    v-model="data.dueDate"
+    type="date"
+    placeholder="选择 截止日期"
+    :picker-options="{
+      disabledDate(time) {
+        let today = new Date();
+        today.setHours(0, 0, 0, 0); // 设置时间为今天的开始
+        return time.getTime() < today.getTime();
+      }
+    }"
+>
+</el-date-picker>
+
         </template>
       </avue-crud>
     </main>
@@ -162,6 +170,7 @@ export default {
     refreshChange() {
       this.$message.success("刷新回调");
     },
+
     // 获取数据并渲染
     getList(page, params) {
       params.currPage = page.currentPage;
@@ -234,6 +243,7 @@ export default {
         })
         .catch(() => {});
     },
+
     // 修改数据
     rowUpdate(row, form, done) {
       row.dueDate = this.formatDate(row.dueDate);

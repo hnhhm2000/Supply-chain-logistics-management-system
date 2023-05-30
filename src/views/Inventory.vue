@@ -146,7 +146,7 @@ export default {
             },
             count: 100,
             decimals: 2,
-            title: "日活跃数",
+            title: "商品总数",
             href: "https://avuejs.com",
             target: "_blank",
           },
@@ -155,7 +155,7 @@ export default {
               alert(JSON.stringify(item));
             },
             count: "3,000",
-            title: "月活跃数",
+            title: "商品总价",
             href: "https://avuejs.com",
             target: "_blank",
           },
@@ -164,7 +164,7 @@ export default {
               alert(JSON.stringify(item));
             },
             count: "20,000",
-            title: "年活跃数",
+            title: "年入库数",
             href: "https://avuejs.com",
             target: "_blank",
           },
@@ -173,7 +173,7 @@ export default {
               alert(JSON.stringify(item));
             },
             count: "40,000",
-            title: "周活跃数",
+            title: "年出货数",
             href: "https://avuejs.com",
             target: "_blank",
           },

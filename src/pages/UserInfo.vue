@@ -97,7 +97,7 @@
 </template>
 
 <script>
-import { getUserInfo } from "@/api/api";
+import { getUserInfo } from "@/api/User";
 
 export default {
   name: "UserInfo",

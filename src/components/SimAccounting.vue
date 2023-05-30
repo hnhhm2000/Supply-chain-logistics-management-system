@@ -4,14 +4,7 @@
     :option="option"
     :cell-class-name="addClass"
   >
-    <el-button
-      slot="menuLeft"
-      type="primary"
-      icon="el-icon-plus"
-      size="small"
-      @click="rowadd"
-      >新增</el-button
-    >
+  
   </avue-crud>
 </template>
 

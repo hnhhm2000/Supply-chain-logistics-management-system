@@ -222,7 +222,7 @@ const routes = [
     name: "CrmAdd",
     component: () => import("../pages/add/CrmAdd"),
     meta: {
-      title: "添加账户",
+      title: "添加客户",
     },
   },
 
@@ -322,7 +322,7 @@ const routes = [
     name: "CrmDetail",
     component: () => import("../pages/detail/CrmDetail"),
     meta: {
-      title: "账户详情",
+      title: "客户详情",
     },
   },
 
@@ -413,7 +413,7 @@ const routes = [
     name: "CrmEdit",
     component: () => import("../pages/edit/CrmEdit"),
     meta: {
-      title: "账户编辑",
+      title: "客户编辑",
     },
   },
 

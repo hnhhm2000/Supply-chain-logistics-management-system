@@ -20,14 +20,13 @@
                   ></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :span="8">
-              </el-col>
+              <el-col :span="8"> </el-col>
               <el-col :span="8">
                 <el-form-item label="性别">
                   <el-select
                     v-model="sex"
                     placeholder="请选择"
-                    class="select"
+                   style="width:18.6em"
                     size="small"
                   >
                     <el-option
@@ -41,7 +40,7 @@
                 </el-form-item>
               </el-col>
 
-                <el-col :span="8">
+              <el-col :span="8">
                 <el-form-item label="角色" prop="role">
                   <el-select
                     v-model="role"
@@ -75,7 +74,7 @@
                   <el-select
                     v-model="status"
                     placeholder="请选择"
-                    style="width:18.6em"
+                    style="width: 18.6em"
                     size="small"
                   >
                     <el-option
@@ -88,7 +87,6 @@
                   </el-select>
                 </el-form-item>
               </el-col>
-            
             </el-row>
           </el-form>
         </div>
@@ -115,7 +113,7 @@
               <el-col :span="8">
                 <el-form-item label="电话号码" prop="phone">
                   <el-input
-                    v-model="phone"
+                    v-model="phoneNumber"
                     size="small"
                     class="input"
                     :maxlength="11"
@@ -264,7 +262,7 @@
 </template>
 <script>
 import { addUserData } from "@/api/Crm";
-import { Message } from 'element-ui'
+import { Message } from "element-ui";
 
 export default {
   name: "CrmAdd",
@@ -280,7 +278,7 @@ export default {
       address: "",
       country: "",
       city: "",
-      phone: "",
+      phoneNumber: "",
       province: "",
       salesAgency: "",
       id: "",
@@ -344,29 +342,48 @@ export default {
   methods: {
     // 提交添加
     submit() {
-    let params = {...this.$data};
-    delete params.options;
-    delete params.Sexs;
-    delete params.StatusOp;
-    
-    addUserData(params).then((res) => {
-      console.log(res.data.code)
-      if(res.data.code === 200) {
-        // 成功消息
-        Message({
-          message: '添加成功',
-          type: 'success'
+      let params = { ...this.$data };
+      delete params.options;
+      delete params.Sexs;
+      delete params.StatusOp;
+
+      params.createTime = this.formatDate(params.createTime);
+      addUserData(params)
+        .then((res) => {
+          if (res.data.code === 200) {
+            // 成功消息
+            Message({
+              message: "添加成功",
+              type: "success",
+            });
+            this.$router.push({ path: "/crm" });
+          } else {
+            // 错误消息
+            Message.error(`错误: ${res.message}`);
+          }
+        })
+        .catch((err) => {
+          // 请求失败的错误消息
+          Message.error(`请求失败: ${err}`);
         });
-        this.$router.push({ path:'/crm' })
+    },
+
+    // 格式化时间
+    formatDate(dateString) {
+      if (dateString !== "") {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        const hours = String(date.getHours()).padStart(2, "0");
+        const minutes = String(date.getMinutes()).padStart(2, "0");
+        const seconds = String(date.getSeconds()).padStart(2, "0");
+
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
       } else {
-        // 错误消息
-        Message.error(`错误: ${res.message}`);
+        return "";
       }
-    }).catch(err => {
-      // 请求失败的错误消息
-      Message.error(`请求失败: ${err}`);
-    });
-  },
+    },
   },
 };
 </script>

@@ -89,10 +89,10 @@
         <el-menu-item route index="./bills">账单</el-menu-item>
       </el-menu-item-group>
     </el-submenu>
-    <el-menu-item route index="4">
-      <img class="NavMenu-icon" src="../assets/img/feedback.png" />
-      <span slot="title">反馈</span>
-    </el-menu-item>
+      <!-- <el-menu-item route index="4">
+        <img class="NavMenu-icon" src="../assets/img/feedback.png" />
+        <span slot="title">反馈</span>
+      </el-menu-item> -->
   </el-menu>
 </template>
 

@@ -3,11 +3,11 @@
     <!-- 主要内容 -->
     <main class="add-main">
       <el-tabs v-model="activeName" type="card">
-        <el-tab-pane label="用户资料" name="first">
+        <el-tab-pane label="主要信息" name="first">
           <!-- 卡片一  -->
           <el-card class="whiteCard">
             <div slot="header" class="clearfix">
-              <span class="CardTitle">账户信息</span>
+              <span class="CardTitle">主要信息</span>
             </div>
 
             <div>
@@ -253,14 +253,34 @@
               </el-form>
             </div>
           </el-card>
+
+          <!-- 底部栏 -->
+          <footer class="btns">
+            <div style="margin-top: 2em">
+              <el-button type="primary" @click="submit">保存提交</el-button>
+              <el-button
+                type="primary"
+                plain
+                @click="$router.push({ path: '/crm' })"
+                >返回</el-button
+              >
+            </div>
+          </footer>
         </el-tab-pane>
+
         <!-- 报价 -->
         <el-tab-pane label="报价" name="second">
-          <SimQuote></SimQuote>
+          <SimQuote
+            :quoteData="quoteData"
+            @update-data="fetchData()"
+          ></SimQuote>
         </el-tab-pane>
         <!-- 库存 -->
         <el-tab-pane label="库存" name="third">
-          <SimInventory></SimInventory>
+          <SimInventory
+            :inventoryData="inventoryData"
+            @update-data="fetchData()"
+          ></SimInventory>
         </el-tab-pane>
         <!-- 运输 -->
         <el-tab-pane label="运输" name="fourth">
@@ -272,20 +292,15 @@
         </el-tab-pane>
       </el-tabs>
     </main>
-
-    <!-- 底部栏 -->
-    <footer class="btns">
-      <div style="margin-top: 2em">
-        <el-button type="primary" @click="submit">保存提交</el-button>
-        <el-button type="primary" plain @click="$router.push({ path: '/crm' })"
-          >返回</el-button
-        >
-      </div>
-    </footer>
   </div>
 </template>
 <script>
-import { editUserData, getUserDetail } from "@/api/Crm";
+import {
+  updateUserData,
+  getUserDetail,
+  getQuoteData,
+  getInventoryData,
+} from "@/api/Crm";
 
 export default {
   name: "CrmEdit",
@@ -314,6 +329,9 @@ export default {
         zip: "",
         remarks: "",
       },
+
+      quoteData: [],
+      inventory: [],
 
       // 角色的选项
       options: [
@@ -369,24 +387,58 @@ export default {
     // 提交编辑，根据id进行编辑
     submit() {
       let data = {};
-      data = this.userData
+      data = this.userData;
       data.id = this.$route.params.id;
-      editUserData(data).then((res) => {
-       if(res.data.code === 200) {
-       this.$message.success('编辑成功')
-       this.$router.push( {path: '/crm'} )
-       }
+      data.createTime = this.formatDate(data.createTime);
+      updateUserData(data).then((res) => {
+        if (res.data.code === 200) {
+          this.$message.success("编辑成功");
+          this.$router.push({ path: "/crm" });
+        }
+      });
+    },
+
+    // 格式化时间
+    formatDate(dateString) {
+      if (dateString !== "") {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        const hours = String(date.getHours()).padStart(2, "0");
+        const minutes = String(date.getMinutes()).padStart(2, "0");
+        const seconds = String(date.getSeconds()).padStart(2, "0");
+
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+      } else {
+        return "";
+      }
+    },
+
+    fetchData() {
+      // 获取id
+      let data = {};
+      data.id = this.$route.params.id;
+      data.userId = this.$route.params.id;
+
+      // 打开页面时，显示所有已有数据
+      getUserDetail(data).then((res) => {
+        this.userData = res.data.data.userInfo;
+      });
+
+      // 获取报价关联数据
+      getQuoteData(data).then((res) => {
+        this.quoteData = res.data.data.quoteList;
+      });
+
+      // 获取库存关联数据
+      getInventoryData(data).then((res) => {
+        this.inventoryData = res.data.data.inventoryData;
       });
     },
   },
-  
-  // 打开页面时，显示所有已有数据
   created() {
-    let data = {};
-    data.id = this.$route.params.id;
-    getUserDetail(data).then((res) => {
-      this.userData = res.data.data.userInfo;
-    });
+    this.fetchData();
   },
 };
 </script>

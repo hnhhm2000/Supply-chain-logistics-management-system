@@ -3,7 +3,7 @@
     <!-- 主要内容 -->
     <main class="add-main">
       <el-tabs v-model="activeName" type="card">
-        <el-tab-pane label="用户资料" name="first">
+        <el-tab-pane label="主要信息" name="first">
           <!-- 卡片一  -->
           <el-card class="whiteCard">
             <div slot="header" class="clearfix">
@@ -11,12 +11,7 @@
             </div>
 
             <div>
-              <el-form
-                ref="form"
-                :model="form"
-                
-                label-width="10em"
-              >
+              <el-form ref="form" :model="form" label-width="10em">
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="状态:">
@@ -59,7 +54,6 @@
                   </el-col>
                 </el-row>
                 <el-row>
-                 
                   <el-col :span="8">
                     <el-form-item label="运输类型:">
                       <el-select
@@ -78,7 +72,7 @@
                       </el-select>
                     </el-form-item>
                   </el-col>
-                    <el-col :span="8">
+                  <el-col :span="8">
                     <el-form-item label="始发地:">
                       <el-input
                         v-model="shipmentOrderInfo.origin"
@@ -147,7 +141,7 @@
                   <el-col :span="8">
                     <el-form-item label="件数:">
                       <el-input
-                        v-model="shipmentOrderInfo. pcs"
+                        v-model="shipmentOrderInfo.pcs"
                         size="small"
                         class="input"
                         placeholder="请输入内容"
@@ -243,7 +237,6 @@
                       ></el-input>
                     </el-form-item>
                   </el-col>
-                
                 </el-row>
               </el-form>
             </div>
@@ -275,12 +268,7 @@
             </div>
 
             <div>
-              <el-form
-                ref="form"
-                :model="form"
-                
-                label-width="10em"
-              >
+              <el-form ref="form" :model="form" label-width="10em">
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="创建人:">
@@ -344,6 +332,18 @@
               </el-form>
             </div>
           </el-card>
+          <!-- 底部栏 -->
+          <footer class="btns">
+            <div style="margin-top: 2em">
+              <el-button type="primary" @click="submit()">保存提交</el-button>
+              <el-button
+                type="primary"
+                plain
+                @click="$router.push({ path: '/shippingorder' })"
+                >返回</el-button
+              >
+            </div>
+          </footer>
         </el-tab-pane>
         <!-- 商品库存 -->
         <el-tab-pane label="商品" name="second">
@@ -359,25 +359,13 @@
         </el-tab-pane>
       </el-tabs>
     </main>
-
-    <!-- 底部栏 -->
-    <footer class="btns">
-      <div style="margin-top: 2em">
-        <el-button type="primary" @click="submit()"
-          >保存提交</el-button
-        >
-        <el-button
-          type="primary"
-          plain
-          @click="$router.push({ path: '/shippingorder' })"
-          >返回</el-button
-        >
-      </div>
-    </footer>
   </div>
 </template>
 <script>
-import { updateShipmentOrder, getShipmentOrderDetails } from "@/api/ShippingOrder";
+import {
+  updateShipmentOrder,
+  getShipmentOrderDetails,
+} from "@/api/ShippingOrder";
 
 export default {
   name: "ShippingOrderEdit",
@@ -462,26 +450,26 @@ export default {
     };
   },
 
-   methods: {
+  methods: {
     // 提交编辑，根据id进行编辑
     submit() {
       let data = {};
-      data = this.shipmentOrderInfo
+      data = this.shipmentOrderInfo;
       data.id = this.$route.params.id;
-      
-    // 格式化创建日期/更新日期数据
+
+      // 格式化创建日期/更新日期数据
       data.createTime = this.formatDate(data.createTime);
       data.updateTime = this.formatDate(data.updateTime);
 
       updateShipmentOrder(data).then((res) => {
-       if(res.data.code === 200) {
-       this.$message.success('编辑成功')
-       this.$router.push( {path: '/shippingorder'} )
-       }
+        if (res.data.code === 200) {
+          this.$message.success("编辑成功");
+          this.$router.push({ path: "/shippingorder" });
+        }
       });
     },
 
-     // 格式化时间
+    // 格式化时间
     formatDate(dateString) {
       const date = new Date(dateString);
       const year = date.getFullYear();
@@ -494,7 +482,7 @@ export default {
       return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     },
   },
-  
+
   // 打开页面时，显示所有已有数据
   created() {
     let data = {};

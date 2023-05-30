@@ -1,79 +1,138 @@
 <template>
-   <avue-crud
-            :data="data"
-            :option="option"
-            :cell-class-name="addClass"
-          >
-            <el-button
-              slot="menuLeft"
-              type="primary"
-              icon="el-icon-plus"
-              size="small"
-              @click="rowadd"
-              >新增</el-button
-            >
-          </avue-crud>
+  <avue-crud
+    :data="data"
+    :option="option"
+    :cell-class-name="addClass"
+    @refresh-change="refreshChange"
+    @row-save="rowSave"
+    @row-update="rowUpdate"
+    @row-del="rowDel"
+  >
+  </avue-crud>
 </template>
 
 <script>
+import {
+  addSimInventoryData,
+  updateSimInventoryData,
+  deleteSimInventoryData,
+} from "../api/Crm";
+
 export default {
-  name: 'SimInventory',
+  name: "SimInventory",
+  props: ["inventoryData"],
+
+  watch: {
+    // 获取父组件传递过来的数据
+    inventoryData: {
+      immediate: true,
+      handler(newValue) {
+        this.data = newValue;
+        console.log(newValue);
+      },
+    },
+  },
 
   data() {
     return {
       option: {
-       searchShow: false,
-        searchBtn:false,
-        excelBtn:false,
-        addBtn: false,
-        refreshBtn:false,
-        columnBtn:false,
+        searchShow: false,
+        searchBtn: false,
+        excelBtn: false,
+        refreshBtn: false,
+        columnBtn: false,
         column: [
           {
             label: "收据编号",
-            prop: "Receipt",
+            prop: "receiptNumber",
           },
           {
             label: "托运人",
-            prop: "Shipper",
+            prop: "shipper",
           },
           {
             label: "件数",
-            prop: "PCS",
+            prop: "pcs",
           },
           {
             label: "描述",
-            prop: "Description",
+            prop: "description",
           },
           {
             label: "尺寸 ",
-            prop: "DIM",
+            prop: "dIM",
           },
-            {
+          {
             label: "重量（斤）",
-            prop: "Weight",
+            prop: "weight",
           },
           {
             label: "体积（立方米）",
-            prop: "VOL",
+            prop: "vol",
           },
         ],
       },
-      data:[{
-        Receipt:'WRI0000006',
-        Shipper:'黄皓铭',
-        Consignee:'黄皓铭',
-        PCS:'件数',
-        Description:'商品描述',
-        DIM:'55.91 x 55.12 x 57.09',
-        Weight:'10',
-        VOL:'10'
-      }]
+      data: [],
     };
+  },
+
+      methods: {
+    refreshChange() {
+      this.$message.success("刷新回调");
+    },
+
+    // 新增数据
+    rowSave(form, done) {
+      form.quoteId = this.quoteId;
+      this.$emit("update-data");
+
+      addSimInventoryData(form).then(() => {
+        this.$message({
+          type: "success",
+          message: "新增成功!",
+        });
+        done();
+      });
+    },
+
+    // 删除数据
+    rowDel(row, done) {
+      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          let params = {};
+          params.quoteId = row.id;
+
+          deleteSimInventoryData(params).then(() => {
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+            this.$emit("update-data");
+            done();
+          });
+        })
+        .catch(() => {});
+    },
+
+    // 修改数据
+    rowUpdate(row, form, done) {
+      updateSimInventoryData(row).then(() => {
+        this.$emit("update-data");
+
+        this.$message({
+          type: "success",
+          message: "编辑成功!",
+        });
+        done(form);
+      });
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
 </style>

@@ -6,6 +6,8 @@
     <div class="main">
       <div ref="store" class="store"></div>
       <div ref="performance" class="performance"></div>
+      <div ref="portTypeChart" class="chart"></div>
+      <div ref="profitChart" class="chart"></div>
 
       <el-card class="port-card">
         <div slot="header" class="card-header">
@@ -53,6 +55,40 @@ export default {
   mounted() {
     const store = echarts.init(this.$refs.store);
     const performance = echarts.init(this.$refs.performance);
+    const portTypeChart = echarts.init(this.$refs.portTypeChart);
+    const profitChart = echarts.init(this.$refs.profitChart);
+
+    // 设置图表选项
+    portTypeChart.setOption({
+      title: {
+        text: "港口货物类型分布",
+      },
+      series: [
+        {
+          type: "pie",
+          data: [
+            { name: "凤梨", value: 10 },
+            { name: "香蕉", value: 15 },
+            { name: "茶叶蛋", value: 12 },
+          ],
+        },
+      ],
+    });
+
+    profitChart.setOption({
+      title: {
+        text: "客户的利润占比",
+      },
+      series: [
+        {
+          type: "pie",
+          data: [
+            { name: "黄皓铭", value: 15 },
+            { name: "杨维斌", value: 20 },
+          ],
+        },
+      ],
+    });
 
     performance.setOption({
       title: {
@@ -125,7 +161,7 @@ export default {
 
 <style lang="scss" scoped>
 body {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .main {
@@ -163,6 +199,12 @@ body {
 .progress {
   margin-left: 2em;
   width: 33.5em;
+}
+
+.chart {
+  width: 50%;
+  height: 20em;
+  margin-top: 5em;
 }
 
 // .sidebar {

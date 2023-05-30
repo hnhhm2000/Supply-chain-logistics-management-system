@@ -11,12 +11,7 @@
             </div>
 
             <div>
-              <el-form
-                ref="form"
-                :model="form"
-                
-                label-width="10em"
-              >
+              <el-form ref="form" :model="form" label-width="10em">
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="状态:">
@@ -223,12 +218,7 @@
             </div>
 
             <div>
-              <el-form
-                ref="form"
-                :model="form"
-                
-                label-width="10em"
-              >
+              <el-form ref="form" :model="form" label-width="10em">
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="发出公司:" prop="address">
@@ -329,12 +319,7 @@
             </div>
 
             <div>
-              <el-form
-                ref="form"
-                :model="form"
-                
-                label-width="10em"
-              >
+              <el-form ref="form" :model="form" label-width="10em">
                 <el-row>
                   <el-col :span="8">
                     <el-form-item label="创建人:">
@@ -437,6 +422,18 @@
               </el-form>
             </div>
           </el-card>
+          <!-- 底部栏 -->
+          <footer class="btns">
+            <div style="margin-top: 2em">
+              <el-button type="primary" @click="submit()">保存提交</el-button>
+              <el-button
+                type="primary"
+                plain
+                @click="$router.push({ path: '/pickupdelivery' })"
+                >返回</el-button
+              >
+            </div>
+          </footer>
         </el-tab-pane>
         <!-- 商品库存 -->
         <el-tab-pane label="商品" name="second">
@@ -452,19 +449,6 @@
         </el-tab-pane>
       </el-tabs>
     </main>
-
-    <!-- 底部栏 -->
-    <footer class="btns">
-      <div style="margin-top: 2em">
-        <el-button type="primary" @click="submit()">保存提交</el-button>
-        <el-button
-          type="primary"
-          plain
-          @click="$router.push({ path: '/pickupdelivery' })"
-          >返回</el-button
-        >
-      </div>
-    </footer>
   </div>
 </template>
 <script>
@@ -480,44 +464,42 @@ export default {
     return {
       activeName: "first",
 
-      pickupDeliveryInfo: {
-       
-      },
+      pickupDeliveryInfo: {},
 
-       StatusOp: [
-          {
-            value: "请求中",
-            label: "请求中",
-          },
-          {
-            value: "请求中",
-            label: "正在调度",
-          },
-          {
-            value: "暂停中",
-            label: "暂停中",
-          },
-          {
-            value: "已提货",
-            label: "已提货",
-          },
-          {
-            value: "运输中",
-            label: "运输中",
-          },
-          {
-            value: "晚点",
-            label: "晚点",
-          },
-          {
-            value: "已收货",
-            label: "已收货",
-          },
-          {
-            value: "完成",
-            label: "完成",
-          },
-        ],
+      StatusOp: [
+        {
+          value: "请求中",
+          label: "请求中",
+        },
+        {
+          value: "请求中",
+          label: "正在调度",
+        },
+        {
+          value: "暂停中",
+          label: "暂停中",
+        },
+        {
+          value: "已提货",
+          label: "已提货",
+        },
+        {
+          value: "运输中",
+          label: "运输中",
+        },
+        {
+          value: "晚点",
+          label: "晚点",
+        },
+        {
+          value: "已收货",
+          label: "已收货",
+        },
+        {
+          value: "完成",
+          label: "完成",
+        },
+      ],
     };
   },
 
@@ -526,7 +508,7 @@ export default {
     submit() {
       let data = {};
       data = this.pickupDeliveryInfo;
-      
+
       // 格式化创建日期/更新日期数据
       data.createTime = this.formatDate(data.createTime);
       data.updateTime = this.formatDate(data.updateTime);
@@ -539,7 +521,7 @@ export default {
       });
     },
 
-     // 格式化时间
+    // 格式化时间
     formatDate(dateString) {
       const date = new Date(dateString);
       const year = date.getFullYear();
@@ -551,7 +533,6 @@ export default {
 
       return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     },
-    
   },
 
   // 打开页面时，显示所有已有数据

@@ -136,7 +136,7 @@ export default {
           },
            {
             label: "收票人",
-            prop: "billto",
+            prop: "billTo",
           },
           {
             label: "项目",

@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { login } from "../api/api";
+import { login } from "../api/User";
 import { Message } from "element-ui";
 
 export default {
