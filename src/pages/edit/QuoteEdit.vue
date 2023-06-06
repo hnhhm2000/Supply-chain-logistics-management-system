@@ -108,7 +108,7 @@
                         :fetch-suggestions="querySearch"
                         placeholder="请输入内容"
                         size="small"
-                        class="input"
+                        style="width: 17.6em;"
                         @input="getcrm('客户')"
                       ></el-autocomplete>
                     </el-form-item>
@@ -530,8 +530,8 @@ export default {
     params.role = data;
     getUserListByRole(params).then((res) => {
       console.log(res);
-      if(res.success && res.data && res.data.userList) {
-        this.userList = res.data.userList;
+      if(res.success && res.data && res.data.data.userList) {
+        this.userList = res.data.data.userList;
       }
     });
   },

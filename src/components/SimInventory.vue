@@ -83,7 +83,7 @@ export default {
 
     // 新增数据
     rowSave(form, done) {
-      form.quoteId = this.quoteId;
+      form.inventoryId = this.inventoryId;
       this.$emit("update-data");
 
       addSimInventoryData(form).then(() => {
@@ -104,7 +104,7 @@ export default {
       })
         .then(() => {
           let params = {};
-          params.quoteId = row.id;
+          params.inventoryId = row.id;
 
           deleteSimInventoryData(params).then(() => {
             this.$message({

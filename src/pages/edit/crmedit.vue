@@ -206,7 +206,7 @@
                     <el-form-item label="创建时间">
                       <el-date-picker
                         v-model="userData.createTime"
-                        type="date"
+                        type="datetime"
                         placeholder="选择日期"
                         size="small"
                         class="input"
@@ -230,7 +230,7 @@
                     <el-form-item label="更新时间">
                       <el-date-picker
                         v-model="userData.updateTime"
-                        type="date"
+                        type="datetime"
                         placeholder="选择日期"
                         size="small"
                         class="input"
@@ -420,6 +420,7 @@ export default {
       let data = {};
       data.id = this.$route.params.id;
       data.userId = this.$route.params.id;
+      data.inventoryId = this.$route.params.id;
 
       // 打开页面时，显示所有已有数据
       getUserDetail(data).then((res) => {
@@ -434,6 +435,7 @@ export default {
       // 获取库存关联数据
       getInventoryData(data).then((res) => {
         this.inventoryData = res.data.data.inventoryData;
+        console.log(this.inventoryData);
       });
     },
   },
