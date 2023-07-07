@@ -16,7 +16,7 @@ const routes = [
   {
     path: "/",
     name: "Index",
-    component: () => import("../views/Home"),
+    component: () => import("../views/home"),
     meta: {
       title: "首页",
       showNavMenu: true,
@@ -46,7 +46,7 @@ const routes = [
   {
     path: "/crm",
     name: "CustomManage",
-    component: () => import("../views/Crm"),
+    component: () => import("../views/crm"),
     meta: {
       title: "客户管理",
       showNavMenu: true,
@@ -56,7 +56,7 @@ const routes = [
   {
     path: "/shippingorder",
     name: "ShippingOrder",
-    component: () => import("../views/ShippingOrder"),
+    component: () => import("../views/shippingOrder"),
     meta: {
       title: "装运单",
       showNavMenu: true,
@@ -66,7 +66,7 @@ const routes = [
   {
     path: "/task",
     name: "Task",
-    component: () => import("../views/Task"),
+    component: () => import("../views/task"),
     meta: {
       title: "任务管理",
       showNavMenu: true,
@@ -96,7 +96,7 @@ const routes = [
   {
     path: "/release",
     name: "Release",
-    component: () => import("../views/Release"),
+    component: () => import("../views/release"),
     meta: {
       title: "放货",
       showNavMenu: true,
@@ -116,7 +116,7 @@ const routes = [
   {
     path: "/air",
     name: "Air",
-    component: () => import("../views/Air"),
+    component: () => import("../views/air"),
     meta: {
       title: "空运",
       showNavMenu: true,
@@ -126,7 +126,7 @@ const routes = [
   {
     path: "/ground",
     name: "Ground",
-    component: () => import("../views/Ground"),
+    component: () => import("../views/ground"),
     meta: {
       title: "陆运",
       showNavMenu: true,
@@ -143,26 +143,6 @@ const routes = [
       showtopMenu: true
     },
   },
-  // {
-  //   path: "/oceanimport",
-  //   name: "OceanImport",
-  //   component: () => import("../views/Import"),
-  //   meta: {
-  //     title: "海运",
-  //     showNavMenu: true,
-  //     showtopMenu: true
-  //   },
-  // },
-  // {
-  //   path: "/oceanexport",
-  //   name: "OceanExport",
-  //   component: () => import("../views/Export"),
-  //   meta: {
-  //     title: "海运",
-  //     showNavMenu: true,
-  //     showtopMenu: true
-  //   },
-  // },
   {
     path: "/invoices",
     name: "Invoices",
@@ -220,7 +200,7 @@ const routes = [
   {
     path: "/crm/add",
     name: "CrmAdd",
-    component: () => import("../pages/add/CrmAdd"),
+    component: () => import("../pages/add/crmadd"),
     meta: {
       title: "添加客户",
     },
@@ -320,7 +300,7 @@ const routes = [
     {
     path: "/crm/detail/:id",
     name: "CrmDetail",
-    component: () => import("../pages/detail/CrmDetail"),
+    component: () => import("../pages/detail/crmdetail"),
     meta: {
       title: "客户详情",
     },
@@ -411,7 +391,7 @@ const routes = [
   {
     path: "/crm/edit/:id",
     name: "CrmEdit",
-    component: () => import("../pages/edit/CrmEdit"),
+    component: () => import("../pages/edit/crmedit"),
     meta: {
       title: "客户编辑",
     },
