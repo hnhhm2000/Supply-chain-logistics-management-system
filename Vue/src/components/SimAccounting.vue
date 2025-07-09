@@ -58,7 +58,7 @@ export default {
           Number: "INV0000003",
           Type: "发票",
           Date: "2023-05-02",
-          BillToOrVendor: "黄皓铭",
+          BillToOrVendor: "张三",
           DueDate: "2023-05-17",
           Amount: "100",
         },

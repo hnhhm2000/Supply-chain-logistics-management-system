@@ -83,8 +83,8 @@ export default {
         {
           type: "pie",
           data: [
-            { name: "黄皓铭", value: 15 },
-            { name: "杨维斌", value: 20 },
+            { name: "张三", value: 15 },
+            { name: "李四", value: 20 },
           ],
         },
       ],
